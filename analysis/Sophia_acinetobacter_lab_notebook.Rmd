@@ -1,0 +1,637 @@
+---
+title: "Acinetobacter Lab Notebook"
+author: "Sophia Aredas"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output:
+  html_documentgammgga:
+    code_folding: show
+    highlight: default
+    keep_md: yes
+    theme: journal
+    toc: yes
+    toc_float:
+      collapsed: no
+      smooth_scroll: yes
+      toc_depth: 3
+  pdf_document:
+    toc: yes
+editor_options:
+  chunk_output_type: console
+---
+
+```{=html}
+<style>
+pre code, pre, code {
+  white-space: pre !important;
+  overflow-x: scroll !important;
+  word-break: keep-all !important;
+  word-wrap: initial !important;
+}
+</style>
+```
+```{r}
+# For width of code chunks and scroll bar
+knitr::opts_chunk$set(eval = TRUE,
+                      echo = TRUE,
+                      include = TRUE,
+                      warning = FALSE,
+                      collapse = FALSE,
+                      message = FALSE,
+                      dpi=200, dev = "png",
+                      error = TRUE,
+                      fig.path="figures/",
+                      fig.align = "center")
+
+```
+
+```{r load-packages}
+# Efficiently load packages
+pacman::p_load(readr, stringr, tidyr, tidyverse, dplyr, ggplot2, tidytext, scales, wesanderson, ggpubr, wacolors, rcartocolor, treeio, ggtreeExtra, phyloseq, ggtree, ggstar, phytools, install = FALSE)
+
+```
+
+### 11/22/2023
+
+#### So I am working from Vivi's unfinished work to do the metagenomics of Acinetobacter floral samples
+
+#### The reads are located at /local/workdir/vas75/metaspades_flowers/metagenomic/
+
+#### Vivi did not assemble all the reads so we will be doing so from scratch
+
+##### Vivi used Spades with the metagenomic settings
+
+#### Vivi later ran MetaPhlAn on a few samples for profiling communities with metagenomics data
+
+```{bash finding_files, eval = FALSE}
+#to start assembling the metagenomics data go to the folder with the raw reads /local/workdir/vas75/metaspades_flowers/metagenomic
+
+#then copy files to my directory 
+cp /local/workdir/vas75/metaspades_flowers/metagenomic /local/workdir/sna49/Hendry_Rotation_SA/Acinetobacter/Data
+
+#now the raw reads are in /Data/metaspades_floral/original_reads/og
+
+```
+
+```{bash first_multiqc, eval = FALSE}
+#in order to assess the quality of our reads and see what needs to be trimmed we must check the quality of our reads
+ls *.fastq.gz > samples.txt
+sed 's/\.fastq\.gz$//' samples.txt > samples1_test.txt #then i deleted the original file and renamed samples1.txt to samples.txt
+
+# Loop over the samples
+  for sample in $(cat /local/workdir/sna49/Hendry_Rotation_SA/Acinetobacter/Data/metaspades_floral/metagenomic/original_reads/og/samples1_test.txt)
+do
+	echo "Running fastqc on sample ${sample}"
+        fastqc $(echo ${sample}_R1.fastq.gz) -o ./
+	fastqc $(echo ${sample}_R2.fastq.gz) -o ./
+	echo "Finished fastqc on ${sample}"
+done
+
+# Run multiqc on all of the outputs from fastqc!
+export PYTHONPATH=/programs/multiqc-1.15/lib64/python3.9/site-packages:/programs/multiqc-1.15/lib/python3.9/site-packages
+export PATH=/programs/multiqc-1.15/bin:$PATH
+
+multiqc *_fastqc.zip
+```
+
+```{bash, trimmomatic, eval = FALSE}
+
+# Set the path to Trimmomatic JAR file
+trimmomatic_jar="/programs/trimmomatic/trimmomatic-0.39.jar"
+
+#important to note what primers do we have.. according to multiqc we have the nextera primers 
+    for f2 in *_R2.fastq.gz; do
+    f1="${f2%%_R2.fastq.gz}_R1.fastq.gz"
+    output_paired_1="paired.output_${f1}"
+    output_unpaired_1="unpaired.output_${f1}"
+    output_paired_2="paired.output_${f2}"
+    output_unpaired_2="unpaired.output_${f2}"
+    java -jar "$trimmomatic_jar" PE -phred33 "$f1" "$f2" \
+        "$output_paired_1" "$output_unpaired_1" "$output_paired_2" "$output_unpaired_2" \
+        ILLUMINACLIP:/programs/trimmomatic/adapters/NexteraPE-PE.fa:2:30:10 \
+        LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:36
+done
+
+#note with these parameters it seems that 22FN020 R1 and R2 have issues so that one may need to be omitted
+```
+
+```{bash second_multiqc, eval = FALSE}
+# Purpose: Run fastqc on all *.fastq R1 and R2 sequence 
+# need file samples.txt with all samples
+ls *.fastq.gz > samples.txt
+sed 's/\.fastq\.gz$//' samples.txt > samples1_test.txt #then i deleted the original file and renamed samples1.txt to samples.txt
+
+# Loop over the samples
+  for sample in $(cat /local/workdir/sna49/Hendry_Rotation_SA/Acinetobacter/Data/metaspades_floral/metagenomic/original_reads/og/samples1_test.txt)
+do
+	echo "Running fastqc on sample ${sample}"
+        fastqc $(echo ${sample}_R1.fastq.gz) -o ./
+	fastqc $(echo ${sample}_R2.fastq.gz) -o ./
+	echo "Finished fastqc on ${sample}"
+done
+
+# Run multiqc on all of the outputs from fastqc
+export PYTHONPATH=/programs/multiqc-1.15/lib64/python3.9/site-packages:/programs/multiqc-1.15/lib/python3.9/site-packages
+export PATH=/programs/multiqc-1.15/bin:$PATH
+
+fastqc *_fastqc.zip
+
+
+/programs/FastQC-0.12.1/fastqc 
+export PATH=/programs/FastQC-0.12.1:$PATH
+```
+
+```{bash, fastqc_viv, eval = FALSE}
+# Purpose: Run fastqc on all *.fastq R1 and R2 sequence 
+# need file samples.txt with all samples
+ls *.fastq.gz > samples2.txt
+sed 's/\.fastq\.gz$//' samples2.txt > samples.txt 
+
+#now we will be using the paired.output files produced by trimmomatic but its annoying that the files begin with "paired.output_" so letse get rid of it
+for file in paired.output_*.fastq.gz; do
+    # Extract the part of the filename after "paired.output_"
+    name="${file#paired.output_}"
+    # renaming file
+    mv "$file" "$name"
+done
+
+#now lets run loop to multiqc to see if our trimming is better 
+for sample in $(cat /local/workdir/sna49/Hendry_Rotation_SA/Acinetobacter/Data/metaspades_floral/metagenomic/original_reads/og/trimmomatic_paired/samples1_test.txt)
+do
+	echo "Running fastqc on sample ${sample}"
+        fastqc $(echo ${sample}_R1.fastq.gz) -o ./
+	fastqc $(echo ${sample}_R2.fastq.gz) -o ./
+	echo "Finished fastqc on ${sample}"
+done
+
+
+# Run multiqc on all of the outputs from fastqc
+export PYTHONPATH=/programs/multiqc-1.15/lib64/python3.9/site-packages:/programs/multiqc-1.15/lib/python3.9/site-packages
+export PATH=/programs/multiqc-1.15/bin:$PATH
+
+multiqc *_fastqc.zip
+
+#i think the quality scores look good now? after consulting with the internet i think its fine?
+
+```
+
+```{bash metaspades, eval = FALSE}
+#now lets start from scratch and work with the R1 and R2 reads
+
+#There are 12 previous version(s) available. Any version can be accessed either by typing full path, or by adding it to the PATH and then typing its name at the prompt. NOTE: you need to set PATH only once per login/session. 
+#add to path
+export PATH=/programs/SPAdes-3.15.5/bin:$PATH
+
+
+#this is a test run 
+/programs/SPAdes-3.15.5/bin/spades.py -1 13702_32540_179738_H5MH5AFX5_metagenomic_mix_A06_22FN006_TAGGCATG_CTAGTCGA_R1.fastq.gz -2 13702_32540_179738_H5MH5AFX5_metagenomic_mix_A06_22FN006_TAGGCATG_CTAGTCGA_R2.fastq.gz -t 16 -m 200 -o /local/workdir/sna49/Hendry_Rotation_SA/Acinetobacter/Data/metaspades_floral/metagenomic/SPAdes_output
+#in this command
+  # -1 = file with forward reads
+  # -2 = file with reverse reads
+  # -t = threads sets the number of processors to use we are using 16 bc thats the default
+  # -m = memority limit in Gb. SPAdes terminates this if it reaches this limit so we are setting it to 200Gb to be safe but the default is 250 Gb
+  # -o = output directory to use the default is in the current directory
+
+
+#now that we have done the test run, lets do the whole set 
+
+#go to working directory 
+cd /local/workdir/sna49/Hendry_Rotation_SA/Acinetobacter/Data/metaspades_floral/metagenomic/original_reads/og/trimmomatic_paired
+#lets create a loop first 
+for i in *R1.fastq.gz; do 
+  output_dir="${i%_R1.fastq.gz}_spades_output"
+  spades.py -1 $i -2 ${i/%R1.fastq.gz/R2.fastq.gz} --meta -t 16 -m 200 -o "meta_output"
+done
+
+#make sure to put the --meta flag otherwise it will assemble into one mega genome as opposed to metagenomes:')
+```
+
+```{bash metaQUAST initial, eval = FALSE}
+#now that metaSPAdes has completed the assembly, it produces an output file called contigs.fasta
+
+# I will use the contigs.fasta file with QUAST to determine the quality of the reads 
+
+#set environment to use QUAST
+export PYTHONPATH=/programs/quast-5.2.0/lib64/python3.9/site-packages:/programs/quast-5.2.0/lib/python3.9/site-packages
+
+export PATH=/programs/quast-5.2.0/bin:$PATH
+
+#no reference 
+
+#to run QUAST
+metaquast.py -o QUAST contigs.fasta
+```
+
+### 12/11/2023
+
+Now that reads have been assembled into contigs and the quality score has been read with metaQUAST
+
+But with metaQUAST I didnt have a specific reference parameter so it used BLASTN for aligning contigs to SILVA 16S rRNA database.
+
+/local/workdir/sna49/Hendry_Rotation_SA/Acinetobacter/Data/metaspades_floral/metagenomic/original_reads/og/trimmomatic_paired/meta_output/QUAST/report.html
+
+We see that there is a lot of host contamination like Rosenberigella, Klebsiella, Streptococcus, etc.
+
+So we will provide a reference called SCC474reference.fasta (/local/workdir/sna49/Hendry_Rotation_SA/Acinetobacter/Data/metaspades_floral/metagenomic/original_reads/og/trimmomatic_paired/meta_output/QUAST/SCC474reference.fasta) to metaQUAST
+
+```{bash metaQUAST reference provided, eval = FALSE}
+#now that metaSPAdes has completed the assembly, it produces an output file called contigs.fasta
+
+# I will use the contigs.fasta file with QUAST to determine the quality of the reads 
+
+#set environment to use QUAST
+export PYTHONPATH=/programs/quast-5.2.0/lib64/python3.9/site-packages:/programs/quast-5.2.0/lib/python3.9/site-packages
+
+export PATH=/programs/quast-5.2.0/bin:$PATH
+
+#to run QUAST
+metaquast.py -o metaQUAST_refer contigs.fasta -r SCC474reference.fasta
+```
+
+With this output we see that when we use this reference, we see that there are 284 contigs but 3402 contigs are not aligned. I am going to go in with bowtie2 to remove host contamination
+
+```{bash bowtie2, samtools, bedtools, eval=FALSE}
+#PATH only needs to be added once per session
+export PATH=/programs/bowtie2-2.5.1-linux-x86_64:$PATH
+
+#lets build bowtie2 database of multiple genomes 
+
+#first download host genome (in this case I used what metaQUAST used as references but I got rid of Acinetobacter_equi because we want Acinetobacter) and the file is saved as genomes.fasta as created above
+
+#(/local/workdir/sna49/Hendry_Rotation_SA/Acinetobacter/Data/metaspades_floral/metagenomic/original_reads/og/trimmomatic_paired/meta_output/bowtie2_host_ref_noacinetobacter)
+  # Merge all host reference genomes into one genomes.fna file
+cat *.fasta > genomes.fasta
+
+#then reate bowtie2 index database (database name: host)
+bowtie2-build genomes.fasta host
+
+#inspect content of database 
+bowtie2-inspect -n host
+
+#now loop to run bowtie on all sequences in /trimmomatic_paired/ to get rid of any host DNA in those files
+for i in *R1.fastq.gz; do 
+  output_dir="${i%_R1.fastq.gz}_bowtie2"
+  bowtie2 --very-sensitive-local -p 32 --seed 4 -x host -1 $i -2 ${i/%R1.fastq.gz/R2.fastq.gz} -S SAMPLE_mapped_and_unmapped.sam
+done
+#--seed 4 is a random number to make it so that work is reproducible 
+
+#Convert file .sam to .bam
+samtools view -bS SAMPLE_mapped_and_unmapped.sam > SAMPLE_mapped_and_unmapped.bam
+
+#filter required unmapped reads get unmapped pairs (both ends unmapped)
+samtools view -b -f 12 -F 256 SAMPLE_mapped_and_unmapped.bam > SAMPLE_bothReadsUnmapped.bam 
+
+#-f 12     Extract only (-f) alignments with both reads unmapped
+#-F 256   Do not(-F) extract alignments which are: <not primary alignment>
+
+
+# split paired-end reads into separated fastq files .._r1 .._r2
+# sort bam file by read name (-n) to have paired reads next to each other as required by bedtools
+samtools sort -n -m 5G -@ 2 SAMPLE_bothReadsUnmapped.bam -o SAMPLE_bothReadsUnmapped_sorted.bam
+
+samtools fastq -@ 8 SAMPLE_bothReadsUnmapped_sorted.bam -1 SAMPLE_host_removed_R1.fastq.gz -2 SAMPLE_host_removed_R2.fastq.gz -0 /dev/null -s /dev/null -n
+
+#Convert bam to fastq
+bedtools bamtofastq -i SAMPLE_bothReadsUnmapped_sorted.bam -fq SAMPLE_host_removed_R1.fastq -fq2 SAMPLE_host_removed_R2.fastq
+```
+
+```{bash, reassemble with metaSPADES, eval = FAlSE}
+#so with bowtie we removed the host DNA and it should be just Acinetobacter left. The files were put into SAMPLE_host_removed_R1.fastq and SAMPLE_host_removed_R2.fastq
+
+#so because it was all sent to one mega file in a concatenated way, we do not need to do a loop 
+
+spades.py -1 SAMPLE_host_removed_R1.fastq -2 SAMPLE_host_removed_R2.fastq --meta -t 32 -m 200 -o "host_removed_meta_output"
+
+```
+
+# need to create master list reference from Tory and Tad's paper of the Acinetobacter species THEN use it as a reference for metaQUAST to see if alignments improve
+
+### 12/20/23
+Today I am downloading the different Acinetobacter biosamples 
+```{bash}
+curl -O ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/000/236/235/GCA_000236235.1_SpeTri2.0/GCA_000236235.1_SpeTri2.0_assembly_structure/Primary_Assembly/unplaced_scaffolds/FASTA/unplaced.scaf.fna.gz
+
+curl -O https://api.ncbi.nlm.nih.gov/datasets/v2alpha/genome/accession/GCF_015627115.1/download?include_annotation_type=GENOME_FASTA,GENOME_GFF,RNA_FASTA,CDS_FASTA,PROT_FASTA,SEQUENCE_REPORT
+
+#this did not seem to work
+```
+
+### 1/8/24
+Sorry it has been a long time but we are picking up where we left off. Downloading reference sequences from database but i cannot figure out how to do it on server so im just doing it manually hehe
+
+Now we will be using these references to compare them to our sequences to determine the quality on metaQUAST
+```{bash}
+# I will use the contigs.fasta file with QUAST to determine the quality of the reads 
+
+#set environment to use QUAST
+export PYTHONPATH=/programs/quast-5.2.0/lib64/python3.9/site-packages:/programs/quast-5.2.0/lib/python3.9/site-packages
+
+export PATH=/programs/quast-5.2.0/bin:$PATH
+
+#to run QUAST
+metaquast.py -o metaQUAST_refer contigs.fasta -r SCC474reference.fasta,B5B.fna,B10A.fna,EC031.fna,EC034.fna,BB226.fna,BB362.fna,FNA3.fna,SCC477.fna,EC24.fna,EC115.fna
+
+#also used honeybee_ref_ncbi.fna as reference later
+#metaquast says that the honey bee was aligned to 2 contigs, but 3684 contigs are not aligning to the reference 
+
+```
+
+so now the data has references for the Acinetobacter species as described in Tory's paper and alignments have improved!
+
+### 1/9-11/2024
+So after talking to Katie I realized that I probably did bowtie wrong. I do not think that I correctly filtered out the host DNA and I created one massive output file of R1 and R2 so I will need to redo this portion and have specific interleaved files for each of the samples
+```{bash bowtie2, samtools, bedtools, eval=FALSE}
+#PATH only needs to be added once per session
+export PATH=/programs/bowtie2-2.5.1-linux-x86_64:$PATH
+
+#lets build bowtie2 database of multiple genomes 
+
+#first download host genome (in this case I used what metaQUAST used as references but I got rid of Acinetobacter_equi because we want Acinetobacter) and the file is saved as genomes.fasta as created above
+
+#(/local/workdir/sna49/Hendry_Rotation_SA/Acinetobacter/Data/metaspades_floral/metagenomic/original_reads/og/trimmomatic_paired/meta_output/bowtie2_host_ref_noacinetobacter)
+  # Merge all host reference genomes into one genomes.fna file
+#so we will be using the acinetobacter species listed in the tory and tad paper as our references so that we will map everything to those and get rid of no acinetobacter stuff
+
+#these files are in /local/workdir/sna49/Hendry_Rotation_SA/Acinetobacter/Data/metaspades_floral/metagenomic/original_reads/pipeline/01_trimmomatic_paired/host_removed_meta_output
+cat *.fna > genomes.fasta
+
+#then create bowtie2 index database (database name: acinetobacter) now this exists in /local/workdir/sna49/Hendry_Rotation_SA/Acinetobacter/Data/metaspades_floral/metagenomic/original_reads/pipeline/01_trimmomatic_paired
+bowtie2-build genomes.fasta acinetobacter
+
+
+#then index the bowtie2 db as a path 
+export BOWTIE2_INDEXES=/workdir/sna49/Hendry_Rotation_SA/Acinetobacter/Data/metaspades_floral/metagenomic/original_reads/pipeline/01_trimmomatic_paired
+
+#inspect content of database if u wanna see whats in your database
+bowtie2-inspect -n acinetobacter
+
+#then lets run loop to filter out what metaquast said was also found (the other microbe species). the other microbe species will be called OtherMicrobeContam
+for i in *_R1.fastq; do
+  echo ${i/%_R1.fastq}
+  bowtie2 --very-sensitive-local -p 4 --seed 4 -x acinetobacter -1 $i -2 ${i%_R1.fastq}*_R2.fastq -S 02_FilteredReads/${i/%_R1.fastq/_Filtered.sam}
+done > HostFilteredOut.txt
+echo "done with bowtie!"  
+
+#--seed 4 is a random number to make it so that work is reproducible 
+/
+
+#Converting file .sam to .bam 
+mkdir sam_filess
+cp -r *.sam sam_filess/
+
+#cd /local/workdir/sna49/Hendry_Rotation_SA/Acinetobacter/Data/metaspades_floral/metagenomic/original_reads/pipeline/02_OtherMicrobeContamFilteredReads 
+
+cd /local/workdir/sna49/Hendry_Rotation_SA/Acinetobacter/Data/metaspades_floral/metagenomic/original_reads/pipeline/01_trimmomatic_paired/sam/sam_files
+
+for file in *.sam; do samtools view -b -F 4 $file > ${file/.sam/_unmapped.bam}; done > bamReport.txt
+
+#view calls the view command within samtools 
+#b outputs BAM file
+#-f 4 = filter required unmapped reads get unmapped pairs (both ends unmapped) to get non-host DNA aka hopefully the other stuff besides the Acinetobacter that we provided
+
+#now lets move files 
+mkdir bam_files
+cp -r *.sam bam_files/ #these are the the original bam files
+
+#now lets create a sub folder to sort those bam files 
+mkdir bam_sorted
+cp -r *.bam bam_sorted/ #in this folder we will have our sorted .bam files to work with 
+# now we will sort bam file to organize read pairs
+for i in *.bam; do 
+  samtools sort -n $i -o ${i/%_unmapped.bam/_sorted.bam}
+done > sortReport.txt
+echo "done with sorting! On to seperating into reads"
+# sort = calls the sort command within samtools
+# -n = Sorts by read name
+#-o specifies output
+
+#now lets move the sorted .bam files into a split filtered fastq folder
+mkdir filtered_fastq
+cp -r *_sorted.bam filtered_fastq/
+
+#now lets save fastq reads in separate R1 and R2 files
+for i in *_sorted.bam; do
+  bedtools bamtofastq -i $i -fq ${i/%_sorted.bam/_R1.fastq} -fq2 ${i/%_sorted.bam/_R2.fastq}
+done
+
+for i in *.bam; echo do
+  bedtools bamtofastq -i $i -fq ${i/%_sorted.bam/_R1.fastq} -fq2 ${i/%_sorted.bam/_R2.fastq}
+done 
+   
+  
+for i in *_sorted.bam; do
+samtools bam2fq $i -o ${i/%_unmapped.bam/_sorted.bam}> SAMPLE.fastq
+bedtools bamtofastq -i input_sorted.bam -fq output_r1.fastq -fq2 output_r2.fastq
+  
+cp -r *.fastq filtered_fastq/
+```
+
+
+Now we will be using these references to compare them to our sequences to determine the quality on fastqc
+```{bash}
+# I will use the contigs.fasta file with QUAST to determine the quality of the reads 
+
+#set environment to use QUAST
+export PYTHONPATH=/programs/quast-5.2.0/lib64/python3.9/site-packages:/programs/quast-5.2.0/lib/python3.9/site-packages
+
+export PATH=/programs/quast-5.2.0/bin:$PATH
+
+#to run QUAST
+metaquast.py -o metaQUAST_refer contigs.fasta -r SCC474reference.fasta,B5B.fna,B10A.fna,EC031.fna,EC034.fna,BB226.fna,BB362.fna,FNA3.fna,SCC477.fna,EC24.fna,EC115.fna
+
+#also used honeybee_ref_ncbi.fna as reference later
+#metaquast says that the honey bee was aligned to 2 contigs, but 3684 contigs are not aligning to the reference 
+```
+
+### 1/11/2024
+Assembling our .fastq files with metaspades
+```{bash, reassemble with metaSPADES, eval = FAlSE}
+#so with bowtie we removed the host DNA and it should be just Acinetobacter left. The files were put into SAMPLE_host_removed_R1.fastq and SAMPLE_host_removed_R2.fastq
+
+#so because it was all sent to one mega file in a concatenated way, we do not need to do a loop 
+
+export PATH=/programs/SPAdes-3.15.5/bin:$PATH
+#lets create a loop first 
+for i in *R1.fastq; do 
+  for j in ${i%_R1.fastq}*_R2.fastq; do
+  spades.py -1 $i -2 $j -o output/${i/%_R1.fastq/_MetaSpades} --meta -t 16 -m 200 
+  done
+done
+
+
+
+#go to working directory 
+cd /local/workdir/sna49/Hendry_Rotation_SA/Acinetobacter/Data/metaspades_floral/metagenomic/original_reads/og/trimmomatic_paired
+
+```
+
+### 1/22/2024
+Now that we have everything assembled we will need to get our contigs.fasta in each directory of the output from metaspades
+
+we will be using awk command to rename the files
+```{bash, renaming files, eval = FALSE}
+original: for i in kept_paired_end_reads_beetle_*; do echo mv $i ./"$(awk -F '[]' '{print $5""$6""$7""$8"_Spades"}'<<<"$i")";done
+
+#make directory called contigs. this includes our contigs.fasta directory
+mkdir -p metaspades_contigs
+
+#here we will be iterating through each directory to get the contigs.fasta and copy them into a new directory called metaspades_contigs
+for i in 13702_*; do cp -r $i/contigs.fasta metaspades_contigs/${i/%_MetaSpades/_SpadesContig.fasta};done
+
+#rename files to be ~cleaner~
+for i in 13702*; do mv $i "$(awk -F '[_]' '{print $1"_"$7"_"$8"_SpadesContig.fasta"}'<<<"$i")"; done
+
+```
+
+#before we bin we need to get our files ready using bwa
+```{bash, metabat2 for binning, eval = FALSE}
+#Bin contigs using Metabat2
+for f in *.fasta; do bwa index $f; done
+
+
+#Convert to .sam
+#now im in the 01_trimmomatic_paired folder that has teh R1 and R2.fastq files
+cd /local/workdir/sna49/Hendry_Rotation_SA/Acinetobacter/Data/metaspades_floral/metagenomic/original_reads/pipeline/01_trimmomatic_paired
+
+#makign a copy of R1 and R2 .fastq files just in case from our trimmomatic_paired files
+mkdir -p sam
+cp -r *.fastq sam/
+
+#now to match names to up we preivously got rid of the longer names but now lets clean up the trimmomatic file names and just have the relevant stuff
+#rename files to match 
+for i in 13702*; do mv $i "$(awk -F '[_]' '{print $1"_"$7"_"$8"_SpadesContig_"$11}'<<<"$i")"; done
+
+#now we will be working in the metaspades_output directory (/local/workdir/sna49/Hendry_Rotation_SA/Acinetobacter/Data/metaspades_floral/metagenomic/original_reads/pipeline/01_trimmomatic_paired/metaspades_output/metaspades_contigs)
+cd metaspades_contigs/
+
+
+#cd to where the R1 and R2 reads are located 
+cd /local/workdir/sna49/Hendry_Rotation_SA/Acinetobacter/Data/metaspades_floral/metagenomic/original_reads/pipeline/01_trimmomatic_paired/sam
+
+#make output file in the sam directory
+mkdir -p output
+
+#for loop to run R1 and R2 files. it will produce sample.sam file and should combine both R1 and R2 reads into one .sam file per sample
+for i in *R1.fastq; do 
+  sample_name=${i%%_R1.fastq}  #getting sample name from the R1.fastq file name
+
+  for j in ${sample_name}_R2.fastq; do
+    echo "Processing files: $i and $j"
+    bwa mem /local/workdir/sna49/Hendry_Rotation_SA/Acinetobacter/Data/metaspades_floral/metagenomic/original_reads/pipeline/01_trimmomatic_paired/metaspades_output/metaspades_contigs/${sample_name}.fasta $i $j > output/${i/%_R1.fastq/_bwa}.sam -t 16 
+    echo "Alignment complete for $i and $j"
+  done
+done
+
+#copy files to bam folder just in case 
+mkdir -p bam
+cp -r *.sam bam/
+
+#change directory 
+cd bam/
+#Convert to .bam
+for i in *.sam; do samtools sort $i -o ${i/%.sam/.bam};done
+
+#copy bam files to bin
+mkdir -p metabat
+cp -r *.bam metabat
+cd metabat/
+
+#add depth
+export PATH=/programs/metabat:$PATH
+
+for i in *.bam; do jgi_summarize_bam_contig_depths --outputDepth ${i/%.bam/_depth.txt} $i;
+done
+
+#binning part
+#copy .fasta files to new directory 
+mkdir -p fasta_files
+cp -r *.fasta fasta_files
+cd fasta_files/
+
+#lets also move the *_depth.txt files to our copied *.fasta files 
+
+cp -r /local/workdir/sna49/Hendry_Rotation_SA/Acinetobacter/Data/metaspades_floral/metagenomic/original_reads/pipeline/01_trimmomatic_paired/metaspades_output/metaspades_contigs/fasta_files/* /local/workdir/sna49/Hendry_Rotation_SA/Acinetobacter/Data/metaspades_floral/metagenomic/original_reads/pipeline/01_trimmomatic_paired/sam/sam_files/bam/metabat 
+
+#success we have the files in the right place we can proceed so basically little recap we have the depth.txt files and the .fasta files togehter in the same place in metabat/
+
+#change working directory 
+cd /local/workdir/sna49/Hendry_Rotation_SA/Acinetobacter/Data/metaspades_floral/metagenomic/original_reads/pipeline/01_trimmomatic_paired/sam/sam_files/bam/metabat
+
+for i in *_SpadesContig.fasta; do metabat1 -i $i -a /local/workdir/sna49/Hendry_Rotation_SA/Acinetobacter/Data/metaspades_floral/metagenomic/original_reads/pipeline/01_trimmomatic_paired/sam/sam_files/bam/metabat/${i/%.fasta/_bwa_depth.txt} -o /local/workdir/sna49/Hendry_Rotation_SA/Acinetobacter/Data/metaspades_floral/metagenomic/original_reads/pipeline/01_trimmomatic_paired/sam/sam_files/bam/metabat/${i/%.fasta/_metabat} -t 24 ;done
+
+```
+
+#1/29
+```{r}
+#add path to session just once
+export PATH=/programs/hmmer/bin:$PATH
+export PATH=/programs/prodigal-2.6.3:$PATH
+export PATH=/programs/pplacer-Linux-v1.1.alpha19:$PATH
+export PATH=/programs/checkm-1.2.2/bin:$PATH
+export PYTHONPATH=/programs/checkm-1.2.2/lib/python3.9/site-packages
+
+#download database just once 
+mkdir /workdir/$USER/checkmdata
+
+cd /workdir/$USER/checkmdata
+
+wget https://data.ace.uq.edu.au/public/CheckM_databases/checkm_data_2015_01_16.tar.gz
+
+tar xvfz checkm_data_2015_01_16.tar.gz
+
+#set db directory 
+export CHECKM_DATA_PATH=/workdir/$USER/checkmdata
+
+#now run checkm
+checkm lineage_wf /local/workdir/sna49/Hendry_Rotation_SA/Acinetobacter/Data/metaspades_floral/metagenomic/original_reads/pipeline/01_trimmomatic_paired/sam/sam_files/bam/metabat/metabat_output /local/workdir/sna49/Hendry_Rotation_SA/Acinetobacter/Data/metaspades_floral/metagenomic/original_reads/pipeline/01_trimmomatic_paired/sam/sam_files/bam/metabat/metabat_output/binned_bins -x fa --threads 16 --tmpdir /workdir/$USER
+```
+
+### 1/30
+Now that we have done checkm it would be good to use metaquast to see which bins align to acinetobacter
+```{bash}
+#now that metaSPAdes has completed the assembly, it produces an output file called contigs.fasta
+
+# I will use the contigs.fasta file with QUAST to determine the quality of the reads 
+
+#set environment to use QUAST
+export PYTHONPATH=/programs/quast-5.2.0/lib64/python3.9/site-packages:/programs/quast-5.2.0/lib/python3.9/site-packages
+
+export PATH=/programs/quast-5.2.0/bin:$PATH
+
+#to run QUAST
+metaquast.py -o metaQUAST_refer *.fa -r B10A.fna,B5B.fna,BB226.fna,BB362.fna,EC031.fna,EC034.fna,EC115.fna,EC24.fna,FNA3.fna,FNA11.fna,SCC474reference.fna,SCC477.fna
+```
+
+### 2/5
+As of today I have started a new rotation but I will continue to work on this project for Marian's bioinformatic class!
+
+Just so that I remember where I left off
+  - I did checkM and I maybe have Acinetobacter but I am unsure so I am trying to match my reads with bowtie (using references from Tory's paper) so that I can just get Acinetobacter species. I am on the last step of bowtie trying to get my fastq files. I am unsure if I need the files in an R1 and R2.fastq format so that I can rerun the assembly but thats where I am at
+  
+```{bash, elijah, eval=FALSE}
+#elijah wants to map RNA-seq reads to the genome so we will be using bwa probably to help him out!
+#WT14-A
+wget -nc ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR112/059/ERR11200559/ERR11200559_1.fastq.gz
+wget -nc ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR112/059/ERR11200559/ERR11200559_2.fastq.gz
+
+#WT14B
+wget -nc ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR112/060/ERR11200560/ERR11200560_1.fastq.gz
+wget -nc ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR112/060/ERR11200560/ERR11200560_2.fastq.gz
+
+#WT14C
+wget -nc ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR112/061/ERR11200561/ERR11200561_2.fastq.gz
+wget -nc ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR112/061/ERR11200561/ERR11200561_1.fastq.gz
+
+#WT22A
+wget -nc ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR112/062/ERR11200562/ERR11200562_2.fastq.gz
+wget -nc ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR112/062/ERR11200562/ERR11200562_1.fastq.gz
+
+#WT22B
+wget -nc ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR112/063/ERR11200563/ERR11200563_1.fastq.gz
+wget -nc ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR112/063/ERR11200563/ERR11200563_2.fastq.gz
+
+#WT22C
+wget -nc ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR112/064/ERR11200564/ERR11200564_2.fastq.gz
+wget -nc ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR112/064/ERR11200564/ERR11200564_1.fastq.gz
+
+```
+
