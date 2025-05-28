@@ -5,6 +5,242 @@ date: "2025-05-27"
 output: html_document
 ---
 
+## Goals 
+
+The goal of this script is to assemble and process the metagenomic data from 
+floral, crop, and pollen provisions collected by Vivianna Sanchez for her 
+dissertation. I will be using some code from Sophia's rotation, found in `/local/workdir/sna49/Hendry_Rotation_SA/Acinetobacter/Acinetobacter_Lab_`
+`Notebook/Acinetobacter_Lab_Notebook.Rmd`
+
+## Steps
+#### Copied from Katie's workflow outlined in her paper: 
+
+1. FastQC quality analysis
+2. Trimmomatic adapter trimming
+3. BWA-MEM read filtering
+4. MetaSpades assembly
+5. CheckM host contamination
+6. Phyloflash taxonomy composition
+
+The inputs and outputs will be as follows:
+
+Program | Function | Input | Output | Input path | Output path| 
+--------|----------|-------|--------|------------|-------------
+FastQC | Quality control | raw reads | .html analysis	| ./00_RawReads |	./multiqc_all_raw_reads_112/*.html
+Trimmomatic |	adapter trimming |	raw reads | adapter-trimmed reads, paired and unpaired |./00_RawReads | ./trimmomatic_paired/ and ./trimmomatic_unpaired/
+BWA-MEM |	filter to reference	| SKIP | | | 	
+MetaSpades | Assemble reads | | | |
+CheckM | host contamination | | | |	
+phyloflash pipeline | taxonomic composition | | | |	
+
+
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r load packages}
+
+pacman::p_load(tidyverse, dada2, phyloseq, patchwork, DT, devtools, install = FALSE)
+library("patchwork")
+```
+
+### Acquiring Data
+May 27, 2025
+I copied Vivi's metagenomics raw reads from her folder to mine:
+` cp /local/workdir/vas75/metaspades_flowers/metagenomic /local/workdir/Daphne/`
+`Floral-metagenomics/data/01_raw_reads`
+
+This took ~ 30 seconds
+
+I noticed a pattern with the filenames: all start with 13702_32540_1797XX 
+The X's ranging from **38** (R1 and R2) to **93** (R1 and R2).
+
+### 1. FastQC Quality analysis
+
+In order to assess the quality of our reads, I ran fastQC on all metagenomic 
+samples, and multiQC on the total
+
+FastQC:
+```{bash first_fastqc, eval = FALSE}
+## NOTE: Since this chunk is in bash, run with ctrl + alt + enter
+
+# download fastqc from biohpc
+export PATH=/programs/FastQC-0.12.1:$PATH
+
+#First, write a list of all of the metagenomic filenames, removing "fastq.gz"
+cd data/01_raw_reads/metagenomic
+ls *.fastq.gz | sed 's/\.fastq\.gz$//' > samples.txt
+
+# Loop over the list of filenames and perform fastQC, outputting to data/01_fastq...
+  for sample in $(cat ./samples.txt)
+do
+        fastqc $(echo ${sample}.fastq.gz) -o ../../01_fastQC_results_pre_trim
+done
+
+```
+ This step took 42 min
+
+MultiQC:
+```{bash first_multiQC, eval = FALSE}
+## NOTE: Since this chunk is in bash, run with ctrl + alt + enter
+    
+# download multiqc from biohpc
+export PYTHONPATH=/programs/multiqc-1.15/lib64/python3.9/site-packages:/programs/multiqc-1.15/lib/python3.9/site-packages
+export PATH=/programs/multiqc-1.15/bin:$PATH
+ 
+# Run multiqc on all of the outputs from fastqc  
+cd /local/workdir/Daphne/Floral_metagenomics/data/01_fastQC_results_pre_trim
+multiqc *_fastqc.zip
+
+```
+The fastQC and multiQC outputs are in `/local/workdir/Daphne/Floral_metagenomics/data/01_fastQC_results_pre_trim`, and
+both matched with Sophia's outputs.
+
+
+ATGC counts aren't even from bases 1-19, could the reason be an adapter? 
+
+### 2. Trimmomatic adapter trim
+
+After the initial quality control, I ran trimmomatic to remove the nextera adapters detected by the fastQC
+
+```{bash, trimmomatic, eval = FALSE}
+## NOTE: Since this chunk is in bash, run with ctrl + alt + enter
+
+#set workdir to metagenomic to access the fastq.gz files
+cd /local/workdir/Daphne/Floral_metagenomics/data/01_raw_reads/metagenomic
+
+# init a variable the path to Trimmomatic JAR file, copied from BioHPC website
+trimmomatic_jar="/programs/trimmomatic/trimmomatic-0.39.jar" 
+
+#important to note what primers do we have.. according to multiqc we have the nextera primers 
+    for f2 in *_R2.fastq.gz; do
+    echo "THIS IS $f2"
+    printf "\n"
+    f1="${f2%%_R2.fastq.gz}_R1.fastq.gz"
+    output_paired_1="paired.output_${f1}"
+    output_unpaired_1="unpaired.output_${f1}"
+    output_paired_2="paired.output_${f2}"
+    output_unpaired_2="unpaired.output_${f2}"
+    java -jar "$trimmomatic_jar" PE -phred33 "$f1" "$f2" \
+        "$output_paired_1" "$output_unpaired_1" "$output_paired_2" "$output_unpaired_2" \
+        ILLUMINACLIP:/programs/trimmomatic/adapters/NexteraPE-PE.fa:2:30:10 \
+        LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:36
+done
+
+#This took 5 hours
+#note with these parameters it seems that (no. 49) R1 and R2 had issues in Sophia's run and were ommited, but in mine they seem fine.
+
+# move trimmomatic results to Floral_metagenomics/data/02_trimmomatic
+mv unpaired* ../../02_trimmomatic/
+mv paired* ../../02_trimmomatic/
+
+```
+Outputted paired and unpaired files for R1 and R2 of 38-92 are in 
+`/local/workdir/Daphne/Floral_metagenomics/data/02_trimmomatic`
+
+### 2.1 FastQC Quality analysis post-trim 
+
+After the trimmomati removed the adapters, let's run the quality analysis again on the paired reads to see if the quality improved
+
+```{bash post-trim_fastqc, eval = FALSE}
+
+## NOTE: Since this chunk is in bash, run with ctrl + alt + enter
+
+# download fastqc from biohpc
+export PATH=/programs/FastQC-0.12.1:$PATH
+
+#Go to directory with trimmomatic paired and unpaired
+cd /local/workdir/Daphne/Floral_metagenomics/data/02_trimmomatic
+
+# loop through paired files to do fastqc to see if our trimming is better 
+for sample in paired.output_*.fastq.gz
+do
+        fastqc $(echo ${sample}) -o ../02_fastQC_results_post_trim
+done
+
+#go to directory with the paired trimmed fastqc results
+cd ../02_fastQC_results_post_trim
+
+# Run multiqc on all of the outputs from fastqc
+export PYTHONPATH=/programs/multiqc-1.15/lib64/python3.9/site-packages:/programs/multiqc-1.15/lib/python3.9/site-packages
+export PATH=/programs/multiqc-1.15/bin:$PATH
+
+multiqc *_fastqc.zip
+
+
+
+for sample in paired.output_*_fastqc.zip
+do
+        multiqc $sample -o ../multiqc_all_112_individually
+        echo "DONE WITH $sample"
+done
+
+
+
+
+#i think the quality scores look good now? after consulting with the internet i think its fine?
+```
+
+outputted fastQC files for every sample and multiQC for total are in 
+`/local/workdir/Daphne/Floral_metagenomics/data/02_fastQC_results_post_trim`
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+### 3. MetaSpades assembly 
+
+We're skipping BWE-MEM, because since in the data collection portion, microbial 
+samples were washed off of flower petals, so there's not likely to be much 
+contamination
+
+Therefore, we'll assemble the paired-trimmed reads into metagenomes with MetaSpades
+
+```{bash metaspades, eval = FALSE}
+
+# There are 12 previous version(s) available. Any version can be accessed either by typing full path, or by adding it to the PATH and then typing its name at the prompt. NOTE: you need to set PATH only once per login/session. 
+#add to path
+# download SPAdes from bioHPC
+export PATH=/programs/SPAdes-3.15.5/bin:$PATH
+
+
+#this is a test run 
+/programs/SPAdes-3.15.5/bin/spades.py -1 13702_32540_179738_H5MH5AFX5_metagenomic_mix_A06_22FN006_TAGGCATG_CTAGTCGA_R1.fastq.gz -2 13702_32540_179738_H5MH5AFX5_metagenomic_mix_A06_22FN006_TAGGCATG_CTAGTCGA_R2.fastq.gz -t 16 -m 200 -o /local/workdir/sna49/Hendry_Rotation_SA/Acinetobacter/Data/metaspades_floral/metagenomic/SPAdes_output
+#in this command
+  # -1 = file with forward reads
+  # -2 = file with reverse reads
+  # -t = threads sets the number of processors to use we are using 16 bc thats the default
+  # -m = memority limit in Gb. SPAdes terminates this if it reaches this limit so we are setting it to 200Gb to be safe but the default is 250 Gb
+  # -o = output directory to use the default is in the current directory
+
+
+#now that we have done the test run, lets do the whole set 
+
+#go to working directory 
+cd /local/workdir/sna49/Hendry_Rotation_SA/Acinetobacter/Data/metaspades_floral/metagenomic/original_reads/og/trimmomatic_paired
+#lets create a loop first 
+for i in *R1.fastq.gz; do 
+  output_dir="${i%_R1.fastq.gz}_spades_output"
+  spades.py -1 $i -2 ${i/%R1.fastq.gz/R2.fastq.gz} --meta -t 16 -m 200 -o "meta_output"
+done
+
+#make sure to put the --meta flag otherwise it will assemble into one mega genome as opposed to metagenomes:')
 ```

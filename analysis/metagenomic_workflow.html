@@ -357,7 +357,188 @@ display: none;
 </div>
 
 
+<div id="goals" class="section level2">
+<h2>Goals</h2>
+<p>The goal of this script is to assemble and process the metagenomic
+data from floral, crop, and pollen provisions collected by Vivianna
+Sanchez for her dissertation. I will be using some code from Sophia’s
+rotation, found in
+<code>/local/workdir/sna49/Hendry_Rotation_SA/Acinetobacter/Acinetobacter_Lab_</code>
+<code>Notebook/Acinetobacter_Lab_Notebook.Rmd</code></p>
+</div>
+<div id="steps" class="section level2">
+<h2>Steps</h2>
+<div id="copied-from-katies-workflow-outlined-in-her-paper" class="section level4">
+<h4>Copied from Katie’s workflow outlined in her paper:</h4>
+<ol style="list-style-type: decimal">
+<li>FastQC quality analysis</li>
+<li>Trimmomatic adapter trimming</li>
+<li>BWA-MEM read filtering</li>
+<li>MetaSpades assembly</li>
+<li>CheckM host contamination</li>
+<li>Phyloflash taxonomy composition</li>
+</ol>
+<p>The inputs and outputs will be as follows:</p>
+<table>
+<colgroup>
+<col width="13%" />
+<col width="17%" />
+<col width="12%" />
+<col width="13%" />
+<col width="20%" />
+<col width="22%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Program</th>
+<th>Function</th>
+<th>Input</th>
+<th>Output</th>
+<th>Input path</th>
+<th>Output path</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>FastQC</td>
+<td>Quality control</td>
+<td>raw reads</td>
+<td>.html analysis</td>
+<td>./00_RawReads</td>
+<td>./multiqc_all_raw_reads_112/*.html</td>
+</tr>
+<tr class="even">
+<td>Trimmomatic</td>
+<td>adapter trimming</td>
+<td>raw reads</td>
+<td>adapter-trimmed reads, paired and unpaired</td>
+<td>./00_RawReads</td>
+<td>./trimmomatic_paired/ and ./trimmomatic_unpaired/</td>
+</tr>
+<tr class="odd">
+<td>BWA-MEM</td>
+<td>filter to reference</td>
+<td>SKIP</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>MetaSpades</td>
+<td>Assemble reads</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>CheckM</td>
+<td>host contamination</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>phyloflash pipeline</td>
+<td>taxonomic composition</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<pre class="r"><code>pacman::p_load(tidyverse, dada2, phyloseq, patchwork, DT, devtools, install = FALSE)
+library(&quot;patchwork&quot;)</code></pre>
+</div>
+<div id="acquiring-data" class="section level3">
+<h3>Acquiring Data</h3>
+<p>May 27, 2025 I copied Vivi’s metagenomics raw reads from her folder
+to mine:
+<code>cp /local/workdir/vas75/metaspades_flowers/metagenomic /local/workdir/Daphne/</code>
+<code>Floral-metagenomics/data/raw_reads</code></p>
+<p>This took ~ 30 seconds</p>
+<p>I noticed a pattern with the filenames: all start with
+13702_32540_1797XX The X’s ranging from <strong>38</strong> (R1 and R2)
+to <strong>93</strong> (R1 and R2).</p>
+</div>
+<div id="fastqc-quality-analysis" class="section level3">
+<h3>1. FastQC Quality analysis</h3>
+<p>In order to assess the quality of our reads, I ran fastQC on all
+metagenomic samples, and multiQC on the total</p>
+<p>FastQC:</p>
+<pre class="bash"><code>## NOTE: Since this chunk is in bash, run with ctrl + alt + enter
 
+
+#First, write a list of all of the metagenomic filenames, removing &quot;fastq.gz&quot;
+cd data/01_raw_reads/metagenomic
+ls *.fastq.gz | sed &#39;s/\.fastq\.gz$//&#39; &gt; samples.txt
+
+# Loop over the list of filenames and perform fastQC, outputting to data/01_fastq...
+  for sample in $(cat ./samples.txt)
+do
+        fastqc $(echo ${sample}.fastq.gz) -o ../../01_fastQC_results_pre_trim
+done
+</code></pre>
+<p>This step took 42 min</p>
+<p>MultiQC:</p>
+<pre class="bash"><code>## NOTE: Since this chunk is in bash, run with ctrl + alt + enter
+    
+# Run multiqc on all of the outputs from fastqc!
+export PYTHONPATH=/programs/multiqc-1.15/lib64/python3.9/site-packages:/programs/multiqc-1.15/lib/python3.9/site-packages
+export PATH=/programs/multiqc-1.15/bin:$PATH
+  
+cd /local/workdir/Daphne/Floral_metagenomics/data/01_fastQC_results_pre_trim
+multiqc *_fastqc.zip
+</code></pre>
+<p>The fastQC and multiQC outputs are in
+<code>Daphne/Floral_metagenomics/data/01_fastQC_results_pre_trim</code>,
+and both matched with Sophia’s outputs.</p>
+<p>ATGC counts aren’t even from bases 1-19, could this be an
+adapter?</p>
+</div>
+<div id="trimmomatic-adapter-trim" class="section level3">
+<h3>2. Trimmomatic adapter trim</h3>
+<p>After the initial quality control, I ran trimmomatic to remove the
+adapters</p>
+<pre class="bash"><code>## NOTE: Since this chunk is in bash, run with ctrl + alt + enter
+
+#set workdir to metagenomic to access the fastq.gz files
+cd /local/workdir/Daphne/Floral_metagenomics/data/01_raw_reads/metagenomic
+#set an output directory: 02_trimmomatic
+output_dir=&quot;../02_trimmed_reads&quot;
+
+# Set the path to Trimmomatic JAR file, copied from BioHPC website
+trimmomatic_jar=&quot;/programs/trimmomatic/trimmomatic-0.39.jar&quot; 
+
+#important to note what primers do we have.. according to multiqc we have the nextera primers 
+    for f2 in *_R2.fastq.gz; do
+    echo &quot;THIS IS $f2&quot;
+    printf &quot;\n&quot;
+    f1=&quot;${f2%%_R2.fastq.gz}_R1.fastq.gz&quot;
+    output_paired_1=&quot;paired.output_${f1}&quot;
+    output_unpaired_1=&quot;unpaired.output_${f1}&quot;
+    output_paired_2=&quot;paired.output_${f2}&quot;
+    output_unpaired_2=&quot;unpaired.output_${f2}&quot;
+    java -jar &quot;$trimmomatic_jar&quot; PE -phred33 &quot;$f1&quot; &quot;$f2&quot; \
+        &quot;$output_paired_1&quot; &quot;$output_unpaired_1&quot; &quot;$output_paired_2&quot; &quot;$output_unpaired_2&quot; \
+        ILLUMINACLIP:/programs/trimmomatic/adapters/NexteraPE-PE.fa:2:30:10 \
+        LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:36
+done
+
+#This took 5 hours
+#note with these parameters it seems that (no. 49) R1 and R2 had issues in Sophia&#39;s run and were ommited, but in mine they seem fine.
+
+# move trimmomatic results to Floral_metagenomics/data/02_trimmomatic
+mv unpaired* ../../02_trimmomatic/
+mv paired* ../../02_trimmomatic/
+</code></pre>
+</div>
+<div id="trimmomatic-adapter-trim-1" class="section level3">
+<h3>3. Trimmomatic adapter trim</h3>
+</div>
+</div>
 
 
 

@@ -114,6 +114,10 @@ done
 #note with these parameters it seems that 22FN020 R1 and R2 have issues so that one may need to be omitted
 ```
 
+######################## LEFT OFF HERE ###########################
+
+
+this second multiqc is an exact copy of the first one, does NOT use trimmed
 ```{bash second_multiqc, eval = FALSE}
 # Purpose: Run fastqc on all *.fastq R1 and R2 sequence 
 # need file samples.txt with all samples
@@ -140,6 +144,8 @@ fastqc *_fastqc.zip
 export PATH=/programs/FastQC-0.12.1:$PATH
 ```
 
+
+################## For the trimmed fastqc, use the following chunk:
 ```{bash, fastqc_viv, eval = FALSE}
 # Purpose: Run fastqc on all *.fastq R1 and R2 sequence 
 # need file samples.txt with all samples
@@ -173,6 +179,8 @@ multiqc *_fastqc.zip
 #i think the quality scores look good now? after consulting with the internet i think its fine?
 
 ```
+
+##################### STEP METASPADES ###################################
 
 ```{bash metaspades, eval = FALSE}
 #now lets start from scratch and work with the R1 and R2 reads
