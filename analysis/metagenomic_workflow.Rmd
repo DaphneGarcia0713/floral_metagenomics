@@ -28,10 +28,11 @@ Program | Function | Input | Output | Input path | Output path|
 --------|----------|-------|--------|------------|-------------
 FastQC | Quality control | raw reads | .html analysis	| ./00_RawReads |	./multiqc_all_raw_reads_112/*.html
 Trimmomatic |	adapter trimming |	raw reads | adapter-trimmed reads, paired and unpaired |./00_RawReads | ./trimmomatic_paired/ and ./trimmomatic_unpaired/
-BWA-MEM |	filter to reference	| SKIP | | | 	
+Bowtie2 |	align to reference	| SKIP | unaligned reads as fastq|./trimmomatic_paired/ and ./trimmomatic_unpaired | 	
 MetaSpades | Assemble reads | | | |
-CheckM | host contamination | | | |	
-phyloflash pipeline | taxonomic composition | | | |	
+Quast | check assembly quality |(on vivi's jupyter) | | |
+CheckM | host contamination | | | |	| | | |
+phyloflash pipeline | taxonomic composition | (vivi used MetaPhlAn| | |	
 
 
 ```{r setup, include=FALSE}
@@ -106,6 +107,8 @@ After the initial quality control, I ran trimmomatic to remove the nextera adapt
 ```{bash, trimmomatic, eval = FALSE}
 ## NOTE: Since this chunk is in bash, run with ctrl + alt + enter
 
+RANDOM=42
+
 #set workdir to metagenomic to access the fastq.gz files
 cd /local/workdir/Daphne/Floral_metagenomics/data/01_raw_reads/metagenomic
 
@@ -114,13 +117,13 @@ trimmomatic_jar="/programs/trimmomatic/trimmomatic-0.39.jar"
 
 #important to note what primers do we have.. according to multiqc we have the nextera primers 
     for f2 in *_R2.fastq.gz; do
-    echo "THIS IS $f2"
+    echo "THIS IS $f2" 
     printf "\n"
     f1="${f2%%_R2.fastq.gz}_R1.fastq.gz"
-    output_paired_1="paired.output_${f1}"
-    output_unpaired_1="unpaired.output_${f1}"
-    output_paired_2="paired.output_${f2}"
-    output_unpaired_2="unpaired.output_${f2}"
+    output_paired_1="paired_${f1}"
+    output_unpaired_1="unpaired_output_${f1}"
+    output_paired_2="paired_${f2}"
+    output_unpaired_2="unpaired_output_${f2}"
     java -jar "$trimmomatic_jar" PE -phred33 "$f1" "$f2" \
         "$output_paired_1" "$output_unpaired_1" "$output_paired_2" "$output_unpaired_2" \
         ILLUMINACLIP:/programs/trimmomatic/adapters/NexteraPE-PE.fa:2:30:10 \
@@ -128,7 +131,7 @@ trimmomatic_jar="/programs/trimmomatic/trimmomatic-0.39.jar"
 done
 
 #This took 5 hours
-#note with these parameters it seems that (no. 49) R1 and R2 had issues in Sophia's run and were ommited, but in mine they seem fine.
+#The output will be in /01_raw_reads, but the following lines will move it to 02_trimmomatic
 
 # move trimmomatic results to Floral_metagenomics/data/02_trimmomatic
 mv unpaired* ../../02_trimmomatic/
@@ -138,11 +141,11 @@ mv paired* ../../02_trimmomatic/
 Outputted paired and unpaired files for R1 and R2 of 38-92 are in 
 `/local/workdir/Daphne/Floral_metagenomics/data/02_trimmomatic`
 
-### 2.1 FastQC Quality analysis post-trim 
+#### 2.1 FastQC Quality analysis post-trim 
 
-After the trimmomati removed the adapters, let's run the quality analysis again on the paired reads to see if the quality improved
+After the trimmomatic removed the adapters, let's run the quality analysis again on the paired reads to see if the quality improved
 
-```{bash post-trim_fastqc, eval = FALSE}
+```{bash post-trim_fastqc_and_multiqc, eval = FALSE}
 
 ## NOTE: Since this chunk is in bash, run with ctrl + alt + enter
 
@@ -151,12 +154,14 @@ export PATH=/programs/FastQC-0.12.1:$PATH
 
 #Go to directory with trimmomatic paired and unpaired
 cd /local/workdir/Daphne/Floral_metagenomics/data/02_trimmomatic
-
+ 
 # loop through paired files to do fastqc to see if our trimming is better 
-for sample in paired.output_*.fastq.gz
+for sample in paired_*.fastq.gz
 do
         fastqc $(echo ${sample}) -o ../02_fastQC_results_post_trim
 done
+
+# This took 23 minutes
 
 #go to directory with the paired trimmed fastqc results
 cd ../02_fastQC_results_post_trim
@@ -167,64 +172,170 @@ export PATH=/programs/multiqc-1.15/bin:$PATH
 
 multiqc *_fastqc.zip
 
-
-
-for sample in paired.output_*_fastqc.zip
-do
-        multiqc $sample -o ../multiqc_all_112_individually
-        echo "DONE WITH $sample"
-done
-
-
-
-
 #i think the quality scores look good now? after consulting with the internet i think its fine?
 ```
 
 outputted fastQC files for every sample and multiQC for total are in 
 `/local/workdir/Daphne/Floral_metagenomics/data/02_fastQC_results_post_trim`
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
-### 3. MetaSpades assembly 
 
-We're skipping BWE-MEM, because since in the data collection portion, microbial 
-samples were washed off of flower petals, so there's not likely to be much 
-contamination
+#### 2.2 Grouping trimmed reads by 
 
-Therefore, we'll assemble the paired-trimmed reads into metagenomes with MetaSpades
+Now I need to unzip all of the samples and group them the host they were sampled
+on (ex: dandelion, apple, trefoil). This way, we can filter out their host genome with bowtie2 using the corresponding reference genome
 
-```{bash metaspades, eval = FALSE}
+```{bash group_by_host}
+cd /local/workdir/Daphne/Floral_metagenomics/data
 
-# There are 12 previous version(s) available. Any version can be accessed either by typing full path, or by adding it to the PATH and then typing its name at the prompt. NOTE: you need to set PATH only once per login/session. 
-#add to path
-# download SPAdes from bioHPC
+# copy all paired reads from 02_trimmomatic directory into the new one
+cp 02_trimmomatic/paired* 02_trim_unzipped_and_host-grouped/
+
+cd 02_trim_unzipped_and_host-grouped/
+
+gunzip paired*
+
+## From here, I manually moved each file into a corresponding subdirectory matching it to the right reference host chosen for it
+
+## This is based on metadata in Floral_metagenomics/data/metadata_sequencing.xlsx
+
+```
+
+
+ 
+### 3.  Bowtie2
+
+We're gonna run the trimmomatic paired and unpaired trimmed reads through Bowtie2 to align the reads to their corresponding host genome. The samples were washed off of flower petals, (info in `Floral_metagenomics/data/metadata_sequencing.xlsx`) so for each sample I will be aligning to corresponding genomes from spreadsheet:
+/local/workdir/Daphne/Floral_metagenomics/data/metadata_host_flower_genomes.xlsx
+
+First, I need to create reference indices for every host genome that I'll be using. I found the RefSeq's online through NCBI genome finder, downloaded the FTP `_genomic.fna.gz` file to my computer, then transfered it to the server.
+
+```{bash bowtie2_build_reference_indices, eval=FALSE}
+
+cd /local/workdir/Daphne/Floral_metagenomics/data/03_Flower_host_genomes
+
+export PATH=/programs/bowtie2-2.5.1-linux-x86_64:$PATH
+
+#Index for Cichorium intybus (dandelion, chickory, hawkweed)
+bowtie2-build GCA_023525715.1_ASM2352571v1_genomic.fna.gz Chichorium_indices/Chichorium_index
+
+#RefSeq of Malus domestica (apple)
+bowtie2-build GCF_042453785.1_GDT2T_hap1_genomic.fna.gz Malus_indices/Malus_index
+
+#RefSeq of Lotus japonicus (trefoil)
+bowtie2-build GCF_012489685.1_LjGifu_v1.2_genomic.fna.gz Lotus_indices/Lotus_index
+
+#RefSeq of Ranunculus sardous (buttercup)
+bowtie2-build GCA_965125545.1_dmRanSard1.hap1.1_genomic.fna.gz Ranculus_indices/Ranunculus_index
+
+#RefSeq of Trifolium repens (clover)
+bowtie2-build GCA_030408175.1_UTM_Trep_v1.0_genomic.fna.gz Trifolium_indices/Trifolium_index
+
+#RefSeq of Matricaria discoidea (yarrow + ox eye daisy)
+bowtie2-build GCA_964276665.1_daMatDisc1.hap1.1_genomic.fna.gz Matricaria_indices/Matricaria_index
+
+#Refseq of Alliaria petiolata (garlic mustard)
+bowtie2-build GCA_049307985.1_ddAllPeti2_p1.1_genomic.fna.gz Alliaria_indices/Alliaria_index
+
+#Refseq of Solidago caesia (golden rod + aster)
+bowtie2-build GCA_028566075.1_ASM2856607v1_genomic.fna.gz Solidago_indices/Solidago_index
+#Refseq of Lonicera japonica (honeysuckle)
+bowtie2-build GCA_021464415.1_ASM2146441v1_genomic.fna.gz Lonicera_indices/Lonicera_index
+
+#Refseq of Linaria vulgaris (toadflax)
+bowtie2-build GCA_948329865.1_daLinVulg1.1_genomic.fna.gz Linaria_indices/Linaria_index
+
+#inspect content of each database (replace Chichorium with other names)
+bowtie2-inspect -n Chichorium_indices/Chichorium_index
+  #Usually its a long list of 100+ scaffolds and genomes, idk what it means though
+
+```
+
+Here is a test bowtie of the first samples: 93. This will tell us approx how long each one takes
+```{bash}
+
+cd /local/workdir/Daphne/Floral_metagenomics/data/
+
+## name index
+index="Chichorium_indices/Chichorium_index"
+
+for i in *R1.fastq.gz; do 
+  output_dir="${i%_R1.fastq.gz}_bowtie2"
+  bowtie2 ---sensitive-local -p 32 --seed 4 -x $index -1 $i -2 ${i/%R1.fastq.gz/R2.fastq.gz} -S SAMPLE_mapped_and_unmapped.sam
+done 
+
+```
+
+
+
+
+```{bash bowtie2, eval=FALSE}
+
+
+#PATH only needs to be added once per session
+export PATH=/programs/bowtie2-2.5.1-linux-x86_64:$PATH
+
+#### Modify these variables for each group of host reference alignments
+index="Chichorium_indices/Chichorium_index"
+
+#now loop to run bowtie on all sequences in /trimmomatic_paired/ to get rid of any host DNA in those files
+for i in *R1.fastq.gz; do 
+  output_dir="${i%_R1.fastq.gz}_bowtie2"
+  bowtie2 ---sensitive-local -p 32 --seed 4 -x $index -1 $i -2 ${i/%R1.fastq.gz/R2.fastq.gz} -S SAMPLE_mapped_and_unmapped.sam
+done 
+# --sensitive-local (not very-sensitive) because our ref host genomes are usually different genuses of the actual host
+# -p is the number of parallel threads 
+#--seed 4 is a random number to make it so that work is reproducible 
+# -x The basename of the index for the reference genome variable $index
+# -1 and -2 are the paired inputs R1 and R2
+# -S Summary of index settings and input names/lengths
+
+```
+
+
+```{bash sam_bam_after_bowtie2}
+
+#Convert file .sam to .bam
+samtools view -bS SAMPLE_mapped_and_unmapped.sam > SAMPLE_mapped_and_unmapped.bam
+
+#filter required unmapped reads get unmapped pairs (both ends unmapped)
+samtools view -b -f 12 -F 256 SAMPLE_mapped_and_unmapped.bam > SAMPLE_bothReadsUnmapped.bam 
+
+#-f 12     Extract only (-f) alignments with both reads unmapped
+#-F 256   Do not(-F) extract alignments which are: <not primary alignment>
+
+
+# split paired-end reads into separated fastq files .._r1 .._r2
+# sort bam file by read name (-n) to have paired reads next to each other as required by bedtools
+samtools sort -n -m 5G -@ 2 SAMPLE_bothReadsUnmapped.bam -o SAMPLE_bothReadsUnmapped_sorted.bam
+
+samtools fastq -@ 8 SAMPLE_bothReadsUnmapped_sorted.bam -1 SAMPLE_host_removed_R1.fastq.gz -2 SAMPLE_host_removed_R2.fastq.gz -0 /dev/null -s /dev/null -n
+
+#Convert bam to fastq
+bedtools bamtofastq -i SAMPLE_bothReadsUnmapped_sorted.bam -fq SAMPLE_host_removed_R1.fastq -fq2 SAMPLE_host_removed_R2.fastq
+
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+```{bash metaspades test, eval = FALSE}
+
+
+cd /local/workdir/Daphne/Floral_metagenomics/data/02_trimmomatic
+
+spade_input_1="paired_13702_32540_179738_H5MH5AFX5_metagenomic_mix_A06_22FN006_TAGGCATG_CTAGTCGA_R1.fastq.gz"
+spade_input_2="paired_13702_32540_179738_H5MH5AFX5_metagenomic_mix_A06_22FN006_TAGGCATG_CTAGTCGA_R2.fastq.gz"
 export PATH=/programs/SPAdes-3.15.5/bin:$PATH
-
-
-#this is a test run 
-/programs/SPAdes-3.15.5/bin/spades.py -1 13702_32540_179738_H5MH5AFX5_metagenomic_mix_A06_22FN006_TAGGCATG_CTAGTCGA_R1.fastq.gz -2 13702_32540_179738_H5MH5AFX5_metagenomic_mix_A06_22FN006_TAGGCATG_CTAGTCGA_R2.fastq.gz -t 16 -m 200 -o /local/workdir/sna49/Hendry_Rotation_SA/Acinetobacter/Data/metaspades_floral/metagenomic/SPAdes_output
-#in this command
+/programs/SPAdes-3.15.5/bin/spades.py -1 $spade_input_1 -2 $spade_input_2 -t 16 -m 200 -o /local/workdir/Daphne/Floral_metagenomics/data/03_MetaSpades_assembly/test_run_2
+#in this command  
   # -1 = file with forward reads
   # -2 = file with reverse reads
   # -t = threads sets the number of processors to use we are using 16 bc thats the default
@@ -232,15 +343,12 @@ export PATH=/programs/SPAdes-3.15.5/bin:$PATH
   # -o = output directory to use the default is in the current directory
 
 
-#now that we have done the test run, lets do the whole set 
-
-#go to working directory 
-cd /local/workdir/sna49/Hendry_Rotation_SA/Acinetobacter/Data/metaspades_floral/metagenomic/original_reads/og/trimmomatic_paired
-#lets create a loop first 
-for i in *R1.fastq.gz; do 
-  output_dir="${i%_R1.fastq.gz}_spades_output"
-  spades.py -1 $i -2 ${i/%R1.fastq.gz/R2.fastq.gz} --meta -t 16 -m 200 -o "meta_output"
-done
-
-#make sure to put the --meta flag otherwise it will assemble into one mega genome as opposed to metagenomes:')
 ```
+
+
+
+
+
+
+
+

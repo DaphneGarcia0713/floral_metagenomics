@@ -416,11 +416,11 @@ rotation, found in
 <td>./trimmomatic_paired/ and ./trimmomatic_unpaired/</td>
 </tr>
 <tr class="odd">
-<td>BWA-MEM</td>
-<td>filter to reference</td>
+<td>Bowtie2</td>
+<td>align to reference</td>
 <td>SKIP</td>
-<td></td>
-<td></td>
+<td>unaligned reads as fastq</td>
+<td>./trimmomatic_paired/ and ./trimmomatic_unpaired</td>
 <td></td>
 </tr>
 <tr class="even">
@@ -432,6 +432,14 @@ rotation, found in
 <td></td>
 </tr>
 <tr class="odd">
+<td>Quast</td>
+<td>check assembly quality</td>
+<td>(on vivi’s jupyter)</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
 <td>CheckM</td>
 <td>host contamination</td>
 <td></td>
@@ -439,10 +447,10 @@ rotation, found in
 <td></td>
 <td></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>phyloflash pipeline</td>
 <td>taxonomic composition</td>
-<td></td>
+<td>(vivi used MetaPhlAn</td>
 <td></td>
 <td></td>
 <td></td>
@@ -457,7 +465,7 @@ library(&quot;patchwork&quot;)</code></pre>
 <p>May 27, 2025 I copied Vivi’s metagenomics raw reads from her folder
 to mine:
 <code>cp /local/workdir/vas75/metaspades_flowers/metagenomic /local/workdir/Daphne/</code>
-<code>Floral-metagenomics/data/raw_reads</code></p>
+<code>Floral-metagenomics/data/01_raw_reads</code></p>
 <p>This took ~ 30 seconds</p>
 <p>I noticed a pattern with the filenames: all start with
 13702_32540_1797XX The X’s ranging from <strong>38</strong> (R1 and R2)
@@ -470,6 +478,8 @@ metagenomic samples, and multiQC on the total</p>
 <p>FastQC:</p>
 <pre class="bash"><code>## NOTE: Since this chunk is in bash, run with ctrl + alt + enter
 
+# download fastqc from biohpc
+export PATH=/programs/FastQC-0.12.1:$PATH
 
 #First, write a list of all of the metagenomic filenames, removing &quot;fastq.gz&quot;
 cd data/01_raw_reads/metagenomic
@@ -485,42 +495,41 @@ done
 <p>MultiQC:</p>
 <pre class="bash"><code>## NOTE: Since this chunk is in bash, run with ctrl + alt + enter
     
-# Run multiqc on all of the outputs from fastqc!
+# download multiqc from biohpc
 export PYTHONPATH=/programs/multiqc-1.15/lib64/python3.9/site-packages:/programs/multiqc-1.15/lib/python3.9/site-packages
 export PATH=/programs/multiqc-1.15/bin:$PATH
-  
+ 
+# Run multiqc on all of the outputs from fastqc  
 cd /local/workdir/Daphne/Floral_metagenomics/data/01_fastQC_results_pre_trim
 multiqc *_fastqc.zip
 </code></pre>
 <p>The fastQC and multiQC outputs are in
-<code>Daphne/Floral_metagenomics/data/01_fastQC_results_pre_trim</code>,
+<code>/local/workdir/Daphne/Floral_metagenomics/data/01_fastQC_results_pre_trim</code>,
 and both matched with Sophia’s outputs.</p>
-<p>ATGC counts aren’t even from bases 1-19, could this be an
+<p>ATGC counts aren’t even from bases 1-19, could the reason be an
 adapter?</p>
 </div>
 <div id="trimmomatic-adapter-trim" class="section level3">
 <h3>2. Trimmomatic adapter trim</h3>
 <p>After the initial quality control, I ran trimmomatic to remove the
-adapters</p>
+nextera adapters detected by the fastQC</p>
 <pre class="bash"><code>## NOTE: Since this chunk is in bash, run with ctrl + alt + enter
 
 #set workdir to metagenomic to access the fastq.gz files
 cd /local/workdir/Daphne/Floral_metagenomics/data/01_raw_reads/metagenomic
-#set an output directory: 02_trimmomatic
-output_dir=&quot;../02_trimmed_reads&quot;
 
-# Set the path to Trimmomatic JAR file, copied from BioHPC website
+# init a variable the path to Trimmomatic JAR file, copied from BioHPC website
 trimmomatic_jar=&quot;/programs/trimmomatic/trimmomatic-0.39.jar&quot; 
 
 #important to note what primers do we have.. according to multiqc we have the nextera primers 
     for f2 in *_R2.fastq.gz; do
-    echo &quot;THIS IS $f2&quot;
+    echo &quot;THIS IS $f2&quot; 
     printf &quot;\n&quot;
     f1=&quot;${f2%%_R2.fastq.gz}_R1.fastq.gz&quot;
-    output_paired_1=&quot;paired.output_${f1}&quot;
-    output_unpaired_1=&quot;unpaired.output_${f1}&quot;
-    output_paired_2=&quot;paired.output_${f2}&quot;
-    output_unpaired_2=&quot;unpaired.output_${f2}&quot;
+    output_paired_1=&quot;paired_${f1}&quot;
+    output_unpaired_1=&quot;unpaired_output_${f1}&quot;
+    output_paired_2=&quot;paired_${f2}&quot;
+    output_unpaired_2=&quot;unpaired_output_${f2}&quot;
     java -jar &quot;$trimmomatic_jar&quot; PE -phred33 &quot;$f1&quot; &quot;$f2&quot; \
         &quot;$output_paired_1&quot; &quot;$output_unpaired_1&quot; &quot;$output_paired_2&quot; &quot;$output_unpaired_2&quot; \
         ILLUMINACLIP:/programs/trimmomatic/adapters/NexteraPE-PE.fa:2:30:10 \
@@ -534,9 +543,109 @@ done
 mv unpaired* ../../02_trimmomatic/
 mv paired* ../../02_trimmomatic/
 </code></pre>
+<p>Outputted paired and unpaired files for R1 and R2 of 38-92 are in
+<code>/local/workdir/Daphne/Floral_metagenomics/data/02_trimmomatic</code></p>
 </div>
-<div id="trimmomatic-adapter-trim-1" class="section level3">
-<h3>3. Trimmomatic adapter trim</h3>
+<div id="fastqc-quality-analysis-post-trim" class="section level3">
+<h3>2.1 FastQC Quality analysis post-trim</h3>
+<p>After the trimmomatic removed the adapters, let’s run the quality
+analysis again on the paired reads to see if the quality improved</p>
+<pre class="bash"><code>
+## NOTE: Since this chunk is in bash, run with ctrl + alt + enter
+
+# download fastqc from biohpc
+export PATH=/programs/FastQC-0.12.1:$PATH
+
+#Go to directory with trimmomatic paired and unpaired
+cd /local/workdir/Daphne/Floral_metagenomics/data/02_trimmomatic
+ 
+# loop through paired files to do fastqc to see if our trimming is better 
+for sample in paired_*.fastq.gz
+do
+        fastqc $(echo ${sample}) -o ../02_fastQC_results_post_trim
+done
+
+# This took 23 minutes
+
+#go to directory with the paired trimmed fastqc results
+cd ../02_fastQC_results_post_trim
+
+# Run multiqc on all of the outputs from fastqc
+export PYTHONPATH=/programs/multiqc-1.15/lib64/python3.9/site-packages:/programs/multiqc-1.15/lib/python3.9/site-packages
+export PATH=/programs/multiqc-1.15/bin:$PATH
+
+multiqc *_fastqc.zip
+
+#i think the quality scores look good now? after consulting with the internet i think its fine?</code></pre>
+<p>outputted fastQC files for every sample and multiQC for total are in
+<code>/local/workdir/Daphne/Floral_metagenomics/data/02_fastQC_results_post_trim</code></p>
+</div>
+<div id="bowtie2" class="section level3">
+<h3>3. Bowtie2</h3>
+<p>We’re gonna run the trimmomatic paired and unpaired trimmed reads
+through Bowtie2 to align the reads to their corresponding host genome.
+The samples were washed off of flower petals, (info in
+<code>Floral_metagenomics/data/metadata_sequencing.xlsx</code>) so for
+each sample I will be aligning to corresponding genomes from
+spreadsheet:
+/local/workdir/Daphne/Floral_metagenomics/data/metadata_host_flower_genomes.xlsx</p>
+<pre class="bash"><code>#PATH only needs to be added once per session
+export PATH=/programs/bowtie2-2.5.1-linux-x86_64:$PATH
+
+#lets build bowtie2 database of multiple genomes 
+
+#first download host genome (in this case I used what metaQUAST used as references but I got rid of Acinetobacter_equi because we want Acinetobacter) and the file is saved as genomes.fasta as created above
+
+#(/local/workdir/sna49/Hendry_Rotation_SA/Acinetobacter/Data/metaspades_floral/metagenomic/original_reads/og/trimmomatic_paired/meta_output/bowtie2_host_ref_noacinetobacter)
+  # Merge all host reference genomes into one genomes.fna file
+cat *.fasta &gt; genomes.fasta
+
+#then reate bowtie2 index database (database name: host)
+bowtie2-build genomes.fasta host
+
+#inspect content of database 
+bowtie2-inspect -n host
+
+#now loop to run bowtie on all sequences in /trimmomatic_paired/ to get rid of any host DNA in those files
+for i in *R1.fastq.gz; do 
+  output_dir=&quot;${i%_R1.fastq.gz}_bowtie2&quot;
+  bowtie2 --very-sensitive-local -p 32 --seed 4 -x host -1 $i -2 ${i/%R1.fastq.gz/R2.fastq.gz} -S SAMPLE_mapped_and_unmapped.sam
+done
+#--seed 4 is a random number to make it so that work is reproducible 
+
+#Convert file .sam to .bam
+samtools view -bS SAMPLE_mapped_and_unmapped.sam &gt; SAMPLE_mapped_and_unmapped.bam
+
+#filter required unmapped reads get unmapped pairs (both ends unmapped)
+samtools view -b -f 12 -F 256 SAMPLE_mapped_and_unmapped.bam &gt; SAMPLE_bothReadsUnmapped.bam 
+
+#-f 12     Extract only (-f) alignments with both reads unmapped
+#-F 256   Do not(-F) extract alignments which are: &lt;not primary alignment&gt;
+
+
+# split paired-end reads into separated fastq files .._r1 .._r2
+# sort bam file by read name (-n) to have paired reads next to each other as required by bedtools
+samtools sort -n -m 5G -@ 2 SAMPLE_bothReadsUnmapped.bam -o SAMPLE_bothReadsUnmapped_sorted.bam
+
+samtools fastq -@ 8 SAMPLE_bothReadsUnmapped_sorted.bam -1 SAMPLE_host_removed_R1.fastq.gz -2 SAMPLE_host_removed_R2.fastq.gz -0 /dev/null -s /dev/null -n
+
+#Convert bam to fastq
+bedtools bamtofastq -i SAMPLE_bothReadsUnmapped_sorted.bam -fq SAMPLE_host_removed_R1.fastq -fq2 SAMPLE_host_removed_R2.fastq</code></pre>
+<pre class="bash"><code>
+
+cd /local/workdir/Daphne/Floral_metagenomics/data/02_trimmomatic
+
+spade_input_1=&quot;paired_13702_32540_179738_H5MH5AFX5_metagenomic_mix_A06_22FN006_TAGGCATG_CTAGTCGA_R1.fastq.gz&quot;
+spade_input_2=&quot;paired_13702_32540_179738_H5MH5AFX5_metagenomic_mix_A06_22FN006_TAGGCATG_CTAGTCGA_R2.fastq.gz&quot;
+export PATH=/programs/SPAdes-3.15.5/bin:$PATH
+/programs/SPAdes-3.15.5/bin/spades.py -1 $spade_input_1 -2 $spade_input_2 -t 16 -m 200 -o /local/workdir/Daphne/Floral_metagenomics/data/03_MetaSpades_assembly/test_run_2
+#in this command  
+  # -1 = file with forward reads
+  # -2 = file with reverse reads
+  # -t = threads sets the number of processors to use we are using 16 bc thats the default
+  # -m = memority limit in Gb. SPAdes terminates this if it reaches this limit so we are setting it to 200Gb to be safe but the default is 250 Gb
+  # -o = output directory to use the default is in the current directory
+</code></pre>
 </div>
 </div>
 
