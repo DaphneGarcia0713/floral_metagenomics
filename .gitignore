@@ -1,0 +1,8 @@
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+data/02_trim_unzipped_and_host-grouped/
+data/02_trim_unzipped_and_host-grouped/
+data/03_Bowtie2_host_filter/
+data/03_Flower_host_genomes/
