@@ -1,2 +1,0 @@
-Module	Section	Sample Name	Source
-FastQC	all_sections	paired	/local/workdir/Daphne/Floral_metagenomics/data/02_fastQC_results_post_trim/paired.output_13702_32540_179741_H5MH5AFX5_metagenomic_mix_D06_FN051_TAGGCATG_TCTTACGC_R1_fastqc.zip
