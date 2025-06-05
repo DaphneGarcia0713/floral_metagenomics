@@ -379,14 +379,14 @@ rotation, found in
 <li>Phyloflash taxonomy composition</li>
 </ol>
 <p>The inputs and outputs will be as follows:</p>
-<table>
+<table style="width:92%;">
 <colgroup>
-<col width="13%" />
-<col width="17%" />
-<col width="12%" />
-<col width="13%" />
-<col width="20%" />
-<col width="22%" />
+<col width="15%" />
+<col width="15%" />
+<col width="15%" />
+<col width="15%" />
+<col width="15%" />
+<col width="15%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -404,31 +404,32 @@ rotation, found in
 <td>Quality control</td>
 <td>raw reads</td>
 <td>.html analysis</td>
-<td>./00_RawReads</td>
-<td>./multiqc_all_raw_reads_112/*.html</td>
+<td>./0 1_ RawReads</td>
+<td>./01 _fas tQC_resu lts_ pre_trim</td>
 </tr>
 <tr class="even">
-<td>Trimmomatic</td>
+<td>Tr i mmomatic</td>
 <td>adapter trimming</td>
 <td>raw reads</td>
-<td>adapter-trimmed reads, paired and unpaired</td>
-<td>./00_RawReads</td>
-<td>./trimmomatic_paired/ and ./trimmomatic_unpaired/</td>
+<td>pair ed/ unpaired adap ter -trimmed reads</td>
+<td>./0 1_ RawReads</td>
+<td>./02_ trim momatic/</td>
 </tr>
 <tr class="odd">
 <td>Bowtie2</td>
-<td>align to reference</td>
-<td>SKIP</td>
-<td>unaligned reads as fastq</td>
-<td>./trimmomatic_paired/ and ./trimmomatic_unpaired</td>
-<td></td>
+<td>align to r eference</td>
+<td>trimmed and grouped fastq reads</td>
+<td>u naligned reads as fastq</td>
+<td><p>./02_ tr im_unzip pe d_and_ho st -grouped</p>
+<p>./03 _F lower_ho st _genomes</p></td>
+<td>./03 _Bowtie2 _hos t_filter</td>
 </tr>
 <tr class="even">
-<td>MetaSpades</td>
+<td>M e taSpades</td>
 <td>Assemble reads</td>
+<td>host -removed R1 and R2 files</td>
 <td></td>
-<td></td>
-<td></td>
+<td>/03 _B owtie2_h os t_filter</td>
 <td></td>
 </tr>
 <tr class="odd">
@@ -441,16 +442,16 @@ rotation, found in
 </tr>
 <tr class="even">
 <td>CheckM</td>
-<td>host contamination</td>
+<td>host conta mination</td>
 <td></td>
 <td></td>
 <td></td>
 <td></td>
 </tr>
 <tr class="odd">
-<td>phyloflash pipeline</td>
-<td>taxonomic composition</td>
-<td>(vivi used MetaPhlAn</td>
+<td>p h yloflash pipeline</td>
+<td>t axonomic com position</td>
+<td>(vivi used M etaPhlAn</td>
 <td></td>
 <td></td>
 <td></td>
@@ -506,14 +507,14 @@ multiqc *_fastqc.zip
 <p>The fastQC and multiQC outputs are in
 <code>/local/workdir/Daphne/Floral_metagenomics/data/01_fastQC_results_pre_trim</code>,
 and both matched with Sophia’s outputs.</p>
-<p>ATGC counts aren’t even from bases 1-19, could the reason be an
-adapter?</p>
 </div>
 <div id="trimmomatic-adapter-trim" class="section level3">
 <h3>2. Trimmomatic adapter trim</h3>
 <p>After the initial quality control, I ran trimmomatic to remove the
-nextera adapters detected by the fastQC</p>
+Nextera adapters detected by the fastQC</p>
 <pre class="bash"><code>## NOTE: Since this chunk is in bash, run with ctrl + alt + enter
+
+RANDOM=42
 
 #set workdir to metagenomic to access the fastq.gz files
 cd /local/workdir/Daphne/Floral_metagenomics/data/01_raw_reads/metagenomic
@@ -537,17 +538,16 @@ trimmomatic_jar=&quot;/programs/trimmomatic/trimmomatic-0.39.jar&quot;
 done
 
 #This took 5 hours
-#note with these parameters it seems that (no. 49) R1 and R2 had issues in Sophia&#39;s run and were ommited, but in mine they seem fine.
+#The output will be in /01_raw_reads, but the following lines will move it to 02_trimmomatic
 
 # move trimmomatic results to Floral_metagenomics/data/02_trimmomatic
 mv unpaired* ../../02_trimmomatic/
 mv paired* ../../02_trimmomatic/
 </code></pre>
 <p>Outputted paired and unpaired files for R1 and R2 of 38-92 are in
-<code>/local/workdir/Daphne/Floral_metagenomics/data/02_trimmomatic</code></p>
-</div>
-<div id="fastqc-quality-analysis-post-trim" class="section level3">
-<h3>2.1 FastQC Quality analysis post-trim</h3>
+<code>/local/workdir/Daphne/Floral_metagenomics/data/02_trimmomatic/</code></p>
+<div id="fastqc-quality-analysis-post-trim" class="section level4">
+<h4>2.1 FastQC Quality analysis post-trim</h4>
 <p>After the trimmomatic removed the adapters, let’s run the quality
 analysis again on the paired reads to see if the quality improved</p>
 <pre class="bash"><code>
@@ -580,57 +580,228 @@ multiqc *_fastqc.zip
 <p>outputted fastQC files for every sample and multiQC for total are in
 <code>/local/workdir/Daphne/Floral_metagenomics/data/02_fastQC_results_post_trim</code></p>
 </div>
+<div id="grouping-trimmed-reads-by-host-genome" class="section level4">
+<h4>2.2 Grouping trimmed reads by host genome</h4>
+<p>Now I need to unzip all of the samples and group them the host they
+were sampled on (ex: dandelion, apple, trefoil). This way, we can filter
+out their host genome with bowtie2 using the corresponding reference
+genome. Their metadata is in
+<code>workdir/Daphne/Floral_metagenomics/data/metadata_host_flower_genomes.xlsx</code></p>
+<p>following the metadata, matched the number 38-93 to the host species
+using it’s ‘FN’ tag in the filenames.</p>
+<pre class="bash"><code>cd /local/workdir/Daphne/Floral_metagenomics/data
+
+# copy all paired reads from 02_trimmomatic directory into the new one
+cp 02_trimmomatic/paired* 02_trim_unzipped_and_host-grouped/
+
+cd 02_trim_unzipped_and_host-grouped/
+
+gunzip paired*
+
+## From here, I manually moved each file into a corresponding subdirectory matching it to the right reference host chosen for it
+
+## This is based on &#39;22FN0XX&#39; in the filenames matched with metadata  Floral_metagenomics/data/metadata_sequencing.xlsx
+</code></pre>
+<p>Output is all of the trimmed paired unzipped fastq’s in corresponding
+subdirectories according to their host flower in
+<code>Floral_metagenomics/data/02_trim_unzipped_and_host-grouped</code></p>
+</div>
+</div>
 <div id="bowtie2" class="section level3">
 <h3>3. Bowtie2</h3>
 <p>We’re gonna run the trimmomatic paired and unpaired trimmed reads
 through Bowtie2 to align the reads to their corresponding host genome.
 The samples were washed off of flower petals, (info in
-<code>Floral_metagenomics/data/metadata_sequencing.xlsx</code>) so for
-each sample I will be aligning to corresponding genomes from
+<code>Floral_metagenomics/data/metadata_host_flower_genomes.xlsx</code>)
+so for each sample I will be aligning to corresponding genomes from
 spreadsheet:
 /local/workdir/Daphne/Floral_metagenomics/data/metadata_host_flower_genomes.xlsx</p>
-<pre class="bash"><code>#PATH only needs to be added once per session
+<div id="downloadbuild-reference-indices" class="section level4">
+<h4>3.1 Download/build reference indices</h4>
+<p>First, I need to create reference indices for every host genome that
+I’ll be using. I found the RefSeq’s online through NCBI genome finder,
+downloaded the FTP <code>_genomic.fna.gz</code> file to my computer,
+then transfered it to the server.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Number</th>
+<th>reference genome</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>Cichorium intybus</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>Malus domestica</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>Lotus japonicus</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>Ranunculus sardous</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>Trifolium repens</td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td>Matricaria discoidea</td>
+</tr>
+<tr class="odd">
+<td>7</td>
+<td>Alliaria petiolata</td>
+</tr>
+<tr class="even">
+<td>8</td>
+<td>Solidago caesia</td>
+</tr>
+<tr class="odd">
+<td>9</td>
+<td>Lonicera japonica</td>
+</tr>
+<tr class="even">
+<td>10</td>
+<td>Linaria vulgaris</td>
+</tr>
+</tbody>
+</table>
+<pre class="bash"><code>
+cd /local/workdir/Daphne/Floral_metagenomics/data/03_Flower_host_genomes
+
 export PATH=/programs/bowtie2-2.5.1-linux-x86_64:$PATH
 
-#lets build bowtie2 database of multiple genomes 
+#Index for Cichorium intybus (dandelion, chickory, hawkweed)
+bowtie2-build GCA_023525715.1_ASM2352571v1_genomic.fna.gz Chichorium_indices/Chichorium_index
 
-#first download host genome (in this case I used what metaQUAST used as references but I got rid of Acinetobacter_equi because we want Acinetobacter) and the file is saved as genomes.fasta as created above
+#RefSeq of Malus domestica (apple)
+bowtie2-build GCF_042453785.1_GDT2T_hap1_genomic.fna.gz Malus_indices/Malus_index
 
-#(/local/workdir/sna49/Hendry_Rotation_SA/Acinetobacter/Data/metaspades_floral/metagenomic/original_reads/og/trimmomatic_paired/meta_output/bowtie2_host_ref_noacinetobacter)
-  # Merge all host reference genomes into one genomes.fna file
-cat *.fasta &gt; genomes.fasta
+#RefSeq of Lotus japonicus (trefoil)
+bowtie2-build GCF_012489685.1_LjGifu_v1.2_genomic.fna.gz Lotus_indices/Lotus_index
 
-#then reate bowtie2 index database (database name: host)
-bowtie2-build genomes.fasta host
+#RefSeq of Ranunculus sardous (buttercup)
+bowtie2-build GCA_965125545.1_dmRanSard1.hap1.1_genomic.fna.gz Ranculus_indices/Ranunculus_index
 
-#inspect content of database 
-bowtie2-inspect -n host
+#RefSeq of Trifolium repens (clover)
+bowtie2-build GCA_030408175.1_UTM_Trep_v1.0_genomic.fna.gz Trifolium_indices/Trifolium_index
 
-#now loop to run bowtie on all sequences in /trimmomatic_paired/ to get rid of any host DNA in those files
-for i in *R1.fastq.gz; do 
-  output_dir=&quot;${i%_R1.fastq.gz}_bowtie2&quot;
-  bowtie2 --very-sensitive-local -p 32 --seed 4 -x host -1 $i -2 ${i/%R1.fastq.gz/R2.fastq.gz} -S SAMPLE_mapped_and_unmapped.sam
-done
+#RefSeq of Matricaria discoidea (yarrow + ox eye daisy)
+bowtie2-build GCA_964276665.1_daMatDisc1.hap1.1_genomic.fna.gz Matricaria_indices/Matricaria_index
+
+#Refseq of Alliaria petiolata (garlic mustard)
+bowtie2-build GCA_049307985.1_ddAllPeti2_p1.1_genomic.fna.gz Alliaria_indices/Alliaria_index
+
+#Refseq of Solidago caesia (golden rod + aster)
+bowtie2-build GCA_028566075.1_ASM2856607v1_genomic.fna.gz Solidago_indices/Solidago_index
+#Refseq of Lonicera japonica (honeysuckle)
+bowtie2-build GCA_021464415.1_ASM2146441v1_genomic.fna.gz Lonicera_indices/Lonicera_index
+
+#Refseq of Linaria vulgaris (toadflax)
+bowtie2-build GCA_948329865.1_daLinVulg1.1_genomic.fna.gz Linaria_indices/Linaria_index
+
+#inspect content of each database (replace Chichorium with other names)
+bowtie2-inspect -n Chichorium_indices/Chichorium_index
+  #Usually its a long list of 100+ scaffolds and genomes, idk what it means though
+</code></pre>
+<p>Output is is in 10 directories under
+<code>Floral_metagenomics/data/03_Flower_host_genomes/</code> (1-10),
+each with index files composing the index for that reference genome</p>
+</div>
+<div id="bowtie-host-filtering" class="section level4">
+<h4>3.2 Bowtie host filtering</h4>
+<p>Using this Bowtie loop, we can loop through all of the samples in a
+genome’s subdirectory and compare how many of the reads align to the
+reference. We input the samples saved in
+<code>02_trim_unzipped_and_host-grouped</code>, the reference genome in
+<code>03_Flower_host_genomes</code> and output into
+<code>03_Bowtie2_host_filter/</code>.</p>
+<p>I need to modify the three variables: <code>index</code>,
+<code>samples_folder</code>, and <code>output_folder</code> in the first
+lines to change which host genome’s samples we are using</p>
+<pre class="bash"><code>
+cd /local/workdir/Daphne/Floral_metagenomics/data/
+export PATH=/programs/bowtie2-2.5.1-linux-x86_64:$PATH
+
+## MODIFY THESE NAMES
+index=&quot;03_Flower_host_genomes/Chichorium_indices/Chichorium_index&quot;
+samples_folder=&quot;02_trim_unzipped_and_host-grouped/1_Chichorium_samples/&quot;
+output_folder=&quot;03_Bowtie2_host_filter/1_Chichorium/&quot;
+ 
+for i in &quot;$samples_folder&quot;*R1.fastq; do  
+  base=$(basename &quot;$i&quot; _R1.fastq)  # just filename without path
+  output_dir=&quot;${output_folder}${base}&quot;; # each sample&#39;s path inside bowtie dir
+  mkdir $output_dir
+  bowtie2 --sensitive-local -p 32 --seed 4 -x $index -1 $i -2 ${i/%R1.fastq/R2.fastq} -S &quot;$output_dir/SAMPLE_mapped_and_unmapped.sam&quot;; 
+done 
+
+# --sensitive-local (not very-sensitive) because our ref host genomes are usually different genuses of the actual host
+# -p is the number of parallel threads 
 #--seed 4 is a random number to make it so that work is reproducible 
+# -x The basename of the index for the reference genome variable $index
+# -1 and -2 are the paired inputs R1 and R2
+# -S Summary of index settings and input names/lengths
+</code></pre>
+<p>Outputs are
+<code>paired_1370.../SAMPLE_mapped_and_unmapped.sam</code> file within
+<code>03_Bowtie2_host_filter/#_host-genome/</code></p>
+<p>The percent alignment for each sample (38-93) are in the fourth sheet
+of
+<code>workdir/Daphne/Floral_metagenomics/data/metadata_host_flower_genomes.xlsx</code></p>
+</div>
+<div id="samtools-and-bedtools-modifications" class="section level4">
+<h4>3.4 SamTools and bedtools modifications</h4>
+<p>I don’t completely understand what needs to be done to separate the
+unmapped reads (all of the possibly bacterial and fungal reads that
+aren’t the host), but Sophia and Katie both had these lines to prepare
+for SpAdes alignment, so I copied Sophia’s code and created a for loop
+for every sample in the host-genome’s subdirectory.</p>
+<pre class="bash"><code>
 
-#Convert file .sam to .bam
-samtools view -bS SAMPLE_mapped_and_unmapped.sam &gt; SAMPLE_mapped_and_unmapped.bam
+for sample in 03_Bowtie2_host_filter/8_Solidago/*/; do
+  cd $sample
+  pwd
 
-#filter required unmapped reads get unmapped pairs (both ends unmapped)
-samtools view -b -f 12 -F 256 SAMPLE_mapped_and_unmapped.bam &gt; SAMPLE_bothReadsUnmapped.bam 
-
-#-f 12     Extract only (-f) alignments with both reads unmapped
-#-F 256   Do not(-F) extract alignments which are: &lt;not primary alignment&gt;
-
-
-# split paired-end reads into separated fastq files .._r1 .._r2
-# sort bam file by read name (-n) to have paired reads next to each other as required by bedtools
-samtools sort -n -m 5G -@ 2 SAMPLE_bothReadsUnmapped.bam -o SAMPLE_bothReadsUnmapped_sorted.bam
-
-samtools fastq -@ 8 SAMPLE_bothReadsUnmapped_sorted.bam -1 SAMPLE_host_removed_R1.fastq.gz -2 SAMPLE_host_removed_R2.fastq.gz -0 /dev/null -s /dev/null -n
-
-#Convert bam to fastq
-bedtools bamtofastq -i SAMPLE_bothReadsUnmapped_sorted.bam -fq SAMPLE_host_removed_R1.fastq -fq2 SAMPLE_host_removed_R2.fastq</code></pre>
+  #Convert file .sam to .bam
+  touch SAMPLE_mapped_and_unmapped.bam
+  samtools view -bS SAMPLE_mapped_and_unmapped.sam &gt; SAMPLE_mapped_and_unmapped.bam
+  
+  #filter required unmapped reads get unmapped pairs (both ends unmapped)
+  samtools view -b -f 12 -F 256 SAMPLE_mapped_and_unmapped.bam &gt; SAMPLE_bothReadsUnmapped.bam 
+  #-f 12     Extract only (-f) alignments with both reads unmapped
+  #-F 256   Do not(-F) extract alignments which are: &lt;not primary alignment&gt;
+  
+  # split paired-end reads into separated fastq files .._r1 .._r2
+  samtools sort -n -m 5G -@ 2 SAMPLE_bothReadsUnmapped.bam -o SAMPLE_bothReadsUnmapped_sorted.bam
+  
+  # sort bam file by read name (-n) to have paired reads next to each other as required by bedtools
+  samtools fastq -@ 8 SAMPLE_bothReadsUnmapped_sorted.bam -1 SAMPLE_host_removed_R1.fastq.gz -2 SAMPLE_host_removed_R2.fastq.gz -0 /dev/null -s /dev/null -n
+  
+  #Convert bam to fasstq
+  bedtools bamtofastq -i SAMPLE_bothReadsUnmapped_sorted.bam -fq SAMPLE_host_removed_R1.fastq -fq2 SAMPLE_host_removed_R2.fastq
+  
+  cd - &gt; /dev/null  # optional: return to previous dir
+done
+</code></pre>
+<p>This outputs 6 new filesinto
+<code>Floral_metagenomics/data/03_Bowtie2_host_filter/</code>
+<code>(# host name)/paired...(sample name)/</code> - both reads mapped
+and unmapped (sam -&gt; bam -&gt; sorted) - host removed R1, R2
+(fastq.gz -&gt; .fastq)</p>
+<p>the host-removed R1 and R2 files will be subsequently used in the
+metaspades assembly</p>
+</div>
+</div>
+<div id="metaspades-assembly" class="section level3">
+<h3>4. MetaSpAdes assembly</h3>
+<p>Using the Unmapped reads output from the previous chunk, we will run
+each sample through metaspades and assemble all of the genomes.</p>
 <pre class="bash"><code>
 
 cd /local/workdir/Daphne/Floral_metagenomics/data/02_trimmomatic
