@@ -15,3 +15,8 @@ data/03_Bowtie2host_filter/6*
 data/03_Bowtie2host_filter/7*
 data/03_Bowtie2host_filter/8*
 data/03_Bowtie2host_filter/9*
+data/04_metaspades/*
+data/05_metaQUAST/*
+data/05_metaQUAST_NO_reference/*
+data/05_Quast_reference_acineto_genomes/*
+
