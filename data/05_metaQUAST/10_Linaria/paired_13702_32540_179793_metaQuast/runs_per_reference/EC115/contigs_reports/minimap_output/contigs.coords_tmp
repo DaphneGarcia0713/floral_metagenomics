@@ -1,0 +1,2 @@
+NODE_456_length_963_cov_1.655286	963	0	963	+	EC115_NZ_VTDP01000003.1	316497	64734	65697	957	963	60	NM:i:6	ms:i:927	AS:i:927	nn:i:0	tp:A:P	cm:i:84	s1:i:859	s2:i:0	de:f:0.0062	rl:i:0	cg:Z:963M	cs:Z::58*ct:288*tc:19*tc:3*ga:44*ct:60*gc:485
+NODE_1101_length_635_cov_1.058621	635	0	635	-	EC115_NZ_VTDP01000003.1	316497	45578	46213	631	635	60	NM:i:4	ms:i:611	AS:i:611	nn:i:0	tp:A:P	cm:i:51	s1:i:556	s2:i:0	de:f:0.0063	rl:i:0	cg:Z:635M	cs:Z::30*ta:15*at:212*tc:103*ct:271

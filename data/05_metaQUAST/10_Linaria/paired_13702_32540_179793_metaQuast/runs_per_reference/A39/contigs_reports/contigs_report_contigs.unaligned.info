@@ -1,0 +1,10 @@
+Contig	Total_length	Unaligned_length	Unaligned_type	Unaligned_parts
+NODE_27_length_42738_cov_17.474873	42738	42598	partial	1-11742,11883-42738
+NODE_57_length_4055_cov_3.437750	4055	914	partial	2598-2850,3395-4055
+NODE_64_length_3139_cov_3.165694	3139	2853	partial	1-738,1025-3139
+NODE_90_length_2112_cov_9.075839	2112	1140	partial	1-133,1106-2112
+NODE_73_length_2536_cov_11.359129	2536	2454	partial	1-629,712-2536
+NODE_148_length_1651_cov_2.879073	1651	648	partial	249-795,1266-1366
+NODE_87_length_2166_cov_2.356703	2166	1063	partial	547-787,1345-2166
+NODE_366_length_1056_cov_2.343656	1056	541	partial	1-14,420-946
+NODE_861_length_717_cov_1.717523	717	526	partial	1-23,215-717

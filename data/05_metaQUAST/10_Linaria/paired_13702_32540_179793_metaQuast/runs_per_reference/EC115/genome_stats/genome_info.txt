@@ -1,0 +1,38 @@
+reference chromosomes:
+	EC115_NZ_VTDP01000001.1 (total length: 439235 bp, total length without N's: 439235 bp, maximal covered length: 0 bp)
+	EC115_NZ_VTDP01000006.1 (total length: 174103 bp, total length without N's: 174103 bp, maximal covered length: 0 bp)
+	EC115_NZ_VTDP01000007.1 (total length: 162774 bp, total length without N's: 162774 bp, maximal covered length: 0 bp)
+	EC115_NZ_VTDP01000008.1 (total length: 98328 bp, total length without N's: 98328 bp, maximal covered length: 0 bp)
+	EC115_NZ_VTDP01000009.1 (total length: 89913 bp, total length without N's: 89913 bp, maximal covered length: 0 bp)
+	EC115_NZ_VTDP01000010.1 (total length: 87028 bp, total length without N's: 87028 bp, maximal covered length: 0 bp)
+	EC115_NZ_VTDP01000002.1 (total length: 422876 bp, total length without N's: 422876 bp, maximal covered length: 0 bp)
+	EC115_NZ_VTDP01000011.1 (total length: 85077 bp, total length without N's: 85077 bp, maximal covered length: 0 bp)
+	EC115_NZ_VTDP01000012.1 (total length: 70746 bp, total length without N's: 70746 bp, maximal covered length: 0 bp)
+	EC115_NZ_VTDP01000013.1 (total length: 59244 bp, total length without N's: 59244 bp, maximal covered length: 0 bp)
+	EC115_NZ_VTDP01000014.1 (total length: 53133 bp, total length without N's: 53133 bp, maximal covered length: 0 bp)
+	EC115_NZ_VTDP01000015.1 (total length: 45147 bp, total length without N's: 45147 bp, maximal covered length: 0 bp)
+	EC115_NZ_VTDP01000016.1 (total length: 38207 bp, total length without N's: 38207 bp, maximal covered length: 0 bp)
+	EC115_NZ_VTDP01000017.1 (total length: 38069 bp, total length without N's: 38069 bp, maximal covered length: 0 bp)
+	EC115_NZ_VTDP01000018.1 (total length: 16626 bp, total length without N's: 16626 bp, maximal covered length: 0 bp)
+	EC115_NZ_VTDP01000019.1 (total length: 6592 bp, total length without N's: 6592 bp, maximal covered length: 0 bp)
+	EC115_NZ_VTDP01000020.1 (total length: 6126 bp, total length without N's: 6126 bp, maximal covered length: 0 bp)
+	EC115_NZ_VTDP01000003.1 (total length: 316497 bp, total length without N's: 316497 bp, maximal covered length: 1598 bp)
+	EC115_NZ_VTDP01000021.1 (total length: 5946 bp, total length without N's: 5946 bp, maximal covered length: 0 bp)
+	EC115_NZ_VTDP01000022.1 (total length: 5416 bp, total length without N's: 5416 bp, maximal covered length: 0 bp)
+	EC115_NZ_VTDP01000023.1 (total length: 5308 bp, total length without N's: 5308 bp, maximal covered length: 0 bp)
+	EC115_NZ_VTDP01000024.1 (total length: 1404 bp, total length without N's: 1404 bp, maximal covered length: 0 bp)
+	EC115_NZ_VTDP01000025.1 (total length: 1204 bp, total length without N's: 1204 bp, maximal covered length: 0 bp)
+	EC115_NZ_VTDP01000004.1 (total length: 208072 bp, total length without N's: 208072 bp, maximal covered length: 0 bp)
+	EC115_NZ_VTDP01000005.1 (total length: 184849 bp, total length without N's: 184849 bp, maximal covered length: 0 bp)
+
+total genome size: 2621920
+
+gap min size: 50
+partial gene/operon min size: 100
+
+
+
+assembly                 | genome    | duplication | gaps      | genes     | partial   | operons   | partial   |
+                         | fraction  | ratio       | number    |           | genes     |           | operons   |
+========================================================================================================================
+contigs_to_EC115         | 0.061     | 1.000       | 27        | -         | -         | -         | -         |

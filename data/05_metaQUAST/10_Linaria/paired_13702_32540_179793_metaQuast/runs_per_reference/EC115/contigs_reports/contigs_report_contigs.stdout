@@ -1,0 +1,75 @@
+Aligning contigs to reference...
+	Aligning contigs to the reference
+Filtering alignments...
+Parsing coords...
+Loading reference...
+	Loaded [EC115_NZ_VTDP01000001.1]
+	Loaded [EC115_NZ_VTDP01000006.1]
+	Loaded [EC115_NZ_VTDP01000007.1]
+	Loaded [EC115_NZ_VTDP01000008.1]
+	Loaded [EC115_NZ_VTDP01000009.1]
+	Loaded [EC115_NZ_VTDP01000010.1]
+	Loaded [EC115_NZ_VTDP01000002.1]
+	Loaded [EC115_NZ_VTDP01000011.1]
+	Loaded [EC115_NZ_VTDP01000012.1]
+	Loaded [EC115_NZ_VTDP01000013.1]
+	Loaded [EC115_NZ_VTDP01000014.1]
+	Loaded [EC115_NZ_VTDP01000015.1]
+	Loaded [EC115_NZ_VTDP01000016.1]
+	Loaded [EC115_NZ_VTDP01000017.1]
+	Loaded [EC115_NZ_VTDP01000018.1]
+	Loaded [EC115_NZ_VTDP01000019.1]
+	Loaded [EC115_NZ_VTDP01000020.1]
+	Loaded [EC115_NZ_VTDP01000003.1]
+	Loaded [EC115_NZ_VTDP01000021.1]
+	Loaded [EC115_NZ_VTDP01000022.1]
+	Loaded [EC115_NZ_VTDP01000023.1]
+	Loaded [EC115_NZ_VTDP01000024.1]
+	Loaded [EC115_NZ_VTDP01000025.1]
+	Loaded [EC115_NZ_VTDP01000004.1]
+	Loaded [EC115_NZ_VTDP01000005.1]
+	Total Regions: 25
+	Total Region Length: 2621920
+Analyzing contigs...
+CONTIG: NODE_456_length_963_cov_1.655286 (963bp)
+Best alignment score: 957.0 (LEN: 963, IDY: 99.38), Total number of alignments: 1
+		One align captures most of this contig: 64735 65697 | 1 963 | 963 963 | 99.38 | EC115_NZ_VTDP01000003.1 NODE_456_length_963_cov_1.655286
+
+CONTIG: NODE_1101_length_635_cov_1.058621 (635bp)
+Best alignment score: 631.0 (LEN: 635, IDY: 99.37), Total number of alignments: 1
+		One align captures most of this contig: 45579 46213 | 635 1 | 635 635 | 99.37 | EC115_NZ_VTDP01000003.1 NODE_1101_length_635_cov_1.058621
+
+Analyzing coverage...
+Writing SNPs into /local/workdir/Daphne/Floral_metagenomics/data/05_metaQUAST/10_Linaria/paired_13702_32540_179793/_metaQuast/runs_per_reference/EC115/contigs_reports/minimap_output/contigs.used_snps
+
+Analysis is finished!
+Founded SNPs were written into /local/workdir/Daphne/Floral_metagenomics/data/05_metaQUAST/10_Linaria/paired_13702_32540_179793/_metaQuast/runs_per_reference/EC115/contigs_reports/minimap_output/contigs.used_snps
+
+Results:
+	Local Misassemblies: 0
+	Misassemblies: 0
+		Relocations: 0
+		Translocations: 0
+		Inversions: 0
+	Scaffold gap extensive misassemblies: 0
+	Scaffold gap local misassemblies: 0
+	Misassembled Contigs: 0
+	Misassembled Contig Bases: 0
+	Misassemblies Inter-Contig Overlap ("Extra" Aligned Bases): 0
+Unaligned Contigs: 0 + 0 part
+Half Unaligned Contigs with Misassemblies: 0
+Unaligned Bases in Fully and Partially Unaligned Contigs: 0
+
+Ambiguously Mapped Contigs: 0
+Total Bases in Ambiguously Mapped Contigs: 0
+"Extra" Aligned Bases in Ambiguously Mapped Contigs: 0
+Note that --allow-ambiguity option was set to "one" and only first alignment per each of these contigs was used (there is no "extra" aligned bases).
+
+	Covered Bases in Reference: 1598
+	Raw Aligned Bases in Assembly: 1598
+	Total Aligned Bases in Assembly (with "Extras"): 1598
+
+	SNPs: 10
+	Insertions: 0
+	Deletions: 0
+

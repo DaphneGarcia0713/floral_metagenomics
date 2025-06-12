@@ -1,0 +1,103 @@
+Aligning contigs to reference...
+	Aligning contigs to the reference
+Filtering alignments...
+Parsing coords...
+Loading reference...
+	Loaded [EC24_NZ_VTDO01000001.1]
+	Loaded [EC24_NZ_VTDO01000007.1]
+	Loaded [EC24_NZ_VTDO01000008.1]
+	Loaded [EC24_NZ_VTDO01000009.1]
+	Loaded [EC24_NZ_VTDO01000010.1]
+	Loaded [EC24_NZ_VTDO01000011.1]
+	Loaded [EC24_NZ_VTDO01000002.1]
+	Loaded [EC24_NZ_VTDO01000012.1]
+	Loaded [EC24_NZ_VTDO01000013.1]
+	Loaded [EC24_NZ_VTDO01000014.1]
+	Loaded [EC24_NZ_VTDO01000015.1]
+	Loaded [EC24_NZ_VTDO01000016.1]
+	Loaded [EC24_NZ_VTDO01000017.1]
+	Loaded [EC24_NZ_VTDO01000003.1]
+	Loaded [EC24_NZ_VTDO01000004.1]
+	Loaded [EC24_NZ_VTDO01000005.1]
+	Loaded [EC24_NZ_VTDO01000006.1]
+	Total Regions: 17
+	Total Region Length: 2754552
+Analyzing contigs...
+CONTIG: NODE_255_length_1247_cov_1.759228 (1247bp)
+Best alignment score: 1243.0 (LEN: 1247, IDY: 99.68), Total number of alignments: 1
+		One align captures most of this contig: 93961 95207 | 1 1247 | 1247 1247 | 99.68 | EC24_NZ_VTDO01000006.1 NODE_255_length_1247_cov_1.759228
+
+CONTIG: NODE_776_length_750_cov_1.929496 (750bp)
+Best alignment score: 745.0 (LEN: 750, IDY: 99.33), Total number of alignments: 1
+		One align captures most of this contig: 98169 98917 | 1 750 | 749 750 | 99.33 | EC24_NZ_VTDO01000006.1 NODE_776_length_750_cov_1.929496
+
+CONTIG: NODE_791_length_746_cov_1.887120 (746bp)
+Best alignment score: 734.0 (LEN: 746, IDY: 98.39), Total number of alignments: 1
+		One align captures most of this contig: 111789 112534 | 746 1 | 746 746 | 98.39 | EC24_NZ_VTDO01000006.1 NODE_791_length_746_cov_1.887120
+
+CONTIG: NODE_1122_length_630_cov_2.523478 (630bp)
+Best alignment score: 613.0 (LEN: 628, IDY: 97.61), Total number of alignments: 1
+		One align captures most of this contig: 100541 101168 | 630 3 | 628 628 | 97.61 | EC24_NZ_VTDO01000006.1 NODE_1122_length_630_cov_2.523478
+
+CONTIG: NODE_1236_length_605_cov_1.527273 (605bp)
+Best alignment score: 602.0 (LEN: 605, IDY: 99.50), Total number of alignments: 1
+		One align captures most of this contig: 103772 104376 | 605 1 | 605 605 | 99.5 | EC24_NZ_VTDO01000006.1 NODE_1236_length_605_cov_1.527273
+
+CONTIG: NODE_1364_length_571_cov_0.967054 (571bp)
+Best alignment score: 562.0 (LEN: 571, IDY: 98.42), Total number of alignments: 1
+		One align captures most of this contig: 114060 114630 | 1 571 | 571 571 | 98.42 | EC24_NZ_VTDO01000006.1 NODE_1364_length_571_cov_0.967054
+
+CONTIG: NODE_1420_length_558_cov_1.447316 (558bp)
+Best alignment score: 534.3 (LEN: 558, IDY: 95.75), Total number of alignments: 1
+		One align captures most of this contig: 97419 97981 | 558 1 | 563 558 | 95.75 | EC24_NZ_VTDO01000006.1 NODE_1420_length_558_cov_1.447316
+
+CONTIG: NODE_456_length_963_cov_1.655286 (963bp)
+Best alignment score: 958.0 (LEN: 963, IDY: 99.48), Total number of alignments: 1
+		One align captures most of this contig: 236717 237679 | 963 1 | 963 963 | 99.48 | EC24_NZ_VTDO01000004.1 NODE_456_length_963_cov_1.655286
+
+CONTIG: NODE_1101_length_635_cov_1.058621 (635bp)
+Best alignment score: 631.0 (LEN: 635, IDY: 99.37), Total number of alignments: 1
+		One align captures most of this contig: 256197 256831 | 1 635 | 635 635 | 99.37 | EC24_NZ_VTDO01000004.1 NODE_1101_length_635_cov_1.058621
+
+CONTIG: NODE_1040_length_651_cov_0.961409 (651bp)
+Best alignment score: 648.0 (LEN: 651, IDY: 99.54), Total number of alignments: 1
+		One align captures most of this contig: 452259 452909 | 651 1 | 651 651 | 99.54 | EC24_NZ_VTDO01000001.1 NODE_1040_length_651_cov_0.961409
+
+CONTIG: NODE_1701_length_504_cov_2.926503 (504bp)
+Best alignment score: 477.0 (LEN: 499, IDY: 95.59), Total number of alignments: 1
+		One align captures most of this contig: 468576 469074 | 1 499 | 499 499 | 95.59 | EC24_NZ_VTDO01000001.1 NODE_1701_length_504_cov_2.926503
+
+Analyzing coverage...
+Writing SNPs into /local/workdir/Daphne/Floral_metagenomics/data/05_metaQUAST/10_Linaria/paired_13702_32540_179793/_metaQuast/runs_per_reference/EC24/contigs_reports/minimap_output/contigs.used_snps
+
+Analysis is finished!
+Founded SNPs were written into /local/workdir/Daphne/Floral_metagenomics/data/05_metaQUAST/10_Linaria/paired_13702_32540_179793/_metaQuast/runs_per_reference/EC24/contigs_reports/minimap_output/contigs.used_snps
+
+Results:
+	Local Misassemblies: 0
+	Misassemblies: 0
+		Relocations: 0
+		Translocations: 0
+		Inversions: 0
+	Scaffold gap extensive misassemblies: 0
+	Scaffold gap local misassemblies: 0
+	Misassembled Contigs: 0
+	Misassembled Contig Bases: 0
+	Misassemblies Inter-Contig Overlap ("Extra" Aligned Bases): 0
+Unaligned Contigs: 0 + 0 part
+Half Unaligned Contigs with Misassemblies: 0
+Unaligned Bases in Fully and Partially Unaligned Contigs: 0
+
+Ambiguously Mapped Contigs: 0
+Total Bases in Ambiguously Mapped Contigs: 0
+"Extra" Aligned Bases in Ambiguously Mapped Contigs: 0
+Note that --allow-ambiguity option was set to "one" and only first alignment per each of these contigs was used (there is no "extra" aligned bases).
+
+	Covered Bases in Reference: 7857
+	Raw Aligned Bases in Assembly: 7853
+	Total Aligned Bases in Assembly (with "Extras"): 7853
+
+	SNPs: 96
+	Insertions: 3
+	Deletions: 7
+

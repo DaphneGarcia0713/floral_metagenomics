@@ -1,0 +1,10 @@
+[M::mm_idx_gen::1.396*1.25] collected minimizers
+[M::mm_idx_gen::1.499*1.93] sorted minimizers
+[M::main::1.499*1.93] loaded/built the index for 42725 target sequence(s)
+[M::mm_mapopt_update::1.577*1.88] mid_occ = 200
+[M::mm_idx_stat] kmer size: 19; skip: 19; is_hpc: 0; #seq: 42725
+[M::mm_idx_stat::1.643*1.85] distinct minimizers: 4323704 (72.30% are singletons); average occurrences: 1.569; average spacing: 10.170; total length: 68998803
+[M::worker_pipeline::2.009*3.36] mapped 1735 sequences
+[M::main] Version: 2.24-r1122
+[M::main] CMD: /programs/quast-5.2.0/lib/python3.9/site-packages/quast_libs/minimap2/minimap2 -c -x asm10 -B5 -O4,16 --no-long-join -r 200 -N 100 -s 65 -z 200 --mask-level 1 --min-occ 200 -g 2500 --score-N 2 --cs -t 12 /local/workdir/Daphne/Floral_metagenomics/data/05_metaQUAST/10_Linaria/paired_13702_32540_179793/_metaQuast/quast_corrected_input/combined_reference.fasta /local/workdir/Daphne/Floral_metagenomics/data/05_metaQUAST/10_Linaria/paired_13702_32540_179793/_metaQuast/combined_reference/../quast_corrected_input/contigs.fasta
+[M::main] Real time: 2.030 sec; CPU: 6.767 sec; Peak RSS: 0.422 GB

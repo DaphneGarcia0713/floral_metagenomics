@@ -1,0 +1,30 @@
+reference chromosomes:
+	EC24_NZ_VTDO01000001.1 (total length: 744468 bp, total length without N's: 744468 bp, maximal covered length: 1150 bp)
+	EC24_NZ_VTDO01000007.1 (total length: 106465 bp, total length without N's: 106465 bp, maximal covered length: 0 bp)
+	EC24_NZ_VTDO01000008.1 (total length: 87031 bp, total length without N's: 87031 bp, maximal covered length: 0 bp)
+	EC24_NZ_VTDO01000009.1 (total length: 86981 bp, total length without N's: 86981 bp, maximal covered length: 0 bp)
+	EC24_NZ_VTDO01000010.1 (total length: 82042 bp, total length without N's: 82042 bp, maximal covered length: 0 bp)
+	EC24_NZ_VTDO01000011.1 (total length: 54764 bp, total length without N's: 54764 bp, maximal covered length: 0 bp)
+	EC24_NZ_VTDO01000002.1 (total length: 427710 bp, total length without N's: 427710 bp, maximal covered length: 0 bp)
+	EC24_NZ_VTDO01000012.1 (total length: 45190 bp, total length without N's: 45190 bp, maximal covered length: 0 bp)
+	EC24_NZ_VTDO01000013.1 (total length: 38226 bp, total length without N's: 38226 bp, maximal covered length: 0 bp)
+	EC24_NZ_VTDO01000014.1 (total length: 29633 bp, total length without N's: 29633 bp, maximal covered length: 0 bp)
+	EC24_NZ_VTDO01000015.1 (total length: 5308 bp, total length without N's: 5308 bp, maximal covered length: 0 bp)
+	EC24_NZ_VTDO01000016.1 (total length: 4408 bp, total length without N's: 4408 bp, maximal covered length: 0 bp)
+	EC24_NZ_VTDO01000017.1 (total length: 1204 bp, total length without N's: 1204 bp, maximal covered length: 0 bp)
+	EC24_NZ_VTDO01000003.1 (total length: 399635 bp, total length without N's: 399535 bp, maximal covered length: 0 bp)
+	EC24_NZ_VTDO01000004.1 (total length: 302413 bp, total length without N's: 302413 bp, maximal covered length: 1598 bp)
+	EC24_NZ_VTDO01000005.1 (total length: 174311 bp, total length without N's: 174311 bp, maximal covered length: 0 bp)
+	EC24_NZ_VTDO01000006.1 (total length: 164763 bp, total length without N's: 164763 bp, maximal covered length: 5109 bp)
+
+total genome size: 2754552
+
+gap min size: 50
+partial gene/operon min size: 100
+
+
+
+assembly                 | genome    | duplication | gaps      | genes     | partial   | operons   | partial   |
+                         | fraction  | ratio       | number    |           | genes     |           | operons   |
+========================================================================================================================
+contigs_to_EC24          | 0.285     | 0.999       | 29        | -         | -         | -         | -         |

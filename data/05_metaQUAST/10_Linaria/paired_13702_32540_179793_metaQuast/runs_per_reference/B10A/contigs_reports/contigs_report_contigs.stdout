@@ -1,0 +1,118 @@
+Aligning contigs to reference...
+	Aligning contigs to the reference
+Filtering alignments...
+Parsing coords...
+Loading reference...
+	Loaded [B10A_NZ_VTDM01000001.1]
+	Loaded [B10A_NZ_VTDM01000002.1]
+	Loaded [B10A_NZ_VTDM01000011.1]
+	Loaded [B10A_NZ_VTDM01000057.1]
+	Loaded [B10A_NZ_VTDM01000058.1]
+	Loaded [B10A_NZ_VTDM01000059.1]
+	Loaded [B10A_NZ_VTDM01000060.1]
+	Loaded [B10A_NZ_VTDM01000061.1]
+	Loaded [B10A_NZ_VTDM01000062.1]
+	Loaded [B10A_NZ_VTDM01000063.1]
+	Loaded [B10A_NZ_VTDM01000064.1]
+	Loaded [B10A_NZ_VTDM01000065.1]
+	Loaded [B10A_NZ_VTDM01000066.1]
+	Loaded [B10A_NZ_VTDM01000012.1]
+	Loaded [B10A_NZ_VTDM01000013.1]
+	Loaded [B10A_NZ_VTDM01000067.1]
+	Loaded [B10A_NZ_VTDM01000014.1]
+	Loaded [B10A_NZ_VTDM01000015.1]
+	Loaded [B10A_NZ_VTDM01000016.1]
+	Loaded [B10A_NZ_VTDM01000068.1]
+	Loaded [B10A_NZ_VTDM01000017.1]
+	Loaded [B10A_NZ_VTDM01000069.1]
+	Loaded [B10A_NZ_VTDM01000070.1]
+	Loaded [B10A_NZ_VTDM01000018.1]
+	Loaded [B10A_NZ_VTDM01000003.1]
+	Loaded [B10A_NZ_VTDM01000004.1]
+	Loaded [B10A_NZ_VTDM01000005.1]
+	Loaded [B10A_NZ_VTDM01000019.1]
+	Loaded [B10A_NZ_VTDM01000020.1]
+	Loaded [B10A_NZ_VTDM01000021.1]
+	Loaded [B10A_NZ_VTDM01000022.1]
+	Loaded [B10A_NZ_VTDM01000023.1]
+	Loaded [B10A_NZ_VTDM01000024.1]
+	Loaded [B10A_NZ_VTDM01000025.1]
+	Loaded [B10A_NZ_VTDM01000026.1]
+	Loaded [B10A_NZ_VTDM01000027.1]
+	Loaded [B10A_NZ_VTDM01000028.1]
+	Loaded [B10A_NZ_VTDM01000006.1]
+	Loaded [B10A_NZ_VTDM01000007.1]
+	Loaded [B10A_NZ_VTDM01000008.1]
+	Loaded [B10A_NZ_VTDM01000029.1]
+	Loaded [B10A_NZ_VTDM01000030.1]
+	Loaded [B10A_NZ_VTDM01000031.1]
+	Loaded [B10A_NZ_VTDM01000032.1]
+	Loaded [B10A_NZ_VTDM01000033.1]
+	Loaded [B10A_NZ_VTDM01000034.1]
+	Loaded [B10A_NZ_VTDM01000035.1]
+	Loaded [B10A_NZ_VTDM01000036.1]
+	Loaded [B10A_NZ_VTDM01000037.1]
+	Loaded [B10A_NZ_VTDM01000038.1]
+	Loaded [B10A_NZ_VTDM01000009.1]
+	Loaded [B10A_NZ_VTDM01000039.1]
+	Loaded [B10A_NZ_VTDM01000040.1]
+	Loaded [B10A_NZ_VTDM01000041.1]
+	Loaded [B10A_NZ_VTDM01000042.1]
+	Loaded [B10A_NZ_VTDM01000043.1]
+	Loaded [B10A_NZ_VTDM01000044.1]
+	Loaded [B10A_NZ_VTDM01000045.1]
+	Loaded [B10A_NZ_VTDM01000046.1]
+	Loaded [B10A_NZ_VTDM01000047.1]
+	Loaded [B10A_NZ_VTDM01000048.1]
+	Loaded [B10A_NZ_VTDM01000010.1]
+	Loaded [B10A_NZ_VTDM01000049.1]
+	Loaded [B10A_NZ_VTDM01000050.1]
+	Loaded [B10A_NZ_VTDM01000051.1]
+	Loaded [B10A_NZ_VTDM01000052.1]
+	Loaded [B10A_NZ_VTDM01000053.1]
+	Loaded [B10A_NZ_VTDM01000054.1]
+	Loaded [B10A_NZ_VTDM01000055.1]
+	Loaded [B10A_NZ_VTDM01000056.1]
+	Total Regions: 70
+	Total Region Length: 2580418
+Analyzing contigs...
+CONTIG: NODE_487_length_936_cov_4.637911 (936bp)
+Best alignment score: 616.0 (LEN: 672, IDY: 91.67), Total number of alignments: 1
+			Looking for the best set of alignments (out of 1 total alignments)
+			The best set is below. Score: 616.0, number of alignments: 1, unaligned bases: 264
+		Alignment: 1617 2287 | 936 265 | 671 672 | 91.67 | B10A_NZ_VTDM01000043.1 NODE_487_length_936_cov_4.637911
+
+Analyzing coverage...
+Writing SNPs into /local/workdir/Daphne/Floral_metagenomics/data/05_metaQUAST/10_Linaria/paired_13702_32540_179793/_metaQuast/runs_per_reference/B10A/contigs_reports/minimap_output/contigs.used_snps
+
+Analysis is finished!
+Founded SNPs were written into /local/workdir/Daphne/Floral_metagenomics/data/05_metaQUAST/10_Linaria/paired_13702_32540_179793/_metaQuast/runs_per_reference/B10A/contigs_reports/minimap_output/contigs.used_snps
+
+Results:
+	Local Misassemblies: 0
+	Misassemblies: 0
+		Relocations: 0
+		Translocations: 0
+		Inversions: 0
+	Scaffold gap extensive misassemblies: 0
+	Scaffold gap local misassemblies: 0
+	Misassembled Contigs: 0
+	Misassembled Contig Bases: 0
+	Misassemblies Inter-Contig Overlap ("Extra" Aligned Bases): 0
+Unaligned Contigs: 0 + 0 part
+Half Unaligned Contigs with Misassemblies: 0
+Unaligned Bases in Fully and Partially Unaligned Contigs: 0
+
+Ambiguously Mapped Contigs: 0
+Total Bases in Ambiguously Mapped Contigs: 0
+"Extra" Aligned Bases in Ambiguously Mapped Contigs: 0
+Note that --allow-ambiguity option was set to "one" and only first alignment per each of these contigs was used (there is no "extra" aligned bases).
+
+	Covered Bases in Reference: 671
+	Raw Aligned Bases in Assembly: 672
+	Total Aligned Bases in Assembly (with "Extras"): 672
+
+	SNPs: 55
+	Insertions: 1
+	Deletions: 0
+

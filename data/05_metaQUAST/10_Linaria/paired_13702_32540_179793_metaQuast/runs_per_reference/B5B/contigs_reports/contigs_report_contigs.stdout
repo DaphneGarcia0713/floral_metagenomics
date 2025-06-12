@@ -1,0 +1,162 @@
+Aligning contigs to reference...
+	Aligning contigs to the reference
+Filtering alignments...
+Parsing coords...
+Loading reference...
+	Loaded [B5B_NZ_VTDL01000001.1]
+	Loaded [B5B_NZ_VTDL01000008.1]
+	Loaded [B5B_NZ_VTDL01000057.1]
+	Loaded [B5B_NZ_VTDL01000058.1]
+	Loaded [B5B_NZ_VTDL01000059.1]
+	Loaded [B5B_NZ_VTDL01000060.1]
+	Loaded [B5B_NZ_VTDL01000061.1]
+	Loaded [B5B_NZ_VTDL01000062.1]
+	Loaded [B5B_NZ_VTDL01000063.1]
+	Loaded [B5B_NZ_VTDL01000064.1]
+	Loaded [B5B_NZ_VTDL01000009.1]
+	Loaded [B5B_NZ_VTDL01000065.1]
+	Loaded [B5B_NZ_VTDL01000066.1]
+	Loaded [B5B_NZ_VTDL01000010.1]
+	Loaded [B5B_NZ_VTDL01000067.1]
+	Loaded [B5B_NZ_VTDL01000068.1]
+	Loaded [B5B_NZ_VTDL01000011.1]
+	Loaded [B5B_NZ_VTDL01000069.1]
+	Loaded [B5B_NZ_VTDL01000070.1]
+	Loaded [B5B_NZ_VTDL01000071.1]
+	Loaded [B5B_NZ_VTDL01000012.1]
+	Loaded [B5B_NZ_VTDL01000072.1]
+	Loaded [B5B_NZ_VTDL01000073.1]
+	Loaded [B5B_NZ_VTDL01000074.1]
+	Loaded [B5B_NZ_VTDL01000002.1]
+	Loaded [B5B_NZ_VTDL01000003.1]
+	Loaded [B5B_NZ_VTDL01000004.1]
+	Loaded [B5B_NZ_VTDL01000013.1]
+	Loaded [B5B_NZ_VTDL01000014.1]
+	Loaded [B5B_NZ_VTDL01000015.1]
+	Loaded [B5B_NZ_VTDL01000016.1]
+	Loaded [B5B_NZ_VTDL01000017.1]
+	Loaded [B5B_NZ_VTDL01000018.1]
+	Loaded [B5B_NZ_VTDL01000019.1]
+	Loaded [B5B_NZ_VTDL01000020.1]
+	Loaded [B5B_NZ_VTDL01000021.1]
+	Loaded [B5B_NZ_VTDL01000022.1]
+	Loaded [B5B_NZ_VTDL01000023.1]
+	Loaded [B5B_NZ_VTDL01000024.1]
+	Loaded [B5B_NZ_VTDL01000025.1]
+	Loaded [B5B_NZ_VTDL01000026.1]
+	Loaded [B5B_NZ_VTDL01000005.1]
+	Loaded [B5B_NZ_VTDL01000027.1]
+	Loaded [B5B_NZ_VTDL01000028.1]
+	Loaded [B5B_NZ_VTDL01000029.1]
+	Loaded [B5B_NZ_VTDL01000030.1]
+	Loaded [B5B_NZ_VTDL01000031.1]
+	Loaded [B5B_NZ_VTDL01000032.1]
+	Loaded [B5B_NZ_VTDL01000033.1]
+	Loaded [B5B_NZ_VTDL01000034.1]
+	Loaded [B5B_NZ_VTDL01000035.1]
+	Loaded [B5B_NZ_VTDL01000036.1]
+	Loaded [B5B_NZ_VTDL01000037.1]
+	Loaded [B5B_NZ_VTDL01000006.1]
+	Loaded [B5B_NZ_VTDL01000038.1]
+	Loaded [B5B_NZ_VTDL01000039.1]
+	Loaded [B5B_NZ_VTDL01000040.1]
+	Loaded [B5B_NZ_VTDL01000041.1]
+	Loaded [B5B_NZ_VTDL01000042.1]
+	Loaded [B5B_NZ_VTDL01000043.1]
+	Loaded [B5B_NZ_VTDL01000044.1]
+	Loaded [B5B_NZ_VTDL01000045.1]
+	Loaded [B5B_NZ_VTDL01000046.1]
+	Loaded [B5B_NZ_VTDL01000047.1]
+	Loaded [B5B_NZ_VTDL01000007.1]
+	Loaded [B5B_NZ_VTDL01000048.1]
+	Loaded [B5B_NZ_VTDL01000049.1]
+	Loaded [B5B_NZ_VTDL01000050.1]
+	Loaded [B5B_NZ_VTDL01000051.1]
+	Loaded [B5B_NZ_VTDL01000052.1]
+	Loaded [B5B_NZ_VTDL01000053.1]
+	Loaded [B5B_NZ_VTDL01000054.1]
+	Loaded [B5B_NZ_VTDL01000055.1]
+	Loaded [B5B_NZ_VTDL01000056.1]
+	Total Regions: 74
+	Total Region Length: 2688239
+Analyzing contigs...
+CONTIG: NODE_57_length_4055_cov_3.437750 (4055bp)
+Best alignment score: 2012.0 (LEN: 2107, IDY: 95.49), Total number of alignments: 2
+			Looking for the best set of alignments (out of 2 total alignments)
+			The best set is below. Score: 2595.2, number of alignments: 2, unaligned bases: 1346
+		This contig is misassembled.
+		This contig is partially unaligned. (Aligned 2709 out of 4055 non-N bases (66.81%))
+			Excluding internal overlap of size 199 between Alignment 1 and 2: 1 801 | 801 1 | 801 801 --> 200 801 | 602 1 | 602 602
+			Real Alignment 1: 200 801 | 602 1 | 602 602 | 96.88 | B5B_NZ_VTDL01000048.1 NODE_57_length_4055_cov_3.437750
+			  Indel (> 5bp) between these two alignments: deletion of length 199; 0 mismatches (number of Ns: 0) [linear representation of circular genome]
+			Real Alignment 2: 6393 8499 | 2709 603 | 2107 2107 | 95.49 | B5B_NZ_VTDL01000048.1 NODE_57_length_4055_cov_3.437750
+		Unaligned bases: 1346
+
+CONTIG: NODE_288_length_1181_cov_2.444050 (1181bp)
+Best alignment score: 570.0 (LEN: 618, IDY: 92.23), Total number of alignments: 1
+			Looking for the best set of alignments (out of 1 total alignments)
+			The best set is below. Score: 570.0, number of alignments: 1, unaligned bases: 563
+		This contig is partially unaligned. (Aligned 618 out of 1181 non-N bases (52.33%))
+		Alignment: 2464 3081 | 622 5 | 618 618 | 92.23 | B5B_NZ_VTDL01000041.1 NODE_288_length_1181_cov_2.444050
+		Unaligned bases: 1 to 4 (4)
+		Unaligned bases: 623 to 1181 (559)
+
+CONTIG: NODE_377_length_1040_cov_1.648731 (1040bp)
+Best alignment score: 967.0 (LEN: 1027, IDY: 94.16), Total number of alignments: 1
+			Looking for the best set of alignments (out of 1 total alignments)
+			The best set is below. Score: 967.0, number of alignments: 1, unaligned bases: 13
+		Alignment: 4776 5787 | 1040 14 | 1012 1027 | 94.16 | B5B_NZ_VTDL01000045.1 NODE_377_length_1040_cov_1.648731
+
+CONTIG: NODE_452_length_964_cov_3.204620 (964bp)
+Best alignment score: 867.0 (LEN: 891, IDY: 97.31), Total number of alignments: 1
+			Looking for the best set of alignments (out of 1 total alignments)
+			The best set is below. Score: 867.0, number of alignments: 1, unaligned bases: 73
+		Alignment: 7760 8650 | 891 1 | 891 891 | 97.31 | B5B_NZ_VTDL01000037.1 NODE_452_length_964_cov_3.204620
+
+CONTIG: NODE_901_length_704_cov_2.711864 (704bp)
+Best alignment score: 689.0 (LEN: 704, IDY: 97.87), Total number of alignments: 1
+		One align captures most of this contig: 27915 28618 | 704 1 | 704 704 | 97.87 | B5B_NZ_VTDL01000027.1 NODE_901_length_704_cov_2.711864
+
+CONTIG: NODE_1220_length_610_cov_0.935135 (610bp)
+Best alignment score: 263.0 (LEN: 285, IDY: 92.28), Total number of alignments: 2
+			Looking for the best set of alignments (out of 2 total alignments)
+			The best set is below. Score: 349.0, number of alignments: 2, unaligned bases: 231
+		This contig is misassembled.
+			Real Alignment 1: 38127 38218 | 220 313 | 92 94 | 96.81 | B5B_NZ_VTDL01000027.1 NODE_1220_length_610_cov_0.935135
+			  Gap between these two alignments (local misassembly). Inconsistency = 222
+			Real Alignment 2: 38453 38735 | 326 610 | 283 285 | 92.28 | B5B_NZ_VTDL01000027.1 NODE_1220_length_610_cov_0.935135
+
+Analyzing coverage...
+Writing SNPs into /local/workdir/Daphne/Floral_metagenomics/data/05_metaQUAST/10_Linaria/paired_13702_32540_179793/_metaQuast/runs_per_reference/B5B/contigs_reports/minimap_output/contigs.used_snps
+
+Analysis is finished!
+Founded SNPs were written into /local/workdir/Daphne/Floral_metagenomics/data/05_metaQUAST/10_Linaria/paired_13702_32540_179793/_metaQuast/runs_per_reference/B5B/contigs_reports/minimap_output/contigs.used_snps
+
+Results:
+	Local Misassemblies: 1
+	Misassemblies: 0
+		Relocations: 0
+		Translocations: 0
+		Inversions: 0
+	Scaffold gap extensive misassemblies: 0
+	Scaffold gap local misassemblies: 0
+	Misassembled Contigs: 0
+	Misassembled Contig Bases: 0
+	Misassemblies Inter-Contig Overlap ("Extra" Aligned Bases): 0
+Unaligned Contigs: 0 + 2 part
+Half Unaligned Contigs with Misassemblies: 0
+Unaligned Bases in Fully and Partially Unaligned Contigs: 1909
+
+Ambiguously Mapped Contigs: 0
+Total Bases in Ambiguously Mapped Contigs: 0
+"Extra" Aligned Bases in Ambiguously Mapped Contigs: 0
+Note that --allow-ambiguity option was set to "one" and only first alignment per each of these contigs was used (there is no "extra" aligned bases).
+
+	Covered Bases in Reference: 6309
+	Raw Aligned Bases in Assembly: 6328
+	Total Aligned Bases in Assembly (with "Extras"): 6328
+
+	SNPs: 268
+	Insertions: 19
+	Deletions: 199
+

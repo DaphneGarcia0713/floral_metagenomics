@@ -1,0 +1,263 @@
+Aligning contigs to reference...
+	Aligning contigs to the reference
+Filtering alignments...
+Parsing coords...
+Loading reference...
+	Loaded [SCC477_NZ_VTDQ01000001.1]
+	Loaded [SCC477_NZ_VTDQ01000006.1]
+	Loaded [SCC477_NZ_VTDQ01000051.1]
+	Loaded [SCC477_NZ_VTDQ01000052.1]
+	Loaded [SCC477_NZ_VTDQ01000053.1]
+	Loaded [SCC477_NZ_VTDQ01000054.1]
+	Loaded [SCC477_NZ_VTDQ01000055.1]
+	Loaded [SCC477_NZ_VTDQ01000056.1]
+	Loaded [SCC477_NZ_VTDQ01000057.1]
+	Loaded [SCC477_NZ_VTDQ01000058.1]
+	Loaded [SCC477_NZ_VTDQ01000059.1]
+	Loaded [SCC477_NZ_VTDQ01000060.1]
+	Loaded [SCC477_NZ_VTDQ01000007.1]
+	Loaded [SCC477_NZ_VTDQ01000061.1]
+	Loaded [SCC477_NZ_VTDQ01000062.1]
+	Loaded [SCC477_NZ_VTDQ01000063.1]
+	Loaded [SCC477_NZ_VTDQ01000064.1]
+	Loaded [SCC477_NZ_VTDQ01000065.1]
+	Loaded [SCC477_NZ_VTDQ01000066.1]
+	Loaded [SCC477_NZ_VTDQ01000067.1]
+	Loaded [SCC477_NZ_VTDQ01000068.1]
+	Loaded [SCC477_NZ_VTDQ01000069.1]
+	Loaded [SCC477_NZ_VTDQ01000070.1]
+	Loaded [SCC477_NZ_VTDQ01000008.1]
+	Loaded [SCC477_NZ_VTDQ01000071.1]
+	Loaded [SCC477_NZ_VTDQ01000072.1]
+	Loaded [SCC477_NZ_VTDQ01000073.1]
+	Loaded [SCC477_NZ_VTDQ01000074.1]
+	Loaded [SCC477_NZ_VTDQ01000075.1]
+	Loaded [SCC477_NZ_VTDQ01000076.1]
+	Loaded [SCC477_NZ_VTDQ01000077.1]
+	Loaded [SCC477_NZ_VTDQ01000078.1]
+	Loaded [SCC477_NZ_VTDQ01000079.1]
+	Loaded [SCC477_NZ_VTDQ01000080.1]
+	Loaded [SCC477_NZ_VTDQ01000081.1]
+	Loaded [SCC477_NZ_VTDQ01000009.1]
+	Loaded [SCC477_NZ_VTDQ01000082.1]
+	Loaded [SCC477_NZ_VTDQ01000083.1]
+	Loaded [SCC477_NZ_VTDQ01000084.1]
+	Loaded [SCC477_NZ_VTDQ01000085.1]
+	Loaded [SCC477_NZ_VTDQ01000086.1]
+	Loaded [SCC477_NZ_VTDQ01000087.1]
+	Loaded [SCC477_NZ_VTDQ01000088.1]
+	Loaded [SCC477_NZ_VTDQ01000089.1]
+	Loaded [SCC477_NZ_VTDQ01000090.1]
+	Loaded [SCC477_NZ_VTDQ01000010.1]
+	Loaded [SCC477_NZ_VTDQ01000002.1]
+	Loaded [SCC477_NZ_VTDQ01000011.1]
+	Loaded [SCC477_NZ_VTDQ01000012.1]
+	Loaded [SCC477_NZ_VTDQ01000013.1]
+	Loaded [SCC477_NZ_VTDQ01000014.1]
+	Loaded [SCC477_NZ_VTDQ01000015.1]
+	Loaded [SCC477_NZ_VTDQ01000016.1]
+	Loaded [SCC477_NZ_VTDQ01000017.1]
+	Loaded [SCC477_NZ_VTDQ01000018.1]
+	Loaded [SCC477_NZ_VTDQ01000019.1]
+	Loaded [SCC477_NZ_VTDQ01000020.1]
+	Loaded [SCC477_NZ_VTDQ01000003.1]
+	Loaded [SCC477_NZ_VTDQ01000021.1]
+	Loaded [SCC477_NZ_VTDQ01000022.1]
+	Loaded [SCC477_NZ_VTDQ01000023.1]
+	Loaded [SCC477_NZ_VTDQ01000024.1]
+	Loaded [SCC477_NZ_VTDQ01000025.1]
+	Loaded [SCC477_NZ_VTDQ01000026.1]
+	Loaded [SCC477_NZ_VTDQ01000027.1]
+	Loaded [SCC477_NZ_VTDQ01000028.1]
+	Loaded [SCC477_NZ_VTDQ01000029.1]
+	Loaded [SCC477_NZ_VTDQ01000030.1]
+	Loaded [SCC477_NZ_VTDQ01000004.1]
+	Loaded [SCC477_NZ_VTDQ01000031.1]
+	Loaded [SCC477_NZ_VTDQ01000032.1]
+	Loaded [SCC477_NZ_VTDQ01000033.1]
+	Loaded [SCC477_NZ_VTDQ01000034.1]
+	Loaded [SCC477_NZ_VTDQ01000035.1]
+	Loaded [SCC477_NZ_VTDQ01000036.1]
+	Loaded [SCC477_NZ_VTDQ01000037.1]
+	Loaded [SCC477_NZ_VTDQ01000038.1]
+	Loaded [SCC477_NZ_VTDQ01000039.1]
+	Loaded [SCC477_NZ_VTDQ01000040.1]
+	Loaded [SCC477_NZ_VTDQ01000005.1]
+	Loaded [SCC477_NZ_VTDQ01000041.1]
+	Loaded [SCC477_NZ_VTDQ01000042.1]
+	Loaded [SCC477_NZ_VTDQ01000043.1]
+	Loaded [SCC477_NZ_VTDQ01000044.1]
+	Loaded [SCC477_NZ_VTDQ01000045.1]
+	Loaded [SCC477_NZ_VTDQ01000046.1]
+	Loaded [SCC477_NZ_VTDQ01000047.1]
+	Loaded [SCC477_NZ_VTDQ01000048.1]
+	Loaded [SCC477_NZ_VTDQ01000049.1]
+	Loaded [SCC477_NZ_VTDQ01000050.1]
+	Total Regions: 90
+	Total Region Length: 2752438
+Analyzing contigs...
+CONTIG: NODE_90_length_2112_cov_9.075839 (2112bp)
+Best alignment score: 203.0 (LEN: 221, IDY: 91.86), Total number of alignments: 2
+			Looking for the best set of alignments (out of 2 total alignments)
+			Skipping redundant alignments after choosing the best set of alignments
+		Skipping redundant alignment 13503 13676 | 1442 1268 | 174 175 | 92.57 | SCC477_NZ_VTDQ01000028.1 NODE_90_length_2112_cov_9.075839
+			The best set is below. Score: 203.0, number of alignments: 1, unaligned bases: 1891
+		This contig is partially unaligned. (Aligned 221 out of 2112 non-N bases (10.46%))
+		Alignment: 574 793 | 1222 1442 | 220 221 | 91.86 | SCC477_NZ_VTDQ01000065.1 NODE_90_length_2112_cov_9.075839
+		Unaligned bases: 1 to 1221 (1221)
+		Unaligned bases: 1443 to 2112 (670)
+
+CONTIG: NODE_597_length_853_cov_1.434837 (853bp)
+Best alignment score: 841.0 (LEN: 851, IDY: 98.83), Total number of alignments: 1
+		One align captures most of this contig: 4033 4881 | 851 1 | 849 851 | 98.83 | SCC477_NZ_VTDQ01000065.1 NODE_597_length_853_cov_1.434837
+
+CONTIG: NODE_672_length_806_cov_3.368842 (806bp)
+Best alignment score: 795.0 (LEN: 806, IDY: 98.64), Total number of alignments: 1
+		One align captures most of this contig: 1984 2789 | 1 806 | 806 806 | 98.64 | SCC477_NZ_VTDQ01000065.1 NODE_672_length_806_cov_3.368842
+
+CONTIG: NODE_746_length_769_cov_2.872549 (769bp)
+Best alignment score: 753.0 (LEN: 764, IDY: 98.56), Total number of alignments: 1
+		One align captures most of this contig: 2774 3536 | 769 6 | 763 764 | 98.56 | SCC477_NZ_VTDQ01000065.1 NODE_746_length_769_cov_2.872549
+
+CONTIG: NODE_102_length_1977_cov_4.360562 (1977bp)
+Best alignment score: 1136.0 (LEN: 1184, IDY: 95.95), Total number of alignments: 1
+			Looking for the best set of alignments (out of 1 total alignments)
+			The best set is below. Score: 1136.0, number of alignments: 1, unaligned bases: 793
+		This contig is partially unaligned. (Aligned 1184 out of 1977 non-N bases (59.89%))
+		Alignment: 5027 6204 | 1184 1 | 1178 1184 | 95.95 | SCC477_NZ_VTDQ01000064.1 NODE_102_length_1977_cov_4.360562
+		Unaligned bases: 1185 to 1977 (793)
+
+CONTIG: NODE_362_length_1064_cov_4.590684 (1064bp)
+Best alignment score: 1063.0 (LEN: 1064, IDY: 99.91), Total number of alignments: 1
+		One align captures most of this contig: 579 1642 | 1064 1 | 1064 1064 | 99.91 | SCC477_NZ_VTDQ01000064.1 NODE_362_length_1064_cov_4.590684
+
+CONTIG: NODE_452_length_964_cov_3.204620 (964bp)
+Best alignment score: 820.0 (LEN: 891, IDY: 92.03), Total number of alignments: 2
+			Looking for the best set of alignments (out of 2 total alignments)
+			The best set is below. Score: 838.5, number of alignments: 2, unaligned bases: 4
+		This contig is misassembled.
+			Real Alignment 1: 1993 2883 | 1 891 | 891 891 | 92.03 | SCC477_NZ_VTDQ01000064.1 NODE_452_length_964_cov_3.204620
+			  Extensive misassembly (relocation, inconsistency = 3402) between these two alignments
+			Real Alignment 2: 6290 6358 | 896 964 | 69 69 | 100.0 | SCC477_NZ_VTDQ01000064.1 NODE_452_length_964_cov_3.204620
+
+CONTIG: NODE_675_length_805_cov_2.294667 (805bp)
+Best alignment score: 237.0 (LEN: 237, IDY: 100.00), Total number of alignments: 1
+			Looking for the best set of alignments (out of 1 total alignments)
+			The best set is below. Score: 237.0, number of alignments: 1, unaligned bases: 568
+		This contig is partially unaligned. (Aligned 237 out of 805 non-N bases (29.44%))
+		Alignment: 4275 4511 | 242 6 | 237 237 | 100.0 | SCC477_NZ_VTDQ01000064.1 NODE_675_length_805_cov_2.294667
+		Unaligned bases: 1 to 5 (5)
+		Unaligned bases: 243 to 805 (563)
+
+CONTIG: NODE_1729_length_500_cov_2.152809 (500bp)
+Best alignment score: 497.0 (LEN: 500, IDY: 99.40), Total number of alignments: 1
+		One align captures most of this contig: 6339 6838 | 500 1 | 500 500 | 99.4 | SCC477_NZ_VTDQ01000064.1 NODE_1729_length_500_cov_2.152809
+
+CONTIG: NODE_205_length_1396_cov_1.611484 (1396bp)
+Best alignment score: 1361.0 (LEN: 1393, IDY: 97.70), Total number of alignments: 1
+		One align captures most of this contig: 30528 31920 | 1396 4 | 1393 1393 | 97.7 | SCC477_NZ_VTDQ01000004.1 NODE_205_length_1396_cov_1.611484
+
+CONTIG: NODE_1284_length_591_cov_2.244403 (591bp)
+Best alignment score: 586.0 (LEN: 591, IDY: 99.16), Total number of alignments: 1
+		One align captures most of this contig: 108256 108847 | 591 1 | 592 591 | 99.16 | SCC477_NZ_VTDQ01000004.1 NODE_1284_length_591_cov_2.244403
+
+CONTIG: NODE_260_length_1235_cov_2.062712 (1235bp)
+Best alignment score: 1111.8 (LEN: 1229, IDY: 90.46), Total number of alignments: 1
+		One align captures most of this contig: 58999 60329 | 1235 7 | 1331 1229 | 90.46 | SCC477_NZ_VTDQ01000013.1 NODE_260_length_1235_cov_2.062712
+
+CONTIG: NODE_292_length_1175_cov_1.323214 (1175bp)
+Best alignment score: 1107.1 (LEN: 1175, IDY: 94.22), Total number of alignments: 1
+		One align captures most of this contig: 6149 7324 | 1175 1 | 1176 1175 | 94.22 | SCC477_NZ_VTDQ01000040.1 NODE_292_length_1175_cov_1.323214
+
+CONTIG: NODE_390_length_1031_cov_1.947746 (1031bp)
+Best alignment score: 1004.0 (LEN: 1031, IDY: 97.38), Total number of alignments: 1
+		One align captures most of this contig: 5063 6092 | 1031 1 | 1030 1031 | 97.38 | SCC477_NZ_VTDQ01000015.1 NODE_390_length_1031_cov_1.947746
+
+CONTIG: NODE_680_length_802_cov_1.566265 (802bp)
+Best alignment score: 794.0 (LEN: 802, IDY: 99.00), Total number of alignments: 1
+		One align captures most of this contig: 4127 4928 | 802 1 | 802 802 | 99.0 | SCC477_NZ_VTDQ01000008.1 NODE_680_length_802_cov_1.566265
+
+CONTIG: NODE_832_length_726_cov_1.467958 (726bp)
+Best alignment score: 661.0 (LEN: 698, IDY: 94.70), Total number of alignments: 1
+			Looking for the best set of alignments (out of 1 total alignments)
+			The best set is below. Score: 661.0, number of alignments: 1, unaligned bases: 28
+		Alignment: 2850 3544 | 726 29 | 695 698 | 94.7 | SCC477_NZ_VTDQ01000025.1 NODE_832_length_726_cov_1.467958
+
+CONTIG: NODE_1166_length_619_cov_1.361702 (619bp)
+Best alignment score: 543.0 (LEN: 573, IDY: 94.76), Total number of alignments: 1
+			Looking for the best set of alignments (out of 1 total alignments)
+			The best set is below. Score: 543.0, number of alignments: 1, unaligned bases: 46
+		Alignment: 30922 31494 | 47 619 | 573 573 | 94.76 | SCC477_NZ_VTDQ01000025.1 NODE_1166_length_619_cov_1.361702
+
+CONTIG: NODE_887_length_710_cov_1.561832 (710bp)
+Best alignment score: 697.0 (LEN: 710, IDY: 98.17), Total number of alignments: 1
+		One align captures most of this contig: 1984 2693 | 1 710 | 710 710 | 98.17 | SCC477_NZ_VTDQ01000030.1 NODE_887_length_710_cov_1.561832
+
+CONTIG: NODE_936_length_694_cov_1.352113 (694bp)
+Best alignment score: 653.0 (LEN: 688, IDY: 94.92), Total number of alignments: 1
+		One align captures most of this contig: 47946 48632 | 1 688 | 687 688 | 94.92 | SCC477_NZ_VTDQ01000010.1 NODE_936_length_694_cov_1.352113
+
+CONTIG: NODE_1000_length_666_cov_1.232406 (666bp)
+Best alignment score: 615.0 (LEN: 666, IDY: 92.34), Total number of alignments: 1
+		One align captures most of this contig: 71189 71854 | 666 1 | 666 666 | 92.34 | SCC477_NZ_VTDQ01000007.1 NODE_1000_length_666_cov_1.232406
+
+CONTIG: NODE_1055_length_646_cov_1.796954 (646bp)
+Best alignment score: 629.0 (LEN: 644, IDY: 97.67), Total number of alignments: 1
+		One align captures most of this contig: 4601 5244 | 3 646 | 644 644 | 97.67 | SCC477_NZ_VTDQ01000049.1 NODE_1055_length_646_cov_1.796954
+
+CONTIG: NODE_1395_length_564_cov_1.996071 (564bp)
+Best alignment score: 533.0 (LEN: 560, IDY: 95.18), Total number of alignments: 1
+		One align captures most of this contig: 493 1052 | 5 564 | 560 560 | 95.18 | SCC477_NZ_VTDQ01000087.1 NODE_1395_length_564_cov_1.996071
+
+CONTIG: NODE_1407_length_561_cov_1.770751 (561bp)
+Best alignment score: 546.0 (LEN: 561, IDY: 97.33), Total number of alignments: 1
+		One align captures most of this contig: 19574 20134 | 1 561 | 561 561 | 97.33 | SCC477_NZ_VTDQ01000031.1 NODE_1407_length_561_cov_1.770751
+
+CONTIG: NODE_1421_length_558_cov_1.328032 (558bp)
+Best alignment score: 381.0 (LEN: 388, IDY: 98.20), Total number of alignments: 2
+			Looking for the best set of alignments (out of 2 total alignments)
+			The best set is below. Score: 479.1, number of alignments: 2, unaligned bases: 63
+		This contig is misassembled.
+			Excluding internal overlap of size 4 between Alignment 1 and 2: 116068 116178 | 558 448 | 111 111 --> 116068 116174 | 558 452 | 107 107
+			Real Alignment 1: 116390 116777 | 451 64 | 388 388 | 98.2 | SCC477_NZ_VTDQ01000003.1 NODE_1421_length_558_cov_1.328032
+			  Gap between these two alignments (local misassembly). Inconsistency = 215
+			Real Alignment 2: 116068 116174 | 558 452 | 107 107 | 98.2 | SCC477_NZ_VTDQ01000003.1 NODE_1421_length_558_cov_1.328032
+
+CONTIG: NODE_1578_length_524_cov_0.948827 (524bp)
+Best alignment score: 509.0 (LEN: 524, IDY: 97.14), Total number of alignments: 1
+		One align captures most of this contig: 62887 63410 | 524 1 | 524 524 | 97.14 | SCC477_NZ_VTDQ01000012.1 NODE_1578_length_524_cov_0.948827
+
+Analyzing coverage...
+Writing SNPs into /local/workdir/Daphne/Floral_metagenomics/data/05_metaQUAST/10_Linaria/paired_13702_32540_179793/_metaQuast/runs_per_reference/SCC477/contigs_reports/minimap_output/contigs.used_snps
+
+Analysis is finished!
+Founded SNPs were written into /local/workdir/Daphne/Floral_metagenomics/data/05_metaQUAST/10_Linaria/paired_13702_32540_179793/_metaQuast/runs_per_reference/SCC477/contigs_reports/minimap_output/contigs.used_snps
+
+Results:
+	Local Misassemblies: 1
+	Misassemblies: 1
+		Relocations: 1
+		Translocations: 0
+		Inversions: 0
+	Scaffold gap extensive misassemblies: 0
+	Scaffold gap local misassemblies: 0
+	Misassembled Contigs: 1
+	Misassembled Contig Bases: 964
+	Misassemblies Inter-Contig Overlap ("Extra" Aligned Bases): 0
+Unaligned Contigs: 0 + 3 part
+Half Unaligned Contigs with Misassemblies: 0
+Unaligned Bases in Fully and Partially Unaligned Contigs: 3252
+
+Ambiguously Mapped Contigs: 0
+Total Bases in Ambiguously Mapped Contigs: 0
+"Extra" Aligned Bases in Ambiguously Mapped Contigs: 0
+Note that --allow-ambiguity option was set to "one" and only first alignment per each of these contigs was used (there is no "extra" aligned bases).
+
+	Covered Bases in Reference: 18980
+	Raw Aligned Bases in Assembly: 18927
+	Total Aligned Bases in Assembly (with "Extras"): 18927
+
+	SNPs: 560
+	Insertions: 19
+	Deletions: 108
+

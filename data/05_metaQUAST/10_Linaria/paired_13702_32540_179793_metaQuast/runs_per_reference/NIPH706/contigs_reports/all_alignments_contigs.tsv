@@ -1,0 +1,7 @@
+S1	E1	S2	E2	Reference	Contig	IDY	Ambiguous	Best_group
+3833	3951	17623	17505	NIPH706_fig_1217716.5.peg.985	NODE_38_length_25447_cov_10.170959	92.44		True
+CONTIG	NODE_38_length_25447_cov_10.170959	25447	correct_unaligned
+1	617	644	28	NIPH706_fig_1217716.5.peg.3465	NODE_768_length_755_cov_1.367143	94.33		True
+CONTIG	NODE_768_length_755_cov_1.367143	755	correct
+59	313	255	1	NIPH706_fig_1217716.5.peg.3466	NODE_889_length_708_cov_2.026034	92.16		True
+CONTIG	NODE_889_length_708_cov_2.026034	708	correct

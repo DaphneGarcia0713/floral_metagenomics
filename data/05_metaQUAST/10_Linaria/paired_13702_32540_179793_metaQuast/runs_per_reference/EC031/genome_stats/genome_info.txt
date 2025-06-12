@@ -1,0 +1,52 @@
+reference chromosomes:
+	EC031_NZ_JAERJC010000001.1 (total length: 316648 bp, total length without N's: 316648 bp, maximal covered length: 61721 bp)
+	EC031_NZ_JAERJC010000006.1 (total length: 157188 bp, total length without N's: 157188 bp, maximal covered length: 38983 bp)
+	EC031_NZ_JAERJC010000007.1 (total length: 134738 bp, total length without N's: 134738 bp, maximal covered length: 42393 bp)
+	EC031_NZ_JAERJC010000008.1 (total length: 124269 bp, total length without N's: 124269 bp, maximal covered length: 24748 bp)
+	EC031_NZ_JAERJC010000009.1 (total length: 112492 bp, total length without N's: 112492 bp, maximal covered length: 35539 bp)
+	EC031_NZ_JAERJC010000010.1 (total length: 112220 bp, total length without N's: 112220 bp, maximal covered length: 28680 bp)
+	EC031_NZ_JAERJC010000002.1 (total length: 238585 bp, total length without N's: 238585 bp, maximal covered length: 59869 bp)
+	EC031_NZ_JAERJC010000011.1 (total length: 88242 bp, total length without N's: 88242 bp, maximal covered length: 24809 bp)
+	EC031_NZ_JAERJC010000012.1 (total length: 84802 bp, total length without N's: 84802 bp, maximal covered length: 11755 bp)
+	EC031_NZ_JAERJC010000013.1 (total length: 58013 bp, total length without N's: 58013 bp, maximal covered length: 22476 bp)
+	EC031_NZ_JAERJC010000014.1 (total length: 55825 bp, total length without N's: 55825 bp, maximal covered length: 17758 bp)
+	EC031_NZ_JAERJC010000015.1 (total length: 55550 bp, total length without N's: 55550 bp, maximal covered length: 14954 bp)
+	EC031_NZ_JAERJC010000016.1 (total length: 8604 bp, total length without N's: 8604 bp, maximal covered length: 3789 bp)
+	EC031_NZ_JAERJC010000017.1 (total length: 20006 bp, total length without N's: 20006 bp, maximal covered length: 5805 bp)
+	EC031_NZ_JAERJC010000018.1 (total length: 12651 bp, total length without N's: 12651 bp, maximal covered length: 4249 bp)
+	EC031_NZ_JAERJC010000019.1 (total length: 34877 bp, total length without N's: 34877 bp, maximal covered length: 6795 bp)
+	EC031_NZ_JAERJC010000020.1 (total length: 30731 bp, total length without N's: 30731 bp, maximal covered length: 11748 bp)
+	EC031_NZ_JAERJC010000003.1 (total length: 225602 bp, total length without N's: 225602 bp, maximal covered length: 42891 bp)
+	EC031_NZ_JAERJC010000021.1 (total length: 22199 bp, total length without N's: 22199 bp, maximal covered length: 4717 bp)
+	EC031_NZ_JAERJC010000022.1 (total length: 10770 bp, total length without N's: 10770 bp, maximal covered length: 5515 bp)
+	EC031_NZ_JAERJC010000023.1 (total length: 17470 bp, total length without N's: 17470 bp, maximal covered length: 4403 bp)
+	EC031_NZ_JAERJC010000024.1 (total length: 16218 bp, total length without N's: 16218 bp, maximal covered length: 6377 bp)
+	EC031_NZ_JAERJC010000025.1 (total length: 15842 bp, total length without N's: 15842 bp, maximal covered length: 4457 bp)
+	EC031_NZ_JAERJC010000026.1 (total length: 6667 bp, total length without N's: 6667 bp, maximal covered length: 867 bp)
+	EC031_NZ_JAERJC010000027.1 (total length: 7265 bp, total length without N's: 7265 bp, maximal covered length: 581 bp)
+	EC031_NZ_JAERJC010000028.1 (total length: 12341 bp, total length without N's: 12341 bp, maximal covered length: 971 bp)
+	EC031_NZ_JAERJC010000029.1 (total length: 6614 bp, total length without N's: 6614 bp, maximal covered length: 0 bp)
+	EC031_NZ_JAERJC010000030.1 (total length: 8723 bp, total length without N's: 8723 bp, maximal covered length: 638 bp)
+	EC031_NZ_JAERJC010000004.1 (total length: 225487 bp, total length without N's: 225487 bp, maximal covered length: 72777 bp)
+	EC031_NZ_JAERJC010000031.1 (total length: 7062 bp, total length without N's: 7062 bp, maximal covered length: 0 bp)
+	EC031_NZ_JAERJC010000032.1 (total length: 6156 bp, total length without N's: 6156 bp, maximal covered length: 0 bp)
+	EC031_NZ_JAERJC010000033.1 (total length: 5749 bp, total length without N's: 5749 bp, maximal covered length: 1393 bp)
+	EC031_NZ_JAERJC010000034.1 (total length: 5672 bp, total length without N's: 5672 bp, maximal covered length: 2320 bp)
+	EC031_NZ_JAERJC010000035.1 (total length: 5295 bp, total length without N's: 5295 bp, maximal covered length: 1904 bp)
+	EC031_NZ_JAERJC010000036.1 (total length: 4387 bp, total length without N's: 4387 bp, maximal covered length: 0 bp)
+	EC031_NZ_JAERJC010000037.1 (total length: 2010 bp, total length without N's: 2010 bp, maximal covered length: 0 bp)
+	EC031_NZ_JAERJC010000038.1 (total length: 1979 bp, total length without N's: 1979 bp, maximal covered length: 1000 bp)
+	EC031_NZ_JAERJC010000039.1 (total length: 2312 bp, total length without N's: 2312 bp, maximal covered length: 0 bp)
+	EC031_NZ_JAERJC010000005.1 (total length: 160218 bp, total length without N's: 160218 bp, maximal covered length: 43928 bp)
+
+total genome size: 2421479
+
+gap min size: 50
+partial gene/operon min size: 100
+
+
+
+assembly                 | genome    | duplication | gaps      | genes     | partial   | operons   | partial   |
+                         | fraction  | ratio       | number    |           | genes     |           | operons   |
+========================================================================================================================
+contigs_to_EC031         | 25.225    | 1.001       | 676       | -         | -         | -         | -         |

@@ -1,0 +1,4085 @@
+Aligning contigs to reference...
+	Aligning contigs to the reference
+Filtering alignments...
+Parsing coords...
+Loading reference...
+	Loaded [A39_fig_1219382.3.peg.1]
+	Loaded [A39_fig_1219382.3.peg.2]
+	Loaded [A39_fig_1219382.3.peg.3]
+	Loaded [A39_fig_1219382.3.peg.4]
+	Loaded [A39_fig_1219382.3.peg.5]
+	Loaded [A39_fig_1219382.3.peg.6]
+	Loaded [A39_fig_1219382.3.peg.7]
+	Loaded [A39_fig_1219382.3.peg.8]
+	Loaded [A39_fig_1219382.3.peg.9]
+	Loaded [A39_fig_1219382.3.peg.10]
+	Loaded [A39_fig_1219382.3.peg.11]
+	Loaded [A39_fig_1219382.3.peg.12]
+	Loaded [A39_fig_1219382.3.peg.13]
+	Loaded [A39_fig_1219382.3.peg.14]
+	Loaded [A39_fig_1219382.3.peg.15]
+	Loaded [A39_fig_1219382.3.peg.16]
+	Loaded [A39_fig_1219382.3.peg.17]
+	Loaded [A39_fig_1219382.3.peg.18]
+	Loaded [A39_fig_1219382.3.peg.19]
+	Loaded [A39_fig_1219382.3.peg.20]
+	Loaded [A39_fig_1219382.3.peg.21]
+	Loaded [A39_fig_1219382.3.peg.22]
+	Loaded [A39_fig_1219382.3.peg.23]
+	Loaded [A39_fig_1219382.3.peg.24]
+	Loaded [A39_fig_1219382.3.peg.25]
+	Loaded [A39_fig_1219382.3.peg.26]
+	Loaded [A39_fig_1219382.3.peg.27]
+	Loaded [A39_fig_1219382.3.peg.28]
+	Loaded [A39_fig_1219382.3.peg.29]
+	Loaded [A39_fig_1219382.3.peg.30]
+	Loaded [A39_fig_1219382.3.peg.31]
+	Loaded [A39_fig_1219382.3.peg.32]
+	Loaded [A39_fig_1219382.3.peg.33]
+	Loaded [A39_fig_1219382.3.peg.34]
+	Loaded [A39_fig_1219382.3.peg.35]
+	Loaded [A39_fig_1219382.3.peg.36]
+	Loaded [A39_fig_1219382.3.peg.37]
+	Loaded [A39_fig_1219382.3.peg.38]
+	Loaded [A39_fig_1219382.3.peg.39]
+	Loaded [A39_fig_1219382.3.peg.40]
+	Loaded [A39_fig_1219382.3.peg.41]
+	Loaded [A39_fig_1219382.3.peg.42]
+	Loaded [A39_fig_1219382.3.peg.43]
+	Loaded [A39_fig_1219382.3.peg.44]
+	Loaded [A39_fig_1219382.3.peg.45]
+	Loaded [A39_fig_1219382.3.peg.46]
+	Loaded [A39_fig_1219382.3.peg.47]
+	Loaded [A39_fig_1219382.3.peg.48]
+	Loaded [A39_fig_1219382.3.peg.49]
+	Loaded [A39_fig_1219382.3.peg.50]
+	Loaded [A39_fig_1219382.3.peg.51]
+	Loaded [A39_fig_1219382.3.peg.52]
+	Loaded [A39_fig_1219382.3.peg.53]
+	Loaded [A39_fig_1219382.3.peg.54]
+	Loaded [A39_fig_1219382.3.peg.55]
+	Loaded [A39_fig_1219382.3.peg.56]
+	Loaded [A39_fig_1219382.3.peg.57]
+	Loaded [A39_fig_1219382.3.peg.58]
+	Loaded [A39_fig_1219382.3.peg.59]
+	Loaded [A39_fig_1219382.3.peg.60]
+	Loaded [A39_fig_1219382.3.peg.61]
+	Loaded [A39_fig_1219382.3.peg.62]
+	Loaded [A39_fig_1219382.3.peg.63]
+	Loaded [A39_fig_1219382.3.peg.64]
+	Loaded [A39_fig_1219382.3.peg.65]
+	Loaded [A39_fig_1219382.3.peg.66]
+	Loaded [A39_fig_1219382.3.peg.67]
+	Loaded [A39_fig_1219382.3.peg.68]
+	Loaded [A39_fig_1219382.3.peg.69]
+	Loaded [A39_fig_1219382.3.peg.70]
+	Loaded [A39_fig_1219382.3.peg.71]
+	Loaded [A39_fig_1219382.3.peg.72]
+	Loaded [A39_fig_1219382.3.peg.73]
+	Loaded [A39_fig_1219382.3.peg.74]
+	Loaded [A39_fig_1219382.3.peg.75]
+	Loaded [A39_fig_1219382.3.peg.76]
+	Loaded [A39_fig_1219382.3.peg.77]
+	Loaded [A39_fig_1219382.3.peg.78]
+	Loaded [A39_fig_1219382.3.peg.79]
+	Loaded [A39_fig_1219382.3.peg.80]
+	Loaded [A39_fig_1219382.3.peg.81]
+	Loaded [A39_fig_1219382.3.peg.82]
+	Loaded [A39_fig_1219382.3.peg.83]
+	Loaded [A39_fig_1219382.3.peg.84]
+	Loaded [A39_fig_1219382.3.peg.85]
+	Loaded [A39_fig_1219382.3.peg.86]
+	Loaded [A39_fig_1219382.3.peg.87]
+	Loaded [A39_fig_1219382.3.peg.88]
+	Loaded [A39_fig_1219382.3.peg.89]
+	Loaded [A39_fig_1219382.3.peg.90]
+	Loaded [A39_fig_1219382.3.peg.91]
+	Loaded [A39_fig_1219382.3.peg.92]
+	Loaded [A39_fig_1219382.3.peg.93]
+	Loaded [A39_fig_1219382.3.peg.94]
+	Loaded [A39_fig_1219382.3.peg.95]
+	Loaded [A39_fig_1219382.3.peg.96]
+	Loaded [A39_fig_1219382.3.peg.97]
+	Loaded [A39_fig_1219382.3.peg.98]
+	Loaded [A39_fig_1219382.3.peg.99]
+	Loaded [A39_fig_1219382.3.peg.100]
+	Loaded [A39_fig_1219382.3.peg.101]
+	Loaded [A39_fig_1219382.3.peg.102]
+	Loaded [A39_fig_1219382.3.peg.103]
+	Loaded [A39_fig_1219382.3.peg.104]
+	Loaded [A39_fig_1219382.3.peg.105]
+	Loaded [A39_fig_1219382.3.peg.106]
+	Loaded [A39_fig_1219382.3.peg.107]
+	Loaded [A39_fig_1219382.3.peg.108]
+	Loaded [A39_fig_1219382.3.peg.109]
+	Loaded [A39_fig_1219382.3.peg.110]
+	Loaded [A39_fig_1219382.3.peg.111]
+	Loaded [A39_fig_1219382.3.peg.112]
+	Loaded [A39_fig_1219382.3.peg.113]
+	Loaded [A39_fig_1219382.3.peg.114]
+	Loaded [A39_fig_1219382.3.peg.115]
+	Loaded [A39_fig_1219382.3.peg.116]
+	Loaded [A39_fig_1219382.3.peg.117]
+	Loaded [A39_fig_1219382.3.peg.118]
+	Loaded [A39_fig_1219382.3.peg.119]
+	Loaded [A39_fig_1219382.3.peg.120]
+	Loaded [A39_fig_1219382.3.peg.121]
+	Loaded [A39_fig_1219382.3.peg.122]
+	Loaded [A39_fig_1219382.3.peg.123]
+	Loaded [A39_fig_1219382.3.peg.124]
+	Loaded [A39_fig_1219382.3.peg.125]
+	Loaded [A39_fig_1219382.3.peg.126]
+	Loaded [A39_fig_1219382.3.peg.127]
+	Loaded [A39_fig_1219382.3.peg.128]
+	Loaded [A39_fig_1219382.3.peg.129]
+	Loaded [A39_fig_1219382.3.peg.130]
+	Loaded [A39_fig_1219382.3.peg.131]
+	Loaded [A39_fig_1219382.3.peg.132]
+	Loaded [A39_fig_1219382.3.peg.133]
+	Loaded [A39_fig_1219382.3.peg.134]
+	Loaded [A39_fig_1219382.3.peg.135]
+	Loaded [A39_fig_1219382.3.peg.136]
+	Loaded [A39_fig_1219382.3.peg.137]
+	Loaded [A39_fig_1219382.3.peg.138]
+	Loaded [A39_fig_1219382.3.peg.139]
+	Loaded [A39_fig_1219382.3.peg.140]
+	Loaded [A39_fig_1219382.3.peg.141]
+	Loaded [A39_fig_1219382.3.peg.142]
+	Loaded [A39_fig_1219382.3.peg.143]
+	Loaded [A39_fig_1219382.3.peg.144]
+	Loaded [A39_fig_1219382.3.peg.145]
+	Loaded [A39_fig_1219382.3.peg.146]
+	Loaded [A39_fig_1219382.3.peg.147]
+	Loaded [A39_fig_1219382.3.peg.148]
+	Loaded [A39_fig_1219382.3.peg.149]
+	Loaded [A39_fig_1219382.3.peg.150]
+	Loaded [A39_fig_1219382.3.peg.151]
+	Loaded [A39_fig_1219382.3.peg.152]
+	Loaded [A39_fig_1219382.3.peg.153]
+	Loaded [A39_fig_1219382.3.peg.154]
+	Loaded [A39_fig_1219382.3.peg.155]
+	Loaded [A39_fig_1219382.3.peg.156]
+	Loaded [A39_fig_1219382.3.peg.157]
+	Loaded [A39_fig_1219382.3.peg.158]
+	Loaded [A39_fig_1219382.3.peg.159]
+	Loaded [A39_fig_1219382.3.peg.160]
+	Loaded [A39_fig_1219382.3.peg.161]
+	Loaded [A39_fig_1219382.3.peg.162]
+	Loaded [A39_fig_1219382.3.peg.163]
+	Loaded [A39_fig_1219382.3.peg.164]
+	Loaded [A39_fig_1219382.3.peg.165]
+	Loaded [A39_fig_1219382.3.peg.166]
+	Loaded [A39_fig_1219382.3.peg.167]
+	Loaded [A39_fig_1219382.3.peg.168]
+	Loaded [A39_fig_1219382.3.peg.169]
+	Loaded [A39_fig_1219382.3.peg.170]
+	Loaded [A39_fig_1219382.3.peg.171]
+	Loaded [A39_fig_1219382.3.peg.172]
+	Loaded [A39_fig_1219382.3.peg.173]
+	Loaded [A39_fig_1219382.3.peg.174]
+	Loaded [A39_fig_1219382.3.peg.175]
+	Loaded [A39_fig_1219382.3.peg.176]
+	Loaded [A39_fig_1219382.3.peg.177]
+	Loaded [A39_fig_1219382.3.peg.178]
+	Loaded [A39_fig_1219382.3.peg.179]
+	Loaded [A39_fig_1219382.3.peg.180]
+	Loaded [A39_fig_1219382.3.peg.181]
+	Loaded [A39_fig_1219382.3.peg.182]
+	Loaded [A39_fig_1219382.3.peg.183]
+	Loaded [A39_fig_1219382.3.peg.184]
+	Loaded [A39_fig_1219382.3.peg.185]
+	Loaded [A39_fig_1219382.3.peg.186]
+	Loaded [A39_fig_1219382.3.peg.187]
+	Loaded [A39_fig_1219382.3.peg.188]
+	Loaded [A39_fig_1219382.3.peg.189]
+	Loaded [A39_fig_1219382.3.peg.190]
+	Loaded [A39_fig_1219382.3.peg.191]
+	Loaded [A39_fig_1219382.3.peg.192]
+	Loaded [A39_fig_1219382.3.peg.193]
+	Loaded [A39_fig_1219382.3.peg.194]
+	Loaded [A39_fig_1219382.3.peg.195]
+	Loaded [A39_fig_1219382.3.peg.196]
+	Loaded [A39_fig_1219382.3.peg.197]
+	Loaded [A39_fig_1219382.3.peg.198]
+	Loaded [A39_fig_1219382.3.peg.199]
+	Loaded [A39_fig_1219382.3.peg.200]
+	Loaded [A39_fig_1219382.3.peg.201]
+	Loaded [A39_fig_1219382.3.peg.202]
+	Loaded [A39_fig_1219382.3.peg.203]
+	Loaded [A39_fig_1219382.3.peg.204]
+	Loaded [A39_fig_1219382.3.peg.205]
+	Loaded [A39_fig_1219382.3.peg.206]
+	Loaded [A39_fig_1219382.3.peg.207]
+	Loaded [A39_fig_1219382.3.peg.208]
+	Loaded [A39_fig_1219382.3.peg.209]
+	Loaded [A39_fig_1219382.3.peg.210]
+	Loaded [A39_fig_1219382.3.peg.211]
+	Loaded [A39_fig_1219382.3.peg.212]
+	Loaded [A39_fig_1219382.3.peg.213]
+	Loaded [A39_fig_1219382.3.peg.214]
+	Loaded [A39_fig_1219382.3.peg.215]
+	Loaded [A39_fig_1219382.3.peg.216]
+	Loaded [A39_fig_1219382.3.peg.217]
+	Loaded [A39_fig_1219382.3.peg.218]
+	Loaded [A39_fig_1219382.3.peg.219]
+	Loaded [A39_fig_1219382.3.peg.220]
+	Loaded [A39_fig_1219382.3.peg.221]
+	Loaded [A39_fig_1219382.3.peg.222]
+	Loaded [A39_fig_1219382.3.peg.223]
+	Loaded [A39_fig_1219382.3.peg.224]
+	Loaded [A39_fig_1219382.3.peg.225]
+	Loaded [A39_fig_1219382.3.peg.226]
+	Loaded [A39_fig_1219382.3.peg.227]
+	Loaded [A39_fig_1219382.3.peg.228]
+	Loaded [A39_fig_1219382.3.peg.229]
+	Loaded [A39_fig_1219382.3.peg.230]
+	Loaded [A39_fig_1219382.3.peg.231]
+	Loaded [A39_fig_1219382.3.peg.232]
+	Loaded [A39_fig_1219382.3.peg.233]
+	Loaded [A39_fig_1219382.3.peg.234]
+	Loaded [A39_fig_1219382.3.peg.235]
+	Loaded [A39_fig_1219382.3.peg.236]
+	Loaded [A39_fig_1219382.3.peg.237]
+	Loaded [A39_fig_1219382.3.peg.238]
+	Loaded [A39_fig_1219382.3.peg.239]
+	Loaded [A39_fig_1219382.3.peg.240]
+	Loaded [A39_fig_1219382.3.peg.241]
+	Loaded [A39_fig_1219382.3.peg.242]
+	Loaded [A39_fig_1219382.3.peg.243]
+	Loaded [A39_fig_1219382.3.peg.244]
+	Loaded [A39_fig_1219382.3.peg.245]
+	Loaded [A39_fig_1219382.3.peg.246]
+	Loaded [A39_fig_1219382.3.peg.247]
+	Loaded [A39_fig_1219382.3.peg.248]
+	Loaded [A39_fig_1219382.3.peg.249]
+	Loaded [A39_fig_1219382.3.peg.250]
+	Loaded [A39_fig_1219382.3.peg.251]
+	Loaded [A39_fig_1219382.3.peg.252]
+	Loaded [A39_fig_1219382.3.peg.253]
+	Loaded [A39_fig_1219382.3.peg.254]
+	Loaded [A39_fig_1219382.3.peg.255]
+	Loaded [A39_fig_1219382.3.peg.256]
+	Loaded [A39_fig_1219382.3.peg.257]
+	Loaded [A39_fig_1219382.3.peg.258]
+	Loaded [A39_fig_1219382.3.peg.259]
+	Loaded [A39_fig_1219382.3.peg.260]
+	Loaded [A39_fig_1219382.3.peg.261]
+	Loaded [A39_fig_1219382.3.peg.262]
+	Loaded [A39_fig_1219382.3.peg.263]
+	Loaded [A39_fig_1219382.3.peg.264]
+	Loaded [A39_fig_1219382.3.peg.265]
+	Loaded [A39_fig_1219382.3.peg.266]
+	Loaded [A39_fig_1219382.3.peg.267]
+	Loaded [A39_fig_1219382.3.peg.268]
+	Loaded [A39_fig_1219382.3.peg.269]
+	Loaded [A39_fig_1219382.3.peg.270]
+	Loaded [A39_fig_1219382.3.peg.271]
+	Loaded [A39_fig_1219382.3.peg.272]
+	Loaded [A39_fig_1219382.3.peg.273]
+	Loaded [A39_fig_1219382.3.peg.274]
+	Loaded [A39_fig_1219382.3.peg.275]
+	Loaded [A39_fig_1219382.3.peg.276]
+	Loaded [A39_fig_1219382.3.peg.277]
+	Loaded [A39_fig_1219382.3.peg.278]
+	Loaded [A39_fig_1219382.3.peg.279]
+	Loaded [A39_fig_1219382.3.peg.280]
+	Loaded [A39_fig_1219382.3.peg.281]
+	Loaded [A39_fig_1219382.3.peg.282]
+	Loaded [A39_fig_1219382.3.peg.283]
+	Loaded [A39_fig_1219382.3.peg.284]
+	Loaded [A39_fig_1219382.3.peg.285]
+	Loaded [A39_fig_1219382.3.peg.286]
+	Loaded [A39_fig_1219382.3.peg.287]
+	Loaded [A39_fig_1219382.3.peg.288]
+	Loaded [A39_fig_1219382.3.peg.289]
+	Loaded [A39_fig_1219382.3.peg.290]
+	Loaded [A39_fig_1219382.3.peg.291]
+	Loaded [A39_fig_1219382.3.peg.292]
+	Loaded [A39_fig_1219382.3.peg.293]
+	Loaded [A39_fig_1219382.3.peg.294]
+	Loaded [A39_fig_1219382.3.peg.295]
+	Loaded [A39_fig_1219382.3.peg.296]
+	Loaded [A39_fig_1219382.3.peg.297]
+	Loaded [A39_fig_1219382.3.peg.298]
+	Loaded [A39_fig_1219382.3.peg.299]
+	Loaded [A39_fig_1219382.3.peg.300]
+	Loaded [A39_fig_1219382.3.peg.301]
+	Loaded [A39_fig_1219382.3.peg.302]
+	Loaded [A39_fig_1219382.3.peg.303]
+	Loaded [A39_fig_1219382.3.peg.304]
+	Loaded [A39_fig_1219382.3.peg.305]
+	Loaded [A39_fig_1219382.3.peg.306]
+	Loaded [A39_fig_1219382.3.peg.307]
+	Loaded [A39_fig_1219382.3.peg.308]
+	Loaded [A39_fig_1219382.3.peg.309]
+	Loaded [A39_fig_1219382.3.peg.310]
+	Loaded [A39_fig_1219382.3.peg.311]
+	Loaded [A39_fig_1219382.3.peg.312]
+	Loaded [A39_fig_1219382.3.peg.313]
+	Loaded [A39_fig_1219382.3.peg.314]
+	Loaded [A39_fig_1219382.3.peg.315]
+	Loaded [A39_fig_1219382.3.peg.316]
+	Loaded [A39_fig_1219382.3.peg.317]
+	Loaded [A39_fig_1219382.3.peg.318]
+	Loaded [A39_fig_1219382.3.peg.319]
+	Loaded [A39_fig_1219382.3.peg.320]
+	Loaded [A39_fig_1219382.3.peg.321]
+	Loaded [A39_fig_1219382.3.peg.322]
+	Loaded [A39_fig_1219382.3.peg.323]
+	Loaded [A39_fig_1219382.3.peg.324]
+	Loaded [A39_fig_1219382.3.peg.325]
+	Loaded [A39_fig_1219382.3.peg.326]
+	Loaded [A39_fig_1219382.3.peg.327]
+	Loaded [A39_fig_1219382.3.peg.328]
+	Loaded [A39_fig_1219382.3.peg.329]
+	Loaded [A39_fig_1219382.3.peg.330]
+	Loaded [A39_fig_1219382.3.peg.331]
+	Loaded [A39_fig_1219382.3.peg.332]
+	Loaded [A39_fig_1219382.3.peg.333]
+	Loaded [A39_fig_1219382.3.peg.334]
+	Loaded [A39_fig_1219382.3.peg.335]
+	Loaded [A39_fig_1219382.3.peg.336]
+	Loaded [A39_fig_1219382.3.peg.337]
+	Loaded [A39_fig_1219382.3.peg.338]
+	Loaded [A39_fig_1219382.3.peg.339]
+	Loaded [A39_fig_1219382.3.peg.340]
+	Loaded [A39_fig_1219382.3.peg.341]
+	Loaded [A39_fig_1219382.3.peg.342]
+	Loaded [A39_fig_1219382.3.peg.343]
+	Loaded [A39_fig_1219382.3.peg.344]
+	Loaded [A39_fig_1219382.3.peg.345]
+	Loaded [A39_fig_1219382.3.peg.346]
+	Loaded [A39_fig_1219382.3.peg.347]
+	Loaded [A39_fig_1219382.3.peg.348]
+	Loaded [A39_fig_1219382.3.peg.349]
+	Loaded [A39_fig_1219382.3.peg.350]
+	Loaded [A39_fig_1219382.3.peg.351]
+	Loaded [A39_fig_1219382.3.peg.352]
+	Loaded [A39_fig_1219382.3.peg.353]
+	Loaded [A39_fig_1219382.3.peg.354]
+	Loaded [A39_fig_1219382.3.peg.355]
+	Loaded [A39_fig_1219382.3.peg.356]
+	Loaded [A39_fig_1219382.3.peg.357]
+	Loaded [A39_fig_1219382.3.peg.358]
+	Loaded [A39_fig_1219382.3.peg.359]
+	Loaded [A39_fig_1219382.3.peg.360]
+	Loaded [A39_fig_1219382.3.peg.361]
+	Loaded [A39_fig_1219382.3.peg.362]
+	Loaded [A39_fig_1219382.3.peg.363]
+	Loaded [A39_fig_1219382.3.peg.364]
+	Loaded [A39_fig_1219382.3.peg.365]
+	Loaded [A39_fig_1219382.3.peg.366]
+	Loaded [A39_fig_1219382.3.peg.367]
+	Loaded [A39_fig_1219382.3.peg.368]
+	Loaded [A39_fig_1219382.3.peg.369]
+	Loaded [A39_fig_1219382.3.peg.370]
+	Loaded [A39_fig_1219382.3.peg.371]
+	Loaded [A39_fig_1219382.3.peg.372]
+	Loaded [A39_fig_1219382.3.peg.373]
+	Loaded [A39_fig_1219382.3.peg.374]
+	Loaded [A39_fig_1219382.3.peg.375]
+	Loaded [A39_fig_1219382.3.peg.376]
+	Loaded [A39_fig_1219382.3.peg.377]
+	Loaded [A39_fig_1219382.3.peg.378]
+	Loaded [A39_fig_1219382.3.peg.379]
+	Loaded [A39_fig_1219382.3.peg.380]
+	Loaded [A39_fig_1219382.3.peg.381]
+	Loaded [A39_fig_1219382.3.peg.382]
+	Loaded [A39_fig_1219382.3.peg.383]
+	Loaded [A39_fig_1219382.3.peg.384]
+	Loaded [A39_fig_1219382.3.peg.385]
+	Loaded [A39_fig_1219382.3.peg.386]
+	Loaded [A39_fig_1219382.3.peg.387]
+	Loaded [A39_fig_1219382.3.peg.388]
+	Loaded [A39_fig_1219382.3.peg.389]
+	Loaded [A39_fig_1219382.3.peg.390]
+	Loaded [A39_fig_1219382.3.peg.391]
+	Loaded [A39_fig_1219382.3.peg.392]
+	Loaded [A39_fig_1219382.3.peg.393]
+	Loaded [A39_fig_1219382.3.peg.394]
+	Loaded [A39_fig_1219382.3.peg.395]
+	Loaded [A39_fig_1219382.3.peg.396]
+	Loaded [A39_fig_1219382.3.peg.397]
+	Loaded [A39_fig_1219382.3.peg.398]
+	Loaded [A39_fig_1219382.3.peg.399]
+	Loaded [A39_fig_1219382.3.peg.400]
+	Loaded [A39_fig_1219382.3.peg.401]
+	Loaded [A39_fig_1219382.3.peg.402]
+	Loaded [A39_fig_1219382.3.peg.403]
+	Loaded [A39_fig_1219382.3.peg.404]
+	Loaded [A39_fig_1219382.3.peg.405]
+	Loaded [A39_fig_1219382.3.peg.406]
+	Loaded [A39_fig_1219382.3.peg.407]
+	Loaded [A39_fig_1219382.3.peg.408]
+	Loaded [A39_fig_1219382.3.peg.409]
+	Loaded [A39_fig_1219382.3.peg.410]
+	Loaded [A39_fig_1219382.3.peg.411]
+	Loaded [A39_fig_1219382.3.peg.412]
+	Loaded [A39_fig_1219382.3.peg.413]
+	Loaded [A39_fig_1219382.3.peg.414]
+	Loaded [A39_fig_1219382.3.peg.415]
+	Loaded [A39_fig_1219382.3.peg.416]
+	Loaded [A39_fig_1219382.3.peg.417]
+	Loaded [A39_fig_1219382.3.peg.418]
+	Loaded [A39_fig_1219382.3.peg.419]
+	Loaded [A39_fig_1219382.3.peg.420]
+	Loaded [A39_fig_1219382.3.peg.421]
+	Loaded [A39_fig_1219382.3.peg.422]
+	Loaded [A39_fig_1219382.3.peg.423]
+	Loaded [A39_fig_1219382.3.peg.424]
+	Loaded [A39_fig_1219382.3.peg.425]
+	Loaded [A39_fig_1219382.3.peg.426]
+	Loaded [A39_fig_1219382.3.peg.427]
+	Loaded [A39_fig_1219382.3.peg.428]
+	Loaded [A39_fig_1219382.3.peg.429]
+	Loaded [A39_fig_1219382.3.peg.430]
+	Loaded [A39_fig_1219382.3.peg.431]
+	Loaded [A39_fig_1219382.3.peg.432]
+	Loaded [A39_fig_1219382.3.peg.433]
+	Loaded [A39_fig_1219382.3.peg.434]
+	Loaded [A39_fig_1219382.3.peg.435]
+	Loaded [A39_fig_1219382.3.peg.436]
+	Loaded [A39_fig_1219382.3.peg.437]
+	Loaded [A39_fig_1219382.3.peg.438]
+	Loaded [A39_fig_1219382.3.peg.439]
+	Loaded [A39_fig_1219382.3.peg.440]
+	Loaded [A39_fig_1219382.3.peg.441]
+	Loaded [A39_fig_1219382.3.peg.442]
+	Loaded [A39_fig_1219382.3.peg.443]
+	Loaded [A39_fig_1219382.3.peg.444]
+	Loaded [A39_fig_1219382.3.peg.445]
+	Loaded [A39_fig_1219382.3.peg.446]
+	Loaded [A39_fig_1219382.3.peg.447]
+	Loaded [A39_fig_1219382.3.peg.448]
+	Loaded [A39_fig_1219382.3.peg.449]
+	Loaded [A39_fig_1219382.3.peg.450]
+	Loaded [A39_fig_1219382.3.peg.451]
+	Loaded [A39_fig_1219382.3.peg.452]
+	Loaded [A39_fig_1219382.3.peg.453]
+	Loaded [A39_fig_1219382.3.peg.454]
+	Loaded [A39_fig_1219382.3.peg.455]
+	Loaded [A39_fig_1219382.3.peg.456]
+	Loaded [A39_fig_1219382.3.peg.457]
+	Loaded [A39_fig_1219382.3.peg.458]
+	Loaded [A39_fig_1219382.3.peg.459]
+	Loaded [A39_fig_1219382.3.peg.460]
+	Loaded [A39_fig_1219382.3.peg.461]
+	Loaded [A39_fig_1219382.3.peg.462]
+	Loaded [A39_fig_1219382.3.peg.463]
+	Loaded [A39_fig_1219382.3.peg.464]
+	Loaded [A39_fig_1219382.3.peg.465]
+	Loaded [A39_fig_1219382.3.peg.466]
+	Loaded [A39_fig_1219382.3.peg.467]
+	Loaded [A39_fig_1219382.3.peg.468]
+	Loaded [A39_fig_1219382.3.peg.469]
+	Loaded [A39_fig_1219382.3.peg.470]
+	Loaded [A39_fig_1219382.3.peg.471]
+	Loaded [A39_fig_1219382.3.peg.472]
+	Loaded [A39_fig_1219382.3.peg.473]
+	Loaded [A39_fig_1219382.3.peg.474]
+	Loaded [A39_fig_1219382.3.peg.475]
+	Loaded [A39_fig_1219382.3.peg.476]
+	Loaded [A39_fig_1219382.3.peg.477]
+	Loaded [A39_fig_1219382.3.peg.478]
+	Loaded [A39_fig_1219382.3.peg.479]
+	Loaded [A39_fig_1219382.3.peg.480]
+	Loaded [A39_fig_1219382.3.peg.481]
+	Loaded [A39_fig_1219382.3.peg.482]
+	Loaded [A39_fig_1219382.3.peg.483]
+	Loaded [A39_fig_1219382.3.peg.484]
+	Loaded [A39_fig_1219382.3.peg.485]
+	Loaded [A39_fig_1219382.3.peg.486]
+	Loaded [A39_fig_1219382.3.peg.487]
+	Loaded [A39_fig_1219382.3.peg.488]
+	Loaded [A39_fig_1219382.3.peg.489]
+	Loaded [A39_fig_1219382.3.peg.490]
+	Loaded [A39_fig_1219382.3.peg.491]
+	Loaded [A39_fig_1219382.3.peg.492]
+	Loaded [A39_fig_1219382.3.peg.493]
+	Loaded [A39_fig_1219382.3.peg.494]
+	Loaded [A39_fig_1219382.3.peg.495]
+	Loaded [A39_fig_1219382.3.peg.496]
+	Loaded [A39_fig_1219382.3.peg.497]
+	Loaded [A39_fig_1219382.3.peg.498]
+	Loaded [A39_fig_1219382.3.peg.499]
+	Loaded [A39_fig_1219382.3.peg.500]
+	Loaded [A39_fig_1219382.3.peg.501]
+	Loaded [A39_fig_1219382.3.peg.502]
+	Loaded [A39_fig_1219382.3.peg.503]
+	Loaded [A39_fig_1219382.3.peg.504]
+	Loaded [A39_fig_1219382.3.peg.505]
+	Loaded [A39_fig_1219382.3.peg.506]
+	Loaded [A39_fig_1219382.3.peg.507]
+	Loaded [A39_fig_1219382.3.peg.508]
+	Loaded [A39_fig_1219382.3.peg.509]
+	Loaded [A39_fig_1219382.3.peg.510]
+	Loaded [A39_fig_1219382.3.peg.511]
+	Loaded [A39_fig_1219382.3.peg.512]
+	Loaded [A39_fig_1219382.3.peg.513]
+	Loaded [A39_fig_1219382.3.peg.514]
+	Loaded [A39_fig_1219382.3.peg.515]
+	Loaded [A39_fig_1219382.3.peg.516]
+	Loaded [A39_fig_1219382.3.peg.517]
+	Loaded [A39_fig_1219382.3.peg.518]
+	Loaded [A39_fig_1219382.3.peg.519]
+	Loaded [A39_fig_1219382.3.peg.520]
+	Loaded [A39_fig_1219382.3.peg.521]
+	Loaded [A39_fig_1219382.3.peg.522]
+	Loaded [A39_fig_1219382.3.peg.523]
+	Loaded [A39_fig_1219382.3.peg.524]
+	Loaded [A39_fig_1219382.3.peg.525]
+	Loaded [A39_fig_1219382.3.peg.526]
+	Loaded [A39_fig_1219382.3.peg.527]
+	Loaded [A39_fig_1219382.3.peg.528]
+	Loaded [A39_fig_1219382.3.peg.529]
+	Loaded [A39_fig_1219382.3.peg.530]
+	Loaded [A39_fig_1219382.3.peg.531]
+	Loaded [A39_fig_1219382.3.peg.532]
+	Loaded [A39_fig_1219382.3.peg.533]
+	Loaded [A39_fig_1219382.3.peg.534]
+	Loaded [A39_fig_1219382.3.peg.535]
+	Loaded [A39_fig_1219382.3.peg.536]
+	Loaded [A39_fig_1219382.3.peg.537]
+	Loaded [A39_fig_1219382.3.peg.538]
+	Loaded [A39_fig_1219382.3.peg.539]
+	Loaded [A39_fig_1219382.3.peg.540]
+	Loaded [A39_fig_1219382.3.peg.541]
+	Loaded [A39_fig_1219382.3.peg.542]
+	Loaded [A39_fig_1219382.3.peg.543]
+	Loaded [A39_fig_1219382.3.peg.544]
+	Loaded [A39_fig_1219382.3.peg.545]
+	Loaded [A39_fig_1219382.3.peg.546]
+	Loaded [A39_fig_1219382.3.peg.547]
+	Loaded [A39_fig_1219382.3.peg.548]
+	Loaded [A39_fig_1219382.3.peg.549]
+	Loaded [A39_fig_1219382.3.peg.550]
+	Loaded [A39_fig_1219382.3.peg.551]
+	Loaded [A39_fig_1219382.3.peg.552]
+	Loaded [A39_fig_1219382.3.peg.553]
+	Loaded [A39_fig_1219382.3.peg.554]
+	Loaded [A39_fig_1219382.3.peg.555]
+	Loaded [A39_fig_1219382.3.peg.556]
+	Loaded [A39_fig_1219382.3.peg.557]
+	Loaded [A39_fig_1219382.3.peg.558]
+	Loaded [A39_fig_1219382.3.peg.559]
+	Loaded [A39_fig_1219382.3.peg.560]
+	Loaded [A39_fig_1219382.3.peg.561]
+	Loaded [A39_fig_1219382.3.peg.562]
+	Loaded [A39_fig_1219382.3.peg.563]
+	Loaded [A39_fig_1219382.3.peg.564]
+	Loaded [A39_fig_1219382.3.peg.565]
+	Loaded [A39_fig_1219382.3.peg.566]
+	Loaded [A39_fig_1219382.3.peg.567]
+	Loaded [A39_fig_1219382.3.peg.568]
+	Loaded [A39_fig_1219382.3.peg.569]
+	Loaded [A39_fig_1219382.3.peg.570]
+	Loaded [A39_fig_1219382.3.peg.571]
+	Loaded [A39_fig_1219382.3.peg.572]
+	Loaded [A39_fig_1219382.3.peg.573]
+	Loaded [A39_fig_1219382.3.peg.574]
+	Loaded [A39_fig_1219382.3.peg.575]
+	Loaded [A39_fig_1219382.3.peg.576]
+	Loaded [A39_fig_1219382.3.peg.577]
+	Loaded [A39_fig_1219382.3.peg.578]
+	Loaded [A39_fig_1219382.3.peg.579]
+	Loaded [A39_fig_1219382.3.peg.580]
+	Loaded [A39_fig_1219382.3.peg.581]
+	Loaded [A39_fig_1219382.3.peg.582]
+	Loaded [A39_fig_1219382.3.peg.583]
+	Loaded [A39_fig_1219382.3.peg.584]
+	Loaded [A39_fig_1219382.3.peg.585]
+	Loaded [A39_fig_1219382.3.peg.586]
+	Loaded [A39_fig_1219382.3.peg.587]
+	Loaded [A39_fig_1219382.3.peg.588]
+	Loaded [A39_fig_1219382.3.peg.589]
+	Loaded [A39_fig_1219382.3.peg.590]
+	Loaded [A39_fig_1219382.3.peg.591]
+	Loaded [A39_fig_1219382.3.peg.592]
+	Loaded [A39_fig_1219382.3.peg.593]
+	Loaded [A39_fig_1219382.3.peg.594]
+	Loaded [A39_fig_1219382.3.peg.595]
+	Loaded [A39_fig_1219382.3.peg.596]
+	Loaded [A39_fig_1219382.3.peg.597]
+	Loaded [A39_fig_1219382.3.peg.598]
+	Loaded [A39_fig_1219382.3.peg.599]
+	Loaded [A39_fig_1219382.3.peg.600]
+	Loaded [A39_fig_1219382.3.peg.601]
+	Loaded [A39_fig_1219382.3.peg.602]
+	Loaded [A39_fig_1219382.3.peg.603]
+	Loaded [A39_fig_1219382.3.peg.604]
+	Loaded [A39_fig_1219382.3.peg.605]
+	Loaded [A39_fig_1219382.3.peg.606]
+	Loaded [A39_fig_1219382.3.peg.607]
+	Loaded [A39_fig_1219382.3.peg.608]
+	Loaded [A39_fig_1219382.3.peg.609]
+	Loaded [A39_fig_1219382.3.peg.610]
+	Loaded [A39_fig_1219382.3.peg.611]
+	Loaded [A39_fig_1219382.3.peg.612]
+	Loaded [A39_fig_1219382.3.peg.613]
+	Loaded [A39_fig_1219382.3.peg.614]
+	Loaded [A39_fig_1219382.3.peg.615]
+	Loaded [A39_fig_1219382.3.peg.616]
+	Loaded [A39_fig_1219382.3.peg.617]
+	Loaded [A39_fig_1219382.3.peg.618]
+	Loaded [A39_fig_1219382.3.peg.619]
+	Loaded [A39_fig_1219382.3.peg.620]
+	Loaded [A39_fig_1219382.3.peg.621]
+	Loaded [A39_fig_1219382.3.peg.622]
+	Loaded [A39_fig_1219382.3.peg.623]
+	Loaded [A39_fig_1219382.3.peg.624]
+	Loaded [A39_fig_1219382.3.peg.625]
+	Loaded [A39_fig_1219382.3.peg.626]
+	Loaded [A39_fig_1219382.3.peg.627]
+	Loaded [A39_fig_1219382.3.peg.628]
+	Loaded [A39_fig_1219382.3.peg.629]
+	Loaded [A39_fig_1219382.3.peg.630]
+	Loaded [A39_fig_1219382.3.peg.631]
+	Loaded [A39_fig_1219382.3.peg.632]
+	Loaded [A39_fig_1219382.3.peg.633]
+	Loaded [A39_fig_1219382.3.peg.634]
+	Loaded [A39_fig_1219382.3.peg.635]
+	Loaded [A39_fig_1219382.3.peg.636]
+	Loaded [A39_fig_1219382.3.peg.637]
+	Loaded [A39_fig_1219382.3.peg.638]
+	Loaded [A39_fig_1219382.3.peg.639]
+	Loaded [A39_fig_1219382.3.peg.640]
+	Loaded [A39_fig_1219382.3.peg.641]
+	Loaded [A39_fig_1219382.3.peg.642]
+	Loaded [A39_fig_1219382.3.peg.643]
+	Loaded [A39_fig_1219382.3.peg.644]
+	Loaded [A39_fig_1219382.3.peg.645]
+	Loaded [A39_fig_1219382.3.peg.646]
+	Loaded [A39_fig_1219382.3.peg.647]
+	Loaded [A39_fig_1219382.3.peg.648]
+	Loaded [A39_fig_1219382.3.peg.649]
+	Loaded [A39_fig_1219382.3.peg.650]
+	Loaded [A39_fig_1219382.3.peg.651]
+	Loaded [A39_fig_1219382.3.peg.652]
+	Loaded [A39_fig_1219382.3.peg.653]
+	Loaded [A39_fig_1219382.3.peg.654]
+	Loaded [A39_fig_1219382.3.peg.655]
+	Loaded [A39_fig_1219382.3.peg.656]
+	Loaded [A39_fig_1219382.3.peg.657]
+	Loaded [A39_fig_1219382.3.peg.658]
+	Loaded [A39_fig_1219382.3.peg.659]
+	Loaded [A39_fig_1219382.3.peg.660]
+	Loaded [A39_fig_1219382.3.peg.661]
+	Loaded [A39_fig_1219382.3.peg.662]
+	Loaded [A39_fig_1219382.3.peg.663]
+	Loaded [A39_fig_1219382.3.peg.664]
+	Loaded [A39_fig_1219382.3.peg.665]
+	Loaded [A39_fig_1219382.3.peg.666]
+	Loaded [A39_fig_1219382.3.peg.667]
+	Loaded [A39_fig_1219382.3.peg.668]
+	Loaded [A39_fig_1219382.3.peg.669]
+	Loaded [A39_fig_1219382.3.peg.670]
+	Loaded [A39_fig_1219382.3.peg.671]
+	Loaded [A39_fig_1219382.3.peg.672]
+	Loaded [A39_fig_1219382.3.peg.673]
+	Loaded [A39_fig_1219382.3.peg.674]
+	Loaded [A39_fig_1219382.3.peg.675]
+	Loaded [A39_fig_1219382.3.peg.676]
+	Loaded [A39_fig_1219382.3.peg.677]
+	Loaded [A39_fig_1219382.3.peg.678]
+	Loaded [A39_fig_1219382.3.peg.679]
+	Loaded [A39_fig_1219382.3.peg.680]
+	Loaded [A39_fig_1219382.3.peg.681]
+	Loaded [A39_fig_1219382.3.peg.682]
+	Loaded [A39_fig_1219382.3.peg.683]
+	Loaded [A39_fig_1219382.3.peg.684]
+	Loaded [A39_fig_1219382.3.peg.685]
+	Loaded [A39_fig_1219382.3.peg.686]
+	Loaded [A39_fig_1219382.3.peg.687]
+	Loaded [A39_fig_1219382.3.peg.688]
+	Loaded [A39_fig_1219382.3.peg.689]
+	Loaded [A39_fig_1219382.3.peg.690]
+	Loaded [A39_fig_1219382.3.peg.691]
+	Loaded [A39_fig_1219382.3.peg.692]
+	Loaded [A39_fig_1219382.3.peg.693]
+	Loaded [A39_fig_1219382.3.peg.694]
+	Loaded [A39_fig_1219382.3.peg.695]
+	Loaded [A39_fig_1219382.3.peg.696]
+	Loaded [A39_fig_1219382.3.peg.697]
+	Loaded [A39_fig_1219382.3.peg.698]
+	Loaded [A39_fig_1219382.3.peg.699]
+	Loaded [A39_fig_1219382.3.peg.700]
+	Loaded [A39_fig_1219382.3.peg.701]
+	Loaded [A39_fig_1219382.3.peg.702]
+	Loaded [A39_fig_1219382.3.peg.703]
+	Loaded [A39_fig_1219382.3.peg.704]
+	Loaded [A39_fig_1219382.3.peg.705]
+	Loaded [A39_fig_1219382.3.peg.706]
+	Loaded [A39_fig_1219382.3.peg.707]
+	Loaded [A39_fig_1219382.3.peg.708]
+	Loaded [A39_fig_1219382.3.peg.709]
+	Loaded [A39_fig_1219382.3.peg.710]
+	Loaded [A39_fig_1219382.3.peg.711]
+	Loaded [A39_fig_1219382.3.peg.712]
+	Loaded [A39_fig_1219382.3.peg.713]
+	Loaded [A39_fig_1219382.3.peg.714]
+	Loaded [A39_fig_1219382.3.peg.715]
+	Loaded [A39_fig_1219382.3.peg.716]
+	Loaded [A39_fig_1219382.3.peg.717]
+	Loaded [A39_fig_1219382.3.peg.718]
+	Loaded [A39_fig_1219382.3.peg.719]
+	Loaded [A39_fig_1219382.3.peg.720]
+	Loaded [A39_fig_1219382.3.peg.721]
+	Loaded [A39_fig_1219382.3.peg.722]
+	Loaded [A39_fig_1219382.3.peg.723]
+	Loaded [A39_fig_1219382.3.peg.724]
+	Loaded [A39_fig_1219382.3.peg.725]
+	Loaded [A39_fig_1219382.3.peg.726]
+	Loaded [A39_fig_1219382.3.peg.727]
+	Loaded [A39_fig_1219382.3.peg.728]
+	Loaded [A39_fig_1219382.3.peg.729]
+	Loaded [A39_fig_1219382.3.peg.730]
+	Loaded [A39_fig_1219382.3.peg.731]
+	Loaded [A39_fig_1219382.3.peg.732]
+	Loaded [A39_fig_1219382.3.peg.733]
+	Loaded [A39_fig_1219382.3.peg.734]
+	Loaded [A39_fig_1219382.3.peg.735]
+	Loaded [A39_fig_1219382.3.peg.736]
+	Loaded [A39_fig_1219382.3.peg.737]
+	Loaded [A39_fig_1219382.3.peg.738]
+	Loaded [A39_fig_1219382.3.peg.739]
+	Loaded [A39_fig_1219382.3.peg.740]
+	Loaded [A39_fig_1219382.3.peg.741]
+	Loaded [A39_fig_1219382.3.peg.742]
+	Loaded [A39_fig_1219382.3.peg.743]
+	Loaded [A39_fig_1219382.3.peg.744]
+	Loaded [A39_fig_1219382.3.peg.745]
+	Loaded [A39_fig_1219382.3.peg.746]
+	Loaded [A39_fig_1219382.3.peg.747]
+	Loaded [A39_fig_1219382.3.peg.748]
+	Loaded [A39_fig_1219382.3.peg.749]
+	Loaded [A39_fig_1219382.3.peg.750]
+	Loaded [A39_fig_1219382.3.peg.751]
+	Loaded [A39_fig_1219382.3.peg.752]
+	Loaded [A39_fig_1219382.3.peg.753]
+	Loaded [A39_fig_1219382.3.peg.754]
+	Loaded [A39_fig_1219382.3.peg.755]
+	Loaded [A39_fig_1219382.3.peg.756]
+	Loaded [A39_fig_1219382.3.peg.757]
+	Loaded [A39_fig_1219382.3.peg.758]
+	Loaded [A39_fig_1219382.3.peg.759]
+	Loaded [A39_fig_1219382.3.peg.760]
+	Loaded [A39_fig_1219382.3.peg.761]
+	Loaded [A39_fig_1219382.3.peg.762]
+	Loaded [A39_fig_1219382.3.peg.763]
+	Loaded [A39_fig_1219382.3.peg.764]
+	Loaded [A39_fig_1219382.3.peg.765]
+	Loaded [A39_fig_1219382.3.peg.766]
+	Loaded [A39_fig_1219382.3.peg.767]
+	Loaded [A39_fig_1219382.3.peg.768]
+	Loaded [A39_fig_1219382.3.peg.769]
+	Loaded [A39_fig_1219382.3.peg.770]
+	Loaded [A39_fig_1219382.3.peg.771]
+	Loaded [A39_fig_1219382.3.peg.772]
+	Loaded [A39_fig_1219382.3.peg.773]
+	Loaded [A39_fig_1219382.3.peg.774]
+	Loaded [A39_fig_1219382.3.peg.775]
+	Loaded [A39_fig_1219382.3.peg.776]
+	Loaded [A39_fig_1219382.3.peg.777]
+	Loaded [A39_fig_1219382.3.peg.778]
+	Loaded [A39_fig_1219382.3.peg.779]
+	Loaded [A39_fig_1219382.3.peg.780]
+	Loaded [A39_fig_1219382.3.peg.781]
+	Loaded [A39_fig_1219382.3.peg.782]
+	Loaded [A39_fig_1219382.3.peg.783]
+	Loaded [A39_fig_1219382.3.peg.784]
+	Loaded [A39_fig_1219382.3.peg.785]
+	Loaded [A39_fig_1219382.3.peg.786]
+	Loaded [A39_fig_1219382.3.peg.787]
+	Loaded [A39_fig_1219382.3.peg.788]
+	Loaded [A39_fig_1219382.3.peg.789]
+	Loaded [A39_fig_1219382.3.peg.790]
+	Loaded [A39_fig_1219382.3.peg.791]
+	Loaded [A39_fig_1219382.3.peg.792]
+	Loaded [A39_fig_1219382.3.peg.793]
+	Loaded [A39_fig_1219382.3.peg.794]
+	Loaded [A39_fig_1219382.3.peg.795]
+	Loaded [A39_fig_1219382.3.peg.796]
+	Loaded [A39_fig_1219382.3.peg.797]
+	Loaded [A39_fig_1219382.3.peg.798]
+	Loaded [A39_fig_1219382.3.peg.799]
+	Loaded [A39_fig_1219382.3.peg.800]
+	Loaded [A39_fig_1219382.3.peg.801]
+	Loaded [A39_fig_1219382.3.peg.802]
+	Loaded [A39_fig_1219382.3.peg.803]
+	Loaded [A39_fig_1219382.3.peg.804]
+	Loaded [A39_fig_1219382.3.peg.805]
+	Loaded [A39_fig_1219382.3.peg.806]
+	Loaded [A39_fig_1219382.3.peg.807]
+	Loaded [A39_fig_1219382.3.peg.808]
+	Loaded [A39_fig_1219382.3.peg.809]
+	Loaded [A39_fig_1219382.3.peg.810]
+	Loaded [A39_fig_1219382.3.peg.811]
+	Loaded [A39_fig_1219382.3.peg.812]
+	Loaded [A39_fig_1219382.3.peg.813]
+	Loaded [A39_fig_1219382.3.peg.814]
+	Loaded [A39_fig_1219382.3.peg.815]
+	Loaded [A39_fig_1219382.3.peg.816]
+	Loaded [A39_fig_1219382.3.peg.817]
+	Loaded [A39_fig_1219382.3.peg.818]
+	Loaded [A39_fig_1219382.3.peg.819]
+	Loaded [A39_fig_1219382.3.peg.820]
+	Loaded [A39_fig_1219382.3.peg.821]
+	Loaded [A39_fig_1219382.3.peg.822]
+	Loaded [A39_fig_1219382.3.peg.823]
+	Loaded [A39_fig_1219382.3.peg.824]
+	Loaded [A39_fig_1219382.3.peg.825]
+	Loaded [A39_fig_1219382.3.peg.826]
+	Loaded [A39_fig_1219382.3.peg.827]
+	Loaded [A39_fig_1219382.3.peg.828]
+	Loaded [A39_fig_1219382.3.peg.829]
+	Loaded [A39_fig_1219382.3.peg.830]
+	Loaded [A39_fig_1219382.3.peg.831]
+	Loaded [A39_fig_1219382.3.peg.832]
+	Loaded [A39_fig_1219382.3.peg.833]
+	Loaded [A39_fig_1219382.3.peg.834]
+	Loaded [A39_fig_1219382.3.peg.835]
+	Loaded [A39_fig_1219382.3.peg.836]
+	Loaded [A39_fig_1219382.3.peg.837]
+	Loaded [A39_fig_1219382.3.peg.838]
+	Loaded [A39_fig_1219382.3.peg.839]
+	Loaded [A39_fig_1219382.3.peg.840]
+	Loaded [A39_fig_1219382.3.peg.841]
+	Loaded [A39_fig_1219382.3.peg.842]
+	Loaded [A39_fig_1219382.3.peg.843]
+	Loaded [A39_fig_1219382.3.peg.844]
+	Loaded [A39_fig_1219382.3.peg.845]
+	Loaded [A39_fig_1219382.3.peg.846]
+	Loaded [A39_fig_1219382.3.peg.847]
+	Loaded [A39_fig_1219382.3.peg.848]
+	Loaded [A39_fig_1219382.3.peg.849]
+	Loaded [A39_fig_1219382.3.peg.850]
+	Loaded [A39_fig_1219382.3.peg.851]
+	Loaded [A39_fig_1219382.3.peg.852]
+	Loaded [A39_fig_1219382.3.peg.853]
+	Loaded [A39_fig_1219382.3.peg.854]
+	Loaded [A39_fig_1219382.3.peg.855]
+	Loaded [A39_fig_1219382.3.peg.856]
+	Loaded [A39_fig_1219382.3.peg.857]
+	Loaded [A39_fig_1219382.3.peg.858]
+	Loaded [A39_fig_1219382.3.peg.859]
+	Loaded [A39_fig_1219382.3.peg.860]
+	Loaded [A39_fig_1219382.3.peg.861]
+	Loaded [A39_fig_1219382.3.peg.862]
+	Loaded [A39_fig_1219382.3.peg.863]
+	Loaded [A39_fig_1219382.3.peg.864]
+	Loaded [A39_fig_1219382.3.peg.865]
+	Loaded [A39_fig_1219382.3.peg.866]
+	Loaded [A39_fig_1219382.3.peg.867]
+	Loaded [A39_fig_1219382.3.peg.868]
+	Loaded [A39_fig_1219382.3.peg.869]
+	Loaded [A39_fig_1219382.3.peg.870]
+	Loaded [A39_fig_1219382.3.peg.871]
+	Loaded [A39_fig_1219382.3.peg.872]
+	Loaded [A39_fig_1219382.3.peg.873]
+	Loaded [A39_fig_1219382.3.peg.874]
+	Loaded [A39_fig_1219382.3.peg.875]
+	Loaded [A39_fig_1219382.3.peg.876]
+	Loaded [A39_fig_1219382.3.peg.877]
+	Loaded [A39_fig_1219382.3.peg.878]
+	Loaded [A39_fig_1219382.3.peg.879]
+	Loaded [A39_fig_1219382.3.peg.880]
+	Loaded [A39_fig_1219382.3.peg.881]
+	Loaded [A39_fig_1219382.3.peg.882]
+	Loaded [A39_fig_1219382.3.peg.883]
+	Loaded [A39_fig_1219382.3.peg.884]
+	Loaded [A39_fig_1219382.3.peg.885]
+	Loaded [A39_fig_1219382.3.peg.886]
+	Loaded [A39_fig_1219382.3.peg.887]
+	Loaded [A39_fig_1219382.3.peg.888]
+	Loaded [A39_fig_1219382.3.peg.889]
+	Loaded [A39_fig_1219382.3.peg.890]
+	Loaded [A39_fig_1219382.3.peg.891]
+	Loaded [A39_fig_1219382.3.peg.892]
+	Loaded [A39_fig_1219382.3.peg.893]
+	Loaded [A39_fig_1219382.3.peg.894]
+	Loaded [A39_fig_1219382.3.peg.895]
+	Loaded [A39_fig_1219382.3.peg.896]
+	Loaded [A39_fig_1219382.3.peg.897]
+	Loaded [A39_fig_1219382.3.peg.898]
+	Loaded [A39_fig_1219382.3.peg.899]
+	Loaded [A39_fig_1219382.3.peg.900]
+	Loaded [A39_fig_1219382.3.peg.901]
+	Loaded [A39_fig_1219382.3.peg.902]
+	Loaded [A39_fig_1219382.3.peg.903]
+	Loaded [A39_fig_1219382.3.peg.904]
+	Loaded [A39_fig_1219382.3.peg.905]
+	Loaded [A39_fig_1219382.3.peg.906]
+	Loaded [A39_fig_1219382.3.peg.907]
+	Loaded [A39_fig_1219382.3.peg.908]
+	Loaded [A39_fig_1219382.3.peg.909]
+	Loaded [A39_fig_1219382.3.peg.910]
+	Loaded [A39_fig_1219382.3.peg.911]
+	Loaded [A39_fig_1219382.3.peg.912]
+	Loaded [A39_fig_1219382.3.peg.913]
+	Loaded [A39_fig_1219382.3.peg.914]
+	Loaded [A39_fig_1219382.3.peg.915]
+	Loaded [A39_fig_1219382.3.peg.916]
+	Loaded [A39_fig_1219382.3.peg.917]
+	Loaded [A39_fig_1219382.3.peg.918]
+	Loaded [A39_fig_1219382.3.peg.919]
+	Loaded [A39_fig_1219382.3.peg.920]
+	Loaded [A39_fig_1219382.3.peg.921]
+	Loaded [A39_fig_1219382.3.peg.922]
+	Loaded [A39_fig_1219382.3.peg.923]
+	Loaded [A39_fig_1219382.3.peg.924]
+	Loaded [A39_fig_1219382.3.peg.925]
+	Loaded [A39_fig_1219382.3.peg.926]
+	Loaded [A39_fig_1219382.3.peg.927]
+	Loaded [A39_fig_1219382.3.peg.928]
+	Loaded [A39_fig_1219382.3.peg.929]
+	Loaded [A39_fig_1219382.3.peg.930]
+	Loaded [A39_fig_1219382.3.peg.931]
+	Loaded [A39_fig_1219382.3.peg.932]
+	Loaded [A39_fig_1219382.3.peg.933]
+	Loaded [A39_fig_1219382.3.peg.934]
+	Loaded [A39_fig_1219382.3.peg.935]
+	Loaded [A39_fig_1219382.3.peg.936]
+	Loaded [A39_fig_1219382.3.peg.937]
+	Loaded [A39_fig_1219382.3.peg.938]
+	Loaded [A39_fig_1219382.3.peg.939]
+	Loaded [A39_fig_1219382.3.peg.940]
+	Loaded [A39_fig_1219382.3.peg.941]
+	Loaded [A39_fig_1219382.3.peg.942]
+	Loaded [A39_fig_1219382.3.peg.943]
+	Loaded [A39_fig_1219382.3.peg.944]
+	Loaded [A39_fig_1219382.3.peg.945]
+	Loaded [A39_fig_1219382.3.peg.946]
+	Loaded [A39_fig_1219382.3.peg.947]
+	Loaded [A39_fig_1219382.3.peg.948]
+	Loaded [A39_fig_1219382.3.peg.949]
+	Loaded [A39_fig_1219382.3.peg.950]
+	Loaded [A39_fig_1219382.3.peg.951]
+	Loaded [A39_fig_1219382.3.peg.952]
+	Loaded [A39_fig_1219382.3.peg.953]
+	Loaded [A39_fig_1219382.3.peg.954]
+	Loaded [A39_fig_1219382.3.peg.955]
+	Loaded [A39_fig_1219382.3.peg.956]
+	Loaded [A39_fig_1219382.3.peg.957]
+	Loaded [A39_fig_1219382.3.peg.958]
+	Loaded [A39_fig_1219382.3.peg.959]
+	Loaded [A39_fig_1219382.3.peg.960]
+	Loaded [A39_fig_1219382.3.peg.961]
+	Loaded [A39_fig_1219382.3.peg.962]
+	Loaded [A39_fig_1219382.3.peg.963]
+	Loaded [A39_fig_1219382.3.peg.964]
+	Loaded [A39_fig_1219382.3.peg.965]
+	Loaded [A39_fig_1219382.3.peg.966]
+	Loaded [A39_fig_1219382.3.peg.967]
+	Loaded [A39_fig_1219382.3.peg.968]
+	Loaded [A39_fig_1219382.3.peg.969]
+	Loaded [A39_fig_1219382.3.peg.970]
+	Loaded [A39_fig_1219382.3.peg.971]
+	Loaded [A39_fig_1219382.3.peg.972]
+	Loaded [A39_fig_1219382.3.peg.973]
+	Loaded [A39_fig_1219382.3.peg.974]
+	Loaded [A39_fig_1219382.3.peg.975]
+	Loaded [A39_fig_1219382.3.peg.976]
+	Loaded [A39_fig_1219382.3.peg.977]
+	Loaded [A39_fig_1219382.3.peg.978]
+	Loaded [A39_fig_1219382.3.peg.979]
+	Loaded [A39_fig_1219382.3.peg.980]
+	Loaded [A39_fig_1219382.3.peg.981]
+	Loaded [A39_fig_1219382.3.peg.982]
+	Loaded [A39_fig_1219382.3.peg.983]
+	Loaded [A39_fig_1219382.3.peg.984]
+	Loaded [A39_fig_1219382.3.peg.985]
+	Loaded [A39_fig_1219382.3.peg.986]
+	Loaded [A39_fig_1219382.3.peg.987]
+	Loaded [A39_fig_1219382.3.peg.988]
+	Loaded [A39_fig_1219382.3.peg.989]
+	Loaded [A39_fig_1219382.3.peg.990]
+	Loaded [A39_fig_1219382.3.peg.991]
+	Loaded [A39_fig_1219382.3.peg.992]
+	Loaded [A39_fig_1219382.3.peg.993]
+	Loaded [A39_fig_1219382.3.peg.994]
+	Loaded [A39_fig_1219382.3.peg.995]
+	Loaded [A39_fig_1219382.3.peg.996]
+	Loaded [A39_fig_1219382.3.peg.997]
+	Loaded [A39_fig_1219382.3.peg.998]
+	Loaded [A39_fig_1219382.3.peg.999]
+	Loaded [A39_fig_1219382.3.peg.1000]
+	Loaded [A39_fig_1219382.3.peg.1001]
+	Loaded [A39_fig_1219382.3.peg.1002]
+	Loaded [A39_fig_1219382.3.peg.1003]
+	Loaded [A39_fig_1219382.3.peg.1004]
+	Loaded [A39_fig_1219382.3.peg.1005]
+	Loaded [A39_fig_1219382.3.peg.1006]
+	Loaded [A39_fig_1219382.3.peg.1007]
+	Loaded [A39_fig_1219382.3.peg.1008]
+	Loaded [A39_fig_1219382.3.peg.1009]
+	Loaded [A39_fig_1219382.3.peg.1010]
+	Loaded [A39_fig_1219382.3.peg.1011]
+	Loaded [A39_fig_1219382.3.peg.1012]
+	Loaded [A39_fig_1219382.3.peg.1013]
+	Loaded [A39_fig_1219382.3.peg.1014]
+	Loaded [A39_fig_1219382.3.peg.1015]
+	Loaded [A39_fig_1219382.3.peg.1016]
+	Loaded [A39_fig_1219382.3.peg.1017]
+	Loaded [A39_fig_1219382.3.peg.1018]
+	Loaded [A39_fig_1219382.3.peg.1019]
+	Loaded [A39_fig_1219382.3.peg.1020]
+	Loaded [A39_fig_1219382.3.peg.1021]
+	Loaded [A39_fig_1219382.3.peg.1022]
+	Loaded [A39_fig_1219382.3.peg.1023]
+	Loaded [A39_fig_1219382.3.peg.1024]
+	Loaded [A39_fig_1219382.3.peg.1025]
+	Loaded [A39_fig_1219382.3.peg.1026]
+	Loaded [A39_fig_1219382.3.peg.1027]
+	Loaded [A39_fig_1219382.3.peg.1028]
+	Loaded [A39_fig_1219382.3.peg.1029]
+	Loaded [A39_fig_1219382.3.peg.1030]
+	Loaded [A39_fig_1219382.3.peg.1031]
+	Loaded [A39_fig_1219382.3.peg.1032]
+	Loaded [A39_fig_1219382.3.peg.1033]
+	Loaded [A39_fig_1219382.3.peg.1034]
+	Loaded [A39_fig_1219382.3.peg.1035]
+	Loaded [A39_fig_1219382.3.peg.1036]
+	Loaded [A39_fig_1219382.3.peg.1037]
+	Loaded [A39_fig_1219382.3.peg.1038]
+	Loaded [A39_fig_1219382.3.peg.1039]
+	Loaded [A39_fig_1219382.3.peg.1040]
+	Loaded [A39_fig_1219382.3.peg.1041]
+	Loaded [A39_fig_1219382.3.peg.1042]
+	Loaded [A39_fig_1219382.3.peg.1043]
+	Loaded [A39_fig_1219382.3.peg.1044]
+	Loaded [A39_fig_1219382.3.peg.1045]
+	Loaded [A39_fig_1219382.3.peg.1046]
+	Loaded [A39_fig_1219382.3.peg.1047]
+	Loaded [A39_fig_1219382.3.peg.1048]
+	Loaded [A39_fig_1219382.3.peg.1049]
+	Loaded [A39_fig_1219382.3.peg.1050]
+	Loaded [A39_fig_1219382.3.peg.1051]
+	Loaded [A39_fig_1219382.3.peg.1052]
+	Loaded [A39_fig_1219382.3.peg.1053]
+	Loaded [A39_fig_1219382.3.peg.1054]
+	Loaded [A39_fig_1219382.3.peg.1055]
+	Loaded [A39_fig_1219382.3.peg.1056]
+	Loaded [A39_fig_1219382.3.peg.1057]
+	Loaded [A39_fig_1219382.3.peg.1058]
+	Loaded [A39_fig_1219382.3.peg.1059]
+	Loaded [A39_fig_1219382.3.peg.1060]
+	Loaded [A39_fig_1219382.3.peg.1061]
+	Loaded [A39_fig_1219382.3.peg.1062]
+	Loaded [A39_fig_1219382.3.peg.1063]
+	Loaded [A39_fig_1219382.3.peg.1064]
+	Loaded [A39_fig_1219382.3.peg.1065]
+	Loaded [A39_fig_1219382.3.peg.1066]
+	Loaded [A39_fig_1219382.3.peg.1067]
+	Loaded [A39_fig_1219382.3.peg.1068]
+	Loaded [A39_fig_1219382.3.peg.1069]
+	Loaded [A39_fig_1219382.3.peg.1070]
+	Loaded [A39_fig_1219382.3.peg.1071]
+	Loaded [A39_fig_1219382.3.peg.1072]
+	Loaded [A39_fig_1219382.3.peg.1073]
+	Loaded [A39_fig_1219382.3.peg.1074]
+	Loaded [A39_fig_1219382.3.peg.1075]
+	Loaded [A39_fig_1219382.3.peg.1076]
+	Loaded [A39_fig_1219382.3.peg.1077]
+	Loaded [A39_fig_1219382.3.peg.1078]
+	Loaded [A39_fig_1219382.3.peg.1079]
+	Loaded [A39_fig_1219382.3.peg.1080]
+	Loaded [A39_fig_1219382.3.peg.1081]
+	Loaded [A39_fig_1219382.3.peg.1082]
+	Loaded [A39_fig_1219382.3.peg.1083]
+	Loaded [A39_fig_1219382.3.peg.1084]
+	Loaded [A39_fig_1219382.3.peg.1085]
+	Loaded [A39_fig_1219382.3.peg.1086]
+	Loaded [A39_fig_1219382.3.peg.1087]
+	Loaded [A39_fig_1219382.3.peg.1088]
+	Loaded [A39_fig_1219382.3.peg.1089]
+	Loaded [A39_fig_1219382.3.peg.1090]
+	Loaded [A39_fig_1219382.3.peg.1091]
+	Loaded [A39_fig_1219382.3.peg.1092]
+	Loaded [A39_fig_1219382.3.peg.1093]
+	Loaded [A39_fig_1219382.3.peg.1094]
+	Loaded [A39_fig_1219382.3.peg.1095]
+	Loaded [A39_fig_1219382.3.peg.1096]
+	Loaded [A39_fig_1219382.3.peg.1097]
+	Loaded [A39_fig_1219382.3.peg.1098]
+	Loaded [A39_fig_1219382.3.peg.1099]
+	Loaded [A39_fig_1219382.3.peg.1100]
+	Loaded [A39_fig_1219382.3.peg.1101]
+	Loaded [A39_fig_1219382.3.peg.1102]
+	Loaded [A39_fig_1219382.3.peg.1103]
+	Loaded [A39_fig_1219382.3.peg.1104]
+	Loaded [A39_fig_1219382.3.peg.1105]
+	Loaded [A39_fig_1219382.3.peg.1106]
+	Loaded [A39_fig_1219382.3.peg.1107]
+	Loaded [A39_fig_1219382.3.peg.1108]
+	Loaded [A39_fig_1219382.3.peg.1109]
+	Loaded [A39_fig_1219382.3.peg.1110]
+	Loaded [A39_fig_1219382.3.peg.1111]
+	Loaded [A39_fig_1219382.3.peg.1112]
+	Loaded [A39_fig_1219382.3.peg.1113]
+	Loaded [A39_fig_1219382.3.peg.1114]
+	Loaded [A39_fig_1219382.3.peg.1115]
+	Loaded [A39_fig_1219382.3.peg.1116]
+	Loaded [A39_fig_1219382.3.peg.1117]
+	Loaded [A39_fig_1219382.3.peg.1118]
+	Loaded [A39_fig_1219382.3.peg.1119]
+	Loaded [A39_fig_1219382.3.peg.1120]
+	Loaded [A39_fig_1219382.3.peg.1121]
+	Loaded [A39_fig_1219382.3.peg.1122]
+	Loaded [A39_fig_1219382.3.peg.1123]
+	Loaded [A39_fig_1219382.3.peg.1124]
+	Loaded [A39_fig_1219382.3.peg.1125]
+	Loaded [A39_fig_1219382.3.peg.1126]
+	Loaded [A39_fig_1219382.3.peg.1127]
+	Loaded [A39_fig_1219382.3.peg.1128]
+	Loaded [A39_fig_1219382.3.peg.1129]
+	Loaded [A39_fig_1219382.3.peg.1130]
+	Loaded [A39_fig_1219382.3.peg.1131]
+	Loaded [A39_fig_1219382.3.peg.1132]
+	Loaded [A39_fig_1219382.3.peg.1133]
+	Loaded [A39_fig_1219382.3.peg.1134]
+	Loaded [A39_fig_1219382.3.peg.1135]
+	Loaded [A39_fig_1219382.3.peg.1136]
+	Loaded [A39_fig_1219382.3.peg.1137]
+	Loaded [A39_fig_1219382.3.peg.1138]
+	Loaded [A39_fig_1219382.3.peg.1139]
+	Loaded [A39_fig_1219382.3.peg.1140]
+	Loaded [A39_fig_1219382.3.peg.1141]
+	Loaded [A39_fig_1219382.3.peg.1142]
+	Loaded [A39_fig_1219382.3.peg.1143]
+	Loaded [A39_fig_1219382.3.peg.1144]
+	Loaded [A39_fig_1219382.3.peg.1145]
+	Loaded [A39_fig_1219382.3.peg.1146]
+	Loaded [A39_fig_1219382.3.peg.1147]
+	Loaded [A39_fig_1219382.3.peg.1148]
+	Loaded [A39_fig_1219382.3.peg.1149]
+	Loaded [A39_fig_1219382.3.peg.1150]
+	Loaded [A39_fig_1219382.3.peg.1151]
+	Loaded [A39_fig_1219382.3.peg.1152]
+	Loaded [A39_fig_1219382.3.peg.1153]
+	Loaded [A39_fig_1219382.3.peg.1154]
+	Loaded [A39_fig_1219382.3.peg.1155]
+	Loaded [A39_fig_1219382.3.peg.1156]
+	Loaded [A39_fig_1219382.3.peg.1157]
+	Loaded [A39_fig_1219382.3.peg.1158]
+	Loaded [A39_fig_1219382.3.peg.1159]
+	Loaded [A39_fig_1219382.3.peg.1160]
+	Loaded [A39_fig_1219382.3.peg.1161]
+	Loaded [A39_fig_1219382.3.peg.1162]
+	Loaded [A39_fig_1219382.3.peg.1163]
+	Loaded [A39_fig_1219382.3.peg.1164]
+	Loaded [A39_fig_1219382.3.peg.1165]
+	Loaded [A39_fig_1219382.3.peg.1166]
+	Loaded [A39_fig_1219382.3.peg.1167]
+	Loaded [A39_fig_1219382.3.peg.1168]
+	Loaded [A39_fig_1219382.3.peg.1169]
+	Loaded [A39_fig_1219382.3.peg.1170]
+	Loaded [A39_fig_1219382.3.peg.1171]
+	Loaded [A39_fig_1219382.3.peg.1172]
+	Loaded [A39_fig_1219382.3.peg.1173]
+	Loaded [A39_fig_1219382.3.peg.1174]
+	Loaded [A39_fig_1219382.3.peg.1175]
+	Loaded [A39_fig_1219382.3.peg.1176]
+	Loaded [A39_fig_1219382.3.peg.1177]
+	Loaded [A39_fig_1219382.3.peg.1178]
+	Loaded [A39_fig_1219382.3.peg.1179]
+	Loaded [A39_fig_1219382.3.peg.1180]
+	Loaded [A39_fig_1219382.3.peg.1181]
+	Loaded [A39_fig_1219382.3.peg.1182]
+	Loaded [A39_fig_1219382.3.peg.1183]
+	Loaded [A39_fig_1219382.3.peg.1184]
+	Loaded [A39_fig_1219382.3.peg.1185]
+	Loaded [A39_fig_1219382.3.peg.1186]
+	Loaded [A39_fig_1219382.3.peg.1187]
+	Loaded [A39_fig_1219382.3.peg.1188]
+	Loaded [A39_fig_1219382.3.peg.1189]
+	Loaded [A39_fig_1219382.3.peg.1190]
+	Loaded [A39_fig_1219382.3.peg.1191]
+	Loaded [A39_fig_1219382.3.peg.1192]
+	Loaded [A39_fig_1219382.3.peg.1193]
+	Loaded [A39_fig_1219382.3.peg.1194]
+	Loaded [A39_fig_1219382.3.peg.1195]
+	Loaded [A39_fig_1219382.3.peg.1196]
+	Loaded [A39_fig_1219382.3.peg.1197]
+	Loaded [A39_fig_1219382.3.peg.1198]
+	Loaded [A39_fig_1219382.3.peg.1199]
+	Loaded [A39_fig_1219382.3.peg.1200]
+	Loaded [A39_fig_1219382.3.peg.1201]
+	Loaded [A39_fig_1219382.3.peg.1202]
+	Loaded [A39_fig_1219382.3.peg.1203]
+	Loaded [A39_fig_1219382.3.peg.1204]
+	Loaded [A39_fig_1219382.3.peg.1205]
+	Loaded [A39_fig_1219382.3.peg.1206]
+	Loaded [A39_fig_1219382.3.peg.1207]
+	Loaded [A39_fig_1219382.3.peg.1208]
+	Loaded [A39_fig_1219382.3.peg.1209]
+	Loaded [A39_fig_1219382.3.peg.1210]
+	Loaded [A39_fig_1219382.3.peg.1211]
+	Loaded [A39_fig_1219382.3.peg.1212]
+	Loaded [A39_fig_1219382.3.peg.1213]
+	Loaded [A39_fig_1219382.3.peg.1214]
+	Loaded [A39_fig_1219382.3.peg.1215]
+	Loaded [A39_fig_1219382.3.peg.1216]
+	Loaded [A39_fig_1219382.3.peg.1217]
+	Loaded [A39_fig_1219382.3.peg.1218]
+	Loaded [A39_fig_1219382.3.peg.1219]
+	Loaded [A39_fig_1219382.3.peg.1220]
+	Loaded [A39_fig_1219382.3.peg.1221]
+	Loaded [A39_fig_1219382.3.peg.1222]
+	Loaded [A39_fig_1219382.3.peg.1223]
+	Loaded [A39_fig_1219382.3.peg.1224]
+	Loaded [A39_fig_1219382.3.peg.1225]
+	Loaded [A39_fig_1219382.3.peg.1226]
+	Loaded [A39_fig_1219382.3.peg.1227]
+	Loaded [A39_fig_1219382.3.peg.1228]
+	Loaded [A39_fig_1219382.3.peg.1229]
+	Loaded [A39_fig_1219382.3.peg.1230]
+	Loaded [A39_fig_1219382.3.peg.1231]
+	Loaded [A39_fig_1219382.3.peg.1232]
+	Loaded [A39_fig_1219382.3.peg.1233]
+	Loaded [A39_fig_1219382.3.peg.1234]
+	Loaded [A39_fig_1219382.3.peg.1235]
+	Loaded [A39_fig_1219382.3.peg.1236]
+	Loaded [A39_fig_1219382.3.peg.1237]
+	Loaded [A39_fig_1219382.3.peg.1238]
+	Loaded [A39_fig_1219382.3.peg.1239]
+	Loaded [A39_fig_1219382.3.peg.1240]
+	Loaded [A39_fig_1219382.3.peg.1241]
+	Loaded [A39_fig_1219382.3.peg.1242]
+	Loaded [A39_fig_1219382.3.peg.1243]
+	Loaded [A39_fig_1219382.3.peg.1244]
+	Loaded [A39_fig_1219382.3.peg.1245]
+	Loaded [A39_fig_1219382.3.peg.1246]
+	Loaded [A39_fig_1219382.3.peg.1247]
+	Loaded [A39_fig_1219382.3.peg.1248]
+	Loaded [A39_fig_1219382.3.peg.1249]
+	Loaded [A39_fig_1219382.3.peg.1250]
+	Loaded [A39_fig_1219382.3.peg.1251]
+	Loaded [A39_fig_1219382.3.peg.1252]
+	Loaded [A39_fig_1219382.3.peg.1253]
+	Loaded [A39_fig_1219382.3.peg.1254]
+	Loaded [A39_fig_1219382.3.peg.1255]
+	Loaded [A39_fig_1219382.3.peg.1256]
+	Loaded [A39_fig_1219382.3.peg.1257]
+	Loaded [A39_fig_1219382.3.peg.1258]
+	Loaded [A39_fig_1219382.3.peg.1259]
+	Loaded [A39_fig_1219382.3.peg.1260]
+	Loaded [A39_fig_1219382.3.peg.1261]
+	Loaded [A39_fig_1219382.3.peg.1262]
+	Loaded [A39_fig_1219382.3.peg.1263]
+	Loaded [A39_fig_1219382.3.peg.1264]
+	Loaded [A39_fig_1219382.3.peg.1265]
+	Loaded [A39_fig_1219382.3.peg.1266]
+	Loaded [A39_fig_1219382.3.peg.1267]
+	Loaded [A39_fig_1219382.3.peg.1268]
+	Loaded [A39_fig_1219382.3.peg.1269]
+	Loaded [A39_fig_1219382.3.peg.1270]
+	Loaded [A39_fig_1219382.3.peg.1271]
+	Loaded [A39_fig_1219382.3.peg.1272]
+	Loaded [A39_fig_1219382.3.peg.1273]
+	Loaded [A39_fig_1219382.3.peg.1274]
+	Loaded [A39_fig_1219382.3.peg.1275]
+	Loaded [A39_fig_1219382.3.peg.1276]
+	Loaded [A39_fig_1219382.3.peg.1277]
+	Loaded [A39_fig_1219382.3.peg.1278]
+	Loaded [A39_fig_1219382.3.peg.1279]
+	Loaded [A39_fig_1219382.3.peg.1280]
+	Loaded [A39_fig_1219382.3.peg.1281]
+	Loaded [A39_fig_1219382.3.peg.1282]
+	Loaded [A39_fig_1219382.3.peg.1283]
+	Loaded [A39_fig_1219382.3.peg.1284]
+	Loaded [A39_fig_1219382.3.peg.1285]
+	Loaded [A39_fig_1219382.3.peg.1286]
+	Loaded [A39_fig_1219382.3.peg.1287]
+	Loaded [A39_fig_1219382.3.peg.1288]
+	Loaded [A39_fig_1219382.3.peg.1289]
+	Loaded [A39_fig_1219382.3.peg.1290]
+	Loaded [A39_fig_1219382.3.peg.1291]
+	Loaded [A39_fig_1219382.3.peg.1292]
+	Loaded [A39_fig_1219382.3.peg.1293]
+	Loaded [A39_fig_1219382.3.peg.1294]
+	Loaded [A39_fig_1219382.3.peg.1295]
+	Loaded [A39_fig_1219382.3.peg.1296]
+	Loaded [A39_fig_1219382.3.peg.1297]
+	Loaded [A39_fig_1219382.3.peg.1298]
+	Loaded [A39_fig_1219382.3.peg.1299]
+	Loaded [A39_fig_1219382.3.peg.1300]
+	Loaded [A39_fig_1219382.3.peg.1301]
+	Loaded [A39_fig_1219382.3.peg.1302]
+	Loaded [A39_fig_1219382.3.peg.1303]
+	Loaded [A39_fig_1219382.3.peg.1304]
+	Loaded [A39_fig_1219382.3.peg.1305]
+	Loaded [A39_fig_1219382.3.peg.1306]
+	Loaded [A39_fig_1219382.3.peg.1307]
+	Loaded [A39_fig_1219382.3.peg.1308]
+	Loaded [A39_fig_1219382.3.peg.1309]
+	Loaded [A39_fig_1219382.3.peg.1310]
+	Loaded [A39_fig_1219382.3.peg.1311]
+	Loaded [A39_fig_1219382.3.peg.1312]
+	Loaded [A39_fig_1219382.3.peg.1313]
+	Loaded [A39_fig_1219382.3.peg.1314]
+	Loaded [A39_fig_1219382.3.peg.1315]
+	Loaded [A39_fig_1219382.3.peg.1316]
+	Loaded [A39_fig_1219382.3.peg.1317]
+	Loaded [A39_fig_1219382.3.peg.1318]
+	Loaded [A39_fig_1219382.3.peg.1319]
+	Loaded [A39_fig_1219382.3.peg.1320]
+	Loaded [A39_fig_1219382.3.peg.1321]
+	Loaded [A39_fig_1219382.3.peg.1322]
+	Loaded [A39_fig_1219382.3.peg.1323]
+	Loaded [A39_fig_1219382.3.peg.1324]
+	Loaded [A39_fig_1219382.3.peg.1325]
+	Loaded [A39_fig_1219382.3.peg.1326]
+	Loaded [A39_fig_1219382.3.peg.1327]
+	Loaded [A39_fig_1219382.3.peg.1328]
+	Loaded [A39_fig_1219382.3.peg.1329]
+	Loaded [A39_fig_1219382.3.peg.1330]
+	Loaded [A39_fig_1219382.3.peg.1331]
+	Loaded [A39_fig_1219382.3.peg.1332]
+	Loaded [A39_fig_1219382.3.peg.1333]
+	Loaded [A39_fig_1219382.3.peg.1334]
+	Loaded [A39_fig_1219382.3.peg.1335]
+	Loaded [A39_fig_1219382.3.peg.1336]
+	Loaded [A39_fig_1219382.3.peg.1337]
+	Loaded [A39_fig_1219382.3.peg.1338]
+	Loaded [A39_fig_1219382.3.peg.1339]
+	Loaded [A39_fig_1219382.3.peg.1340]
+	Loaded [A39_fig_1219382.3.peg.1341]
+	Loaded [A39_fig_1219382.3.peg.1342]
+	Loaded [A39_fig_1219382.3.peg.1343]
+	Loaded [A39_fig_1219382.3.peg.1344]
+	Loaded [A39_fig_1219382.3.peg.1345]
+	Loaded [A39_fig_1219382.3.peg.1346]
+	Loaded [A39_fig_1219382.3.peg.1347]
+	Loaded [A39_fig_1219382.3.peg.1348]
+	Loaded [A39_fig_1219382.3.peg.1349]
+	Loaded [A39_fig_1219382.3.peg.1350]
+	Loaded [A39_fig_1219382.3.peg.1351]
+	Loaded [A39_fig_1219382.3.peg.1352]
+	Loaded [A39_fig_1219382.3.peg.1353]
+	Loaded [A39_fig_1219382.3.peg.1354]
+	Loaded [A39_fig_1219382.3.peg.1355]
+	Loaded [A39_fig_1219382.3.peg.1356]
+	Loaded [A39_fig_1219382.3.peg.1357]
+	Loaded [A39_fig_1219382.3.peg.1358]
+	Loaded [A39_fig_1219382.3.peg.1359]
+	Loaded [A39_fig_1219382.3.peg.1360]
+	Loaded [A39_fig_1219382.3.peg.1361]
+	Loaded [A39_fig_1219382.3.peg.1362]
+	Loaded [A39_fig_1219382.3.peg.1363]
+	Loaded [A39_fig_1219382.3.peg.1364]
+	Loaded [A39_fig_1219382.3.peg.1365]
+	Loaded [A39_fig_1219382.3.peg.1366]
+	Loaded [A39_fig_1219382.3.peg.1367]
+	Loaded [A39_fig_1219382.3.peg.1368]
+	Loaded [A39_fig_1219382.3.peg.1369]
+	Loaded [A39_fig_1219382.3.peg.1370]
+	Loaded [A39_fig_1219382.3.peg.1371]
+	Loaded [A39_fig_1219382.3.peg.1372]
+	Loaded [A39_fig_1219382.3.peg.1373]
+	Loaded [A39_fig_1219382.3.peg.1374]
+	Loaded [A39_fig_1219382.3.peg.1375]
+	Loaded [A39_fig_1219382.3.peg.1376]
+	Loaded [A39_fig_1219382.3.peg.1377]
+	Loaded [A39_fig_1219382.3.peg.1378]
+	Loaded [A39_fig_1219382.3.peg.1379]
+	Loaded [A39_fig_1219382.3.peg.1380]
+	Loaded [A39_fig_1219382.3.peg.1381]
+	Loaded [A39_fig_1219382.3.peg.1382]
+	Loaded [A39_fig_1219382.3.peg.1383]
+	Loaded [A39_fig_1219382.3.peg.1384]
+	Loaded [A39_fig_1219382.3.peg.1385]
+	Loaded [A39_fig_1219382.3.peg.1386]
+	Loaded [A39_fig_1219382.3.peg.1387]
+	Loaded [A39_fig_1219382.3.peg.1388]
+	Loaded [A39_fig_1219382.3.peg.1389]
+	Loaded [A39_fig_1219382.3.peg.1390]
+	Loaded [A39_fig_1219382.3.peg.1391]
+	Loaded [A39_fig_1219382.3.peg.1392]
+	Loaded [A39_fig_1219382.3.peg.1393]
+	Loaded [A39_fig_1219382.3.peg.1394]
+	Loaded [A39_fig_1219382.3.peg.1395]
+	Loaded [A39_fig_1219382.3.peg.1396]
+	Loaded [A39_fig_1219382.3.peg.1397]
+	Loaded [A39_fig_1219382.3.peg.1398]
+	Loaded [A39_fig_1219382.3.peg.1399]
+	Loaded [A39_fig_1219382.3.peg.1400]
+	Loaded [A39_fig_1219382.3.peg.1401]
+	Loaded [A39_fig_1219382.3.peg.1402]
+	Loaded [A39_fig_1219382.3.peg.1403]
+	Loaded [A39_fig_1219382.3.peg.1404]
+	Loaded [A39_fig_1219382.3.peg.1405]
+	Loaded [A39_fig_1219382.3.peg.1406]
+	Loaded [A39_fig_1219382.3.peg.1407]
+	Loaded [A39_fig_1219382.3.peg.1408]
+	Loaded [A39_fig_1219382.3.peg.1409]
+	Loaded [A39_fig_1219382.3.peg.1410]
+	Loaded [A39_fig_1219382.3.peg.1411]
+	Loaded [A39_fig_1219382.3.peg.1412]
+	Loaded [A39_fig_1219382.3.peg.1413]
+	Loaded [A39_fig_1219382.3.peg.1414]
+	Loaded [A39_fig_1219382.3.peg.1415]
+	Loaded [A39_fig_1219382.3.peg.1416]
+	Loaded [A39_fig_1219382.3.peg.1417]
+	Loaded [A39_fig_1219382.3.peg.1418]
+	Loaded [A39_fig_1219382.3.peg.1419]
+	Loaded [A39_fig_1219382.3.peg.1420]
+	Loaded [A39_fig_1219382.3.peg.1421]
+	Loaded [A39_fig_1219382.3.peg.1422]
+	Loaded [A39_fig_1219382.3.peg.1423]
+	Loaded [A39_fig_1219382.3.peg.1424]
+	Loaded [A39_fig_1219382.3.peg.1425]
+	Loaded [A39_fig_1219382.3.peg.1426]
+	Loaded [A39_fig_1219382.3.peg.1427]
+	Loaded [A39_fig_1219382.3.peg.1428]
+	Loaded [A39_fig_1219382.3.peg.1429]
+	Loaded [A39_fig_1219382.3.peg.1430]
+	Loaded [A39_fig_1219382.3.peg.1431]
+	Loaded [A39_fig_1219382.3.peg.1432]
+	Loaded [A39_fig_1219382.3.peg.1433]
+	Loaded [A39_fig_1219382.3.peg.1434]
+	Loaded [A39_fig_1219382.3.peg.1435]
+	Loaded [A39_fig_1219382.3.peg.1436]
+	Loaded [A39_fig_1219382.3.peg.1437]
+	Loaded [A39_fig_1219382.3.peg.1438]
+	Loaded [A39_fig_1219382.3.peg.1439]
+	Loaded [A39_fig_1219382.3.peg.1440]
+	Loaded [A39_fig_1219382.3.peg.1441]
+	Loaded [A39_fig_1219382.3.peg.1442]
+	Loaded [A39_fig_1219382.3.peg.1443]
+	Loaded [A39_fig_1219382.3.peg.1444]
+	Loaded [A39_fig_1219382.3.peg.1445]
+	Loaded [A39_fig_1219382.3.peg.1446]
+	Loaded [A39_fig_1219382.3.peg.1447]
+	Loaded [A39_fig_1219382.3.peg.1448]
+	Loaded [A39_fig_1219382.3.peg.1449]
+	Loaded [A39_fig_1219382.3.peg.1450]
+	Loaded [A39_fig_1219382.3.peg.1451]
+	Loaded [A39_fig_1219382.3.peg.1452]
+	Loaded [A39_fig_1219382.3.peg.1453]
+	Loaded [A39_fig_1219382.3.peg.1454]
+	Loaded [A39_fig_1219382.3.peg.1455]
+	Loaded [A39_fig_1219382.3.peg.1456]
+	Loaded [A39_fig_1219382.3.peg.1457]
+	Loaded [A39_fig_1219382.3.peg.1458]
+	Loaded [A39_fig_1219382.3.peg.1459]
+	Loaded [A39_fig_1219382.3.peg.1460]
+	Loaded [A39_fig_1219382.3.peg.1461]
+	Loaded [A39_fig_1219382.3.peg.1462]
+	Loaded [A39_fig_1219382.3.peg.1463]
+	Loaded [A39_fig_1219382.3.peg.1464]
+	Loaded [A39_fig_1219382.3.peg.1465]
+	Loaded [A39_fig_1219382.3.peg.1466]
+	Loaded [A39_fig_1219382.3.peg.1467]
+	Loaded [A39_fig_1219382.3.peg.1468]
+	Loaded [A39_fig_1219382.3.peg.1469]
+	Loaded [A39_fig_1219382.3.peg.1470]
+	Loaded [A39_fig_1219382.3.peg.1471]
+	Loaded [A39_fig_1219382.3.peg.1472]
+	Loaded [A39_fig_1219382.3.peg.1473]
+	Loaded [A39_fig_1219382.3.peg.1474]
+	Loaded [A39_fig_1219382.3.peg.1475]
+	Loaded [A39_fig_1219382.3.peg.1476]
+	Loaded [A39_fig_1219382.3.peg.1477]
+	Loaded [A39_fig_1219382.3.peg.1478]
+	Loaded [A39_fig_1219382.3.peg.1479]
+	Loaded [A39_fig_1219382.3.peg.1480]
+	Loaded [A39_fig_1219382.3.peg.1481]
+	Loaded [A39_fig_1219382.3.peg.1482]
+	Loaded [A39_fig_1219382.3.peg.1483]
+	Loaded [A39_fig_1219382.3.peg.1484]
+	Loaded [A39_fig_1219382.3.peg.1485]
+	Loaded [A39_fig_1219382.3.peg.1486]
+	Loaded [A39_fig_1219382.3.peg.1487]
+	Loaded [A39_fig_1219382.3.peg.1488]
+	Loaded [A39_fig_1219382.3.peg.1489]
+	Loaded [A39_fig_1219382.3.peg.1490]
+	Loaded [A39_fig_1219382.3.peg.1491]
+	Loaded [A39_fig_1219382.3.peg.1492]
+	Loaded [A39_fig_1219382.3.peg.1493]
+	Loaded [A39_fig_1219382.3.peg.1494]
+	Loaded [A39_fig_1219382.3.peg.1495]
+	Loaded [A39_fig_1219382.3.peg.1496]
+	Loaded [A39_fig_1219382.3.peg.1497]
+	Loaded [A39_fig_1219382.3.peg.1498]
+	Loaded [A39_fig_1219382.3.peg.1499]
+	Loaded [A39_fig_1219382.3.peg.1500]
+	Loaded [A39_fig_1219382.3.peg.1501]
+	Loaded [A39_fig_1219382.3.peg.1502]
+	Loaded [A39_fig_1219382.3.peg.1503]
+	Loaded [A39_fig_1219382.3.peg.1504]
+	Loaded [A39_fig_1219382.3.peg.1505]
+	Loaded [A39_fig_1219382.3.peg.1506]
+	Loaded [A39_fig_1219382.3.peg.1507]
+	Loaded [A39_fig_1219382.3.peg.1508]
+	Loaded [A39_fig_1219382.3.peg.1509]
+	Loaded [A39_fig_1219382.3.peg.1510]
+	Loaded [A39_fig_1219382.3.peg.1511]
+	Loaded [A39_fig_1219382.3.peg.1512]
+	Loaded [A39_fig_1219382.3.peg.1513]
+	Loaded [A39_fig_1219382.3.peg.1514]
+	Loaded [A39_fig_1219382.3.peg.1515]
+	Loaded [A39_fig_1219382.3.peg.1516]
+	Loaded [A39_fig_1219382.3.peg.1517]
+	Loaded [A39_fig_1219382.3.peg.1518]
+	Loaded [A39_fig_1219382.3.peg.1519]
+	Loaded [A39_fig_1219382.3.peg.1520]
+	Loaded [A39_fig_1219382.3.peg.1521]
+	Loaded [A39_fig_1219382.3.peg.1522]
+	Loaded [A39_fig_1219382.3.peg.1523]
+	Loaded [A39_fig_1219382.3.peg.1524]
+	Loaded [A39_fig_1219382.3.peg.1525]
+	Loaded [A39_fig_1219382.3.peg.1526]
+	Loaded [A39_fig_1219382.3.peg.1527]
+	Loaded [A39_fig_1219382.3.peg.1528]
+	Loaded [A39_fig_1219382.3.peg.1529]
+	Loaded [A39_fig_1219382.3.peg.1530]
+	Loaded [A39_fig_1219382.3.peg.1531]
+	Loaded [A39_fig_1219382.3.peg.1532]
+	Loaded [A39_fig_1219382.3.peg.1533]
+	Loaded [A39_fig_1219382.3.peg.1534]
+	Loaded [A39_fig_1219382.3.peg.1535]
+	Loaded [A39_fig_1219382.3.peg.1536]
+	Loaded [A39_fig_1219382.3.peg.1537]
+	Loaded [A39_fig_1219382.3.peg.1538]
+	Loaded [A39_fig_1219382.3.peg.1539]
+	Loaded [A39_fig_1219382.3.peg.1540]
+	Loaded [A39_fig_1219382.3.peg.1541]
+	Loaded [A39_fig_1219382.3.peg.1542]
+	Loaded [A39_fig_1219382.3.peg.1543]
+	Loaded [A39_fig_1219382.3.peg.1544]
+	Loaded [A39_fig_1219382.3.peg.1545]
+	Loaded [A39_fig_1219382.3.peg.1546]
+	Loaded [A39_fig_1219382.3.peg.1547]
+	Loaded [A39_fig_1219382.3.peg.1548]
+	Loaded [A39_fig_1219382.3.peg.1549]
+	Loaded [A39_fig_1219382.3.peg.1550]
+	Loaded [A39_fig_1219382.3.peg.1551]
+	Loaded [A39_fig_1219382.3.peg.1552]
+	Loaded [A39_fig_1219382.3.peg.1553]
+	Loaded [A39_fig_1219382.3.peg.1554]
+	Loaded [A39_fig_1219382.3.peg.1555]
+	Loaded [A39_fig_1219382.3.peg.1556]
+	Loaded [A39_fig_1219382.3.peg.1557]
+	Loaded [A39_fig_1219382.3.peg.1558]
+	Loaded [A39_fig_1219382.3.peg.1559]
+	Loaded [A39_fig_1219382.3.peg.1560]
+	Loaded [A39_fig_1219382.3.peg.1561]
+	Loaded [A39_fig_1219382.3.peg.1562]
+	Loaded [A39_fig_1219382.3.peg.1563]
+	Loaded [A39_fig_1219382.3.peg.1564]
+	Loaded [A39_fig_1219382.3.peg.1565]
+	Loaded [A39_fig_1219382.3.peg.1566]
+	Loaded [A39_fig_1219382.3.peg.1567]
+	Loaded [A39_fig_1219382.3.peg.1568]
+	Loaded [A39_fig_1219382.3.peg.1569]
+	Loaded [A39_fig_1219382.3.peg.1570]
+	Loaded [A39_fig_1219382.3.peg.1571]
+	Loaded [A39_fig_1219382.3.peg.1572]
+	Loaded [A39_fig_1219382.3.peg.1573]
+	Loaded [A39_fig_1219382.3.peg.1574]
+	Loaded [A39_fig_1219382.3.peg.1575]
+	Loaded [A39_fig_1219382.3.peg.1576]
+	Loaded [A39_fig_1219382.3.peg.1577]
+	Loaded [A39_fig_1219382.3.peg.1578]
+	Loaded [A39_fig_1219382.3.peg.1579]
+	Loaded [A39_fig_1219382.3.peg.1580]
+	Loaded [A39_fig_1219382.3.peg.1581]
+	Loaded [A39_fig_1219382.3.peg.1582]
+	Loaded [A39_fig_1219382.3.peg.1583]
+	Loaded [A39_fig_1219382.3.peg.1584]
+	Loaded [A39_fig_1219382.3.peg.1585]
+	Loaded [A39_fig_1219382.3.peg.1586]
+	Loaded [A39_fig_1219382.3.peg.1587]
+	Loaded [A39_fig_1219382.3.peg.1588]
+	Loaded [A39_fig_1219382.3.peg.1589]
+	Loaded [A39_fig_1219382.3.peg.1590]
+	Loaded [A39_fig_1219382.3.peg.1591]
+	Loaded [A39_fig_1219382.3.peg.1592]
+	Loaded [A39_fig_1219382.3.peg.1593]
+	Loaded [A39_fig_1219382.3.peg.1594]
+	Loaded [A39_fig_1219382.3.peg.1595]
+	Loaded [A39_fig_1219382.3.peg.1596]
+	Loaded [A39_fig_1219382.3.peg.1597]
+	Loaded [A39_fig_1219382.3.peg.1598]
+	Loaded [A39_fig_1219382.3.peg.1599]
+	Loaded [A39_fig_1219382.3.peg.1600]
+	Loaded [A39_fig_1219382.3.peg.1601]
+	Loaded [A39_fig_1219382.3.peg.1602]
+	Loaded [A39_fig_1219382.3.peg.1603]
+	Loaded [A39_fig_1219382.3.peg.1604]
+	Loaded [A39_fig_1219382.3.peg.1605]
+	Loaded [A39_fig_1219382.3.peg.1606]
+	Loaded [A39_fig_1219382.3.peg.1607]
+	Loaded [A39_fig_1219382.3.peg.1608]
+	Loaded [A39_fig_1219382.3.peg.1609]
+	Loaded [A39_fig_1219382.3.peg.1610]
+	Loaded [A39_fig_1219382.3.peg.1611]
+	Loaded [A39_fig_1219382.3.peg.1612]
+	Loaded [A39_fig_1219382.3.peg.1613]
+	Loaded [A39_fig_1219382.3.peg.1614]
+	Loaded [A39_fig_1219382.3.peg.1615]
+	Loaded [A39_fig_1219382.3.peg.1616]
+	Loaded [A39_fig_1219382.3.peg.1617]
+	Loaded [A39_fig_1219382.3.peg.1618]
+	Loaded [A39_fig_1219382.3.peg.1619]
+	Loaded [A39_fig_1219382.3.peg.1620]
+	Loaded [A39_fig_1219382.3.peg.1621]
+	Loaded [A39_fig_1219382.3.peg.1622]
+	Loaded [A39_fig_1219382.3.peg.1623]
+	Loaded [A39_fig_1219382.3.peg.1624]
+	Loaded [A39_fig_1219382.3.peg.1625]
+	Loaded [A39_fig_1219382.3.peg.1626]
+	Loaded [A39_fig_1219382.3.peg.1627]
+	Loaded [A39_fig_1219382.3.peg.1628]
+	Loaded [A39_fig_1219382.3.peg.1629]
+	Loaded [A39_fig_1219382.3.peg.1630]
+	Loaded [A39_fig_1219382.3.peg.1631]
+	Loaded [A39_fig_1219382.3.peg.1632]
+	Loaded [A39_fig_1219382.3.peg.1633]
+	Loaded [A39_fig_1219382.3.peg.1634]
+	Loaded [A39_fig_1219382.3.peg.1635]
+	Loaded [A39_fig_1219382.3.peg.1636]
+	Loaded [A39_fig_1219382.3.peg.1637]
+	Loaded [A39_fig_1219382.3.peg.1638]
+	Loaded [A39_fig_1219382.3.peg.1639]
+	Loaded [A39_fig_1219382.3.peg.1640]
+	Loaded [A39_fig_1219382.3.peg.1641]
+	Loaded [A39_fig_1219382.3.peg.1642]
+	Loaded [A39_fig_1219382.3.peg.1643]
+	Loaded [A39_fig_1219382.3.peg.1644]
+	Loaded [A39_fig_1219382.3.peg.1645]
+	Loaded [A39_fig_1219382.3.peg.1646]
+	Loaded [A39_fig_1219382.3.peg.1647]
+	Loaded [A39_fig_1219382.3.peg.1648]
+	Loaded [A39_fig_1219382.3.peg.1649]
+	Loaded [A39_fig_1219382.3.peg.1650]
+	Loaded [A39_fig_1219382.3.peg.1651]
+	Loaded [A39_fig_1219382.3.peg.1652]
+	Loaded [A39_fig_1219382.3.peg.1653]
+	Loaded [A39_fig_1219382.3.peg.1654]
+	Loaded [A39_fig_1219382.3.peg.1655]
+	Loaded [A39_fig_1219382.3.peg.1656]
+	Loaded [A39_fig_1219382.3.peg.1657]
+	Loaded [A39_fig_1219382.3.peg.1658]
+	Loaded [A39_fig_1219382.3.peg.1659]
+	Loaded [A39_fig_1219382.3.peg.1660]
+	Loaded [A39_fig_1219382.3.peg.1661]
+	Loaded [A39_fig_1219382.3.peg.1662]
+	Loaded [A39_fig_1219382.3.peg.1663]
+	Loaded [A39_fig_1219382.3.peg.1664]
+	Loaded [A39_fig_1219382.3.peg.1665]
+	Loaded [A39_fig_1219382.3.peg.1666]
+	Loaded [A39_fig_1219382.3.peg.1667]
+	Loaded [A39_fig_1219382.3.peg.1668]
+	Loaded [A39_fig_1219382.3.peg.1669]
+	Loaded [A39_fig_1219382.3.peg.1670]
+	Loaded [A39_fig_1219382.3.peg.1671]
+	Loaded [A39_fig_1219382.3.peg.1672]
+	Loaded [A39_fig_1219382.3.peg.1673]
+	Loaded [A39_fig_1219382.3.peg.1674]
+	Loaded [A39_fig_1219382.3.peg.1675]
+	Loaded [A39_fig_1219382.3.peg.1676]
+	Loaded [A39_fig_1219382.3.peg.1677]
+	Loaded [A39_fig_1219382.3.peg.1678]
+	Loaded [A39_fig_1219382.3.peg.1679]
+	Loaded [A39_fig_1219382.3.peg.1680]
+	Loaded [A39_fig_1219382.3.peg.1681]
+	Loaded [A39_fig_1219382.3.peg.1682]
+	Loaded [A39_fig_1219382.3.peg.1683]
+	Loaded [A39_fig_1219382.3.peg.1684]
+	Loaded [A39_fig_1219382.3.peg.1685]
+	Loaded [A39_fig_1219382.3.peg.1686]
+	Loaded [A39_fig_1219382.3.peg.1687]
+	Loaded [A39_fig_1219382.3.peg.1688]
+	Loaded [A39_fig_1219382.3.peg.1689]
+	Loaded [A39_fig_1219382.3.peg.1690]
+	Loaded [A39_fig_1219382.3.peg.1691]
+	Loaded [A39_fig_1219382.3.peg.1692]
+	Loaded [A39_fig_1219382.3.peg.1693]
+	Loaded [A39_fig_1219382.3.peg.1694]
+	Loaded [A39_fig_1219382.3.peg.1695]
+	Loaded [A39_fig_1219382.3.peg.1696]
+	Loaded [A39_fig_1219382.3.peg.1697]
+	Loaded [A39_fig_1219382.3.peg.1698]
+	Loaded [A39_fig_1219382.3.peg.1699]
+	Loaded [A39_fig_1219382.3.peg.1700]
+	Loaded [A39_fig_1219382.3.peg.1701]
+	Loaded [A39_fig_1219382.3.peg.1702]
+	Loaded [A39_fig_1219382.3.peg.1703]
+	Loaded [A39_fig_1219382.3.peg.1704]
+	Loaded [A39_fig_1219382.3.peg.1705]
+	Loaded [A39_fig_1219382.3.peg.1706]
+	Loaded [A39_fig_1219382.3.peg.1707]
+	Loaded [A39_fig_1219382.3.peg.1708]
+	Loaded [A39_fig_1219382.3.peg.1709]
+	Loaded [A39_fig_1219382.3.peg.1710]
+	Loaded [A39_fig_1219382.3.peg.1711]
+	Loaded [A39_fig_1219382.3.peg.1712]
+	Loaded [A39_fig_1219382.3.peg.1713]
+	Loaded [A39_fig_1219382.3.peg.1714]
+	Loaded [A39_fig_1219382.3.peg.1715]
+	Loaded [A39_fig_1219382.3.peg.1716]
+	Loaded [A39_fig_1219382.3.peg.1717]
+	Loaded [A39_fig_1219382.3.peg.1718]
+	Loaded [A39_fig_1219382.3.peg.1719]
+	Loaded [A39_fig_1219382.3.peg.1720]
+	Loaded [A39_fig_1219382.3.peg.1721]
+	Loaded [A39_fig_1219382.3.peg.1722]
+	Loaded [A39_fig_1219382.3.peg.1723]
+	Loaded [A39_fig_1219382.3.peg.1724]
+	Loaded [A39_fig_1219382.3.peg.1725]
+	Loaded [A39_fig_1219382.3.peg.1726]
+	Loaded [A39_fig_1219382.3.peg.1727]
+	Loaded [A39_fig_1219382.3.peg.1728]
+	Loaded [A39_fig_1219382.3.peg.1729]
+	Loaded [A39_fig_1219382.3.peg.1730]
+	Loaded [A39_fig_1219382.3.peg.1731]
+	Loaded [A39_fig_1219382.3.peg.1732]
+	Loaded [A39_fig_1219382.3.peg.1733]
+	Loaded [A39_fig_1219382.3.peg.1734]
+	Loaded [A39_fig_1219382.3.peg.1735]
+	Loaded [A39_fig_1219382.3.peg.1736]
+	Loaded [A39_fig_1219382.3.peg.1737]
+	Loaded [A39_fig_1219382.3.peg.1738]
+	Loaded [A39_fig_1219382.3.peg.1739]
+	Loaded [A39_fig_1219382.3.peg.1740]
+	Loaded [A39_fig_1219382.3.peg.1741]
+	Loaded [A39_fig_1219382.3.peg.1742]
+	Loaded [A39_fig_1219382.3.peg.1743]
+	Loaded [A39_fig_1219382.3.peg.1744]
+	Loaded [A39_fig_1219382.3.peg.1745]
+	Loaded [A39_fig_1219382.3.peg.1746]
+	Loaded [A39_fig_1219382.3.peg.1747]
+	Loaded [A39_fig_1219382.3.peg.1748]
+	Loaded [A39_fig_1219382.3.peg.1749]
+	Loaded [A39_fig_1219382.3.peg.1750]
+	Loaded [A39_fig_1219382.3.peg.1751]
+	Loaded [A39_fig_1219382.3.peg.1752]
+	Loaded [A39_fig_1219382.3.peg.1753]
+	Loaded [A39_fig_1219382.3.peg.1754]
+	Loaded [A39_fig_1219382.3.peg.1755]
+	Loaded [A39_fig_1219382.3.peg.1756]
+	Loaded [A39_fig_1219382.3.peg.1757]
+	Loaded [A39_fig_1219382.3.peg.1758]
+	Loaded [A39_fig_1219382.3.peg.1759]
+	Loaded [A39_fig_1219382.3.peg.1760]
+	Loaded [A39_fig_1219382.3.peg.1761]
+	Loaded [A39_fig_1219382.3.peg.1762]
+	Loaded [A39_fig_1219382.3.peg.1763]
+	Loaded [A39_fig_1219382.3.peg.1764]
+	Loaded [A39_fig_1219382.3.peg.1765]
+	Loaded [A39_fig_1219382.3.peg.1766]
+	Loaded [A39_fig_1219382.3.peg.1767]
+	Loaded [A39_fig_1219382.3.peg.1768]
+	Loaded [A39_fig_1219382.3.peg.1769]
+	Loaded [A39_fig_1219382.3.peg.1770]
+	Loaded [A39_fig_1219382.3.peg.1771]
+	Loaded [A39_fig_1219382.3.peg.1772]
+	Loaded [A39_fig_1219382.3.peg.1773]
+	Loaded [A39_fig_1219382.3.peg.1774]
+	Loaded [A39_fig_1219382.3.peg.1775]
+	Loaded [A39_fig_1219382.3.peg.1776]
+	Loaded [A39_fig_1219382.3.peg.1777]
+	Loaded [A39_fig_1219382.3.peg.1778]
+	Loaded [A39_fig_1219382.3.peg.1779]
+	Loaded [A39_fig_1219382.3.peg.1780]
+	Loaded [A39_fig_1219382.3.peg.1781]
+	Loaded [A39_fig_1219382.3.peg.1782]
+	Loaded [A39_fig_1219382.3.peg.1783]
+	Loaded [A39_fig_1219382.3.peg.1784]
+	Loaded [A39_fig_1219382.3.peg.1785]
+	Loaded [A39_fig_1219382.3.peg.1786]
+	Loaded [A39_fig_1219382.3.peg.1787]
+	Loaded [A39_fig_1219382.3.peg.1788]
+	Loaded [A39_fig_1219382.3.peg.1789]
+	Loaded [A39_fig_1219382.3.peg.1790]
+	Loaded [A39_fig_1219382.3.peg.1791]
+	Loaded [A39_fig_1219382.3.peg.1792]
+	Loaded [A39_fig_1219382.3.peg.1793]
+	Loaded [A39_fig_1219382.3.peg.1794]
+	Loaded [A39_fig_1219382.3.peg.1795]
+	Loaded [A39_fig_1219382.3.peg.1796]
+	Loaded [A39_fig_1219382.3.peg.1797]
+	Loaded [A39_fig_1219382.3.peg.1798]
+	Loaded [A39_fig_1219382.3.peg.1799]
+	Loaded [A39_fig_1219382.3.peg.1800]
+	Loaded [A39_fig_1219382.3.peg.1801]
+	Loaded [A39_fig_1219382.3.peg.1802]
+	Loaded [A39_fig_1219382.3.peg.1803]
+	Loaded [A39_fig_1219382.3.peg.1804]
+	Loaded [A39_fig_1219382.3.peg.1805]
+	Loaded [A39_fig_1219382.3.peg.1806]
+	Loaded [A39_fig_1219382.3.peg.1807]
+	Loaded [A39_fig_1219382.3.peg.1808]
+	Loaded [A39_fig_1219382.3.peg.1809]
+	Loaded [A39_fig_1219382.3.peg.1810]
+	Loaded [A39_fig_1219382.3.peg.1811]
+	Loaded [A39_fig_1219382.3.peg.1812]
+	Loaded [A39_fig_1219382.3.peg.1813]
+	Loaded [A39_fig_1219382.3.peg.1814]
+	Loaded [A39_fig_1219382.3.peg.1815]
+	Loaded [A39_fig_1219382.3.peg.1816]
+	Loaded [A39_fig_1219382.3.peg.1817]
+	Loaded [A39_fig_1219382.3.peg.1818]
+	Loaded [A39_fig_1219382.3.peg.1819]
+	Loaded [A39_fig_1219382.3.peg.1820]
+	Loaded [A39_fig_1219382.3.peg.1821]
+	Loaded [A39_fig_1219382.3.peg.1822]
+	Loaded [A39_fig_1219382.3.peg.1823]
+	Loaded [A39_fig_1219382.3.peg.1824]
+	Loaded [A39_fig_1219382.3.peg.1825]
+	Loaded [A39_fig_1219382.3.peg.1826]
+	Loaded [A39_fig_1219382.3.peg.1827]
+	Loaded [A39_fig_1219382.3.peg.1828]
+	Loaded [A39_fig_1219382.3.peg.1829]
+	Loaded [A39_fig_1219382.3.peg.1830]
+	Loaded [A39_fig_1219382.3.peg.1831]
+	Loaded [A39_fig_1219382.3.peg.1832]
+	Loaded [A39_fig_1219382.3.peg.1833]
+	Loaded [A39_fig_1219382.3.peg.1834]
+	Loaded [A39_fig_1219382.3.peg.1835]
+	Loaded [A39_fig_1219382.3.peg.1836]
+	Loaded [A39_fig_1219382.3.peg.1837]
+	Loaded [A39_fig_1219382.3.peg.1838]
+	Loaded [A39_fig_1219382.3.peg.1839]
+	Loaded [A39_fig_1219382.3.peg.1840]
+	Loaded [A39_fig_1219382.3.peg.1841]
+	Loaded [A39_fig_1219382.3.peg.1842]
+	Loaded [A39_fig_1219382.3.peg.1843]
+	Loaded [A39_fig_1219382.3.peg.1844]
+	Loaded [A39_fig_1219382.3.peg.1845]
+	Loaded [A39_fig_1219382.3.peg.1846]
+	Loaded [A39_fig_1219382.3.peg.1847]
+	Loaded [A39_fig_1219382.3.peg.1848]
+	Loaded [A39_fig_1219382.3.peg.1849]
+	Loaded [A39_fig_1219382.3.peg.1850]
+	Loaded [A39_fig_1219382.3.peg.1851]
+	Loaded [A39_fig_1219382.3.peg.1852]
+	Loaded [A39_fig_1219382.3.peg.1853]
+	Loaded [A39_fig_1219382.3.peg.1854]
+	Loaded [A39_fig_1219382.3.peg.1855]
+	Loaded [A39_fig_1219382.3.peg.1856]
+	Loaded [A39_fig_1219382.3.peg.1857]
+	Loaded [A39_fig_1219382.3.peg.1858]
+	Loaded [A39_fig_1219382.3.peg.1859]
+	Loaded [A39_fig_1219382.3.peg.1860]
+	Loaded [A39_fig_1219382.3.peg.1861]
+	Loaded [A39_fig_1219382.3.peg.1862]
+	Loaded [A39_fig_1219382.3.peg.1863]
+	Loaded [A39_fig_1219382.3.peg.1864]
+	Loaded [A39_fig_1219382.3.peg.1865]
+	Loaded [A39_fig_1219382.3.peg.1866]
+	Loaded [A39_fig_1219382.3.peg.1867]
+	Loaded [A39_fig_1219382.3.peg.1868]
+	Loaded [A39_fig_1219382.3.peg.1869]
+	Loaded [A39_fig_1219382.3.peg.1870]
+	Loaded [A39_fig_1219382.3.peg.1871]
+	Loaded [A39_fig_1219382.3.peg.1872]
+	Loaded [A39_fig_1219382.3.peg.1873]
+	Loaded [A39_fig_1219382.3.peg.1874]
+	Loaded [A39_fig_1219382.3.peg.1875]
+	Loaded [A39_fig_1219382.3.peg.1876]
+	Loaded [A39_fig_1219382.3.peg.1877]
+	Loaded [A39_fig_1219382.3.peg.1878]
+	Loaded [A39_fig_1219382.3.peg.1879]
+	Loaded [A39_fig_1219382.3.peg.1880]
+	Loaded [A39_fig_1219382.3.peg.1881]
+	Loaded [A39_fig_1219382.3.peg.1882]
+	Loaded [A39_fig_1219382.3.peg.1883]
+	Loaded [A39_fig_1219382.3.peg.1884]
+	Loaded [A39_fig_1219382.3.peg.1885]
+	Loaded [A39_fig_1219382.3.peg.1886]
+	Loaded [A39_fig_1219382.3.peg.1887]
+	Loaded [A39_fig_1219382.3.peg.1888]
+	Loaded [A39_fig_1219382.3.peg.1889]
+	Loaded [A39_fig_1219382.3.peg.1890]
+	Loaded [A39_fig_1219382.3.peg.1891]
+	Loaded [A39_fig_1219382.3.peg.1892]
+	Loaded [A39_fig_1219382.3.peg.1893]
+	Loaded [A39_fig_1219382.3.peg.1894]
+	Loaded [A39_fig_1219382.3.peg.1895]
+	Loaded [A39_fig_1219382.3.peg.1896]
+	Loaded [A39_fig_1219382.3.peg.1897]
+	Loaded [A39_fig_1219382.3.peg.1898]
+	Loaded [A39_fig_1219382.3.peg.1899]
+	Loaded [A39_fig_1219382.3.peg.1900]
+	Loaded [A39_fig_1219382.3.peg.1901]
+	Loaded [A39_fig_1219382.3.peg.1902]
+	Loaded [A39_fig_1219382.3.peg.1903]
+	Loaded [A39_fig_1219382.3.peg.1904]
+	Loaded [A39_fig_1219382.3.peg.1905]
+	Loaded [A39_fig_1219382.3.peg.1906]
+	Loaded [A39_fig_1219382.3.peg.1907]
+	Loaded [A39_fig_1219382.3.peg.1908]
+	Loaded [A39_fig_1219382.3.peg.1909]
+	Loaded [A39_fig_1219382.3.peg.1910]
+	Loaded [A39_fig_1219382.3.peg.1911]
+	Loaded [A39_fig_1219382.3.peg.1912]
+	Loaded [A39_fig_1219382.3.peg.1913]
+	Loaded [A39_fig_1219382.3.peg.1914]
+	Loaded [A39_fig_1219382.3.peg.1915]
+	Loaded [A39_fig_1219382.3.peg.1916]
+	Loaded [A39_fig_1219382.3.peg.1917]
+	Loaded [A39_fig_1219382.3.peg.1918]
+	Loaded [A39_fig_1219382.3.peg.1919]
+	Loaded [A39_fig_1219382.3.peg.1920]
+	Loaded [A39_fig_1219382.3.peg.1921]
+	Loaded [A39_fig_1219382.3.peg.1922]
+	Loaded [A39_fig_1219382.3.peg.1923]
+	Loaded [A39_fig_1219382.3.peg.1924]
+	Loaded [A39_fig_1219382.3.peg.1925]
+	Loaded [A39_fig_1219382.3.peg.1926]
+	Loaded [A39_fig_1219382.3.peg.1927]
+	Loaded [A39_fig_1219382.3.peg.1928]
+	Loaded [A39_fig_1219382.3.peg.1929]
+	Loaded [A39_fig_1219382.3.peg.1930]
+	Loaded [A39_fig_1219382.3.peg.1931]
+	Loaded [A39_fig_1219382.3.peg.1932]
+	Loaded [A39_fig_1219382.3.peg.1933]
+	Loaded [A39_fig_1219382.3.peg.1934]
+	Loaded [A39_fig_1219382.3.peg.1935]
+	Loaded [A39_fig_1219382.3.peg.1936]
+	Loaded [A39_fig_1219382.3.peg.1937]
+	Loaded [A39_fig_1219382.3.peg.1938]
+	Loaded [A39_fig_1219382.3.peg.1939]
+	Loaded [A39_fig_1219382.3.peg.1940]
+	Loaded [A39_fig_1219382.3.peg.1941]
+	Loaded [A39_fig_1219382.3.peg.1942]
+	Loaded [A39_fig_1219382.3.peg.1943]
+	Loaded [A39_fig_1219382.3.peg.1944]
+	Loaded [A39_fig_1219382.3.peg.1945]
+	Loaded [A39_fig_1219382.3.peg.1946]
+	Loaded [A39_fig_1219382.3.peg.1947]
+	Loaded [A39_fig_1219382.3.peg.1948]
+	Loaded [A39_fig_1219382.3.peg.1949]
+	Loaded [A39_fig_1219382.3.peg.1950]
+	Loaded [A39_fig_1219382.3.peg.1951]
+	Loaded [A39_fig_1219382.3.peg.1952]
+	Loaded [A39_fig_1219382.3.peg.1953]
+	Loaded [A39_fig_1219382.3.peg.1954]
+	Loaded [A39_fig_1219382.3.peg.1955]
+	Loaded [A39_fig_1219382.3.peg.1956]
+	Loaded [A39_fig_1219382.3.peg.1957]
+	Loaded [A39_fig_1219382.3.peg.1958]
+	Loaded [A39_fig_1219382.3.peg.1959]
+	Loaded [A39_fig_1219382.3.peg.1960]
+	Loaded [A39_fig_1219382.3.peg.1961]
+	Loaded [A39_fig_1219382.3.peg.1962]
+	Loaded [A39_fig_1219382.3.peg.1963]
+	Loaded [A39_fig_1219382.3.peg.1964]
+	Loaded [A39_fig_1219382.3.peg.1965]
+	Loaded [A39_fig_1219382.3.peg.1966]
+	Loaded [A39_fig_1219382.3.peg.1967]
+	Loaded [A39_fig_1219382.3.peg.1968]
+	Loaded [A39_fig_1219382.3.peg.1969]
+	Loaded [A39_fig_1219382.3.peg.1970]
+	Loaded [A39_fig_1219382.3.peg.1971]
+	Loaded [A39_fig_1219382.3.peg.1972]
+	Loaded [A39_fig_1219382.3.peg.1973]
+	Loaded [A39_fig_1219382.3.peg.1974]
+	Loaded [A39_fig_1219382.3.peg.1975]
+	Loaded [A39_fig_1219382.3.peg.1976]
+	Loaded [A39_fig_1219382.3.peg.1977]
+	Loaded [A39_fig_1219382.3.peg.1978]
+	Loaded [A39_fig_1219382.3.peg.1979]
+	Loaded [A39_fig_1219382.3.peg.1980]
+	Loaded [A39_fig_1219382.3.peg.1981]
+	Loaded [A39_fig_1219382.3.peg.1982]
+	Loaded [A39_fig_1219382.3.peg.1983]
+	Loaded [A39_fig_1219382.3.peg.1984]
+	Loaded [A39_fig_1219382.3.peg.1985]
+	Loaded [A39_fig_1219382.3.peg.1986]
+	Loaded [A39_fig_1219382.3.peg.1987]
+	Loaded [A39_fig_1219382.3.peg.1988]
+	Loaded [A39_fig_1219382.3.peg.1989]
+	Loaded [A39_fig_1219382.3.peg.1990]
+	Loaded [A39_fig_1219382.3.peg.1991]
+	Loaded [A39_fig_1219382.3.peg.1992]
+	Loaded [A39_fig_1219382.3.peg.1993]
+	Loaded [A39_fig_1219382.3.peg.1994]
+	Loaded [A39_fig_1219382.3.peg.1995]
+	Loaded [A39_fig_1219382.3.peg.1996]
+	Loaded [A39_fig_1219382.3.peg.1997]
+	Loaded [A39_fig_1219382.3.peg.1998]
+	Loaded [A39_fig_1219382.3.peg.1999]
+	Loaded [A39_fig_1219382.3.peg.2000]
+	Loaded [A39_fig_1219382.3.peg.2001]
+	Loaded [A39_fig_1219382.3.peg.2002]
+	Loaded [A39_fig_1219382.3.peg.2003]
+	Loaded [A39_fig_1219382.3.peg.2004]
+	Loaded [A39_fig_1219382.3.peg.2005]
+	Loaded [A39_fig_1219382.3.peg.2006]
+	Loaded [A39_fig_1219382.3.peg.2007]
+	Loaded [A39_fig_1219382.3.peg.2008]
+	Loaded [A39_fig_1219382.3.peg.2009]
+	Loaded [A39_fig_1219382.3.peg.2010]
+	Loaded [A39_fig_1219382.3.peg.2011]
+	Loaded [A39_fig_1219382.3.peg.2012]
+	Loaded [A39_fig_1219382.3.peg.2013]
+	Loaded [A39_fig_1219382.3.peg.2014]
+	Loaded [A39_fig_1219382.3.peg.2015]
+	Loaded [A39_fig_1219382.3.peg.2016]
+	Loaded [A39_fig_1219382.3.peg.2017]
+	Loaded [A39_fig_1219382.3.peg.2018]
+	Loaded [A39_fig_1219382.3.peg.2019]
+	Loaded [A39_fig_1219382.3.peg.2020]
+	Loaded [A39_fig_1219382.3.peg.2021]
+	Loaded [A39_fig_1219382.3.peg.2022]
+	Loaded [A39_fig_1219382.3.peg.2023]
+	Loaded [A39_fig_1219382.3.peg.2024]
+	Loaded [A39_fig_1219382.3.peg.2025]
+	Loaded [A39_fig_1219382.3.peg.2026]
+	Loaded [A39_fig_1219382.3.peg.2027]
+	Loaded [A39_fig_1219382.3.peg.2028]
+	Loaded [A39_fig_1219382.3.peg.2029]
+	Loaded [A39_fig_1219382.3.peg.2030]
+	Loaded [A39_fig_1219382.3.peg.2031]
+	Loaded [A39_fig_1219382.3.peg.2032]
+	Loaded [A39_fig_1219382.3.peg.2033]
+	Loaded [A39_fig_1219382.3.peg.2034]
+	Loaded [A39_fig_1219382.3.peg.2035]
+	Loaded [A39_fig_1219382.3.peg.2036]
+	Loaded [A39_fig_1219382.3.peg.2037]
+	Loaded [A39_fig_1219382.3.peg.2038]
+	Loaded [A39_fig_1219382.3.peg.2039]
+	Loaded [A39_fig_1219382.3.peg.2040]
+	Loaded [A39_fig_1219382.3.peg.2041]
+	Loaded [A39_fig_1219382.3.peg.2042]
+	Loaded [A39_fig_1219382.3.peg.2043]
+	Loaded [A39_fig_1219382.3.peg.2044]
+	Loaded [A39_fig_1219382.3.peg.2045]
+	Loaded [A39_fig_1219382.3.peg.2046]
+	Loaded [A39_fig_1219382.3.peg.2047]
+	Loaded [A39_fig_1219382.3.peg.2048]
+	Loaded [A39_fig_1219382.3.peg.2049]
+	Loaded [A39_fig_1219382.3.peg.2050]
+	Loaded [A39_fig_1219382.3.peg.2051]
+	Loaded [A39_fig_1219382.3.peg.2052]
+	Loaded [A39_fig_1219382.3.peg.2053]
+	Loaded [A39_fig_1219382.3.peg.2054]
+	Loaded [A39_fig_1219382.3.peg.2055]
+	Loaded [A39_fig_1219382.3.peg.2056]
+	Loaded [A39_fig_1219382.3.peg.2057]
+	Loaded [A39_fig_1219382.3.peg.2058]
+	Loaded [A39_fig_1219382.3.peg.2059]
+	Loaded [A39_fig_1219382.3.peg.2060]
+	Loaded [A39_fig_1219382.3.peg.2061]
+	Loaded [A39_fig_1219382.3.peg.2062]
+	Loaded [A39_fig_1219382.3.peg.2063]
+	Loaded [A39_fig_1219382.3.peg.2064]
+	Loaded [A39_fig_1219382.3.peg.2065]
+	Loaded [A39_fig_1219382.3.peg.2066]
+	Loaded [A39_fig_1219382.3.peg.2067]
+	Loaded [A39_fig_1219382.3.peg.2068]
+	Loaded [A39_fig_1219382.3.peg.2069]
+	Loaded [A39_fig_1219382.3.peg.2070]
+	Loaded [A39_fig_1219382.3.peg.2071]
+	Loaded [A39_fig_1219382.3.peg.2072]
+	Loaded [A39_fig_1219382.3.peg.2073]
+	Loaded [A39_fig_1219382.3.peg.2074]
+	Loaded [A39_fig_1219382.3.peg.2075]
+	Loaded [A39_fig_1219382.3.peg.2076]
+	Loaded [A39_fig_1219382.3.peg.2077]
+	Loaded [A39_fig_1219382.3.peg.2078]
+	Loaded [A39_fig_1219382.3.peg.2079]
+	Loaded [A39_fig_1219382.3.peg.2080]
+	Loaded [A39_fig_1219382.3.peg.2081]
+	Loaded [A39_fig_1219382.3.peg.2082]
+	Loaded [A39_fig_1219382.3.peg.2083]
+	Loaded [A39_fig_1219382.3.peg.2084]
+	Loaded [A39_fig_1219382.3.peg.2085]
+	Loaded [A39_fig_1219382.3.peg.2086]
+	Loaded [A39_fig_1219382.3.peg.2087]
+	Loaded [A39_fig_1219382.3.peg.2088]
+	Loaded [A39_fig_1219382.3.peg.2089]
+	Loaded [A39_fig_1219382.3.peg.2090]
+	Loaded [A39_fig_1219382.3.peg.2091]
+	Loaded [A39_fig_1219382.3.peg.2092]
+	Loaded [A39_fig_1219382.3.peg.2093]
+	Loaded [A39_fig_1219382.3.peg.2094]
+	Loaded [A39_fig_1219382.3.peg.2095]
+	Loaded [A39_fig_1219382.3.peg.2096]
+	Loaded [A39_fig_1219382.3.peg.2097]
+	Loaded [A39_fig_1219382.3.peg.2098]
+	Loaded [A39_fig_1219382.3.peg.2099]
+	Loaded [A39_fig_1219382.3.peg.2100]
+	Loaded [A39_fig_1219382.3.peg.2101]
+	Loaded [A39_fig_1219382.3.peg.2102]
+	Loaded [A39_fig_1219382.3.peg.2103]
+	Loaded [A39_fig_1219382.3.peg.2104]
+	Loaded [A39_fig_1219382.3.peg.2105]
+	Loaded [A39_fig_1219382.3.peg.2106]
+	Loaded [A39_fig_1219382.3.peg.2107]
+	Loaded [A39_fig_1219382.3.peg.2108]
+	Loaded [A39_fig_1219382.3.peg.2109]
+	Loaded [A39_fig_1219382.3.peg.2110]
+	Loaded [A39_fig_1219382.3.peg.2111]
+	Loaded [A39_fig_1219382.3.peg.2112]
+	Loaded [A39_fig_1219382.3.peg.2113]
+	Loaded [A39_fig_1219382.3.peg.2114]
+	Loaded [A39_fig_1219382.3.peg.2115]
+	Loaded [A39_fig_1219382.3.peg.2116]
+	Loaded [A39_fig_1219382.3.peg.2117]
+	Loaded [A39_fig_1219382.3.peg.2118]
+	Loaded [A39_fig_1219382.3.peg.2119]
+	Loaded [A39_fig_1219382.3.peg.2120]
+	Loaded [A39_fig_1219382.3.peg.2121]
+	Loaded [A39_fig_1219382.3.peg.2122]
+	Loaded [A39_fig_1219382.3.peg.2123]
+	Loaded [A39_fig_1219382.3.peg.2124]
+	Loaded [A39_fig_1219382.3.peg.2125]
+	Loaded [A39_fig_1219382.3.peg.2126]
+	Loaded [A39_fig_1219382.3.peg.2127]
+	Loaded [A39_fig_1219382.3.peg.2128]
+	Loaded [A39_fig_1219382.3.peg.2129]
+	Loaded [A39_fig_1219382.3.peg.2130]
+	Loaded [A39_fig_1219382.3.peg.2131]
+	Loaded [A39_fig_1219382.3.peg.2132]
+	Loaded [A39_fig_1219382.3.peg.2133]
+	Loaded [A39_fig_1219382.3.peg.2134]
+	Loaded [A39_fig_1219382.3.peg.2135]
+	Loaded [A39_fig_1219382.3.peg.2136]
+	Loaded [A39_fig_1219382.3.peg.2137]
+	Loaded [A39_fig_1219382.3.peg.2138]
+	Loaded [A39_fig_1219382.3.peg.2139]
+	Loaded [A39_fig_1219382.3.peg.2140]
+	Loaded [A39_fig_1219382.3.peg.2141]
+	Loaded [A39_fig_1219382.3.peg.2142]
+	Loaded [A39_fig_1219382.3.peg.2143]
+	Loaded [A39_fig_1219382.3.peg.2144]
+	Loaded [A39_fig_1219382.3.peg.2145]
+	Loaded [A39_fig_1219382.3.peg.2146]
+	Loaded [A39_fig_1219382.3.peg.2147]
+	Loaded [A39_fig_1219382.3.peg.2148]
+	Loaded [A39_fig_1219382.3.peg.2149]
+	Loaded [A39_fig_1219382.3.peg.2150]
+	Loaded [A39_fig_1219382.3.peg.2151]
+	Loaded [A39_fig_1219382.3.peg.2152]
+	Loaded [A39_fig_1219382.3.peg.2153]
+	Loaded [A39_fig_1219382.3.peg.2154]
+	Loaded [A39_fig_1219382.3.peg.2155]
+	Loaded [A39_fig_1219382.3.peg.2156]
+	Loaded [A39_fig_1219382.3.peg.2157]
+	Loaded [A39_fig_1219382.3.peg.2158]
+	Loaded [A39_fig_1219382.3.peg.2159]
+	Loaded [A39_fig_1219382.3.peg.2160]
+	Loaded [A39_fig_1219382.3.peg.2161]
+	Loaded [A39_fig_1219382.3.peg.2162]
+	Loaded [A39_fig_1219382.3.peg.2163]
+	Loaded [A39_fig_1219382.3.peg.2164]
+	Loaded [A39_fig_1219382.3.peg.2165]
+	Loaded [A39_fig_1219382.3.peg.2166]
+	Loaded [A39_fig_1219382.3.peg.2167]
+	Loaded [A39_fig_1219382.3.peg.2168]
+	Loaded [A39_fig_1219382.3.peg.2169]
+	Loaded [A39_fig_1219382.3.peg.2170]
+	Loaded [A39_fig_1219382.3.peg.2171]
+	Loaded [A39_fig_1219382.3.peg.2172]
+	Loaded [A39_fig_1219382.3.peg.2173]
+	Loaded [A39_fig_1219382.3.peg.2174]
+	Loaded [A39_fig_1219382.3.peg.2175]
+	Loaded [A39_fig_1219382.3.peg.2176]
+	Loaded [A39_fig_1219382.3.peg.2177]
+	Loaded [A39_fig_1219382.3.peg.2178]
+	Loaded [A39_fig_1219382.3.peg.2179]
+	Loaded [A39_fig_1219382.3.peg.2180]
+	Loaded [A39_fig_1219382.3.peg.2181]
+	Loaded [A39_fig_1219382.3.peg.2182]
+	Loaded [A39_fig_1219382.3.peg.2183]
+	Loaded [A39_fig_1219382.3.peg.2184]
+	Loaded [A39_fig_1219382.3.peg.2185]
+	Loaded [A39_fig_1219382.3.peg.2186]
+	Loaded [A39_fig_1219382.3.peg.2187]
+	Loaded [A39_fig_1219382.3.peg.2188]
+	Loaded [A39_fig_1219382.3.peg.2189]
+	Loaded [A39_fig_1219382.3.peg.2190]
+	Loaded [A39_fig_1219382.3.peg.2191]
+	Loaded [A39_fig_1219382.3.peg.2192]
+	Loaded [A39_fig_1219382.3.peg.2193]
+	Loaded [A39_fig_1219382.3.peg.2194]
+	Loaded [A39_fig_1219382.3.peg.2195]
+	Loaded [A39_fig_1219382.3.peg.2196]
+	Loaded [A39_fig_1219382.3.peg.2197]
+	Loaded [A39_fig_1219382.3.peg.2198]
+	Loaded [A39_fig_1219382.3.peg.2199]
+	Loaded [A39_fig_1219382.3.peg.2200]
+	Loaded [A39_fig_1219382.3.peg.2201]
+	Loaded [A39_fig_1219382.3.peg.2202]
+	Loaded [A39_fig_1219382.3.peg.2203]
+	Loaded [A39_fig_1219382.3.peg.2204]
+	Loaded [A39_fig_1219382.3.peg.2205]
+	Loaded [A39_fig_1219382.3.peg.2206]
+	Loaded [A39_fig_1219382.3.peg.2207]
+	Loaded [A39_fig_1219382.3.peg.2208]
+	Loaded [A39_fig_1219382.3.peg.2209]
+	Loaded [A39_fig_1219382.3.peg.2210]
+	Loaded [A39_fig_1219382.3.peg.2211]
+	Loaded [A39_fig_1219382.3.peg.2212]
+	Loaded [A39_fig_1219382.3.peg.2213]
+	Loaded [A39_fig_1219382.3.peg.2214]
+	Loaded [A39_fig_1219382.3.peg.2215]
+	Loaded [A39_fig_1219382.3.peg.2216]
+	Loaded [A39_fig_1219382.3.peg.2217]
+	Loaded [A39_fig_1219382.3.peg.2218]
+	Loaded [A39_fig_1219382.3.peg.2219]
+	Loaded [A39_fig_1219382.3.peg.2220]
+	Loaded [A39_fig_1219382.3.peg.2221]
+	Loaded [A39_fig_1219382.3.peg.2222]
+	Loaded [A39_fig_1219382.3.peg.2223]
+	Loaded [A39_fig_1219382.3.peg.2224]
+	Loaded [A39_fig_1219382.3.peg.2225]
+	Loaded [A39_fig_1219382.3.peg.2226]
+	Loaded [A39_fig_1219382.3.peg.2227]
+	Loaded [A39_fig_1219382.3.peg.2228]
+	Loaded [A39_fig_1219382.3.peg.2229]
+	Loaded [A39_fig_1219382.3.peg.2230]
+	Loaded [A39_fig_1219382.3.peg.2231]
+	Loaded [A39_fig_1219382.3.peg.2232]
+	Loaded [A39_fig_1219382.3.peg.2233]
+	Loaded [A39_fig_1219382.3.peg.2234]
+	Loaded [A39_fig_1219382.3.peg.2235]
+	Loaded [A39_fig_1219382.3.peg.2236]
+	Loaded [A39_fig_1219382.3.peg.2237]
+	Loaded [A39_fig_1219382.3.peg.2238]
+	Loaded [A39_fig_1219382.3.peg.2239]
+	Loaded [A39_fig_1219382.3.peg.2240]
+	Loaded [A39_fig_1219382.3.peg.2241]
+	Loaded [A39_fig_1219382.3.peg.2242]
+	Loaded [A39_fig_1219382.3.peg.2243]
+	Loaded [A39_fig_1219382.3.peg.2244]
+	Loaded [A39_fig_1219382.3.peg.2245]
+	Loaded [A39_fig_1219382.3.peg.2246]
+	Loaded [A39_fig_1219382.3.peg.2247]
+	Loaded [A39_fig_1219382.3.peg.2248]
+	Loaded [A39_fig_1219382.3.peg.2249]
+	Loaded [A39_fig_1219382.3.peg.2250]
+	Loaded [A39_fig_1219382.3.peg.2251]
+	Loaded [A39_fig_1219382.3.peg.2252]
+	Loaded [A39_fig_1219382.3.peg.2253]
+	Loaded [A39_fig_1219382.3.peg.2254]
+	Loaded [A39_fig_1219382.3.peg.2255]
+	Loaded [A39_fig_1219382.3.peg.2256]
+	Loaded [A39_fig_1219382.3.peg.2257]
+	Loaded [A39_fig_1219382.3.peg.2258]
+	Loaded [A39_fig_1219382.3.peg.2259]
+	Loaded [A39_fig_1219382.3.peg.2260]
+	Loaded [A39_fig_1219382.3.peg.2261]
+	Loaded [A39_fig_1219382.3.peg.2262]
+	Loaded [A39_fig_1219382.3.peg.2263]
+	Loaded [A39_fig_1219382.3.peg.2264]
+	Loaded [A39_fig_1219382.3.peg.2265]
+	Loaded [A39_fig_1219382.3.peg.2266]
+	Loaded [A39_fig_1219382.3.peg.2267]
+	Loaded [A39_fig_1219382.3.peg.2268]
+	Loaded [A39_fig_1219382.3.peg.2269]
+	Loaded [A39_fig_1219382.3.peg.2270]
+	Loaded [A39_fig_1219382.3.peg.2271]
+	Loaded [A39_fig_1219382.3.peg.2272]
+	Loaded [A39_fig_1219382.3.peg.2273]
+	Loaded [A39_fig_1219382.3.peg.2274]
+	Loaded [A39_fig_1219382.3.peg.2275]
+	Loaded [A39_fig_1219382.3.peg.2276]
+	Loaded [A39_fig_1219382.3.peg.2277]
+	Loaded [A39_fig_1219382.3.peg.2278]
+	Loaded [A39_fig_1219382.3.peg.2279]
+	Loaded [A39_fig_1219382.3.peg.2280]
+	Loaded [A39_fig_1219382.3.peg.2281]
+	Loaded [A39_fig_1219382.3.peg.2282]
+	Loaded [A39_fig_1219382.3.peg.2283]
+	Loaded [A39_fig_1219382.3.peg.2284]
+	Loaded [A39_fig_1219382.3.peg.2285]
+	Loaded [A39_fig_1219382.3.peg.2286]
+	Loaded [A39_fig_1219382.3.peg.2287]
+	Loaded [A39_fig_1219382.3.peg.2288]
+	Loaded [A39_fig_1219382.3.peg.2289]
+	Loaded [A39_fig_1219382.3.peg.2290]
+	Loaded [A39_fig_1219382.3.peg.2291]
+	Loaded [A39_fig_1219382.3.peg.2292]
+	Loaded [A39_fig_1219382.3.peg.2293]
+	Loaded [A39_fig_1219382.3.peg.2294]
+	Loaded [A39_fig_1219382.3.peg.2295]
+	Loaded [A39_fig_1219382.3.peg.2296]
+	Loaded [A39_fig_1219382.3.peg.2297]
+	Loaded [A39_fig_1219382.3.peg.2298]
+	Loaded [A39_fig_1219382.3.peg.2299]
+	Loaded [A39_fig_1219382.3.peg.2300]
+	Loaded [A39_fig_1219382.3.peg.2301]
+	Loaded [A39_fig_1219382.3.peg.2302]
+	Loaded [A39_fig_1219382.3.peg.2303]
+	Loaded [A39_fig_1219382.3.peg.2304]
+	Loaded [A39_fig_1219382.3.peg.2305]
+	Loaded [A39_fig_1219382.3.peg.2306]
+	Loaded [A39_fig_1219382.3.peg.2307]
+	Loaded [A39_fig_1219382.3.peg.2308]
+	Loaded [A39_fig_1219382.3.peg.2309]
+	Loaded [A39_fig_1219382.3.peg.2310]
+	Loaded [A39_fig_1219382.3.peg.2311]
+	Loaded [A39_fig_1219382.3.peg.2312]
+	Loaded [A39_fig_1219382.3.peg.2313]
+	Loaded [A39_fig_1219382.3.peg.2314]
+	Loaded [A39_fig_1219382.3.peg.2315]
+	Loaded [A39_fig_1219382.3.peg.2316]
+	Loaded [A39_fig_1219382.3.peg.2317]
+	Loaded [A39_fig_1219382.3.peg.2318]
+	Loaded [A39_fig_1219382.3.peg.2319]
+	Loaded [A39_fig_1219382.3.peg.2320]
+	Loaded [A39_fig_1219382.3.peg.2321]
+	Loaded [A39_fig_1219382.3.peg.2322]
+	Loaded [A39_fig_1219382.3.peg.2323]
+	Loaded [A39_fig_1219382.3.peg.2324]
+	Loaded [A39_fig_1219382.3.peg.2325]
+	Loaded [A39_fig_1219382.3.peg.2326]
+	Loaded [A39_fig_1219382.3.peg.2327]
+	Loaded [A39_fig_1219382.3.peg.2328]
+	Loaded [A39_fig_1219382.3.peg.2329]
+	Loaded [A39_fig_1219382.3.peg.2330]
+	Loaded [A39_fig_1219382.3.peg.2331]
+	Loaded [A39_fig_1219382.3.peg.2332]
+	Loaded [A39_fig_1219382.3.peg.2333]
+	Loaded [A39_fig_1219382.3.peg.2334]
+	Loaded [A39_fig_1219382.3.peg.2335]
+	Loaded [A39_fig_1219382.3.peg.2336]
+	Loaded [A39_fig_1219382.3.peg.2337]
+	Loaded [A39_fig_1219382.3.peg.2338]
+	Loaded [A39_fig_1219382.3.peg.2339]
+	Loaded [A39_fig_1219382.3.peg.2340]
+	Loaded [A39_fig_1219382.3.peg.2341]
+	Loaded [A39_fig_1219382.3.peg.2342]
+	Loaded [A39_fig_1219382.3.peg.2343]
+	Loaded [A39_fig_1219382.3.peg.2344]
+	Loaded [A39_fig_1219382.3.peg.2345]
+	Loaded [A39_fig_1219382.3.peg.2346]
+	Loaded [A39_fig_1219382.3.peg.2347]
+	Loaded [A39_fig_1219382.3.peg.2348]
+	Loaded [A39_fig_1219382.3.peg.2349]
+	Loaded [A39_fig_1219382.3.peg.2350]
+	Loaded [A39_fig_1219382.3.peg.2351]
+	Loaded [A39_fig_1219382.3.peg.2352]
+	Loaded [A39_fig_1219382.3.peg.2353]
+	Loaded [A39_fig_1219382.3.peg.2354]
+	Loaded [A39_fig_1219382.3.peg.2355]
+	Loaded [A39_fig_1219382.3.peg.2356]
+	Loaded [A39_fig_1219382.3.peg.2357]
+	Loaded [A39_fig_1219382.3.peg.2358]
+	Loaded [A39_fig_1219382.3.peg.2359]
+	Loaded [A39_fig_1219382.3.peg.2360]
+	Loaded [A39_fig_1219382.3.peg.2361]
+	Loaded [A39_fig_1219382.3.peg.2362]
+	Loaded [A39_fig_1219382.3.peg.2363]
+	Loaded [A39_fig_1219382.3.peg.2364]
+	Loaded [A39_fig_1219382.3.peg.2365]
+	Loaded [A39_fig_1219382.3.peg.2366]
+	Loaded [A39_fig_1219382.3.peg.2367]
+	Loaded [A39_fig_1219382.3.peg.2368]
+	Loaded [A39_fig_1219382.3.peg.2369]
+	Loaded [A39_fig_1219382.3.peg.2370]
+	Loaded [A39_fig_1219382.3.peg.2371]
+	Loaded [A39_fig_1219382.3.peg.2372]
+	Loaded [A39_fig_1219382.3.peg.2373]
+	Loaded [A39_fig_1219382.3.peg.2374]
+	Loaded [A39_fig_1219382.3.peg.2375]
+	Loaded [A39_fig_1219382.3.peg.2376]
+	Loaded [A39_fig_1219382.3.peg.2377]
+	Loaded [A39_fig_1219382.3.peg.2378]
+	Loaded [A39_fig_1219382.3.peg.2379]
+	Loaded [A39_fig_1219382.3.peg.2380]
+	Loaded [A39_fig_1219382.3.peg.2381]
+	Loaded [A39_fig_1219382.3.peg.2382]
+	Loaded [A39_fig_1219382.3.peg.2383]
+	Loaded [A39_fig_1219382.3.peg.2384]
+	Loaded [A39_fig_1219382.3.peg.2385]
+	Loaded [A39_fig_1219382.3.peg.2386]
+	Loaded [A39_fig_1219382.3.peg.2387]
+	Loaded [A39_fig_1219382.3.peg.2388]
+	Loaded [A39_fig_1219382.3.peg.2389]
+	Loaded [A39_fig_1219382.3.peg.2390]
+	Loaded [A39_fig_1219382.3.peg.2391]
+	Loaded [A39_fig_1219382.3.peg.2392]
+	Loaded [A39_fig_1219382.3.peg.2393]
+	Loaded [A39_fig_1219382.3.peg.2394]
+	Loaded [A39_fig_1219382.3.peg.2395]
+	Loaded [A39_fig_1219382.3.peg.2396]
+	Loaded [A39_fig_1219382.3.peg.2397]
+	Loaded [A39_fig_1219382.3.peg.2398]
+	Loaded [A39_fig_1219382.3.peg.2399]
+	Loaded [A39_fig_1219382.3.peg.2400]
+	Loaded [A39_fig_1219382.3.peg.2401]
+	Loaded [A39_fig_1219382.3.peg.2402]
+	Loaded [A39_fig_1219382.3.peg.2403]
+	Loaded [A39_fig_1219382.3.peg.2404]
+	Loaded [A39_fig_1219382.3.peg.2405]
+	Loaded [A39_fig_1219382.3.peg.2406]
+	Loaded [A39_fig_1219382.3.peg.2407]
+	Loaded [A39_fig_1219382.3.peg.2408]
+	Loaded [A39_fig_1219382.3.peg.2409]
+	Loaded [A39_fig_1219382.3.peg.2410]
+	Loaded [A39_fig_1219382.3.peg.2411]
+	Loaded [A39_fig_1219382.3.peg.2412]
+	Loaded [A39_fig_1219382.3.peg.2413]
+	Loaded [A39_fig_1219382.3.peg.2414]
+	Loaded [A39_fig_1219382.3.peg.2415]
+	Loaded [A39_fig_1219382.3.peg.2416]
+	Loaded [A39_fig_1219382.3.peg.2417]
+	Loaded [A39_fig_1219382.3.peg.2418]
+	Loaded [A39_fig_1219382.3.peg.2419]
+	Loaded [A39_fig_1219382.3.peg.2420]
+	Loaded [A39_fig_1219382.3.peg.2421]
+	Loaded [A39_fig_1219382.3.peg.2422]
+	Loaded [A39_fig_1219382.3.peg.2423]
+	Loaded [A39_fig_1219382.3.peg.2424]
+	Loaded [A39_fig_1219382.3.peg.2425]
+	Loaded [A39_fig_1219382.3.peg.2426]
+	Loaded [A39_fig_1219382.3.peg.2427]
+	Loaded [A39_fig_1219382.3.peg.2428]
+	Loaded [A39_fig_1219382.3.peg.2429]
+	Loaded [A39_fig_1219382.3.peg.2430]
+	Loaded [A39_fig_1219382.3.peg.2431]
+	Loaded [A39_fig_1219382.3.peg.2432]
+	Loaded [A39_fig_1219382.3.peg.2433]
+	Loaded [A39_fig_1219382.3.peg.2434]
+	Loaded [A39_fig_1219382.3.peg.2435]
+	Loaded [A39_fig_1219382.3.peg.2436]
+	Loaded [A39_fig_1219382.3.peg.2437]
+	Loaded [A39_fig_1219382.3.peg.2438]
+	Loaded [A39_fig_1219382.3.peg.2439]
+	Loaded [A39_fig_1219382.3.peg.2440]
+	Loaded [A39_fig_1219382.3.peg.2441]
+	Loaded [A39_fig_1219382.3.peg.2442]
+	Loaded [A39_fig_1219382.3.peg.2443]
+	Loaded [A39_fig_1219382.3.peg.2444]
+	Loaded [A39_fig_1219382.3.peg.2445]
+	Loaded [A39_fig_1219382.3.peg.2446]
+	Loaded [A39_fig_1219382.3.peg.2447]
+	Loaded [A39_fig_1219382.3.peg.2448]
+	Loaded [A39_fig_1219382.3.peg.2449]
+	Loaded [A39_fig_1219382.3.peg.2450]
+	Loaded [A39_fig_1219382.3.peg.2451]
+	Loaded [A39_fig_1219382.3.peg.2452]
+	Loaded [A39_fig_1219382.3.peg.2453]
+	Loaded [A39_fig_1219382.3.peg.2454]
+	Loaded [A39_fig_1219382.3.peg.2455]
+	Loaded [A39_fig_1219382.3.peg.2456]
+	Loaded [A39_fig_1219382.3.peg.2457]
+	Loaded [A39_fig_1219382.3.peg.2458]
+	Loaded [A39_fig_1219382.3.peg.2459]
+	Loaded [A39_fig_1219382.3.peg.2460]
+	Loaded [A39_fig_1219382.3.peg.2461]
+	Loaded [A39_fig_1219382.3.peg.2462]
+	Loaded [A39_fig_1219382.3.peg.2463]
+	Loaded [A39_fig_1219382.3.peg.2464]
+	Loaded [A39_fig_1219382.3.peg.2465]
+	Loaded [A39_fig_1219382.3.peg.2466]
+	Loaded [A39_fig_1219382.3.peg.2467]
+	Loaded [A39_fig_1219382.3.peg.2468]
+	Loaded [A39_fig_1219382.3.peg.2469]
+	Loaded [A39_fig_1219382.3.peg.2470]
+	Loaded [A39_fig_1219382.3.peg.2471]
+	Loaded [A39_fig_1219382.3.peg.2472]
+	Loaded [A39_fig_1219382.3.peg.2473]
+	Loaded [A39_fig_1219382.3.peg.2474]
+	Loaded [A39_fig_1219382.3.peg.2475]
+	Loaded [A39_fig_1219382.3.peg.2476]
+	Loaded [A39_fig_1219382.3.peg.2477]
+	Loaded [A39_fig_1219382.3.peg.2478]
+	Loaded [A39_fig_1219382.3.peg.2479]
+	Loaded [A39_fig_1219382.3.peg.2480]
+	Loaded [A39_fig_1219382.3.peg.2481]
+	Loaded [A39_fig_1219382.3.peg.2482]
+	Loaded [A39_fig_1219382.3.peg.2483]
+	Loaded [A39_fig_1219382.3.peg.2484]
+	Loaded [A39_fig_1219382.3.peg.2485]
+	Loaded [A39_fig_1219382.3.peg.2486]
+	Loaded [A39_fig_1219382.3.peg.2487]
+	Loaded [A39_fig_1219382.3.peg.2488]
+	Loaded [A39_fig_1219382.3.peg.2489]
+	Loaded [A39_fig_1219382.3.peg.2490]
+	Loaded [A39_fig_1219382.3.peg.2491]
+	Loaded [A39_fig_1219382.3.peg.2492]
+	Loaded [A39_fig_1219382.3.peg.2493]
+	Loaded [A39_fig_1219382.3.peg.2494]
+	Loaded [A39_fig_1219382.3.peg.2495]
+	Loaded [A39_fig_1219382.3.peg.2496]
+	Loaded [A39_fig_1219382.3.peg.2497]
+	Loaded [A39_fig_1219382.3.peg.2498]
+	Loaded [A39_fig_1219382.3.peg.2499]
+	Loaded [A39_fig_1219382.3.peg.2500]
+	Loaded [A39_fig_1219382.3.peg.2501]
+	Loaded [A39_fig_1219382.3.peg.2502]
+	Loaded [A39_fig_1219382.3.peg.2503]
+	Loaded [A39_fig_1219382.3.peg.2504]
+	Loaded [A39_fig_1219382.3.peg.2505]
+	Loaded [A39_fig_1219382.3.peg.2506]
+	Loaded [A39_fig_1219382.3.peg.2507]
+	Loaded [A39_fig_1219382.3.peg.2508]
+	Loaded [A39_fig_1219382.3.peg.2509]
+	Loaded [A39_fig_1219382.3.peg.2510]
+	Loaded [A39_fig_1219382.3.peg.2511]
+	Loaded [A39_fig_1219382.3.peg.2512]
+	Loaded [A39_fig_1219382.3.peg.2513]
+	Loaded [A39_fig_1219382.3.peg.2514]
+	Loaded [A39_fig_1219382.3.peg.2515]
+	Loaded [A39_fig_1219382.3.peg.2516]
+	Loaded [A39_fig_1219382.3.peg.2517]
+	Loaded [A39_fig_1219382.3.peg.2518]
+	Loaded [A39_fig_1219382.3.peg.2519]
+	Loaded [A39_fig_1219382.3.peg.2520]
+	Loaded [A39_fig_1219382.3.peg.2521]
+	Loaded [A39_fig_1219382.3.peg.2522]
+	Loaded [A39_fig_1219382.3.peg.2523]
+	Loaded [A39_fig_1219382.3.peg.2524]
+	Loaded [A39_fig_1219382.3.peg.2525]
+	Loaded [A39_fig_1219382.3.peg.2526]
+	Loaded [A39_fig_1219382.3.peg.2527]
+	Loaded [A39_fig_1219382.3.peg.2528]
+	Loaded [A39_fig_1219382.3.peg.2529]
+	Loaded [A39_fig_1219382.3.peg.2530]
+	Loaded [A39_fig_1219382.3.peg.2531]
+	Loaded [A39_fig_1219382.3.peg.2532]
+	Loaded [A39_fig_1219382.3.peg.2533]
+	Loaded [A39_fig_1219382.3.peg.2534]
+	Loaded [A39_fig_1219382.3.peg.2535]
+	Loaded [A39_fig_1219382.3.peg.2536]
+	Loaded [A39_fig_1219382.3.peg.2537]
+	Loaded [A39_fig_1219382.3.peg.2538]
+	Loaded [A39_fig_1219382.3.peg.2539]
+	Loaded [A39_fig_1219382.3.peg.2540]
+	Loaded [A39_fig_1219382.3.peg.2541]
+	Loaded [A39_fig_1219382.3.peg.2542]
+	Loaded [A39_fig_1219382.3.peg.2543]
+	Loaded [A39_fig_1219382.3.peg.2544]
+	Loaded [A39_fig_1219382.3.peg.2545]
+	Loaded [A39_fig_1219382.3.peg.2546]
+	Loaded [A39_fig_1219382.3.peg.2547]
+	Loaded [A39_fig_1219382.3.peg.2548]
+	Loaded [A39_fig_1219382.3.peg.2549]
+	Loaded [A39_fig_1219382.3.peg.2550]
+	Loaded [A39_fig_1219382.3.peg.2551]
+	Loaded [A39_fig_1219382.3.peg.2552]
+	Loaded [A39_fig_1219382.3.peg.2553]
+	Loaded [A39_fig_1219382.3.peg.2554]
+	Loaded [A39_fig_1219382.3.peg.2555]
+	Loaded [A39_fig_1219382.3.peg.2556]
+	Loaded [A39_fig_1219382.3.peg.2557]
+	Loaded [A39_fig_1219382.3.peg.2558]
+	Loaded [A39_fig_1219382.3.peg.2559]
+	Loaded [A39_fig_1219382.3.peg.2560]
+	Loaded [A39_fig_1219382.3.peg.2561]
+	Loaded [A39_fig_1219382.3.peg.2562]
+	Loaded [A39_fig_1219382.3.peg.2563]
+	Loaded [A39_fig_1219382.3.peg.2564]
+	Loaded [A39_fig_1219382.3.peg.2565]
+	Loaded [A39_fig_1219382.3.peg.2566]
+	Loaded [A39_fig_1219382.3.peg.2567]
+	Loaded [A39_fig_1219382.3.peg.2568]
+	Loaded [A39_fig_1219382.3.peg.2569]
+	Loaded [A39_fig_1219382.3.peg.2570]
+	Loaded [A39_fig_1219382.3.peg.2571]
+	Loaded [A39_fig_1219382.3.peg.2572]
+	Loaded [A39_fig_1219382.3.peg.2573]
+	Loaded [A39_fig_1219382.3.peg.2574]
+	Loaded [A39_fig_1219382.3.peg.2575]
+	Loaded [A39_fig_1219382.3.peg.2576]
+	Loaded [A39_fig_1219382.3.peg.2577]
+	Loaded [A39_fig_1219382.3.peg.2578]
+	Loaded [A39_fig_1219382.3.peg.2579]
+	Loaded [A39_fig_1219382.3.peg.2580]
+	Loaded [A39_fig_1219382.3.peg.2581]
+	Loaded [A39_fig_1219382.3.peg.2582]
+	Loaded [A39_fig_1219382.3.peg.2583]
+	Loaded [A39_fig_1219382.3.peg.2584]
+	Loaded [A39_fig_1219382.3.peg.2585]
+	Loaded [A39_fig_1219382.3.peg.2586]
+	Loaded [A39_fig_1219382.3.peg.2587]
+	Loaded [A39_fig_1219382.3.peg.2588]
+	Loaded [A39_fig_1219382.3.peg.2589]
+	Loaded [A39_fig_1219382.3.peg.2590]
+	Loaded [A39_fig_1219382.3.peg.2591]
+	Loaded [A39_fig_1219382.3.peg.2592]
+	Loaded [A39_fig_1219382.3.peg.2593]
+	Loaded [A39_fig_1219382.3.peg.2594]
+	Loaded [A39_fig_1219382.3.peg.2595]
+	Loaded [A39_fig_1219382.3.peg.2596]
+	Loaded [A39_fig_1219382.3.peg.2597]
+	Loaded [A39_fig_1219382.3.peg.2598]
+	Loaded [A39_fig_1219382.3.peg.2599]
+	Loaded [A39_fig_1219382.3.peg.2600]
+	Loaded [A39_fig_1219382.3.peg.2601]
+	Loaded [A39_fig_1219382.3.peg.2602]
+	Loaded [A39_fig_1219382.3.peg.2603]
+	Loaded [A39_fig_1219382.3.peg.2604]
+	Loaded [A39_fig_1219382.3.peg.2605]
+	Loaded [A39_fig_1219382.3.peg.2606]
+	Loaded [A39_fig_1219382.3.peg.2607]
+	Loaded [A39_fig_1219382.3.peg.2608]
+	Loaded [A39_fig_1219382.3.peg.2609]
+	Loaded [A39_fig_1219382.3.peg.2610]
+	Loaded [A39_fig_1219382.3.peg.2611]
+	Loaded [A39_fig_1219382.3.peg.2612]
+	Loaded [A39_fig_1219382.3.peg.2613]
+	Loaded [A39_fig_1219382.3.peg.2614]
+	Total Regions: 2614
+	Total Region Length: 2345508
+Analyzing contigs...
+CONTIG: NODE_27_length_42738_cov_17.474873 (42738bp)
+Best alignment score: 130.0 (LEN: 140, IDY: 92.86), Total number of alignments: 1
+			Looking for the best set of alignments (out of 1 total alignments)
+			The best set is below. Score: 130.0, number of alignments: 1, unaligned bases: 42598
+		This contig is partially unaligned. (Aligned 140 out of 42738 non-N bases (0.33%))
+		Alignment: 961 1100 | 11882 11743 | 140 140 | 92.86 | A39_fig_1219382.3.peg.1416 NODE_27_length_42738_cov_17.474873
+		Unaligned bases: 1 to 11742 (11742)
+		Unaligned bases: 11883 to 42738 (30856)
+
+CONTIG: NODE_57_length_4055_cov_3.437750 (4055bp)
+Best alignment score: 2005.1 (LEN: 2122, IDY: 94.49), Total number of alignments: 4
+			Looking for the best set of alignments (out of 4 total alignments)
+			The best set is below. Score: 2354.6, number of alignments: 4, unaligned bases: 914
+		This contig is misassembled.
+		This contig is partially unaligned. (Aligned 3141 out of 4055 non-N bases (77.46%))
+			Excluding internal overlap of size 11 between Alignment 1 and 2: 1 486 | 2597 2112 | 486 486 --> 1 475 | 2597 2123 | 475 475
+			Real Alignment 1: 1 2122 | 2122 1 | 2122 2122 | 94.49 | A39_fig_1219382.3.peg.15 NODE_57_length_4055_cov_3.437750
+			  Extensive misassembly (translocation) between these two alignments
+			Real Alignment 2: 1 475 | 2597 2123 | 475 475 | 96.09 | A39_fig_1219382.3.peg.14 NODE_57_length_4055_cov_3.437750
+			  Extensive misassembly (translocation) between these two alignments
+			Excluding internal overlap of size 1 between Alignment 3 and 4: 1 249 | 2851 3099 | 249 249 --> 1 248 | 2851 3098 | 248 248
+			Real Alignment 3: 1 248 | 2851 3098 | 248 248 | 94.78 | A39_fig_1219382.3.peg.13 NODE_57_length_4055_cov_3.437750
+			  Extensive misassembly (translocation) between these two alignments
+			Real Alignment 4: 1 296 | 3099 3394 | 296 296 | 93.24 | A39_fig_1219382.3.peg.12 NODE_57_length_4055_cov_3.437750
+		Unaligned bases: 914
+
+CONTIG: NODE_64_length_3139_cov_3.165694 (3139bp)
+Best alignment score: 261.0 (LEN: 286, IDY: 91.26), Total number of alignments: 1
+			Looking for the best set of alignments (out of 1 total alignments)
+			The best set is below. Score: 261.0, number of alignments: 1, unaligned bases: 2853
+		This contig is partially unaligned. (Aligned 286 out of 3139 non-N bases (9.11%))
+		Alignment: 646 931 | 739 1024 | 286 286 | 91.26 | A39_fig_1219382.3.peg.829 NODE_64_length_3139_cov_3.165694
+		Unaligned bases: 1 to 738 (738)
+		Unaligned bases: 1025 to 3139 (2115)
+
+CONTIG: NODE_90_length_2112_cov_9.075839 (2112bp)
+Best alignment score: 972.0 (LEN: 972, IDY: 100.00), Total number of alignments: 1
+			Looking for the best set of alignments (out of 1 total alignments)
+			The best set is below. Score: 972.0, number of alignments: 1, unaligned bases: 1140
+		This contig is partially unaligned. (Aligned 972 out of 2112 non-N bases (46.02%))
+		Alignment: 1 972 | 134 1105 | 972 972 | 100.0 | A39_fig_1219382.3.peg.829 NODE_90_length_2112_cov_9.075839
+		Unaligned bases: 1 to 133 (133)
+		Unaligned bases: 1106 to 2112 (1007)
+
+CONTIG: NODE_73_length_2536_cov_11.359129 (2536bp)
+Best alignment score: 80.0 (LEN: 82, IDY: 97.56), Total number of alignments: 1
+			Looking for the best set of alignments (out of 1 total alignments)
+			The best set is below. Score: 80.0, number of alignments: 1, unaligned bases: 2454
+		This contig is partially unaligned. (Aligned 82 out of 2536 non-N bases (3.23%))
+		Alignment: 1 82 | 711 630 | 82 82 | 97.56 | A39_fig_1219382.3.peg.1268 NODE_73_length_2536_cov_11.359129
+		Unaligned bases: 1 to 629 (629)
+		Unaligned bases: 712 to 2536 (1825)
+
+CONTIG: NODE_85_length_2213_cov_3.070436 (2213bp)
+Best alignment score: 952.0 (LEN: 957, IDY: 99.48), Total number of alignments: 2
+			Looking for the best set of alignments (out of 2 total alignments)
+			The best set is below. Score: 1633.0, number of alignments: 2, unaligned bases: 458
+		This contig is misassembled.
+			Real Alignment 1: 76 873 | 1 798 | 798 798 | 99.37 | A39_fig_1219382.3.peg.67 NODE_85_length_2213_cov_3.070436
+			  Extensive misassembly (translocation) between these two alignments
+			Real Alignment 2: 223 1179 | 2213 1257 | 957 957 | 99.48 | A39_fig_1219382.3.peg.68 NODE_85_length_2213_cov_3.070436
+
+CONTIG: NODE_148_length_1651_cov_2.879073 (1651bp)
+Best alignment score: 466.0 (LEN: 470, IDY: 99.15), Total number of alignments: 3
+			Looking for the best set of alignments (out of 3 total alignments)
+			The best set is below. Score: 897.0, number of alignments: 3, unaligned bases: 648
+		This contig is misassembled.
+		This contig is partially unaligned. (Aligned 1003 out of 1651 non-N bases (60.75%))
+			Real Alignment 1: 1 248 | 248 1 | 248 248 | 98.39 | A39_fig_1219382.3.peg.68 NODE_148_length_1651_cov_2.879073
+			  Extensive misassembly (translocation) between these two alignments
+			Real Alignment 2: 288 756 | 1265 796 | 469 470 | 99.15 | A39_fig_1219382.3.peg.69 NODE_148_length_1651_cov_2.879073
+			  Indel (> 5bp) between these two alignments: insertion of length 101; 0 mismatches (number of Ns: 0)
+			Real Alignment 3: 3 287 | 1651 1367 | 285 285 | 95.09 | A39_fig_1219382.3.peg.69 NODE_148_length_1651_cov_2.879073
+		Unaligned bases: 648
+
+CONTIG: NODE_87_length_2166_cov_2.356703 (2166bp)
+Best alignment score: 548.0 (LEN: 557, IDY: 98.38), Total number of alignments: 2
+			Looking for the best set of alignments (out of 2 total alignments)
+			The best set is below. Score: 972.0, number of alignments: 2, unaligned bases: 1063
+		This contig is misassembled.
+		This contig is partially unaligned. (Aligned 1103 out of 2166 non-N bases (50.92%))
+			Real Alignment 1: 1 546 | 546 1 | 546 546 | 97.62 | A39_fig_1219382.3.peg.82 NODE_87_length_2166_cov_2.356703
+			  Extensive misassembly (translocation) between these two alignments
+			Real Alignment 2: 11 567 | 788 1344 | 557 557 | 98.38 | A39_fig_1219382.3.peg.83 NODE_87_length_2166_cov_2.356703
+		Unaligned bases: 1063
+
+CONTIG: NODE_97_length_2009_cov_3.300409 (2009bp)
+Best alignment score: 1179.0 (LEN: 1191, IDY: 98.99), Total number of alignments: 4
+			Looking for the best set of alignments (out of 4 total alignments)
+			Skipping redundant alignments after choosing the best set of alignments
+		Skipping redundant alignment 1 1183 | 1667 485 | 1183 1183 | 99.15 | A39_fig_1219382.3.peg.234 NODE_97_length_2009_cov_3.300409
+		This contig has several significant sets of alignments. [An ambiguously mapped contig]
+		Using only the very best set (option --ambiguity-usage is set to "one").
+			The best set is below. Score: 1502.0, number of alignments: 3, unaligned bases: 289
+		This contig is misassembled.
+			Real Alignment 1: 1 279 | 279 1 | 279 279 | 99.28 | A39_fig_1219382.3.peg.2234 NODE_97_length_2009_cov_3.300409
+			  Extensive misassembly (translocation) between these two alignments
+			Real Alignment 2: 1 1191 | 1667 477 | 1191 1191 | 98.99 | A39_fig_1219382.3.peg.2235 NODE_97_length_2009_cov_3.300409
+			  Extensive misassembly (translocation) between these two alignments
+			Real Alignment 3: 1884 2133 | 2009 1760 | 250 250 | 99.2 | A39_fig_1219382.3.peg.233 NODE_97_length_2009_cov_3.300409
+
+CONTIG: NODE_122_length_1795_cov_3.750000 (1795bp)
+Best alignment score: 1280.0 (LEN: 1323, IDY: 96.75), Total number of alignments: 2
+			Looking for the best set of alignments (out of 2 total alignments)
+			The best set is below. Score: 1371.0, number of alignments: 2, unaligned bases: 289
+		This contig is misassembled.
+			Real Alignment 1: 1 1323 | 261 1583 | 1323 1323 | 96.75 | A39_fig_1219382.3.peg.994 NODE_122_length_1795_cov_3.750000
+			  Extensive misassembly (translocation) between these two alignments
+			Real Alignment 2: 1 183 | 1613 1795 | 183 183 | 99.45 | A39_fig_1219382.3.peg.995 NODE_122_length_1795_cov_3.750000
+
+CONTIG: NODE_126_length_1758_cov_1.979448 (1758bp)
+Best alignment score: 963.0 (LEN: 969, IDY: 99.38), Total number of alignments: 2
+			Looking for the best set of alignments (out of 2 total alignments)
+			The best set is below. Score: 1298.0, number of alignments: 2, unaligned bases: 358
+		This contig is misassembled.
+			Real Alignment 1: 1 969 | 969 1 | 969 969 | 99.38 | A39_fig_1219382.3.peg.1656 NODE_126_length_1758_cov_1.979448
+			  Extensive misassembly (translocation) between these two alignments
+			Real Alignment 2: 1 431 | 1328 1758 | 431 431 | 98.38 | A39_fig_1219382.3.peg.1657 NODE_126_length_1758_cov_1.979448
+
+CONTIG: NODE_162_length_1583_cov_2.543194 (1583bp)
+Best alignment score: 1561.9 (LEN: 1583, IDY: 98.67), Total number of alignments: 1
+		One align captures most of this contig: 61 1643 | 1583 1 | 1583 1583 | 98.67 | A39_fig_1219382.3.peg.398 NODE_162_length_1583_cov_2.543194
+
+CONTIG: NODE_186_length_1465_cov_2.787943 (1465bp)
+Best alignment score: 1438.0 (LEN: 1465, IDY: 98.16), Total number of alignments: 1
+		One align captures most of this contig: 649 2113 | 1465 1 | 1465 1465 | 98.16 | A39_fig_1219382.3.peg.2134 NODE_186_length_1465_cov_2.787943
+
+CONTIG: NODE_919_length_699_cov_2.246894 (699bp)
+Best alignment score: 628.0 (LEN: 628, IDY: 100.00), Total number of alignments: 1
+			Looking for the best set of alignments (out of 1 total alignments)
+			The best set is below. Score: 628.0, number of alignments: 1, unaligned bases: 71
+		Alignment: 1 628 | 628 1 | 628 628 | 100.0 | A39_fig_1219382.3.peg.2134 NODE_919_length_699_cov_2.246894
+
+CONTIG: NODE_188_length_1452_cov_2.008590 (1452bp)
+Best alignment score: 1435.0 (LEN: 1452, IDY: 98.83), Total number of alignments: 1
+		One align captures most of this contig: 310 1761 | 1452 1 | 1452 1452 | 98.83 | A39_fig_1219382.3.peg.1038 NODE_188_length_1452_cov_2.008590
+
+CONTIG: NODE_192_length_1443_cov_1.535303 (1443bp)
+Best alignment score: 1377.0 (LEN: 1433, IDY: 96.09), Total number of alignments: 1
+		One align captures most of this contig: 949 2381 | 1433 1 | 1433 1433 | 96.09 | A39_fig_1219382.3.peg.439 NODE_192_length_1443_cov_1.535303
+
+CONTIG: NODE_199_length_1417_cov_1.685756 (1417bp)
+Best alignment score: 1409.1 (LEN: 1417, IDY: 99.44), Total number of alignments: 1
+		One align captures most of this contig: 468 1884 | 1417 1 | 1417 1417 | 99.44 | A39_fig_1219382.3.peg.1039 NODE_199_length_1417_cov_1.685756
+
+CONTIG: NODE_366_length_1056_cov_2.343656 (1056bp)
+Best alignment score: 401.0 (LEN: 405, IDY: 99.01), Total number of alignments: 2
+			Looking for the best set of alignments (out of 2 total alignments)
+			The best set is below. Score: 453.0, number of alignments: 2, unaligned bases: 541
+		This contig is misassembled.
+		This contig is partially unaligned. (Aligned 515 out of 1056 non-N bases (48.77%))
+			Warning! This contig is more unaligned than misassembled. Contig length is 1056 (number of Ns: 0) and total length of all aligns is 515
+		Alignment: 1 405 | 419 15 | 405 405 | 99.01 | A39_fig_1219382.3.peg.1040 NODE_366_length_1056_cov_2.343656
+		Alignment: 1862 1971 | 1056 947 | 110 110 | 96.36 | A39_fig_1219382.3.peg.1039 NODE_366_length_1056_cov_2.343656
+		Unaligned bases: 541
+
+CONTIG: NODE_213_length_1363_cov_1.971713 (1363bp)
+Best alignment score: 1342.0 (LEN: 1363, IDY: 98.46), Total number of alignments: 1
+		One align captures most of this contig: 636 1999 | 1363 1 | 1364 1363 | 98.46 | A39_fig_1219382.3.peg.1335 NODE_213_length_1363_cov_1.971713
+
+CONTIG: NODE_222_length_1321_cov_2.074250 (1321bp)
+Best alignment score: 1302.0 (LEN: 1321, IDY: 98.56), Total number of alignments: 1
+		One align captures most of this contig: 135 1456 | 1 1321 | 1322 1321 | 98.56 | A39_fig_1219382.3.peg.2319 NODE_222_length_1321_cov_2.074250
+
+CONTIG: NODE_254_length_1248_cov_2.001676 (1248bp)
+Best alignment score: 1221.0 (LEN: 1248, IDY: 97.84), Total number of alignments: 1
+		One align captures most of this contig: 903 2150 | 1248 1 | 1248 1248 | 97.84 | A39_fig_1219382.3.peg.159 NODE_254_length_1248_cov_2.001676
+
+CONTIG: NODE_260_length_1235_cov_2.062712 (1235bp)
+Best alignment score: 1106.2 (LEN: 1229, IDY: 90.01), Total number of alignments: 1
+		One align captures most of this contig: 3703 5033 | 7 1235 | 1331 1229 | 90.01 | A39_fig_1219382.3.peg.2444 NODE_260_length_1235_cov_2.062712
+
+CONTIG: NODE_265_length_1221_cov_2.286449 (1221bp)
+Best alignment score: 1186.0 (LEN: 1221, IDY: 97.13), Total number of alignments: 1
+		One align captures most of this contig: 35 1255 | 1 1221 | 1221 1221 | 97.13 | A39_fig_1219382.3.peg.2212 NODE_265_length_1221_cov_2.286449
+
+CONTIG: NODE_271_length_1210_cov_2.065801 (1210bp)
+Best alignment score: 1178.0 (LEN: 1208, IDY: 97.52), Total number of alignments: 1
+		One align captures most of this contig: 1619 2826 | 1210 3 | 1208 1208 | 97.52 | A39_fig_1219382.3.peg.1102 NODE_271_length_1210_cov_2.065801
+
+CONTIG: NODE_909_length_702_cov_3.089645 (702bp)
+Best alignment score: 693.0 (LEN: 702, IDY: 98.72), Total number of alignments: 1
+		One align captures most of this contig: 720 1421 | 1 702 | 702 702 | 98.72 | A39_fig_1219382.3.peg.1102 NODE_909_length_702_cov_3.089645
+
+CONTIG: NODE_299_length_1165_cov_2.031532 (1165bp)
+Best alignment score: 1158.9 (LEN: 1165, IDY: 99.48), Total number of alignments: 1
+		One align captures most of this contig: 65 1229 | 1165 1 | 1165 1165 | 99.48 | A39_fig_1219382.3.peg.490 NODE_299_length_1165_cov_2.031532
+
+CONTIG: NODE_324_length_1122_cov_1.977507 (1122bp)
+Best alignment score: 1086.0 (LEN: 1113, IDY: 97.57), Total number of alignments: 1
+		One align captures most of this contig: 352 1464 | 10 1122 | 1113 1113 | 97.57 | A39_fig_1219382.3.peg.2446 NODE_324_length_1122_cov_1.977507
+
+CONTIG: NODE_356_length_1075_cov_1.634314 (1075bp)
+Best alignment score: 1048.1 (LEN: 1075, IDY: 97.50), Total number of alignments: 1
+		One align captures most of this contig: 977 2056 | 1 1075 | 1080 1075 | 97.5 | A39_fig_1219382.3.peg.644 NODE_356_length_1075_cov_1.634314
+
+CONTIG: NODE_370_length_1054_cov_2.205205 (1054bp)
+Best alignment score: 1038.0 (LEN: 1054, IDY: 98.48), Total number of alignments: 1
+		One align captures most of this contig: 440 1494 | 1 1054 | 1055 1054 | 98.48 | A39_fig_1219382.3.peg.1520 NODE_370_length_1054_cov_2.205205
+
+CONTIG: NODE_371_length_1050_cov_3.405025 (1050bp)
+Best alignment score: 1037.0 (LEN: 1050, IDY: 98.76), Total number of alignments: 1
+		One align captures most of this contig: 340 1389 | 1050 1 | 1050 1050 | 98.76 | A39_fig_1219382.3.peg.1200 NODE_371_length_1050_cov_3.405025
+
+CONTIG: NODE_373_length_1047_cov_1.431452 (1047bp)
+Best alignment score: 1031.0 (LEN: 1047, IDY: 98.47), Total number of alignments: 1
+		One align captures most of this contig: 502 1548 | 1 1047 | 1047 1047 | 98.47 | A39_fig_1219382.3.peg.2509 NODE_373_length_1047_cov_1.431452
+
+CONTIG: NODE_375_length_1046_cov_2.134208 (1046bp)
+Best alignment score: 1024.1 (LEN: 1044, IDY: 98.09), Total number of alignments: 1
+		One align captures most of this contig: 2278 3324 | 3 1046 | 1047 1044 | 98.09 | A39_fig_1219382.3.peg.1114 NODE_375_length_1046_cov_2.134208
+
+CONTIG: NODE_380_length_1039_cov_1.495935 (1039bp)
+Best alignment score: 1021.0 (LEN: 1037, IDY: 98.46), Total number of alignments: 1
+		One align captures most of this contig: 103 1139 | 1 1037 | 1037 1037 | 98.46 | A39_fig_1219382.3.peg.385 NODE_380_length_1039_cov_1.495935
+
+CONTIG: NODE_384_length_1037_cov_1.571283 (1037bp)
+Best alignment score: 1023.0 (LEN: 1037, IDY: 98.65), Total number of alignments: 1
+		One align captures most of this contig: 156 1192 | 1 1037 | 1037 1037 | 98.65 | A39_fig_1219382.3.peg.1086 NODE_384_length_1037_cov_1.571283
+
+CONTIG: NODE_387_length_1034_cov_1.949949 (1034bp)
+Best alignment score: 1020.0 (LEN: 1028, IDY: 99.22), Total number of alignments: 1
+		One align captures most of this contig: 1177 2204 | 1034 7 | 1028 1028 | 99.22 | A39_fig_1219382.3.peg.724 NODE_387_length_1034_cov_1.949949
+
+CONTIG: NODE_393_length_1027_cov_2.449588 (1027bp)
+Best alignment score: 1010.0 (LEN: 1027, IDY: 98.34), Total number of alignments: 1
+		One align captures most of this contig: 161 1187 | 1 1027 | 1027 1027 | 98.34 | A39_fig_1219382.3.peg.2454 NODE_393_length_1027_cov_2.449588
+
+CONTIG: NODE_398_length_1025_cov_1.819588 (1025bp)
+Best alignment score: 1007.0 (LEN: 1025, IDY: 98.24), Total number of alignments: 1
+		One align captures most of this contig: 199 1223 | 1025 1 | 1025 1025 | 98.24 | A39_fig_1219382.3.peg.1339 NODE_398_length_1025_cov_1.819588
+
+CONTIG: NODE_402_length_1021_cov_2.002070 (1021bp)
+Best alignment score: 1015.0 (LEN: 1021, IDY: 99.41), Total number of alignments: 1
+		One align captures most of this contig: 238 1258 | 1 1021 | 1021 1021 | 99.41 | A39_fig_1219382.3.peg.2129 NODE_402_length_1021_cov_2.002070
+
+CONTIG: NODE_404_length_1021_cov_1.479296 (1021bp)
+Best alignment score: 1007.0 (LEN: 1021, IDY: 98.63), Total number of alignments: 1
+		One align captures most of this contig: 2108 3128 | 1 1021 | 1021 1021 | 98.63 | A39_fig_1219382.3.peg.1357 NODE_404_length_1021_cov_1.479296
+
+CONTIG: NODE_779_length_749_cov_2.466859 (749bp)
+Best alignment score: 738.0 (LEN: 743, IDY: 99.33), Total number of alignments: 1
+		One align captures most of this contig: 510 1253 | 7 749 | 744 743 | 99.33 | A39_fig_1219382.3.peg.1357 NODE_779_length_749_cov_2.466859
+
+CONTIG: NODE_413_length_1004_cov_1.919916 (1004bp)
+Best alignment score: 987.0 (LEN: 1004, IDY: 98.31), Total number of alignments: 1
+		One align captures most of this contig: 501 1504 | 1 1004 | 1004 1004 | 98.31 | A39_fig_1219382.3.peg.2292 NODE_413_length_1004_cov_1.919916
+
+CONTIG: NODE_432_length_984_cov_1.440258 (984bp)
+Best alignment score: 836.0 (LEN: 851, IDY: 98.24), Total number of alignments: 1
+			Looking for the best set of alignments (out of 1 total alignments)
+			The best set is below. Score: 836.0, number of alignments: 1, unaligned bases: 133
+		Alignment: 1 851 | 134 984 | 851 851 | 98.24 | A39_fig_1219382.3.peg.783 NODE_432_length_984_cov_1.440258
+
+CONTIG: NODE_438_length_977_cov_2.000000 (977bp)
+Best alignment score: 514.0 (LEN: 519, IDY: 99.04), Total number of alignments: 2
+			Looking for the best set of alignments (out of 2 total alignments)
+			The best set is below. Score: 798.1, number of alignments: 2, unaligned bases: 115
+		This contig is misassembled.
+			Real Alignment 1: 478 825 | 1 343 | 348 343 | 97.7 | A39_fig_1219382.3.peg.1653 NODE_438_length_977_cov_2.000000
+			  Extensive misassembly (translocation) between these two alignments
+			Real Alignment 2: 1 519 | 367 885 | 519 519 | 99.04 | A39_fig_1219382.3.peg.1652 NODE_438_length_977_cov_2.000000
+
+CONTIG: NODE_1203_length_612_cov_1.008977 (612bp)
+Best alignment score: 333.0 (LEN: 335, IDY: 99.40), Total number of alignments: 2
+			Looking for the best set of alignments (out of 2 total alignments)
+			The best set is below. Score: 462.0, number of alignments: 2, unaligned bases: 97
+		This contig is misassembled.
+			Real Alignment 1: 1 180 | 180 1 | 180 180 | 100.0 | A39_fig_1219382.3.peg.1653 NODE_1203_length_612_cov_1.008977
+			  Extensive misassembly (translocation) between these two alignments
+			Real Alignment 2: 1 336 | 278 612 | 336 335 | 99.4 | A39_fig_1219382.3.peg.1654 NODE_1203_length_612_cov_1.008977
+
+CONTIG: NODE_448_length_966_cov_1.796926 (966bp)
+Best alignment score: 950.0 (LEN: 966, IDY: 98.34), Total number of alignments: 1
+		One align captures most of this contig: 316 1281 | 1 966 | 966 966 | 98.34 | A39_fig_1219382.3.peg.1170 NODE_448_length_966_cov_1.796926
+
+CONTIG: NODE_449_length_965_cov_2.506593 (965bp)
+Best alignment score: 914.2 (LEN: 962, IDY: 95.03), Total number of alignments: 1
+		One align captures most of this contig: 3813 4774 | 4 965 | 962 962 | 95.03 | A39_fig_1219382.3.peg.2441 NODE_449_length_965_cov_2.506593
+
+CONTIG: NODE_455_length_963_cov_1.894273 (963bp)
+Best alignment score: 949.0 (LEN: 963, IDY: 98.55), Total number of alignments: 1
+		One align captures most of this contig: 329 1291 | 963 1 | 963 963 | 98.55 | A39_fig_1219382.3.peg.2464 NODE_455_length_963_cov_1.894273
+
+CONTIG: NODE_462_length_955_cov_2.210000 (955bp)
+Best alignment score: 935.0 (LEN: 955, IDY: 97.91), Total number of alignments: 1
+		One align captures most of this contig: 615 1569 | 955 1 | 955 955 | 97.91 | A39_fig_1219382.3.peg.2066 NODE_462_length_955_cov_2.210000
+
+CONTIG: NODE_464_length_955_cov_2.076667 (955bp)
+Best alignment score: 945.0 (LEN: 955, IDY: 98.95), Total number of alignments: 1
+		One align captures most of this contig: 477 1431 | 955 1 | 955 955 | 98.95 | A39_fig_1219382.3.peg.2463 NODE_464_length_955_cov_2.076667
+
+CONTIG: NODE_480_length_941_cov_2.164786 (941bp)
+Best alignment score: 939.0 (LEN: 941, IDY: 99.79), Total number of alignments: 1
+		One align captures most of this contig: 73 1013 | 941 1 | 941 941 | 99.79 | A39_fig_1219382.3.peg.1893 NODE_480_length_941_cov_2.164786
+
+CONTIG: NODE_490_length_933_cov_2.246014 (933bp)
+Best alignment score: 915.0 (LEN: 933, IDY: 98.07), Total number of alignments: 1
+		One align captures most of this contig: 935 1867 | 1 933 | 933 933 | 98.07 | A39_fig_1219382.3.peg.2179 NODE_490_length_933_cov_2.246014
+
+CONTIG: NODE_499_length_927_cov_1.313073 (927bp)
+Best alignment score: 911.0 (LEN: 921, IDY: 98.91), Total number of alignments: 1
+		One align captures most of this contig: 1000 1920 | 927 7 | 921 921 | 98.91 | A39_fig_1219382.3.peg.1240 NODE_499_length_927_cov_1.313073
+
+CONTIG: NODE_1075_length_642_cov_1.201022 (642bp)
+Best alignment score: 639.0 (LEN: 642, IDY: 99.53), Total number of alignments: 1
+		One align captures most of this contig: 328 969 | 642 1 | 642 642 | 99.53 | A39_fig_1219382.3.peg.1240 NODE_1075_length_642_cov_1.201022
+
+CONTIG: NODE_505_length_921_cov_2.469977 (921bp)
+Best alignment score: 909.0 (LEN: 919, IDY: 98.91), Total number of alignments: 1
+		One align captures most of this contig: 1133 2051 | 919 1 | 919 919 | 98.91 | A39_fig_1219382.3.peg.1853 NODE_505_length_921_cov_2.469977
+
+CONTIG: NODE_508_length_918_cov_1.640788 (918bp)
+Best alignment score: 901.1 (LEN: 912, IDY: 98.80), Total number of alignments: 1
+		One align captures most of this contig: 128 1040 | 918 7 | 913 912 | 98.8 | A39_fig_1219382.3.peg.1573 NODE_508_length_918_cov_1.640788
+
+CONTIG: NODE_509_length_918_cov_1.249131 (918bp)
+Best alignment score: 899.0 (LEN: 918, IDY: 97.93), Total number of alignments: 1
+		One align captures most of this contig: 1212 2130 | 1 918 | 919 918 | 97.93 | A39_fig_1219382.3.peg.1135 NODE_509_length_918_cov_1.249131
+
+CONTIG: NODE_517_length_912_cov_2.394399 (912bp)
+Best alignment score: 902.0 (LEN: 912, IDY: 98.90), Total number of alignments: 1
+		One align captures most of this contig: 66 977 | 1 912 | 912 912 | 98.9 | A39_fig_1219382.3.peg.1811 NODE_517_length_912_cov_2.394399
+
+CONTIG: NODE_520_length_912_cov_1.283547 (912bp)
+Best alignment score: 881.1 (LEN: 907, IDY: 97.14), Total number of alignments: 1
+		One align captures most of this contig: 595 1502 | 907 1 | 908 907 | 97.14 | A39_fig_1219382.3.peg.264 NODE_520_length_912_cov_1.283547
+
+CONTIG: NODE_667_length_811_cov_1.673280 (811bp)
+Best alignment score: 785.0 (LEN: 810, IDY: 96.91), Total number of alignments: 1
+		One align captures most of this contig: 1797 2606 | 811 2 | 810 810 | 96.91 | A39_fig_1219382.3.peg.264 NODE_667_length_811_cov_1.673280
+
+CONTIG: NODE_522_length_909_cov_2.858314 (909bp)
+Best alignment score: 899.0 (LEN: 909, IDY: 98.90), Total number of alignments: 1
+		One align captures most of this contig: 174 1082 | 1 909 | 909 909 | 98.9 | A39_fig_1219382.3.peg.1642 NODE_522_length_909_cov_2.858314
+
+CONTIG: NODE_523_length_908_cov_1.570926 (908bp)
+Best alignment score: 274.0 (LEN: 275, IDY: 99.64), Total number of alignments: 2
+			Looking for the best set of alignments (out of 2 total alignments)
+			The best set is below. Score: 427.0, number of alignments: 2, unaligned bases: 429
+		This contig is misassembled.
+			Real Alignment 1: 1 204 | 222 425 | 204 204 | 100.0 | A39_fig_1219382.3.peg.604 NODE_523_length_908_cov_1.570926
+			  Extensive misassembly (translocation) between these two alignments
+			Real Alignment 2: 1 275 | 601 875 | 275 275 | 99.64 | A39_fig_1219382.3.peg.605 NODE_523_length_908_cov_1.570926
+
+CONTIG: NODE_530_length_900_cov_1.912426 (900bp)
+Best alignment score: 434.0 (LEN: 471, IDY: 92.14), Total number of alignments: 1
+			Looking for the best set of alignments (out of 1 total alignments)
+			The best set is below. Score: 434.0, number of alignments: 1, unaligned bases: 429
+		Alignment: 40 510 | 492 22 | 471 471 | 92.14 | A39_fig_1219382.3.peg.2301 NODE_530_length_900_cov_1.912426
+
+CONTIG: NODE_538_length_893_cov_2.173031 (893bp)
+Best alignment score: 875.0 (LEN: 893, IDY: 97.98), Total number of alignments: 1
+		One align captures most of this contig: 1102 1994 | 893 1 | 893 893 | 97.98 | A39_fig_1219382.3.peg.1329 NODE_538_length_893_cov_2.173031
+
+CONTIG: NODE_563_length_877_cov_1.667883 (877bp)
+Best alignment score: 857.0 (LEN: 869, IDY: 98.62), Total number of alignments: 1
+		One align captures most of this contig: 217 1085 | 9 877 | 869 869 | 98.62 | A39_fig_1219382.3.peg.1329 NODE_563_length_877_cov_1.667883
+
+CONTIG: NODE_539_length_893_cov_1.639618 (893bp)
+Best alignment score: 882.0 (LEN: 893, IDY: 98.77), Total number of alignments: 1
+		One align captures most of this contig: 633 1526 | 893 1 | 894 893 | 98.77 | A39_fig_1219382.3.peg.1879 NODE_539_length_893_cov_1.639618
+
+CONTIG: NODE_543_length_886_cov_2.306859 (886bp)
+Best alignment score: 796.7 (LEN: 882, IDY: 90.33), Total number of alignments: 1
+		One align captures most of this contig: 1657 2538 | 5 886 | 882 882 | 90.33 | A39_fig_1219382.3.peg.81 NODE_543_length_886_cov_2.306859
+
+CONTIG: NODE_1428_length_555_cov_2.602000 (555bp)
+Best alignment score: 417.0 (LEN: 435, IDY: 95.86), Total number of alignments: 1
+			Looking for the best set of alignments (out of 1 total alignments)
+			The best set is below. Score: 417.0, number of alignments: 1, unaligned bases: 120
+		Alignment: 1252 1686 | 121 555 | 435 435 | 95.86 | A39_fig_1219382.3.peg.81 NODE_1428_length_555_cov_2.602000
+
+CONTIG: NODE_548_length_883_cov_1.948068 (883bp)
+Best alignment score: 864.0 (LEN: 881, IDY: 98.07), Total number of alignments: 1
+		One align captures most of this contig: 474 1354 | 883 3 | 881 881 | 98.07 | A39_fig_1219382.3.peg.1638 NODE_548_length_883_cov_1.948068
+
+CONTIG: NODE_591_length_857_cov_1.905237 (857bp)
+Best alignment score: 839.0 (LEN: 857, IDY: 97.90), Total number of alignments: 1
+		One align captures most of this contig: 625 1481 | 857 1 | 857 857 | 97.9 | A39_fig_1219382.3.peg.2418 NODE_591_length_857_cov_1.905237
+
+CONTIG: NODE_602_length_849_cov_2.061713 (849bp)
+Best alignment score: 845.0 (LEN: 849, IDY: 99.53), Total number of alignments: 1
+		One align captures most of this contig: 1116 1964 | 1 849 | 849 849 | 99.53 | A39_fig_1219382.3.peg.1095 NODE_602_length_849_cov_2.061713
+
+CONTIG: NODE_611_length_842_cov_2.293520 (842bp)
+Best alignment score: 827.0 (LEN: 842, IDY: 98.22), Total number of alignments: 1
+		One align captures most of this contig: 596 1437 | 1 842 | 842 842 | 98.22 | A39_fig_1219382.3.peg.868 NODE_611_length_842_cov_2.293520
+
+CONTIG: NODE_616_length_839_cov_1.844388 (839bp)
+Best alignment score: 832.0 (LEN: 839, IDY: 99.17), Total number of alignments: 1
+		One align captures most of this contig: 3128 3966 | 839 1 | 839 839 | 99.17 | A39_fig_1219382.3.peg.2227 NODE_616_length_839_cov_1.844388
+
+CONTIG: NODE_1174_length_617_cov_2.389680 (617bp)
+Best alignment score: 615.0 (LEN: 617, IDY: 99.68), Total number of alignments: 1
+		One align captures most of this contig: 189 805 | 1 617 | 617 617 | 99.68 | A39_fig_1219382.3.peg.2227 NODE_1174_length_617_cov_2.389680
+
+CONTIG: NODE_621_length_834_cov_2.219512 (834bp)
+Best alignment score: 832.0 (LEN: 834, IDY: 99.76), Total number of alignments: 1
+		One align captures most of this contig: 140 973 | 1 834 | 834 834 | 99.76 | A39_fig_1219382.3.peg.1779 NODE_621_length_834_cov_2.219512
+
+CONTIG: NODE_638_length_823_cov_2.002604 (823bp)
+Best alignment score: 553.0 (LEN: 560, IDY: 98.75), Total number of alignments: 2
+			Looking for the best set of alignments (out of 2 total alignments)
+			The best set is below. Score: 754.0, number of alignments: 2, unaligned bases: 6
+		This contig is misassembled.
+			Real Alignment 1: 158 717 | 1 560 | 560 560 | 98.75 | A39_fig_1219382.3.peg.668 NODE_638_length_823_cov_2.002604
+			  Extensive misassembly (translocation) between these two alignments
+			Real Alignment 2: 1 257 | 563 819 | 257 257 | 98.05 | A39_fig_1219382.3.peg.669 NODE_638_length_823_cov_2.002604
+
+CONTIG: NODE_1554_length_528_cov_1.336152 (528bp)
+Best alignment score: 288.0 (LEN: 294, IDY: 97.96), Total number of alignments: 2
+			Looking for the best set of alignments (out of 2 total alignments)
+			The best set is below. Score: 371.0, number of alignments: 2, unaligned bases: 99
+		This contig is misassembled.
+			Real Alignment 1: 1 294 | 294 1 | 294 294 | 97.96 | A39_fig_1219382.3.peg.667 NODE_1554_length_528_cov_1.336152
+			  Extensive misassembly (translocation) between these two alignments
+			Real Alignment 2: 1 135 | 393 527 | 135 135 | 99.26 | A39_fig_1219382.3.peg.668 NODE_1554_length_528_cov_1.336152
+
+CONTIG: NODE_639_length_823_cov_1.743490 (823bp)
+Best alignment score: 799.0 (LEN: 819, IDY: 97.56), Total number of alignments: 1
+		One align captures most of this contig: 981 1799 | 823 5 | 819 819 | 97.56 | A39_fig_1219382.3.peg.355 NODE_639_length_823_cov_1.743490
+
+CONTIG: NODE_803_length_740_cov_1.738686 (740bp)
+Best alignment score: 724.0 (LEN: 738, IDY: 98.10), Total number of alignments: 1
+		One align captures most of this contig: 250 987 | 1 738 | 738 738 | 98.1 | A39_fig_1219382.3.peg.355 NODE_803_length_740_cov_1.738686
+
+CONTIG: NODE_651_length_818_cov_1.537353 (818bp)
+Best alignment score: 815.0 (LEN: 818, IDY: 99.63), Total number of alignments: 1
+		One align captures most of this contig: 671 1488 | 818 1 | 818 818 | 99.63 | A39_fig_1219382.3.peg.1828 NODE_651_length_818_cov_1.537353
+
+CONTIG: NODE_655_length_817_cov_2.009186 (817bp)
+Best alignment score: 807.0 (LEN: 815, IDY: 99.02), Total number of alignments: 1
+		One align captures most of this contig: 86 900 | 1 815 | 815 815 | 99.02 | A39_fig_1219382.3.peg.849 NODE_655_length_817_cov_2.009186
+
+CONTIG: NODE_660_length_815_cov_2.001316 (815bp)
+Best alignment score: 786.0 (LEN: 803, IDY: 97.88), Total number of alignments: 1
+			Looking for the best set of alignments (out of 1 total alignments)
+			The best set is below. Score: 786.0, number of alignments: 1, unaligned bases: 12
+		Alignment: 808 1610 | 1 803 | 803 803 | 97.88 | A39_fig_1219382.3.peg.2223 NODE_660_length_815_cov_2.001316
+
+CONTIG: NODE_668_length_810_cov_2.386755 (810bp)
+Best alignment score: 801.0 (LEN: 804, IDY: 99.63), Total number of alignments: 1
+		One align captures most of this contig: 971 1774 | 810 7 | 804 804 | 99.63 | A39_fig_1219382.3.peg.1932 NODE_668_length_810_cov_2.386755
+
+CONTIG: NODE_1218_length_610_cov_1.163964 (610bp)
+Best alignment score: 607.0 (LEN: 610, IDY: 99.51), Total number of alignments: 1
+		One align captures most of this contig: 114 724 | 1 610 | 611 610 | 99.51 | A39_fig_1219382.3.peg.1932 NODE_1218_length_610_cov_1.163964
+
+CONTIG: NODE_669_length_810_cov_2.251656 (810bp)
+Best alignment score: 790.0 (LEN: 810, IDY: 97.53), Total number of alignments: 1
+		One align captures most of this contig: 460 1269 | 1 810 | 810 810 | 97.53 | A39_fig_1219382.3.peg.1795 NODE_669_length_810_cov_2.251656
+
+CONTIG: NODE_671_length_807_cov_1.765957 (807bp)
+Best alignment score: 800.0 (LEN: 807, IDY: 99.13), Total number of alignments: 1
+		One align captures most of this contig: 145 951 | 807 1 | 807 807 | 99.13 | A39_fig_1219382.3.peg.1208 NODE_671_length_807_cov_1.765957
+
+CONTIG: NODE_674_length_806_cov_1.119840 (806bp)
+Best alignment score: 787.0 (LEN: 804, IDY: 97.89), Total number of alignments: 1
+		One align captures most of this contig: 1993 2796 | 3 806 | 804 804 | 97.89 | A39_fig_1219382.3.peg.239 NODE_674_length_806_cov_1.119840
+
+CONTIG: NODE_682_length_801_cov_2.191689 (801bp)
+Best alignment score: 784.0 (LEN: 801, IDY: 97.88), Total number of alignments: 1
+		One align captures most of this contig: 1765 2566 | 801 1 | 802 801 | 97.88 | A39_fig_1219382.3.peg.180 NODE_682_length_801_cov_2.191689
+
+CONTIG: NODE_690_length_798_cov_1.745626 (798bp)
+Best alignment score: 770.0 (LEN: 792, IDY: 97.22), Total number of alignments: 1
+		One align captures most of this contig: 1111 1902 | 7 798 | 792 792 | 97.22 | A39_fig_1219382.3.peg.2111 NODE_690_length_798_cov_1.745626
+
+CONTIG: NODE_700_length_793_cov_1.817073 (793bp)
+Best alignment score: 753.0 (LEN: 793, IDY: 94.96), Total number of alignments: 1
+		One align captures most of this contig: 54 887 | 1 793 | 834 793 | 94.96 | A39_fig_1219382.3.peg.2458 NODE_700_length_793_cov_1.817073
+
+CONTIG: NODE_701_length_793_cov_0.968835 (793bp)
+Best alignment score: 789.0 (LEN: 793, IDY: 99.50), Total number of alignments: 1
+		One align captures most of this contig: 47 839 | 793 1 | 793 793 | 99.5 | A39_fig_1219382.3.peg.2216 NODE_701_length_793_cov_0.968835
+
+CONTIG: NODE_703_length_792_cov_1.530529 (792bp)
+Best alignment score: 784.0 (LEN: 792, IDY: 98.99), Total number of alignments: 1
+		One align captures most of this contig: 1574 2365 | 792 1 | 792 792 | 98.99 | A39_fig_1219382.3.peg.1729 NODE_703_length_792_cov_1.530529
+
+CONTIG: NODE_1475_length_545_cov_2.130612 (545bp)
+Best alignment score: 535.0 (LEN: 545, IDY: 98.17), Total number of alignments: 1
+		One align captures most of this contig: 251 795 | 545 1 | 545 545 | 98.17 | A39_fig_1219382.3.peg.1729 NODE_1475_length_545_cov_2.130612
+
+CONTIG: NODE_707_length_788_cov_2.753070 (788bp)
+Best alignment score: 782.0 (LEN: 788, IDY: 99.24), Total number of alignments: 1
+		One align captures most of this contig: 491 1278 | 1 788 | 788 788 | 99.24 | A39_fig_1219382.3.peg.438 NODE_707_length_788_cov_2.753070
+
+CONTIG: NODE_709_length_787_cov_2.165301 (787bp)
+Best alignment score: 777.0 (LEN: 787, IDY: 98.73), Total number of alignments: 1
+		One align captures most of this contig: 376 1162 | 787 1 | 787 787 | 98.73 | A39_fig_1219382.3.peg.409 NODE_709_length_787_cov_2.165301
+
+CONTIG: NODE_710_length_786_cov_1.625171 (786bp)
+Best alignment score: 777.0 (LEN: 786, IDY: 98.85), Total number of alignments: 1
+		One align captures most of this contig: 123 908 | 1 786 | 786 786 | 98.85 | A39_fig_1219382.3.peg.2262 NODE_710_length_786_cov_1.625171
+
+CONTIG: NODE_712_length_784_cov_1.421125 (784bp)
+Best alignment score: 775.0 (LEN: 784, IDY: 98.85), Total number of alignments: 1
+		One align captures most of this contig: 1053 1836 | 784 1 | 784 784 | 98.85 | A39_fig_1219382.3.peg.2051 NODE_712_length_784_cov_1.421125
+
+CONTIG: NODE_713_length_783_cov_2.072802 (783bp)
+Best alignment score: 777.0 (LEN: 783, IDY: 99.23), Total number of alignments: 1
+		One align captures most of this contig: 76 858 | 783 1 | 783 783 | 99.23 | A39_fig_1219382.3.peg.1203 NODE_713_length_783_cov_2.072802
+
+CONTIG: NODE_716_length_781_cov_1.461433 (781bp)
+Best alignment score: 754.0 (LEN: 778, IDY: 96.92), Total number of alignments: 1
+		One align captures most of this contig: 329 1106 | 1 778 | 778 778 | 96.92 | A39_fig_1219382.3.peg.1463 NODE_716_length_781_cov_1.461433
+
+CONTIG: NODE_719_length_780_cov_1.331034 (780bp)
+Best alignment score: 766.0 (LEN: 780, IDY: 98.21), Total number of alignments: 1
+		One align captures most of this contig: 886 1665 | 1 780 | 780 780 | 98.21 | A39_fig_1219382.3.peg.48 NODE_719_length_780_cov_1.331034
+
+CONTIG: NODE_743_length_771_cov_1.465084 (771bp)
+Best alignment score: 756.0 (LEN: 771, IDY: 98.05), Total number of alignments: 1
+		One align captures most of this contig: 1727 2497 | 771 1 | 771 771 | 98.05 | A39_fig_1219382.3.peg.48 NODE_743_length_771_cov_1.465084
+
+CONTIG: NODE_729_length_776_cov_2.009709 (776bp)
+Best alignment score: 759.0 (LEN: 772, IDY: 98.32), Total number of alignments: 1
+		One align captures most of this contig: 172 944 | 5 776 | 773 772 | 98.32 | A39_fig_1219382.3.peg.1938 NODE_729_length_776_cov_2.009709
+
+CONTIG: NODE_1148_length_624_cov_2.998243 (624bp)
+Best alignment score: 612.0 (LEN: 624, IDY: 98.08), Total number of alignments: 1
+		One align captures most of this contig: 1126 1749 | 1 624 | 624 624 | 98.08 | A39_fig_1219382.3.peg.1938 NODE_1148_length_624_cov_2.998243
+
+CONTIG: NODE_730_length_776_cov_1.919556 (776bp)
+Best alignment score: 763.0 (LEN: 776, IDY: 98.32), Total number of alignments: 1
+		One align captures most of this contig: 362 1137 | 1 776 | 776 776 | 98.32 | A39_fig_1219382.3.peg.1832 NODE_730_length_776_cov_1.919556
+
+CONTIG: NODE_737_length_775_cov_1.619444 (775bp)
+Best alignment score: 753.0 (LEN: 773, IDY: 97.41), Total number of alignments: 1
+		One align captures most of this contig: 1211 1983 | 775 3 | 773 773 | 97.41 | A39_fig_1219382.3.peg.1541 NODE_737_length_775_cov_1.619444
+
+CONTIG: NODE_741_length_773_cov_1.937326 (773bp)
+Best alignment score: 764.0 (LEN: 773, IDY: 98.84), Total number of alignments: 1
+		One align captures most of this contig: 256 1028 | 773 1 | 773 773 | 98.84 | A39_fig_1219382.3.peg.615 NODE_741_length_773_cov_1.937326
+
+CONTIG: NODE_744_length_770_cov_2.074126 (770bp)
+Best alignment score: 744.0 (LEN: 770, IDY: 96.62), Total number of alignments: 1
+		One align captures most of this contig: 891 1660 | 770 1 | 770 770 | 96.62 | A39_fig_1219382.3.peg.2505 NODE_744_length_770_cov_2.074126
+
+CONTIG: NODE_750_length_768_cov_2.201964 (768bp)
+Best alignment score: 754.0 (LEN: 768, IDY: 98.18), Total number of alignments: 1
+		One align captures most of this contig: 197 964 | 768 1 | 768 768 | 98.18 | A39_fig_1219382.3.peg.2474 NODE_750_length_768_cov_2.201964
+
+CONTIG: NODE_751_length_767_cov_2.011236 (767bp)
+Best alignment score: 760.0 (LEN: 767, IDY: 99.09), Total number of alignments: 1
+		One align captures most of this contig: 382 1148 | 1 767 | 767 767 | 99.09 | A39_fig_1219382.3.peg.727 NODE_751_length_767_cov_2.011236
+
+CONTIG: NODE_756_length_764_cov_2.868829 (764bp)
+Best alignment score: 745.0 (LEN: 764, IDY: 97.51), Total number of alignments: 1
+		One align captures most of this contig: 1621 2384 | 764 1 | 764 764 | 97.51 | A39_fig_1219382.3.peg.111 NODE_756_length_764_cov_2.868829
+
+CONTIG: NODE_761_length_762_cov_1.851485 (762bp)
+Best alignment score: 746.0 (LEN: 759, IDY: 98.29), Total number of alignments: 1
+		One align captures most of this contig: 522 1280 | 1 759 | 759 759 | 98.29 | A39_fig_1219382.3.peg.2198 NODE_761_length_762_cov_1.851485
+
+CONTIG: NODE_764_length_757_cov_1.992877 (757bp)
+Best alignment score: 742.0 (LEN: 757, IDY: 98.02), Total number of alignments: 1
+		One align captures most of this contig: 492 1248 | 757 1 | 757 757 | 98.02 | A39_fig_1219382.3.peg.2466 NODE_764_length_757_cov_1.992877
+
+CONTIG: NODE_770_length_754_cov_1.755365 (754bp)
+Best alignment score: 748.0 (LEN: 754, IDY: 99.20), Total number of alignments: 1
+		One align captures most of this contig: 486 1239 | 1 754 | 754 754 | 99.2 | A39_fig_1219382.3.peg.1332 NODE_770_length_754_cov_1.755365
+
+CONTIG: NODE_777_length_750_cov_1.730935 (750bp)
+Best alignment score: 680.0 (LEN: 688, IDY: 98.84), Total number of alignments: 1
+			Looking for the best set of alignments (out of 1 total alignments)
+			The best set is below. Score: 680.0, number of alignments: 1, unaligned bases: 62
+		Alignment: 468 1155 | 688 1 | 688 688 | 98.84 | A39_fig_1219382.3.peg.2499 NODE_777_length_750_cov_1.730935
+
+CONTIG: NODE_780_length_749_cov_1.753602 (749bp)
+Best alignment score: 744.0 (LEN: 749, IDY: 99.33), Total number of alignments: 1
+		One align captures most of this contig: 251 999 | 749 1 | 749 749 | 99.33 | A39_fig_1219382.3.peg.1297 NODE_780_length_749_cov_1.753602
+
+CONTIG: NODE_785_length_748_cov_1.505051 (748bp)
+Best alignment score: 740.0 (LEN: 748, IDY: 98.93), Total number of alignments: 1
+		One align captures most of this contig: 513 1260 | 1 748 | 748 748 | 98.93 | A39_fig_1219382.3.peg.424 NODE_785_length_748_cov_1.505051
+
+CONTIG: NODE_799_length_741_cov_2.510204 (741bp)
+Best alignment score: 735.0 (LEN: 741, IDY: 99.19), Total number of alignments: 1
+		One align captures most of this contig: 208 948 | 741 1 | 741 741 | 99.19 | A39_fig_1219382.3.peg.1750 NODE_799_length_741_cov_2.510204
+
+CONTIG: NODE_800_length_741_cov_2.293003 (741bp)
+Best alignment score: 708.0 (LEN: 726, IDY: 97.52), Total number of alignments: 1
+			Looking for the best set of alignments (out of 1 total alignments)
+			The best set is below. Score: 708.0, number of alignments: 1, unaligned bases: 15
+		Alignment: 14 740 | 16 741 | 727 726 | 97.52 | A39_fig_1219382.3.peg.1864 NODE_800_length_741_cov_2.293003
+
+CONTIG: NODE_807_length_738_cov_2.323572 (738bp)
+Best alignment score: 725.0 (LEN: 738, IDY: 98.24), Total number of alignments: 1
+		One align captures most of this contig: 357 1094 | 738 1 | 738 738 | 98.24 | A39_fig_1219382.3.peg.450 NODE_807_length_738_cov_2.323572
+
+CONTIG: NODE_811_length_736_cov_1.524229 (736bp)
+Best alignment score: 727.0 (LEN: 736, IDY: 98.78), Total number of alignments: 1
+		One align captures most of this contig: 750 1485 | 736 1 | 736 736 | 98.78 | A39_fig_1219382.3.peg.748 NODE_811_length_736_cov_1.524229
+
+CONTIG: NODE_1600_length_519_cov_1.939655 (519bp)
+Best alignment score: 515.0 (LEN: 519, IDY: 99.23), Total number of alignments: 1
+		One align captures most of this contig: 112 630 | 519 1 | 519 519 | 99.23 | A39_fig_1219382.3.peg.748 NODE_1600_length_519_cov_1.939655
+
+CONTIG: NODE_813_length_735_cov_1.050000 (735bp)
+Best alignment score: 720.0 (LEN: 734, IDY: 98.09), Total number of alignments: 1
+		One align captures most of this contig: 1162 1895 | 734 1 | 734 734 | 98.09 | A39_fig_1219382.3.peg.787 NODE_813_length_735_cov_1.050000
+
+CONTIG: NODE_825_length_729_cov_2.623145 (729bp)
+Best alignment score: 724.0 (LEN: 728, IDY: 99.45), Total number of alignments: 1
+		One align captures most of this contig: 7 734 | 1 728 | 728 728 | 99.45 | A39_fig_1219382.3.peg.2289 NODE_825_length_729_cov_2.623145
+
+CONTIG: NODE_828_length_727_cov_2.196429 (727bp)
+Best alignment score: 717.0 (LEN: 727, IDY: 98.62), Total number of alignments: 1
+		One align captures most of this contig: 355 1081 | 1 727 | 727 727 | 98.62 | A39_fig_1219382.3.peg.838 NODE_828_length_727_cov_2.196429
+
+CONTIG: NODE_1191_length_614_cov_2.259392 (614bp)
+Best alignment score: 602.0 (LEN: 614, IDY: 98.05), Total number of alignments: 1
+		One align captures most of this contig: 1348 1961 | 614 1 | 614 614 | 98.05 | A39_fig_1219382.3.peg.838 NODE_1191_length_614_cov_2.259392
+
+CONTIG: NODE_831_length_726_cov_1.994039 (726bp)
+Best alignment score: 723.0 (LEN: 726, IDY: 99.59), Total number of alignments: 1
+		One align captures most of this contig: 1193 1918 | 1 726 | 726 726 | 99.59 | A39_fig_1219382.3.peg.381 NODE_831_length_726_cov_1.994039
+
+CONTIG: NODE_843_length_723_cov_1.796407 (723bp)
+Best alignment score: 709.0 (LEN: 723, IDY: 98.06), Total number of alignments: 1
+		One align captures most of this contig: 138 860 | 723 1 | 723 723 | 98.06 | A39_fig_1219382.3.peg.1211 NODE_843_length_723_cov_1.796407
+
+CONTIG: NODE_844_length_723_cov_1.601796 (723bp)
+Best alignment score: 712.0 (LEN: 723, IDY: 98.48), Total number of alignments: 1
+		One align captures most of this contig: 223 947 | 723 1 | 725 723 | 98.48 | A39_fig_1219382.3.peg.2176 NODE_844_length_723_cov_1.601796
+
+CONTIG: NODE_845_length_722_cov_2.151424 (722bp)
+Best alignment score: 714.0 (LEN: 722, IDY: 98.89), Total number of alignments: 1
+		One align captures most of this contig: 1 722 | 722 1 | 722 722 | 98.89 | A39_fig_1219382.3.peg.1785 NODE_845_length_722_cov_2.151424
+
+CONTIG: NODE_861_length_717_cov_1.717523 (717bp)
+Best alignment score: 180.0 (LEN: 191, IDY: 94.24), Total number of alignments: 1
+			Looking for the best set of alignments (out of 1 total alignments)
+			The best set is below. Score: 180.0, number of alignments: 1, unaligned bases: 526
+		This contig is partially unaligned. (Aligned 191 out of 717 non-N bases (26.64%))
+		Alignment: 523 713 | 214 24 | 191 191 | 94.24 | A39_fig_1219382.3.peg.2442 NODE_861_length_717_cov_1.717523
+		Unaligned bases: 1 to 23 (23)
+		Unaligned bases: 215 to 717 (503)
+
+CONTIG: NODE_863_length_716_cov_1.925870 (716bp)
+Best alignment score: 700.0 (LEN: 710, IDY: 98.59), Total number of alignments: 1
+		One align captures most of this contig: 403 1113 | 7 716 | 711 710 | 98.59 | A39_fig_1219382.3.peg.2052 NODE_863_length_716_cov_1.925870
+
+CONTIG: NODE_865_length_715_cov_2.693939 (715bp)
+Best alignment score: 701.0 (LEN: 714, IDY: 98.18), Total number of alignments: 1
+		One align captures most of this contig: 1344 2051 | 1 714 | 708 714 | 98.18 | A39_fig_1219382.3.peg.2395 NODE_865_length_715_cov_2.693939
+
+CONTIG: NODE_1156_length_623_cov_1.524648 (623bp)
+Best alignment score: 551.0 (LEN: 567, IDY: 97.18), Total number of alignments: 1
+			Looking for the best set of alignments (out of 1 total alignments)
+			The best set is below. Score: 551.0, number of alignments: 1, unaligned bases: 56
+		Alignment: 618 1184 | 1 567 | 567 567 | 97.18 | A39_fig_1219382.3.peg.2395 NODE_1156_length_623_cov_1.524648
+
+CONTIG: NODE_874_length_714_cov_1.587253 (714bp)
+Best alignment score: 693.0 (LEN: 711, IDY: 97.47), Total number of alignments: 1
+		One align captures most of this contig: 954 1664 | 714 4 | 711 711 | 97.47 | A39_fig_1219382.3.peg.1441 NODE_874_length_714_cov_1.587253
+
+CONTIG: NODE_875_length_714_cov_1.500759 (714bp)
+Best alignment score: 561.0 (LEN: 569, IDY: 98.59), Total number of alignments: 2
+			Looking for the best set of alignments (out of 2 total alignments)
+			The best set is below. Score: 608.0, number of alignments: 2, unaligned bases: 47
+		This contig is misassembled.
+			Real Alignment 1: 323 891 | 1 569 | 569 569 | 98.59 | A39_fig_1219382.3.peg.1472 NODE_875_length_714_cov_1.500759
+			  Extensive misassembly (translocation) between these two alignments
+			Real Alignment 2: 833 930 | 714 617 | 98 98 | 100.0 | A39_fig_1219382.3.peg.1473 NODE_875_length_714_cov_1.500759
+
+CONTIG: NODE_880_length_713_cov_1.630699 (713bp)
+Best alignment score: 708.0 (LEN: 713, IDY: 99.30), Total number of alignments: 1
+		One align captures most of this contig: 376 1088 | 1 713 | 713 713 | 99.3 | A39_fig_1219382.3.peg.1166 NODE_880_length_713_cov_1.630699
+
+CONTIG: NODE_884_length_711_cov_2.236280 (711bp)
+Best alignment score: 701.0 (LEN: 711, IDY: 98.59), Total number of alignments: 1
+		One align captures most of this contig: 1371 2081 | 711 1 | 711 711 | 98.59 | A39_fig_1219382.3.peg.1975 NODE_884_length_711_cov_2.236280
+
+CONTIG: NODE_1243_length_602_cov_2.255941 (602bp)
+Best alignment score: 600.0 (LEN: 602, IDY: 99.67), Total number of alignments: 1
+		One align captures most of this contig: 629 1230 | 602 1 | 602 602 | 99.67 | A39_fig_1219382.3.peg.1975 NODE_1243_length_602_cov_2.255941
+
+CONTIG: NODE_886_length_710_cov_2.074809 (710bp)
+Best alignment score: 692.0 (LEN: 710, IDY: 97.46), Total number of alignments: 1
+		One align captures most of this contig: 701 1410 | 710 1 | 710 710 | 97.46 | A39_fig_1219382.3.peg.1803 NODE_886_length_710_cov_2.074809
+
+CONTIG: NODE_1453_length_550_cov_1.212121 (550bp)
+Best alignment score: 538.0 (LEN: 550, IDY: 97.82), Total number of alignments: 1
+		One align captures most of this contig: 57 606 | 550 1 | 550 550 | 97.82 | A39_fig_1219382.3.peg.1803 NODE_1453_length_550_cov_1.212121
+
+CONTIG: NODE_888_length_709_cov_1.857798 (709bp)
+Best alignment score: 689.0 (LEN: 708, IDY: 97.32), Total number of alignments: 1
+		One align captures most of this contig: 1272 1979 | 1 708 | 708 708 | 97.32 | A39_fig_1219382.3.peg.972 NODE_888_length_709_cov_1.857798
+
+CONTIG: NODE_898_length_705_cov_3.110769 (705bp)
+Best alignment score: 690.0 (LEN: 705, IDY: 97.87), Total number of alignments: 1
+		One align captures most of this contig: 154 858 | 1 705 | 705 705 | 97.87 | A39_fig_1219382.3.peg.1236 NODE_898_length_705_cov_3.110769
+
+CONTIG: NODE_901_length_704_cov_2.711864 (704bp)
+Best alignment score: 689.0 (LEN: 704, IDY: 97.87), Total number of alignments: 1
+		One align captures most of this contig: 33 736 | 704 1 | 704 704 | 97.87 | A39_fig_1219382.3.peg.2521 NODE_901_length_704_cov_2.711864
+
+CONTIG: NODE_1068_length_643_cov_1.389456 (643bp)
+Best alignment score: 252.0 (LEN: 261, IDY: 96.55), Total number of alignments: 1
+			Looking for the best set of alignments (out of 1 total alignments)
+			The best set is below. Score: 252.0, number of alignments: 1, unaligned bases: 382
+		Alignment: 1114 1374 | 639 379 | 261 261 | 96.55 | A39_fig_1219382.3.peg.2521 NODE_1068_length_643_cov_1.389456
+
+CONTIG: NODE_906_length_703_cov_1.807099 (703bp)
+Best alignment score: 693.0 (LEN: 703, IDY: 98.58), Total number of alignments: 1
+		One align captures most of this contig: 2572 3274 | 703 1 | 703 703 | 98.58 | A39_fig_1219382.3.peg.1113 NODE_906_length_703_cov_1.807099
+
+CONTIG: NODE_1646_length_512_cov_2.509847 (512bp)
+Best alignment score: 507.0 (LEN: 511, IDY: 99.22), Total number of alignments: 1
+		One align captures most of this contig: 859 1369 | 511 1 | 511 511 | 99.22 | A39_fig_1219382.3.peg.1113 NODE_1646_length_512_cov_2.509847
+
+CONTIG: NODE_908_length_702_cov_3.312210 (702bp)
+Best alignment score: 683.0 (LEN: 698, IDY: 97.85), Total number of alignments: 1
+		One align captures most of this contig: 265 962 | 5 702 | 698 698 | 97.85 | A39_fig_1219382.3.peg.982 NODE_908_length_702_cov_3.312210
+
+CONTIG: NODE_916_length_701_cov_1.761610 (701bp)
+Best alignment score: 693.0 (LEN: 700, IDY: 99.00), Total number of alignments: 1
+		One align captures most of this contig: 630 1329 | 2 701 | 700 700 | 99.0 | A39_fig_1219382.3.peg.1763 NODE_916_length_701_cov_1.761610
+
+CONTIG: NODE_927_length_697_cov_1.763240 (697bp)
+Best alignment score: 692.0 (LEN: 697, IDY: 99.28), Total number of alignments: 1
+		One align captures most of this contig: 1 697 | 1 697 | 697 697 | 99.28 | A39_fig_1219382.3.peg.1250 NODE_927_length_697_cov_1.763240
+
+CONTIG: NODE_930_length_696_cov_1.492980 (696bp)
+Best alignment score: 690.0 (LEN: 696, IDY: 99.14), Total number of alignments: 1
+		One align captures most of this contig: 851 1546 | 1 696 | 696 696 | 99.14 | A39_fig_1219382.3.peg.1660 NODE_930_length_696_cov_1.492980
+
+CONTIG: NODE_935_length_695_cov_1.734375 (695bp)
+Best alignment score: 687.0 (LEN: 695, IDY: 98.85), Total number of alignments: 1
+		One align captures most of this contig: 140 834 | 695 1 | 695 695 | 98.85 | A39_fig_1219382.3.peg.708 NODE_935_length_695_cov_1.734375
+
+CONTIG: NODE_952_length_687_cov_1.680380 (687bp)
+Best alignment score: 464.0 (LEN: 465, IDY: 99.78), Total number of alignments: 2
+			Looking for the best set of alignments (out of 2 total alignments)
+			The best set is below. Score: 480.0, number of alignments: 2, unaligned bases: 155
+		This contig is misassembled.
+			Real Alignment 1: 1 67 | 67 1 | 67 67 | 100.0 | A39_fig_1219382.3.peg.74 NODE_952_length_687_cov_1.680380
+			  Extensive misassembly (translocation) between these two alignments
+			Real Alignment 2: 1 465 | 220 684 | 465 465 | 99.78 | A39_fig_1219382.3.peg.75 NODE_952_length_687_cov_1.680380
+
+CONTIG: NODE_1481_length_545_cov_0.979592 (545bp)
+Best alignment score: 545.0 (LEN: 545, IDY: 100.00), Total number of alignments: 1
+		One align captures most of this contig: 211 755 | 1 545 | 545 545 | 100.0 | A39_fig_1219382.3.peg.74 NODE_1481_length_545_cov_0.979592
+
+CONTIG: NODE_956_length_683_cov_1.541401 (683bp)
+Best alignment score: 670.0 (LEN: 682, IDY: 98.24), Total number of alignments: 1
+		One align captures most of this contig: 32 713 | 683 2 | 682 682 | 98.24 | A39_fig_1219382.3.peg.925 NODE_956_length_683_cov_1.541401
+
+CONTIG: NODE_975_length_675_cov_1.800000 (675bp)
+Best alignment score: 671.0 (LEN: 675, IDY: 99.41), Total number of alignments: 1
+		One align captures most of this contig: 1449 2123 | 675 1 | 675 675 | 99.41 | A39_fig_1219382.3.peg.1823 NODE_975_length_675_cov_1.800000
+
+CONTIG: NODE_977_length_675_cov_1.674194 (675bp)
+Best alignment score: 667.0 (LEN: 675, IDY: 98.81), Total number of alignments: 1
+		One align captures most of this contig: 347 1021 | 675 1 | 675 675 | 98.81 | A39_fig_1219382.3.peg.1801 NODE_977_length_675_cov_1.674194
+
+CONTIG: NODE_984_length_672_cov_2.455429 (672bp)
+Best alignment score: 664.0 (LEN: 672, IDY: 98.81), Total number of alignments: 1
+		One align captures most of this contig: 140 812 | 1 672 | 673 672 | 98.81 | A39_fig_1219382.3.peg.1255 NODE_984_length_672_cov_2.455429
+
+CONTIG: NODE_990_length_669_cov_1.752443 (669bp)
+Best alignment score: 656.0 (LEN: 658, IDY: 99.70), Total number of alignments: 1
+			Looking for the best set of alignments (out of 1 total alignments)
+			The best set is below. Score: 656.0, number of alignments: 1, unaligned bases: 11
+		Alignment: 6 663 | 658 1 | 658 658 | 99.7 | A39_fig_1219382.3.peg.2044 NODE_990_length_669_cov_1.752443
+
+CONTIG: NODE_992_length_668_cov_2.468189 (668bp)
+Best alignment score: 653.0 (LEN: 664, IDY: 98.34), Total number of alignments: 1
+		One align captures most of this contig: 463 1126 | 5 668 | 664 664 | 98.34 | A39_fig_1219382.3.peg.1860 NODE_992_length_668_cov_2.468189
+
+CONTIG: NODE_994_length_668_cov_2.171289 (668bp)
+Best alignment score: 618.0 (LEN: 620, IDY: 99.68), Total number of alignments: 1
+			Looking for the best set of alignments (out of 1 total alignments)
+			The best set is below. Score: 618.0, number of alignments: 1, unaligned bases: 48
+		Alignment: 74 693 | 668 49 | 620 620 | 99.68 | A39_fig_1219382.3.peg.1471 NODE_994_length_668_cov_2.171289
+
+CONTIG: NODE_995_length_668_cov_1.484502 (668bp)
+Best alignment score: 649.0 (LEN: 665, IDY: 97.59), Total number of alignments: 1
+		One align captures most of this contig: 143 807 | 1 665 | 665 665 | 97.59 | A39_fig_1219382.3.peg.1512 NODE_995_length_668_cov_1.484502
+
+CONTIG: NODE_1209_length_611_cov_1.215827 (611bp)
+Best alignment score: 604.0 (LEN: 611, IDY: 98.85), Total number of alignments: 1
+		One align captures most of this contig: 1207 1817 | 611 1 | 611 611 | 98.85 | A39_fig_1219382.3.peg.1512 NODE_1209_length_611_cov_1.215827
+
+CONTIG: NODE_998_length_666_cov_1.798691 (666bp)
+Best alignment score: 653.0 (LEN: 663, IDY: 98.49), Total number of alignments: 1
+		One align captures most of this contig: 427 1089 | 1 663 | 663 663 | 98.49 | A39_fig_1219382.3.peg.1088 NODE_998_length_666_cov_1.798691
+
+CONTIG: NODE_999_length_666_cov_1.361702 (666bp)
+Best alignment score: 652.0 (LEN: 666, IDY: 97.90), Total number of alignments: 1
+		One align captures most of this contig: 522 1187 | 666 1 | 666 666 | 97.9 | A39_fig_1219382.3.peg.699 NODE_999_length_666_cov_1.361702
+
+CONTIG: NODE_1001_length_665_cov_2.037705 (665bp)
+Best alignment score: 663.0 (LEN: 665, IDY: 99.70), Total number of alignments: 1
+		One align captures most of this contig: 749 1413 | 665 1 | 665 665 | 99.7 | A39_fig_1219382.3.peg.482 NODE_1001_length_665_cov_2.037705
+
+CONTIG: NODE_1006_length_663_cov_1.549342 (663bp)
+Best alignment score: 653.0 (LEN: 663, IDY: 98.49), Total number of alignments: 1
+		One align captures most of this contig: 60 722 | 663 1 | 663 663 | 98.49 | A39_fig_1219382.3.peg.2045 NODE_1006_length_663_cov_1.549342
+
+CONTIG: NODE_1011_length_660_cov_2.044628 (660bp)
+Best alignment score: 649.0 (LEN: 660, IDY: 98.33), Total number of alignments: 1
+		One align captures most of this contig: 506 1165 | 1 660 | 660 660 | 98.33 | A39_fig_1219382.3.peg.404 NODE_1011_length_660_cov_2.044628
+
+CONTIG: NODE_1013_length_660_cov_1.137190 (660bp)
+Best alignment score: 571.0 (LEN: 583, IDY: 97.94), Total number of alignments: 1
+			Looking for the best set of alignments (out of 1 total alignments)
+			The best set is below. Score: 571.0, number of alignments: 1, unaligned bases: 77
+		Alignment: 855 1437 | 1 583 | 583 583 | 97.94 | A39_fig_1219382.3.peg.178 NODE_1013_length_660_cov_1.137190
+
+CONTIG: NODE_1025_length_656_cov_2.001664 (656bp)
+Best alignment score: 646.0 (LEN: 656, IDY: 98.48), Total number of alignments: 1
+		One align captures most of this contig: 611 1266 | 1 656 | 656 656 | 98.48 | A39_fig_1219382.3.peg.1961 NODE_1025_length_656_cov_2.001664
+
+CONTIG: NODE_1027_length_655_cov_1.600000 (655bp)
+Best alignment score: 646.0 (LEN: 655, IDY: 98.63), Total number of alignments: 1
+		One align captures most of this contig: 866 1520 | 655 1 | 655 655 | 98.63 | A39_fig_1219382.3.peg.151 NODE_1027_length_655_cov_1.600000
+
+CONTIG: NODE_1044_length_648_cov_2.123103 (648bp)
+Best alignment score: 215.0 (LEN: 224, IDY: 95.98), Total number of alignments: 1
+			Looking for the best set of alignments (out of 1 total alignments)
+			The best set is below. Score: 215.0, number of alignments: 1, unaligned bases: 424
+		Alignment: 55 278 | 224 1 | 224 224 | 95.98 | A39_fig_1219382.3.peg.167 NODE_1044_length_648_cov_2.123103
+
+CONTIG: NODE_1045_length_648_cov_2.114671 (648bp)
+Best alignment score: 638.0 (LEN: 648, IDY: 98.46), Total number of alignments: 1
+		One align captures most of this contig: 93 740 | 1 648 | 648 648 | 98.46 | A39_fig_1219382.3.peg.1910 NODE_1045_length_648_cov_2.114671
+
+CONTIG: NODE_1051_length_647_cov_1.288851 (647bp)
+Best alignment score: 619.5 (LEN: 643, IDY: 96.34), Total number of alignments: 1
+		One align captures most of this contig: 289 943 | 5 647 | 655 643 | 96.34 | A39_fig_1219382.3.peg.549 NODE_1051_length_647_cov_1.288851
+
+CONTIG: NODE_1059_length_645_cov_1.918644 (645bp)
+Best alignment score: 638.0 (LEN: 645, IDY: 98.91), Total number of alignments: 1
+		One align captures most of this contig: 112 756 | 1 645 | 645 645 | 98.91 | A39_fig_1219382.3.peg.1090 NODE_1059_length_645_cov_1.918644
+
+CONTIG: NODE_1553_length_528_cov_1.672304 (528bp)
+Best alignment score: 517.0 (LEN: 528, IDY: 97.92), Total number of alignments: 1
+		One align captures most of this contig: 2600 3126 | 528 1 | 527 528 | 97.92 | A39_fig_1219382.3.peg.1090 NODE_1553_length_528_cov_1.672304
+
+CONTIG: NODE_1066_length_643_cov_2.234694 (643bp)
+Best alignment score: 627.1 (LEN: 643, IDY: 97.52), Total number of alignments: 1
+		One align captures most of this contig: 882 1524 | 1 643 | 643 643 | 97.52 | A39_fig_1219382.3.peg.688 NODE_1066_length_643_cov_2.234694
+
+CONTIG: NODE_1450_length_550_cov_2.038384 (550bp)
+Best alignment score: 540.0 (LEN: 550, IDY: 98.18), Total number of alignments: 1
+		One align captures most of this contig: 483 1032 | 550 1 | 550 550 | 98.18 | A39_fig_1219382.3.peg.688 NODE_1450_length_550_cov_2.038384
+
+CONTIG: NODE_1077_length_641_cov_1.996587 (641bp)
+Best alignment score: 633.0 (LEN: 639, IDY: 99.06), Total number of alignments: 1
+		One align captures most of this contig: 727 1365 | 1 639 | 639 639 | 99.06 | A39_fig_1219382.3.peg.1022 NODE_1077_length_641_cov_1.996587
+
+CONTIG: NODE_1187_length_615_cov_1.219643 (615bp)
+Best alignment score: 599.0 (LEN: 615, IDY: 97.40), Total number of alignments: 1
+		One align captures most of this contig: 127 741 | 615 1 | 615 615 | 97.4 | A39_fig_1219382.3.peg.1022 NODE_1187_length_615_cov_1.219643
+
+CONTIG: NODE_1080_length_641_cov_1.279863 (641bp)
+Best alignment score: 634.0 (LEN: 641, IDY: 98.91), Total number of alignments: 1
+		One align captures most of this contig: 204 844 | 1 641 | 641 641 | 98.91 | A39_fig_1219382.3.peg.1720 NODE_1080_length_641_cov_1.279863
+
+CONTIG: NODE_1082_length_640_cov_1.705983 (640bp)
+Best alignment score: 618.0 (LEN: 624, IDY: 99.04), Total number of alignments: 1
+			Looking for the best set of alignments (out of 1 total alignments)
+			The best set is below. Score: 618.0, number of alignments: 1, unaligned bases: 16
+		Alignment: 457 1080 | 640 17 | 624 624 | 99.04 | A39_fig_1219382.3.peg.601 NODE_1082_length_640_cov_1.705983
+
+CONTIG: NODE_1084_length_640_cov_1.083761 (640bp)
+Best alignment score: 628.0 (LEN: 640, IDY: 98.12), Total number of alignments: 1
+		One align captures most of this contig: 2171 2810 | 640 1 | 640 640 | 98.12 | A39_fig_1219382.3.peg.2141 NODE_1084_length_640_cov_1.083761
+
+CONTIG: NODE_1089_length_638_cov_1.939966 (638bp)
+Best alignment score: 620.0 (LEN: 633, IDY: 97.95), Total number of alignments: 1
+		One align captures most of this contig: 224 856 | 5 637 | 633 633 | 97.95 | A39_fig_1219382.3.peg.614 NODE_1089_length_638_cov_1.939966
+
+CONTIG: NODE_1091_length_638_cov_1.720412 (638bp)
+Best alignment score: 620.0 (LEN: 638, IDY: 97.18), Total number of alignments: 1
+		One align captures most of this contig: 115 752 | 1 638 | 638 638 | 97.18 | A39_fig_1219382.3.peg.583 NODE_1091_length_638_cov_1.720412
+
+CONTIG: NODE_1095_length_637_cov_1.737113 (637bp)
+Best alignment score: 344.0 (LEN: 377, IDY: 91.25), Total number of alignments: 1
+			Looking for the best set of alignments (out of 1 total alignments)
+			The best set is below. Score: 344.0, number of alignments: 1, unaligned bases: 260
+		Alignment: 52 428 | 466 90 | 377 377 | 91.25 | A39_fig_1219382.3.peg.94 NODE_1095_length_637_cov_1.737113
+
+CONTIG: NODE_1106_length_633_cov_2.581315 (633bp)
+Best alignment score: 624.0 (LEN: 633, IDY: 98.58), Total number of alignments: 1
+		One align captures most of this contig: 64 696 | 1 633 | 633 633 | 98.58 | A39_fig_1219382.3.peg.1306 NODE_1106_length_633_cov_2.581315
+
+CONTIG: NODE_1113_length_632_cov_2.005199 (632bp)
+Best alignment score: 623.0 (LEN: 632, IDY: 98.58), Total number of alignments: 1
+		One align captures most of this contig: 667 1298 | 1 632 | 632 632 | 98.58 | A39_fig_1219382.3.peg.2415 NODE_1113_length_632_cov_2.005199
+
+CONTIG: NODE_1120_length_631_cov_1.829861 (631bp)
+Best alignment score: 630.0 (LEN: 631, IDY: 99.84), Total number of alignments: 1
+		One align captures most of this contig: 728 1358 | 631 1 | 631 631 | 99.84 | A39_fig_1219382.3.peg.1490 NODE_1120_length_631_cov_1.829861
+
+CONTIG: NODE_1124_length_630_cov_1.554783 (630bp)
+Best alignment score: 623.0 (LEN: 630, IDY: 98.89), Total number of alignments: 1
+		One align captures most of this contig: 251 880 | 1 630 | 630 630 | 98.89 | A39_fig_1219382.3.peg.535 NODE_1124_length_630_cov_1.554783
+
+CONTIG: NODE_1126_length_630_cov_1.220870 (630bp)
+Best alignment score: 621.0 (LEN: 629, IDY: 98.73), Total number of alignments: 1
+		One align captures most of this contig: 3 631 | 2 630 | 629 629 | 98.73 | A39_fig_1219382.3.peg.2001 NODE_1126_length_630_cov_1.220870
+
+CONTIG: NODE_1130_length_629_cov_1.761324 (629bp)
+Best alignment score: 617.0 (LEN: 629, IDY: 98.09), Total number of alignments: 1
+		One align captures most of this contig: 151 779 | 1 629 | 629 629 | 98.09 | A39_fig_1219382.3.peg.1892 NODE_1130_length_629_cov_1.761324
+
+CONTIG: NODE_1133_length_628_cov_2.502618 (628bp)
+Best alignment score: 547.0 (LEN: 554, IDY: 98.74), Total number of alignments: 1
+			Looking for the best set of alignments (out of 1 total alignments)
+			The best set is below. Score: 547.0, number of alignments: 1, unaligned bases: 74
+		Alignment: 1 554 | 559 6 | 554 554 | 98.74 | A39_fig_1219382.3.peg.1324 NODE_1133_length_628_cov_2.502618
+
+CONTIG: NODE_1137_length_628_cov_1.109948 (628bp)
+Best alignment score: 622.0 (LEN: 628, IDY: 99.04), Total number of alignments: 1
+		One align captures most of this contig: 325 952 | 628 1 | 628 628 | 99.04 | A39_fig_1219382.3.peg.138 NODE_1137_length_628_cov_1.109948
+
+CONTIG: NODE_1138_length_627_cov_3.166084 (627bp)
+Best alignment score: 283.0 (LEN: 286, IDY: 98.95), Total number of alignments: 2
+			Looking for the best set of alignments (out of 2 total alignments)
+			The best set is below. Score: 466.0, number of alignments: 2, unaligned bases: 105
+		This contig is misassembled.
+			Real Alignment 1: 629 864 | 1 236 | 236 236 | 99.15 | A39_fig_1219382.3.peg.1654 NODE_1138_length_627_cov_3.166084
+			  Extensive misassembly (translocation) between these two alignments
+			Real Alignment 2: 300 585 | 627 342 | 286 286 | 98.95 | A39_fig_1219382.3.peg.1655 NODE_1138_length_627_cov_3.166084
+
+CONTIG: NODE_1144_length_625_cov_2.012281 (625bp)
+Best alignment score: 619.0 (LEN: 625, IDY: 99.04), Total number of alignments: 1
+		One align captures most of this contig: 698 1322 | 1 625 | 625 625 | 99.04 | A39_fig_1219382.3.peg.2133 NODE_1144_length_625_cov_2.012281
+
+CONTIG: NODE_1531_length_533_cov_1.127615 (533bp)
+Best alignment score: 525.0 (LEN: 533, IDY: 98.50), Total number of alignments: 1
+		One align captures most of this contig: 1735 2267 | 533 1 | 533 533 | 98.5 | A39_fig_1219382.3.peg.2133 NODE_1531_length_533_cov_1.127615
+
+CONTIG: NODE_1149_length_624_cov_2.130053 (624bp)
+Best alignment score: 618.0 (LEN: 624, IDY: 99.04), Total number of alignments: 1
+		One align captures most of this contig: 294 917 | 1 624 | 624 624 | 99.04 | A39_fig_1219382.3.peg.1754 NODE_1149_length_624_cov_2.130053
+
+CONTIG: NODE_1151_length_624_cov_1.513181 (624bp)
+Best alignment score: 615.0 (LEN: 624, IDY: 98.56), Total number of alignments: 1
+		One align captures most of this contig: 316 939 | 1 624 | 624 624 | 98.56 | A39_fig_1219382.3.peg.1259 NODE_1151_length_624_cov_1.513181
+
+CONTIG: NODE_1155_length_623_cov_1.728873 (623bp)
+Best alignment score: 610.0 (LEN: 610, IDY: 100.00), Total number of alignments: 1
+			Looking for the best set of alignments (out of 1 total alignments)
+			The best set is below. Score: 610.0, number of alignments: 1, unaligned bases: 13
+		Alignment: 294 903 | 623 14 | 610 610 | 100.0 | A39_fig_1219382.3.peg.983 NODE_1155_length_623_cov_1.728873
+
+CONTIG: NODE_1157_length_623_cov_1.177817 (623bp)
+Best alignment score: 608.0 (LEN: 617, IDY: 98.54), Total number of alignments: 1
+		One align captures most of this contig: 376 992 | 623 7 | 617 617 | 98.54 | A39_fig_1219382.3.peg.503 NODE_1157_length_623_cov_1.177817
+
+CONTIG: NODE_1161_length_621_cov_1.531802 (621bp)
+Best alignment score: 615.0 (LEN: 621, IDY: 99.03), Total number of alignments: 1
+		One align captures most of this contig: 1091 1711 | 1 621 | 621 621 | 99.03 | A39_fig_1219382.3.peg.543 NODE_1161_length_621_cov_1.531802
+
+CONTIG: NODE_1170_length_618_cov_1.673179 (618bp)
+Best alignment score: 616.0 (LEN: 618, IDY: 99.68), Total number of alignments: 1
+		One align captures most of this contig: 783 1400 | 1 618 | 618 618 | 99.68 | A39_fig_1219382.3.peg.1506 NODE_1170_length_618_cov_1.673179
+
+CONTIG: NODE_1175_length_617_cov_1.793594 (617bp)
+Best alignment score: 606.0 (LEN: 614, IDY: 98.70), Total number of alignments: 1
+		One align captures most of this contig: 349 962 | 4 617 | 614 614 | 98.7 | A39_fig_1219382.3.peg.1487 NODE_1175_length_617_cov_1.793594
+
+CONTIG: NODE_1177_length_617_cov_1.653025 (617bp)
+Best alignment score: 605.0 (LEN: 617, IDY: 98.06), Total number of alignments: 1
+		One align captures most of this contig: 869 1485 | 617 1 | 617 617 | 98.06 | A39_fig_1219382.3.peg.210 NODE_1177_length_617_cov_1.653025
+
+CONTIG: NODE_1184_length_616_cov_0.948307 (616bp)
+Best alignment score: 591.0 (LEN: 616, IDY: 95.94), Total number of alignments: 1
+		One align captures most of this contig: 159 774 | 616 1 | 616 616 | 95.94 | A39_fig_1219382.3.peg.1679 NODE_1184_length_616_cov_0.948307
+
+CONTIG: NODE_1189_length_614_cov_2.611807 (614bp)
+Best alignment score: 597.0 (LEN: 614, IDY: 97.23), Total number of alignments: 1
+		One align captures most of this contig: 145 758 | 614 1 | 614 614 | 97.23 | A39_fig_1219382.3.peg.133 NODE_1189_length_614_cov_2.611807
+
+CONTIG: NODE_1192_length_614_cov_0.908766 (614bp)
+Best alignment score: 580.0 (LEN: 609, IDY: 95.24), Total number of alignments: 1
+		One align captures most of this contig: 228 836 | 614 6 | 609 609 | 95.24 | A39_fig_1219382.3.peg.214 NODE_1192_length_614_cov_0.908766
+
+CONTIG: NODE_1195_length_613_cov_1.745520 (613bp)
+Best alignment score: 605.0 (LEN: 613, IDY: 98.69), Total number of alignments: 1
+		One align captures most of this contig: 774 1386 | 1 613 | 613 613 | 98.69 | A39_fig_1219382.3.peg.1732 NODE_1195_length_613_cov_1.745520
+
+CONTIG: NODE_1205_length_611_cov_2.023381 (611bp)
+Best alignment score: 597.0 (LEN: 611, IDY: 97.71), Total number of alignments: 1
+		One align captures most of this contig: 223 833 | 611 1 | 611 611 | 97.71 | A39_fig_1219382.3.peg.1079 NODE_1205_length_611_cov_2.023381
+
+CONTIG: NODE_1207_length_611_cov_1.433453 (611bp)
+Best alignment score: 599.0 (LEN: 611, IDY: 98.04), Total number of alignments: 1
+		One align captures most of this contig: 381 992 | 611 1 | 612 611 | 98.04 | A39_fig_1219382.3.peg.530 NODE_1207_length_611_cov_1.433453
+
+CONTIG: NODE_1214_length_610_cov_1.850450 (610bp)
+Best alignment score: 602.0 (LEN: 610, IDY: 98.69), Total number of alignments: 1
+		One align captures most of this contig: 904 1513 | 610 1 | 610 610 | 98.69 | A39_fig_1219382.3.peg.2004 NODE_1214_length_610_cov_1.850450
+
+CONTIG: NODE_1215_length_610_cov_1.753153 (610bp)
+Best alignment score: 527.0 (LEN: 529, IDY: 99.62), Total number of alignments: 1
+			Looking for the best set of alignments (out of 1 total alignments)
+			The best set is below. Score: 527.0, number of alignments: 1, unaligned bases: 81
+		Alignment: 1 529 | 529 1 | 529 529 | 99.62 | A39_fig_1219382.3.peg.88 NODE_1215_length_610_cov_1.753153
+
+CONTIG: NODE_1223_length_608_cov_1.311031 (608bp)
+Best alignment score: 590.0 (LEN: 608, IDY: 97.04), Total number of alignments: 1
+		One align captures most of this contig: 874 1481 | 1 608 | 608 608 | 97.04 | A39_fig_1219382.3.peg.212 NODE_1223_length_608_cov_1.311031
+
+CONTIG: NODE_1233_length_605_cov_1.714545 (605bp)
+Best alignment score: 594.0 (LEN: 605, IDY: 98.18), Total number of alignments: 1
+		One align captures most of this contig: 731 1335 | 605 1 | 605 605 | 98.18 | A39_fig_1219382.3.peg.364 NODE_1233_length_605_cov_1.714545
+
+CONTIG: NODE_1236_length_605_cov_1.527273 (605bp)
+Best alignment score: 599.0 (LEN: 605, IDY: 99.01), Total number of alignments: 1
+		One align captures most of this contig: 756 1360 | 605 1 | 605 605 | 99.01 | A39_fig_1219382.3.peg.330 NODE_1236_length_605_cov_1.527273
+
+CONTIG: NODE_1240_length_603_cov_1.645985 (603bp)
+Best alignment score: 562.0 (LEN: 593, IDY: 94.77), Total number of alignments: 1
+			Looking for the best set of alignments (out of 1 total alignments)
+			The best set is below. Score: 562.0, number of alignments: 1, unaligned bases: 10
+		Alignment: 1069 1661 | 603 11 | 593 593 | 94.77 | A39_fig_1219382.3.peg.2307 NODE_1240_length_603_cov_1.645985
+
+CONTIG: NODE_1244_length_602_cov_2.232176 (602bp)
+Best alignment score: 585.0 (LEN: 597, IDY: 97.99), Total number of alignments: 1
+		One align captures most of this contig: 1212 1808 | 2 598 | 597 597 | 97.99 | A39_fig_1219382.3.peg.791 NODE_1244_length_602_cov_2.232176
+
+CONTIG: NODE_1247_length_601_cov_3.128205 (601bp)
+Best alignment score: 551.0 (LEN: 553, IDY: 99.64), Total number of alignments: 2
+			Looking for the best set of alignments (out of 2 total alignments)
+			Skipping redundant alignments after choosing the best set of alignments
+		Skipping redundant alignment 1449 1978 | 601 72 | 530 530 | 99.62 | A39_fig_1219382.3.peg.1771 NODE_1247_length_601_cov_3.128205
+			The best set is below. Score: 551.0, number of alignments: 1, unaligned bases: 48
+		Alignment: 1449 2001 | 601 49 | 553 553 | 99.64 | A39_fig_1219382.3.peg.1997 NODE_1247_length_601_cov_3.128205
+
+CONTIG: NODE_1249_length_601_cov_2.012821 (601bp)
+Best alignment score: 593.0 (LEN: 601, IDY: 98.67), Total number of alignments: 1
+		One align captures most of this contig: 689 1289 | 601 1 | 601 601 | 98.67 | A39_fig_1219382.3.peg.1010 NODE_1249_length_601_cov_2.012821
+
+CONTIG: NODE_1261_length_597_cov_2.498155 (597bp)
+Best alignment score: 585.0 (LEN: 597, IDY: 97.99), Total number of alignments: 1
+		One align captures most of this contig: 1107 1703 | 1 597 | 597 597 | 97.99 | A39_fig_1219382.3.peg.1983 NODE_1261_length_597_cov_2.498155
+
+CONTIG: NODE_1422_length_558_cov_1.099404 (558bp)
+Best alignment score: 554.0 (LEN: 558, IDY: 99.28), Total number of alignments: 1
+		One align captures most of this contig: 1802 2359 | 558 1 | 558 558 | 99.28 | A39_fig_1219382.3.peg.1983 NODE_1422_length_558_cov_1.099404
+
+CONTIG: NODE_1268_length_596_cov_1.693161 (596bp)
+Best alignment score: 587.0 (LEN: 596, IDY: 98.49), Total number of alignments: 1
+		One align captures most of this contig: 400 995 | 1 596 | 596 596 | 98.49 | A39_fig_1219382.3.peg.2277 NODE_1268_length_596_cov_1.693161
+
+CONTIG: NODE_1270_length_595_cov_2.505556 (595bp)
+Best alignment score: 590.0 (LEN: 595, IDY: 99.16), Total number of alignments: 1
+		One align captures most of this contig: 336 930 | 1 595 | 595 595 | 99.16 | A39_fig_1219382.3.peg.1751 NODE_1270_length_595_cov_2.505556
+
+CONTIG: NODE_1271_length_595_cov_2.483333 (595bp)
+Best alignment score: 587.0 (LEN: 595, IDY: 98.66), Total number of alignments: 1
+		One align captures most of this contig: 739 1333 | 595 1 | 595 595 | 98.66 | A39_fig_1219382.3.peg.917 NODE_1271_length_595_cov_2.483333
+
+CONTIG: NODE_1273_length_595_cov_2.198148 (595bp)
+Best alignment score: 592.0 (LEN: 595, IDY: 99.50), Total number of alignments: 1
+		One align captures most of this contig: 105 699 | 1 595 | 595 595 | 99.5 | A39_fig_1219382.3.peg.567 NODE_1273_length_595_cov_2.198148
+
+CONTIG: NODE_1275_length_595_cov_1.722222 (595bp)
+Best alignment score: 582.0 (LEN: 595, IDY: 97.82), Total number of alignments: 1
+		One align captures most of this contig: 527 1121 | 595 1 | 595 595 | 97.82 | A39_fig_1219382.3.peg.2385 NODE_1275_length_595_cov_1.722222
+
+CONTIG: NODE_1278_length_594_cov_2.037106 (594bp)
+Best alignment score: 587.0 (LEN: 594, IDY: 98.82), Total number of alignments: 1
+		One align captures most of this contig: 162 755 | 594 1 | 594 594 | 98.82 | A39_fig_1219382.3.peg.1074 NODE_1278_length_594_cov_2.037106
+
+CONTIG: NODE_1279_length_594_cov_1.437848 (594bp)
+Best alignment score: 583.0 (LEN: 594, IDY: 98.15), Total number of alignments: 1
+		One align captures most of this contig: 502 1095 | 1 594 | 594 594 | 98.15 | A39_fig_1219382.3.peg.1032 NODE_1279_length_594_cov_1.437848
+
+CONTIG: NODE_1296_length_586_cov_1.721281 (586bp)
+Best alignment score: 571.0 (LEN: 586, IDY: 97.44), Total number of alignments: 1
+		One align captures most of this contig: 79 664 | 1 586 | 586 586 | 97.44 | A39_fig_1219382.3.peg.1917 NODE_1296_length_586_cov_1.721281
+
+CONTIG: NODE_1320_length_579_cov_2.717557 (579bp)
+Best alignment score: 576.0 (LEN: 579, IDY: 99.48), Total number of alignments: 1
+		One align captures most of this contig: 214 792 | 1 579 | 579 579 | 99.48 | A39_fig_1219382.3.peg.507 NODE_1320_length_579_cov_2.717557
+
+CONTIG: NODE_1324_length_579_cov_1.461832 (579bp)
+Best alignment score: 578.0 (LEN: 579, IDY: 99.83), Total number of alignments: 1
+		One align captures most of this contig: 1209 1787 | 1 579 | 579 579 | 99.83 | A39_fig_1219382.3.peg.2288 NODE_1324_length_579_cov_1.461832
+
+CONTIG: NODE_1331_length_578_cov_1.923518 (578bp)
+Best alignment score: 572.0 (LEN: 578, IDY: 98.96), Total number of alignments: 1
+		One align captures most of this contig: 560 1137 | 578 1 | 578 578 | 98.96 | A39_fig_1219382.3.peg.777 NODE_1331_length_578_cov_1.923518
+
+CONTIG: NODE_1343_length_575_cov_1.228846 (575bp)
+Best alignment score: 565.0 (LEN: 575, IDY: 98.26), Total number of alignments: 1
+		One align captures most of this contig: 172 746 | 1 575 | 575 575 | 98.26 | A39_fig_1219382.3.peg.1355 NODE_1343_length_575_cov_1.228846
+
+CONTIG: NODE_1346_length_573_cov_2.059846 (573bp)
+Best alignment score: 153.0 (LEN: 166, IDY: 92.17), Total number of alignments: 1
+			Looking for the best set of alignments (out of 1 total alignments)
+			The best set is below. Score: 153.0, number of alignments: 1, unaligned bases: 407
+		Alignment: 3026 3191 | 437 272 | 166 166 | 92.17 | A39_fig_1219382.3.peg.42 NODE_1346_length_573_cov_2.059846
+
+CONTIG: NODE_1347_length_573_cov_1.658301 (573bp)
+Best alignment score: 569.0 (LEN: 573, IDY: 99.30), Total number of alignments: 1
+		One align captures most of this contig: 367 939 | 1 573 | 573 573 | 99.3 | A39_fig_1219382.3.peg.2374 NODE_1347_length_573_cov_1.658301
+
+CONTIG: NODE_1348_length_573_cov_1.457529 (573bp)
+Best alignment score: 561.0 (LEN: 568, IDY: 98.77), Total number of alignments: 1
+		One align captures most of this contig: 1 568 | 6 573 | 568 568 | 98.77 | A39_fig_1219382.3.peg.1030 NODE_1348_length_573_cov_1.457529
+
+CONTIG: NODE_1355_length_572_cov_2.433269 (572bp)
+Best alignment score: 566.0 (LEN: 572, IDY: 98.95), Total number of alignments: 1
+		One align captures most of this contig: 2395 2966 | 1 572 | 572 572 | 98.95 | A39_fig_1219382.3.peg.2419 NODE_1355_length_572_cov_2.433269
+
+CONTIG: NODE_1356_length_572_cov_2.177950 (572bp)
+Best alignment score: 570.0 (LEN: 572, IDY: 99.65), Total number of alignments: 1
+		One align captures most of this contig: 459 1030 | 572 1 | 572 572 | 99.65 | A39_fig_1219382.3.peg.1806 NODE_1356_length_572_cov_2.177950
+
+CONTIG: NODE_1357_length_572_cov_2.154739 (572bp)
+Best alignment score: 562.0 (LEN: 572, IDY: 98.25), Total number of alignments: 1
+		One align captures most of this contig: 538 1109 | 572 1 | 572 572 | 98.25 | A39_fig_1219382.3.peg.1213 NODE_1357_length_572_cov_2.154739
+
+CONTIG: NODE_1361_length_572_cov_1.332689 (572bp)
+Best alignment score: 558.0 (LEN: 572, IDY: 97.55), Total number of alignments: 1
+		One align captures most of this contig: 369 940 | 1 572 | 572 572 | 97.55 | A39_fig_1219382.3.peg.2217 NODE_1361_length_572_cov_1.332689
+
+CONTIG: NODE_1366_length_570_cov_1.747573 (570bp)
+Best alignment score: 565.0 (LEN: 570, IDY: 99.12), Total number of alignments: 1
+		One align captures most of this contig: 2 571 | 570 1 | 570 570 | 99.12 | A39_fig_1219382.3.peg.1289 NODE_1366_length_570_cov_1.747573
+
+CONTIG: NODE_1374_length_568_cov_2.423002 (568bp)
+Best alignment score: 564.0 (LEN: 568, IDY: 99.30), Total number of alignments: 1
+		One align captures most of this contig: 1282 1849 | 568 1 | 568 568 | 99.3 | A39_fig_1219382.3.peg.1356 NODE_1374_length_568_cov_2.423002
+
+CONTIG: NODE_1586_length_522_cov_1.620985 (522bp)
+Best alignment score: 519.0 (LEN: 522, IDY: 99.43), Total number of alignments: 1
+		One align captures most of this contig: 288 809 | 522 1 | 522 522 | 99.43 | A39_fig_1219382.3.peg.1356 NODE_1586_length_522_cov_1.620985
+
+CONTIG: NODE_1380_length_567_cov_1.427734 (567bp)
+Best alignment score: 561.0 (LEN: 567, IDY: 98.94), Total number of alignments: 1
+		One align captures most of this contig: 799 1365 | 567 1 | 567 567 | 98.94 | A39_fig_1219382.3.peg.569 NODE_1380_length_567_cov_1.427734
+
+CONTIG: NODE_1386_length_566_cov_1.029354 (566bp)
+Best alignment score: 555.0 (LEN: 566, IDY: 98.06), Total number of alignments: 1
+		One align captures most of this contig: 83 648 | 1 566 | 566 566 | 98.06 | A39_fig_1219382.3.peg.498 NODE_1386_length_566_cov_1.029354
+
+CONTIG: NODE_1391_length_565_cov_1.837255 (565bp)
+Best alignment score: 562.0 (LEN: 565, IDY: 99.47), Total number of alignments: 1
+		One align captures most of this contig: 256 820 | 1 565 | 565 565 | 99.47 | A39_fig_1219382.3.peg.455 NODE_1391_length_565_cov_1.837255
+
+CONTIG: NODE_1399_length_563_cov_2.196850 (563bp)
+Best alignment score: 562.0 (LEN: 563, IDY: 99.82), Total number of alignments: 1
+		One align captures most of this contig: 373 935 | 1 563 | 563 563 | 99.82 | A39_fig_1219382.3.peg.464 NODE_1399_length_563_cov_2.196850
+
+CONTIG: NODE_1402_length_562_cov_2.605523 (562bp)
+Best alignment score: 558.0 (LEN: 562, IDY: 99.29), Total number of alignments: 1
+		One align captures most of this contig: 494 1055 | 562 1 | 562 562 | 99.29 | A39_fig_1219382.3.peg.1465 NODE_1402_length_562_cov_2.605523
+
+CONTIG: NODE_1409_length_560_cov_1.942574 (560bp)
+Best alignment score: 554.0 (LEN: 560, IDY: 98.93), Total number of alignments: 1
+		One align captures most of this contig: 145 704 | 560 1 | 560 560 | 98.93 | A39_fig_1219382.3.peg.2225 NODE_1409_length_560_cov_1.942574
+
+CONTIG: NODE_1410_length_560_cov_1.467327 (560bp)
+Best alignment score: 524.0 (LEN: 535, IDY: 97.94), Total number of alignments: 1
+			Looking for the best set of alignments (out of 1 total alignments)
+			The best set is below. Score: 524.0, number of alignments: 1, unaligned bases: 25
+		Alignment: 167 701 | 535 1 | 535 535 | 97.94 | A39_fig_1219382.3.peg.215 NODE_1410_length_560_cov_1.467327
+
+CONTIG: NODE_1415_length_559_cov_2.376984 (559bp)
+Best alignment score: 556.0 (LEN: 559, IDY: 99.46), Total number of alignments: 1
+		One align captures most of this contig: 167 725 | 1 559 | 559 559 | 99.46 | A39_fig_1219382.3.peg.1784 NODE_1415_length_559_cov_2.376984
+
+CONTIG: NODE_1423_length_557_cov_1.912351 (557bp)
+Best alignment score: 548.0 (LEN: 553, IDY: 99.10), Total number of alignments: 1
+		One align captures most of this contig: 597 1149 | 557 5 | 553 553 | 99.1 | A39_fig_1219382.3.peg.985 NODE_1423_length_557_cov_1.912351
+
+CONTIG: NODE_1694_length_505_cov_2.508889 (505bp)
+Best alignment score: 477.0 (LEN: 487, IDY: 97.95), Total number of alignments: 1
+			Looking for the best set of alignments (out of 1 total alignments)
+			The best set is below. Score: 477.0, number of alignments: 1, unaligned bases: 18
+		Alignment: 111 597 | 487 1 | 487 487 | 97.95 | A39_fig_1219382.3.peg.985 NODE_1694_length_505_cov_2.508889
+
+CONTIG: NODE_1427_length_556_cov_1.816367 (556bp)
+Best alignment score: 554.0 (LEN: 556, IDY: 99.64), Total number of alignments: 1
+		One align captures most of this contig: 301 856 | 1 556 | 556 556 | 99.64 | A39_fig_1219382.3.peg.1725 NODE_1427_length_556_cov_1.816367
+
+CONTIG: NODE_1431_length_555_cov_1.482000 (555bp)
+Best alignment score: 546.0 (LEN: 555, IDY: 98.38), Total number of alignments: 1
+		One align captures most of this contig: 372 926 | 1 555 | 555 555 | 98.38 | A39_fig_1219382.3.peg.1867 NODE_1431_length_555_cov_1.482000
+
+CONTIG: NODE_1432_length_554_cov_2.468938 (554bp)
+Best alignment score: 548.0 (LEN: 554, IDY: 98.92), Total number of alignments: 1
+		One align captures most of this contig: 635 1188 | 554 1 | 554 554 | 98.92 | A39_fig_1219382.3.peg.2519 NODE_1432_length_554_cov_2.468938
+
+CONTIG: NODE_1435_length_554_cov_1.547094 (554bp)
+Best alignment score: 535.0 (LEN: 554, IDY: 96.57), Total number of alignments: 1
+		One align captures most of this contig: 541 1094 | 554 1 | 554 554 | 96.57 | A39_fig_1219382.3.peg.408 NODE_1435_length_554_cov_1.547094
+
+CONTIG: NODE_1436_length_554_cov_1.535070 (554bp)
+Best alignment score: 550.0 (LEN: 554, IDY: 99.28), Total number of alignments: 1
+		One align captures most of this contig: 696 1249 | 1 554 | 554 554 | 99.28 | A39_fig_1219382.3.peg.1593 NODE_1436_length_554_cov_1.535070
+
+CONTIG: NODE_1446_length_551_cov_2.241935 (551bp)
+Best alignment score: 537.1 (LEN: 551, IDY: 97.47), Total number of alignments: 1
+		One align captures most of this contig: 637 1189 | 1 551 | 553 551 | 97.47 | A39_fig_1219382.3.peg.1111 NODE_1446_length_551_cov_2.241935
+
+CONTIG: NODE_1449_length_550_cov_2.060606 (550bp)
+Best alignment score: 542.0 (LEN: 550, IDY: 98.55), Total number of alignments: 1
+		One align captures most of this contig: 139 688 | 1 550 | 550 550 | 98.55 | A39_fig_1219382.3.peg.2266 NODE_1449_length_550_cov_2.060606
+
+CONTIG: NODE_1451_length_550_cov_1.250505 (550bp)
+Best alignment score: 546.0 (LEN: 550, IDY: 99.27), Total number of alignments: 1
+		One align captures most of this contig: 517 1066 | 1 550 | 550 550 | 99.27 | A39_fig_1219382.3.peg.57 NODE_1451_length_550_cov_1.250505
+
+CONTIG: NODE_1461_length_548_cov_1.638945 (548bp)
+Best alignment score: 544.0 (LEN: 548, IDY: 99.27), Total number of alignments: 1
+		One align captures most of this contig: 17 564 | 548 1 | 548 548 | 99.27 | A39_fig_1219382.3.peg.1859 NODE_1461_length_548_cov_1.638945
+
+CONTIG: NODE_1462_length_548_cov_1.363083 (548bp)
+Best alignment score: 541.0 (LEN: 542, IDY: 99.82), Total number of alignments: 1
+		One align captures most of this contig: 146 687 | 7 548 | 542 542 | 99.82 | A39_fig_1219382.3.peg.938 NODE_1462_length_548_cov_1.363083
+
+CONTIG: NODE_1464_length_547_cov_2.235772 (547bp)
+Best alignment score: 531.0 (LEN: 547, IDY: 97.07), Total number of alignments: 1
+		One align captures most of this contig: 448 994 | 547 1 | 547 547 | 97.07 | A39_fig_1219382.3.peg.1789 NODE_1464_length_547_cov_2.235772
+
+CONTIG: NODE_1465_length_547_cov_1.731707 (547bp)
+Best alignment score: 541.0 (LEN: 547, IDY: 98.90), Total number of alignments: 1
+		One align captures most of this contig: 204 750 | 1 547 | 547 547 | 98.9 | A39_fig_1219382.3.peg.2242 NODE_1465_length_547_cov_1.731707
+
+CONTIG: NODE_1473_length_546_cov_0.924644 (546bp)
+Best alignment score: 540.0 (LEN: 546, IDY: 98.90), Total number of alignments: 1
+		One align captures most of this contig: 1130 1675 | 1 546 | 546 546 | 98.9 | A39_fig_1219382.3.peg.654 NODE_1473_length_546_cov_0.924644
+
+CONTIG: NODE_1476_length_545_cov_2.063265 (545bp)
+Best alignment score: 539.0 (LEN: 545, IDY: 98.90), Total number of alignments: 1
+		One align captures most of this contig: 845 1389 | 1 545 | 545 545 | 98.9 | A39_fig_1219382.3.peg.774 NODE_1476_length_545_cov_2.063265
+
+CONTIG: NODE_1480_length_545_cov_1.512245 (545bp)
+Best alignment score: 523.0 (LEN: 543, IDY: 96.32), Total number of alignments: 1
+		One align captures most of this contig: 149 691 | 1 543 | 543 543 | 96.32 | A39_fig_1219382.3.peg.811 NODE_1480_length_545_cov_1.512245
+
+CONTIG: NODE_1482_length_544_cov_2.548057 (544bp)
+Best alignment score: 534.0 (LEN: 544, IDY: 98.16), Total number of alignments: 1
+		One align captures most of this contig: 412 955 | 544 1 | 544 544 | 98.16 | A39_fig_1219382.3.peg.2158 NODE_1482_length_544_cov_2.548057
+
+CONTIG: NODE_1487_length_543_cov_2.942623 (543bp)
+Best alignment score: 536.0 (LEN: 543, IDY: 98.71), Total number of alignments: 1
+		One align captures most of this contig: 623 1165 | 543 1 | 543 543 | 98.71 | A39_fig_1219382.3.peg.2146 NODE_1487_length_543_cov_2.942623
+
+CONTIG: NODE_1489_length_543_cov_1.239754 (543bp)
+Best alignment score: 540.0 (LEN: 543, IDY: 99.45), Total number of alignments: 1
+		One align captures most of this contig: 130 672 | 543 1 | 543 543 | 99.45 | A39_fig_1219382.3.peg.1504 NODE_1489_length_543_cov_1.239754
+
+CONTIG: NODE_1494_length_541_cov_2.444444 (541bp)
+Best alignment score: 511.1 (LEN: 540, IDY: 94.65), Total number of alignments: 1
+		One align captures most of this contig: 309 848 | 1 540 | 540 540 | 94.65 | A39_fig_1219382.3.peg.2130 NODE_1494_length_541_cov_2.444444
+
+CONTIG: NODE_1506_length_539_cov_1.280992 (539bp)
+Best alignment score: 531.0 (LEN: 539, IDY: 98.52), Total number of alignments: 1
+		One align captures most of this contig: 1104 1642 | 1 539 | 539 539 | 98.52 | A39_fig_1219382.3.peg.382 NODE_1506_length_539_cov_1.280992
+
+CONTIG: NODE_1513_length_536_cov_1.058212 (536bp)
+Best alignment score: 524.0 (LEN: 536, IDY: 97.76), Total number of alignments: 1
+		One align captures most of this contig: 775 1310 | 536 1 | 536 536 | 97.76 | A39_fig_1219382.3.peg.2455 NODE_1513_length_536_cov_1.058212
+
+CONTIG: NODE_1519_length_534_cov_3.582463 (534bp)
+Best alignment score: 516.1 (LEN: 534, IDY: 96.64), Total number of alignments: 1
+		One align captures most of this contig: 626 1160 | 534 1 | 535 534 | 96.64 | A39_fig_1219382.3.peg.865 NODE_1519_length_534_cov_3.582463
+
+CONTIG: NODE_1521_length_534_cov_2.515658 (534bp)
+Best alignment score: 532.0 (LEN: 534, IDY: 99.63), Total number of alignments: 1
+		One align captures most of this contig: 105 638 | 534 1 | 534 534 | 99.63 | A39_fig_1219382.3.peg.1483 NODE_1521_length_534_cov_2.515658
+
+CONTIG: NODE_1522_length_534_cov_1.987474 (534bp)
+Best alignment score: 529.0 (LEN: 533, IDY: 99.25), Total number of alignments: 1
+		One align captures most of this contig: 522 1054 | 2 534 | 533 533 | 99.25 | A39_fig_1219382.3.peg.2506 NODE_1522_length_534_cov_1.987474
+
+CONTIG: NODE_1529_length_533_cov_1.504184 (533bp)
+Best alignment score: 524.0 (LEN: 531, IDY: 98.68), Total number of alignments: 1
+		One align captures most of this contig: 145 675 | 3 533 | 531 531 | 98.68 | A39_fig_1219382.3.peg.1303 NODE_1529_length_533_cov_1.504184
+
+CONTIG: NODE_1534_length_532_cov_1.805031 (532bp)
+Best alignment score: 527.0 (LEN: 532, IDY: 99.06), Total number of alignments: 1
+		One align captures most of this contig: 677 1208 | 532 1 | 532 532 | 99.06 | A39_fig_1219382.3.peg.218 NODE_1534_length_532_cov_1.805031
+
+CONTIG: NODE_1538_length_531_cov_1.352941 (531bp)
+Best alignment score: 525.0 (LEN: 531, IDY: 98.87), Total number of alignments: 1
+		One align captures most of this contig: 387 917 | 531 1 | 531 531 | 98.87 | A39_fig_1219382.3.peg.2145 NODE_1538_length_531_cov_1.352941
+
+CONTIG: NODE_1539_length_530_cov_2.216842 (530bp)
+Best alignment score: 516.0 (LEN: 520, IDY: 99.23), Total number of alignments: 1
+			Looking for the best set of alignments (out of 1 total alignments)
+			The best set is below. Score: 516.0, number of alignments: 1, unaligned bases: 10
+		Alignment: 283 804 | 530 11 | 522 520 | 99.23 | A39_fig_1219382.3.peg.2478 NODE_1539_length_530_cov_2.216842
+
+CONTIG: NODE_1542_length_530_cov_1.408421 (530bp)
+Best alignment score: 523.0 (LEN: 530, IDY: 98.68), Total number of alignments: 1
+		One align captures most of this contig: 1404 1933 | 530 1 | 530 530 | 98.68 | A39_fig_1219382.3.peg.495 NODE_1542_length_530_cov_1.408421
+
+CONTIG: NODE_1724_length_501_cov_2.098655 (501bp)
+Best alignment score: 490.0 (LEN: 501, IDY: 97.80), Total number of alignments: 1
+		One align captures most of this contig: 379 879 | 501 1 | 501 501 | 97.8 | A39_fig_1219382.3.peg.495 NODE_1724_length_501_cov_2.098655
+
+CONTIG: NODE_1559_length_526_cov_2.118896 (526bp)
+Best alignment score: 472.0 (LEN: 477, IDY: 98.95), Total number of alignments: 1
+			Looking for the best set of alignments (out of 1 total alignments)
+			The best set is below. Score: 472.0, number of alignments: 1, unaligned bases: 49
+		Alignment: 403 879 | 1 477 | 477 477 | 98.95 | A39_fig_1219382.3.peg.1984 NODE_1559_length_526_cov_2.118896
+
+CONTIG: NODE_1561_length_526_cov_1.579618 (526bp)
+Best alignment score: 522.0 (LEN: 526, IDY: 99.24), Total number of alignments: 1
+		One align captures most of this contig: 211 736 | 526 1 | 526 526 | 99.24 | A39_fig_1219382.3.peg.396 NODE_1561_length_526_cov_1.579618
+
+CONTIG: NODE_1568_length_526_cov_0.898089 (526bp)
+Best alignment score: 515.0 (LEN: 526, IDY: 97.91), Total number of alignments: 1
+		One align captures most of this contig: 308 833 | 526 1 | 526 526 | 97.91 | A39_fig_1219382.3.peg.1198 NODE_1568_length_526_cov_0.898089
+
+CONTIG: NODE_1570_length_525_cov_2.063830 (525bp)
+Best alignment score: 508.0 (LEN: 523, IDY: 97.13), Total number of alignments: 1
+		One align captures most of this contig: 65 587 | 525 3 | 523 523 | 97.13 | A39_fig_1219382.3.peg.1331 NODE_1570_length_525_cov_2.063830
+
+CONTIG: NODE_1571_length_525_cov_1.763830 (525bp)
+Best alignment score: 520.0 (LEN: 525, IDY: 99.05), Total number of alignments: 1
+		One align captures most of this contig: 590 1114 | 525 1 | 525 525 | 99.05 | A39_fig_1219382.3.peg.175 NODE_1571_length_525_cov_1.763830
+
+CONTIG: NODE_1579_length_523_cov_2.929487 (523bp)
+Best alignment score: 500.0 (LEN: 523, IDY: 95.60), Total number of alignments: 1
+		One align captures most of this contig: 139 661 | 1 523 | 523 523 | 95.6 | A39_fig_1219382.3.peg.809 NODE_1579_length_523_cov_2.929487
+
+CONTIG: NODE_1583_length_523_cov_0.871795 (523bp)
+Best alignment score: 513.0 (LEN: 523, IDY: 98.09), Total number of alignments: 1
+		One align captures most of this contig: 39 561 | 523 1 | 523 523 | 98.09 | A39_fig_1219382.3.peg.1130 NODE_1583_length_523_cov_0.871795
+
+CONTIG: NODE_1584_length_522_cov_2.824411 (522bp)
+Best alignment score: 514.0 (LEN: 522, IDY: 98.47), Total number of alignments: 1
+		One align captures most of this contig: 315 836 | 522 1 | 522 522 | 98.47 | A39_fig_1219382.3.peg.1196 NODE_1584_length_522_cov_2.824411
+
+CONTIG: NODE_1587_length_522_cov_1.586724 (522bp)
+Best alignment score: 520.0 (LEN: 520, IDY: 100.00), Total number of alignments: 1
+		One align captures most of this contig: 613 1132 | 520 1 | 520 520 | 100.0 | A39_fig_1219382.3.peg.1094 NODE_1587_length_522_cov_1.586724
+
+CONTIG: NODE_1597_length_519_cov_2.170259 (519bp)
+Best alignment score: 511.0 (LEN: 519, IDY: 98.46), Total number of alignments: 1
+		One align captures most of this contig: 60 578 | 519 1 | 519 519 | 98.46 | A39_fig_1219382.3.peg.1108 NODE_1597_length_519_cov_2.170259
+
+CONTIG: NODE_1601_length_519_cov_1.773707 (519bp)
+Best alignment score: 499.0 (LEN: 513, IDY: 97.27), Total number of alignments: 1
+		One align captures most of this contig: 1 513 | 513 1 | 513 513 | 97.27 | A39_fig_1219382.3.peg.1033 NODE_1601_length_519_cov_1.773707
+
+CONTIG: NODE_1603_length_519_cov_1.168103 (519bp)
+Best alignment score: 510.0 (LEN: 519, IDY: 98.27), Total number of alignments: 1
+		One align captures most of this contig: 167 685 | 519 1 | 519 519 | 98.27 | A39_fig_1219382.3.peg.1615 NODE_1603_length_519_cov_1.168103
+
+CONTIG: NODE_1605_length_518_cov_2.431965 (518bp)
+Best alignment score: 504.0 (LEN: 512, IDY: 98.44), Total number of alignments: 1
+		One align captures most of this contig: 367 878 | 7 518 | 512 512 | 98.44 | A39_fig_1219382.3.peg.1610 NODE_1605_length_518_cov_2.431965
+
+CONTIG: NODE_1606_length_518_cov_2.313175 (518bp)
+Best alignment score: 505.0 (LEN: 518, IDY: 97.49), Total number of alignments: 1
+		One align captures most of this contig: 953 1470 | 518 1 | 518 518 | 97.49 | A39_fig_1219382.3.peg.488 NODE_1606_length_518_cov_2.313175
+
+CONTIG: NODE_1614_length_517_cov_2.367965 (517bp)
+Best alignment score: 515.0 (LEN: 517, IDY: 99.61), Total number of alignments: 1
+		One align captures most of this contig: 83 599 | 517 1 | 517 517 | 99.61 | A39_fig_1219382.3.peg.2210 NODE_1614_length_517_cov_2.367965
+
+CONTIG: NODE_1615_length_517_cov_1.943723 (517bp)
+Best alignment score: 405.0 (LEN: 419, IDY: 96.66), Total number of alignments: 2
+			Looking for the best set of alignments (out of 2 total alignments)
+			The best set is below. Score: 427.3, number of alignments: 2, unaligned bases: 5
+		This contig is misassembled.
+			Excluding internal overlap of size 38 between Alignment 1 and 2: 631 761 | 1 131 | 131 131 --> 631 723 | 1 93 | 93 93
+			Real Alignment 1: 631 723 | 1 93 | 93 93 | 99.24 | A39_fig_1219382.3.peg.770 NODE_1615_length_517_cov_1.943723
+			  Extensive misassembly (translocation) between these two alignments
+			Real Alignment 2: 724 1142 | 94 512 | 419 419 | 96.66 | A39_fig_1219382.3.peg.808 NODE_1615_length_517_cov_1.943723
+
+CONTIG: NODE_1622_length_516_cov_2.418655 (516bp)
+Best alignment score: 510.0 (LEN: 514, IDY: 99.22), Total number of alignments: 1
+		One align captures most of this contig: 262 775 | 516 3 | 514 514 | 99.22 | A39_fig_1219382.3.peg.160 NODE_1622_length_516_cov_2.418655
+
+CONTIG: NODE_1624_length_516_cov_2.034707 (516bp)
+Best alignment score: 507.0 (LEN: 513, IDY: 98.83), Total number of alignments: 1
+		One align captures most of this contig: 380 892 | 513 1 | 513 513 | 98.83 | A39_fig_1219382.3.peg.1446 NODE_1624_length_516_cov_2.034707
+
+CONTIG: NODE_1635_length_514_cov_2.174292 (514bp)
+Best alignment score: 503.0 (LEN: 508, IDY: 99.02), Total number of alignments: 1
+		One align captures most of this contig: 107 614 | 514 7 | 508 508 | 99.02 | A39_fig_1219382.3.peg.1182 NODE_1635_length_514_cov_2.174292
+
+CONTIG: NODE_1648_length_512_cov_1.877462 (512bp)
+Best alignment score: 501.0 (LEN: 512, IDY: 97.85), Total number of alignments: 1
+		One align captures most of this contig: 1390 1901 | 1 512 | 512 512 | 97.85 | A39_fig_1219382.3.peg.484 NODE_1648_length_512_cov_1.877462
+
+CONTIG: NODE_1649_length_512_cov_1.765864 (512bp)
+Best alignment score: 501.0 (LEN: 512, IDY: 97.85), Total number of alignments: 1
+		One align captures most of this contig: 1249 1760 | 1 512 | 512 512 | 97.85 | A39_fig_1219382.3.peg.1134 NODE_1649_length_512_cov_1.765864
+
+CONTIG: NODE_1650_length_512_cov_1.704595 (512bp)
+Best alignment score: 501.0 (LEN: 512, IDY: 97.85), Total number of alignments: 1
+		One align captures most of this contig: 124 635 | 512 1 | 512 512 | 97.85 | A39_fig_1219382.3.peg.1257 NODE_1650_length_512_cov_1.704595
+
+CONTIG: NODE_1689_length_506_cov_1.986696 (506bp)
+Best alignment score: 504.0 (LEN: 506, IDY: 99.60), Total number of alignments: 1
+		One align captures most of this contig: 149 654 | 1 506 | 506 506 | 99.6 | A39_fig_1219382.3.peg.190 NODE_1689_length_506_cov_1.986696
+
+CONTIG: NODE_1690_length_506_cov_1.906874 (506bp)
+Best alignment score: 502.0 (LEN: 506, IDY: 99.21), Total number of alignments: 1
+		One align captures most of this contig: 675 1180 | 1 506 | 506 506 | 99.21 | A39_fig_1219382.3.peg.1641 NODE_1690_length_506_cov_1.906874
+
+CONTIG: NODE_1703_length_504_cov_2.469933 (504bp)
+Best alignment score: 495.0 (LEN: 504, IDY: 98.21), Total number of alignments: 1
+		One align captures most of this contig: 13 516 | 1 504 | 504 504 | 98.21 | A39_fig_1219382.3.peg.1947 NODE_1703_length_504_cov_2.469933
+
+CONTIG: NODE_1707_length_504_cov_1.236080 (504bp)
+Best alignment score: 480.0 (LEN: 500, IDY: 96.00), Total number of alignments: 1
+		One align captures most of this contig: 88 587 | 500 1 | 500 500 | 96.0 | A39_fig_1219382.3.peg.931 NODE_1707_length_504_cov_1.236080
+
+CONTIG: NODE_1708_length_504_cov_1.075724 (504bp)
+Best alignment score: 498.0 (LEN: 504, IDY: 98.81), Total number of alignments: 1
+		One align captures most of this contig: 403 906 | 1 504 | 504 504 | 98.81 | A39_fig_1219382.3.peg.417 NODE_1708_length_504_cov_1.075724
+
+CONTIG: NODE_1712_length_503_cov_2.299107 (503bp)
+Best alignment score: 495.0 (LEN: 500, IDY: 99.00), Total number of alignments: 1
+		One align captures most of this contig: 43 542 | 1 500 | 500 500 | 99.0 | A39_fig_1219382.3.peg.2018 NODE_1712_length_503_cov_2.299107
+
+CONTIG: NODE_1726_length_501_cov_1.645740 (501bp)
+Best alignment score: 496.0 (LEN: 501, IDY: 99.00), Total number of alignments: 1
+		One align captures most of this contig: 252 752 | 1 501 | 501 501 | 99.0 | A39_fig_1219382.3.peg.1539 NODE_1726_length_501_cov_1.645740
+
+Analyzing coverage...
+Writing SNPs into /local/workdir/Daphne/Floral_metagenomics/data/05_metaQUAST/10_Linaria/paired_13702_32540_179793/_metaQuast/runs_per_reference/A39/contigs_reports/minimap_output/contigs.used_snps
+
+Analysis is finished!
+Founded SNPs were written into /local/workdir/Daphne/Floral_metagenomics/data/05_metaQUAST/10_Linaria/paired_13702_32540_179793/_metaQuast/runs_per_reference/A39/contigs_reports/minimap_output/contigs.used_snps
+
+Results:
+	Local Misassemblies: 0
+	Misassemblies: 19
+		Relocations: 0
+		Translocations: 19
+		Inversions: 0
+	Scaffold gap extensive misassemblies: 0
+	Scaffold gap local misassemblies: 0
+	Misassembled Contigs: 16
+	Misassembled Contig Bases: 22040
+	Misassemblies Inter-Contig Overlap ("Extra" Aligned Bases): 0
+Unaligned Contigs: 0 + 9 part
+Half Unaligned Contigs with Misassemblies: 1
+Unaligned Bases in Fully and Partially Unaligned Contigs: 52737
+
+Ambiguously Mapped Contigs: 1
+Total Bases in Ambiguously Mapped Contigs: 2009
+"Extra" Aligned Bases in Ambiguously Mapped Contigs: 0
+Note that --allow-ambiguity option was set to "one" and only first alignment per each of these contigs was used (there is no "extra" aligned bases).
+
+	Covered Bases in Reference: 219144
+	Raw Aligned Bases in Assembly: 219499
+	Total Aligned Bases in Assembly (with "Extras"): 219499
+
+	SNPs: 3584
+	Insertions: 124
+	Deletions: 206
+

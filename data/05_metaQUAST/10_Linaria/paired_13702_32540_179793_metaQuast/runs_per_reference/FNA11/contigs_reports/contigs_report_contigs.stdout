@@ -1,0 +1,253 @@
+Aligning contigs to reference...
+	Aligning contigs to the reference
+Filtering alignments...
+Parsing coords...
+Loading reference...
+	Loaded [FNA11_NZ_VTDS01000001.1]
+	Loaded [FNA11_NZ_VTDS01000006.1]
+	Loaded [FNA11_NZ_VTDS01000052.1]
+	Loaded [FNA11_NZ_VTDS01000053.1]
+	Loaded [FNA11_NZ_VTDS01000054.1]
+	Loaded [FNA11_NZ_VTDS01000055.1]
+	Loaded [FNA11_NZ_VTDS01000056.1]
+	Loaded [FNA11_NZ_VTDS01000057.1]
+	Loaded [FNA11_NZ_VTDS01000058.1]
+	Loaded [FNA11_NZ_VTDS01000059.1]
+	Loaded [FNA11_NZ_VTDS01000060.1]
+	Loaded [FNA11_NZ_VTDS01000061.1]
+	Loaded [FNA11_NZ_VTDS01000007.1]
+	Loaded [FNA11_NZ_VTDS01000062.1]
+	Loaded [FNA11_NZ_VTDS01000063.1]
+	Loaded [FNA11_NZ_VTDS01000064.1]
+	Loaded [FNA11_NZ_VTDS01000065.1]
+	Loaded [FNA11_NZ_VTDS01000066.1]
+	Loaded [FNA11_NZ_VTDS01000067.1]
+	Loaded [FNA11_NZ_VTDS01000008.1]
+	Loaded [FNA11_NZ_VTDS01000068.1]
+	Loaded [FNA11_NZ_VTDS01000009.1]
+	Loaded [FNA11_NZ_VTDS01000069.1]
+	Loaded [FNA11_NZ_VTDS01000070.1]
+	Loaded [FNA11_NZ_VTDS01000071.1]
+	Loaded [FNA11_NZ_VTDS01000072.1]
+	Loaded [FNA11_NZ_VTDS01000010.1]
+	Loaded [FNA11_NZ_VTDS01000073.1]
+	Loaded [FNA11_NZ_VTDS01000074.1]
+	Loaded [FNA11_NZ_VTDS01000075.1]
+	Loaded [FNA11_NZ_VTDS01000002.1]
+	Loaded [FNA11_NZ_VTDS01000011.1]
+	Loaded [FNA11_NZ_VTDS01000012.1]
+	Loaded [FNA11_NZ_VTDS01000013.1]
+	Loaded [FNA11_NZ_VTDS01000014.1]
+	Loaded [FNA11_NZ_VTDS01000015.1]
+	Loaded [FNA11_NZ_VTDS01000016.1]
+	Loaded [FNA11_NZ_VTDS01000017.1]
+	Loaded [FNA11_NZ_VTDS01000018.1]
+	Loaded [FNA11_NZ_VTDS01000019.1]
+	Loaded [FNA11_NZ_VTDS01000020.1]
+	Loaded [FNA11_NZ_VTDS01000021.1]
+	Loaded [FNA11_NZ_VTDS01000022.1]
+	Loaded [FNA11_NZ_VTDS01000003.1]
+	Loaded [FNA11_NZ_VTDS01000023.1]
+	Loaded [FNA11_NZ_VTDS01000024.1]
+	Loaded [FNA11_NZ_VTDS01000025.1]
+	Loaded [FNA11_NZ_VTDS01000026.1]
+	Loaded [FNA11_NZ_VTDS01000027.1]
+	Loaded [FNA11_NZ_VTDS01000028.1]
+	Loaded [FNA11_NZ_VTDS01000029.1]
+	Loaded [FNA11_NZ_VTDS01000030.1]
+	Loaded [FNA11_NZ_VTDS01000031.1]
+	Loaded [FNA11_NZ_VTDS01000032.1]
+	Loaded [FNA11_NZ_VTDS01000004.1]
+	Loaded [FNA11_NZ_VTDS01000033.1]
+	Loaded [FNA11_NZ_VTDS01000034.1]
+	Loaded [FNA11_NZ_VTDS01000035.1]
+	Loaded [FNA11_NZ_VTDS01000036.1]
+	Loaded [FNA11_NZ_VTDS01000037.1]
+	Loaded [FNA11_NZ_VTDS01000038.1]
+	Loaded [FNA11_NZ_VTDS01000039.1]
+	Loaded [FNA11_NZ_VTDS01000040.1]
+	Loaded [FNA11_NZ_VTDS01000041.1]
+	Loaded [FNA11_NZ_VTDS01000042.1]
+	Loaded [FNA11_NZ_VTDS01000005.1]
+	Loaded [FNA11_NZ_VTDS01000043.1]
+	Loaded [FNA11_NZ_VTDS01000044.1]
+	Loaded [FNA11_NZ_VTDS01000045.1]
+	Loaded [FNA11_NZ_VTDS01000046.1]
+	Loaded [FNA11_NZ_VTDS01000047.1]
+	Loaded [FNA11_NZ_VTDS01000048.1]
+	Loaded [FNA11_NZ_VTDS01000049.1]
+	Loaded [FNA11_NZ_VTDS01000050.1]
+	Loaded [FNA11_NZ_VTDS01000051.1]
+	Total Regions: 75
+	Total Region Length: 2664814
+Analyzing contigs...
+CONTIG: NODE_97_length_2009_cov_3.300409 (2009bp)
+Best alignment score: 865.0 (LEN: 887, IDY: 97.52), Total number of alignments: 3
+			Looking for the best set of alignments (out of 3 total alignments)
+			The best set is below. Score: 1564.9, number of alignments: 3, unaligned bases: 0
+		This contig is misassembled.
+			Excluding internal overlap of size 199 between Alignment 1 and 2: 1 695 | 694 1 | 695 694 --> 200 695 | 495 1 | 496 495
+			Real Alignment 1: 200 695 | 495 1 | 496 495 | 96.26 | FNA11_NZ_VTDS01000004.1 NODE_97_length_2009_cov_3.300409
+			  Extensive misassembly (translocation) between these two alignments
+			Excluding internal overlap of size 152 between Alignment 2 and 3: 1 779 | 1274 496 | 779 779 --> 153 779 | 1122 496 | 627 627
+			Real Alignment 2: 153 779 | 1122 496 | 627 627 | 95.76 | FNA11_NZ_VTDS01000066.1 NODE_97_length_2009_cov_3.300409
+			  Extensive misassembly (translocation) between these two alignments
+			Real Alignment 3: 59633 60519 | 2009 1123 | 887 887 | 97.52 | FNA11_NZ_VTDS01000014.1 NODE_97_length_2009_cov_3.300409
+
+CONTIG: NODE_1421_length_558_cov_1.328032 (558bp)
+Best alignment score: 381.0 (LEN: 388, IDY: 98.20), Total number of alignments: 2
+			Looking for the best set of alignments (out of 2 total alignments)
+			The best set is below. Score: 479.1, number of alignments: 2, unaligned bases: 63
+		This contig is misassembled.
+			Excluding internal overlap of size 4 between Alignment 1 and 2: 132344 132454 | 558 448 | 111 111 --> 132344 132450 | 558 452 | 107 107
+			Real Alignment 1: 132666 133053 | 451 64 | 388 388 | 98.2 | FNA11_NZ_VTDS01000004.1 NODE_1421_length_558_cov_1.328032
+			  Gap between these two alignments (local misassembly). Inconsistency = 215
+			Real Alignment 2: 132344 132450 | 558 452 | 107 107 | 98.2 | FNA11_NZ_VTDS01000004.1 NODE_1421_length_558_cov_1.328032
+
+CONTIG: NODE_151_length_1644_cov_3.676526 (1644bp)
+Best alignment score: 1610.1 (LEN: 1644, IDY: 97.94), Total number of alignments: 1
+		One align captures most of this contig: 1123 2769 | 1644 1 | 1647 1644 | 97.94 | FNA11_NZ_VTDS01000038.1 NODE_151_length_1644_cov_3.676526
+
+CONTIG: NODE_675_length_805_cov_2.294667 (805bp)
+Best alignment score: 237.0 (LEN: 237, IDY: 100.00), Total number of alignments: 1
+			Looking for the best set of alignments (out of 1 total alignments)
+			The best set is below. Score: 237.0, number of alignments: 1, unaligned bases: 568
+		This contig is partially unaligned. (Aligned 237 out of 805 non-N bases (29.44%))
+		Alignment: 7599 7835 | 6 242 | 237 237 | 100.0 | FNA11_NZ_VTDS01000038.1 NODE_675_length_805_cov_2.294667
+		Unaligned bases: 1 to 5 (5)
+		Unaligned bases: 243 to 805 (563)
+
+CONTIG: NODE_1337_length_576_cov_3.111324 (576bp)
+Best alignment score: 541.0 (LEN: 560, IDY: 96.61), Total number of alignments: 2
+			Looking for the best set of alignments (out of 2 total alignments)
+			Skipping redundant alignments after choosing the best set of alignments
+		Skipping redundant alignment 168 561 | 1 394 | 394 394 | 98.73 | FNA11_NZ_VTDS01000050.1 NODE_1337_length_576_cov_3.111324
+			The best set is below. Score: 541.0, number of alignments: 1, unaligned bases: 16
+		Alignment: 168 726 | 1 560 | 559 560 | 96.61 | FNA11_NZ_VTDS01000038.1 NODE_1337_length_576_cov_3.111324
+
+CONTIG: NODE_1395_length_564_cov_1.996071 (564bp)
+Best alignment score: 532.0 (LEN: 560, IDY: 95.00), Total number of alignments: 2
+		This contig has 2 significant alignments. [An ambiguously mapped contig]
+		Using only first of these alignment (option --ambiguity-usage is set to "one"):
+			Alignment: 564 1123 | 5 564 | 560 560 | 95.0 | FNA11_NZ_VTDS01000036.1 NODE_1395_length_564_cov_1.996071
+			Skipping alignment 10011 10570 | 564 5 | 560 560 | 94.31 | FNA11_NZ_VTDS01000038.1 NODE_1395_length_564_cov_1.996071
+
+CONTIG: NODE_205_length_1396_cov_1.611484 (1396bp)
+Best alignment score: 1361.0 (LEN: 1393, IDY: 97.70), Total number of alignments: 1
+		One align captures most of this contig: 27066 28458 | 1396 4 | 1393 1393 | 97.7 | FNA11_NZ_VTDS01000014.1 NODE_205_length_1396_cov_1.611484
+
+CONTIG: NODE_255_length_1247_cov_1.759228 (1247bp)
+Best alignment score: 1242.0 (LEN: 1247, IDY: 99.60), Total number of alignments: 1
+		One align captures most of this contig: 34973 36219 | 1 1247 | 1247 1247 | 99.6 | FNA11_NZ_VTDS01000001.1 NODE_255_length_1247_cov_1.759228
+
+CONTIG: NODE_292_length_1175_cov_1.323214 (1175bp)
+Best alignment score: 1107.1 (LEN: 1175, IDY: 94.22), Total number of alignments: 1
+		One align captures most of this contig: 197879 199054 | 1175 1 | 1176 1175 | 94.22 | FNA11_NZ_VTDS01000001.1 NODE_292_length_1175_cov_1.323214
+
+CONTIG: NODE_440_length_975_cov_1.731522 (975bp)
+Best alignment score: 975.0 (LEN: 975, IDY: 100.00), Total number of alignments: 1
+		One align captures most of this contig: 64741 65715 | 1 975 | 975 975 | 100.0 | FNA11_NZ_VTDS01000001.1 NODE_440_length_975_cov_1.731522
+
+CONTIG: NODE_680_length_802_cov_1.566265 (802bp)
+Best alignment score: 794.0 (LEN: 802, IDY: 99.00), Total number of alignments: 1
+		One align captures most of this contig: 99968 100769 | 802 1 | 802 802 | 99.0 | FNA11_NZ_VTDS01000001.1 NODE_680_length_802_cov_1.566265
+
+CONTIG: NODE_776_length_750_cov_1.929496 (750bp)
+Best alignment score: 742.0 (LEN: 750, IDY: 98.93), Total number of alignments: 1
+		One align captures most of this contig: 39181 39929 | 1 750 | 749 750 | 98.93 | FNA11_NZ_VTDS01000001.1 NODE_776_length_750_cov_1.929496
+
+CONTIG: NODE_791_length_746_cov_1.887120 (746bp)
+Best alignment score: 737.0 (LEN: 746, IDY: 98.79), Total number of alignments: 1
+		One align captures most of this contig: 52814 53559 | 746 1 | 746 746 | 98.79 | FNA11_NZ_VTDS01000001.1 NODE_791_length_746_cov_1.887120
+
+CONTIG: NODE_914_length_702_cov_1.857805 (702bp)
+Best alignment score: 682.4 (LEN: 702, IDY: 97.21), Total number of alignments: 1
+		One align captures most of this contig: 51946 52662 | 702 1 | 717 702 | 97.21 | FNA11_NZ_VTDS01000001.1 NODE_914_length_702_cov_1.857805
+
+CONTIG: NODE_1236_length_605_cov_1.527273 (605bp)
+Best alignment score: 600.0 (LEN: 605, IDY: 99.17), Total number of alignments: 1
+		One align captures most of this contig: 44790 45394 | 605 1 | 605 605 | 99.17 | FNA11_NZ_VTDS01000001.1 NODE_1236_length_605_cov_1.527273
+
+CONTIG: NODE_1274_length_595_cov_1.872222 (595bp)
+Best alignment score: 593.0 (LEN: 595, IDY: 99.66), Total number of alignments: 1
+		One align captures most of this contig: 56730 57324 | 1 595 | 595 595 | 99.66 | FNA11_NZ_VTDS01000001.1 NODE_1274_length_595_cov_1.872222
+
+CONTIG: NODE_1284_length_591_cov_2.244403 (591bp)
+Best alignment score: 586.0 (LEN: 591, IDY: 99.16), Total number of alignments: 1
+		One align captures most of this contig: 34328 34919 | 591 1 | 592 591 | 99.16 | FNA11_NZ_VTDS01000001.1 NODE_1284_length_591_cov_2.244403
+
+CONTIG: NODE_1341_length_576_cov_1.669866 (576bp)
+Best alignment score: 564.0 (LEN: 573, IDY: 98.43), Total number of alignments: 1
+		One align captures most of this contig: 58442 59014 | 1 573 | 573 573 | 98.43 | FNA11_NZ_VTDS01000001.1 NODE_1341_length_576_cov_1.669866
+
+CONTIG: NODE_1364_length_571_cov_0.967054 (571bp)
+Best alignment score: 565.0 (LEN: 571, IDY: 98.95), Total number of alignments: 1
+		One align captures most of this contig: 55090 55659 | 1 571 | 570 571 | 98.95 | FNA11_NZ_VTDS01000001.1 NODE_1364_length_571_cov_0.967054
+
+CONTIG: NODE_260_length_1235_cov_2.062712 (1235bp)
+Best alignment score: 1111.8 (LEN: 1229, IDY: 90.46), Total number of alignments: 1
+		One align captures most of this contig: 297 1627 | 7 1235 | 1331 1229 | 90.46 | FNA11_NZ_VTDS01000013.1 NODE_260_length_1235_cov_2.062712
+
+CONTIG: NODE_390_length_1031_cov_1.947746 (1031bp)
+Best alignment score: 1004.0 (LEN: 1031, IDY: 97.38), Total number of alignments: 1
+		One align captures most of this contig: 4893 5922 | 1031 1 | 1030 1031 | 97.38 | FNA11_NZ_VTDS01000015.1 NODE_390_length_1031_cov_1.947746
+
+CONTIG: NODE_601_length_849_cov_7.329975 (849bp)
+Best alignment score: 425.0 (LEN: 430, IDY: 98.84), Total number of alignments: 2
+			Looking for the best set of alignments (out of 2 total alignments)
+			The best set is below. Score: 682.1, number of alignments: 2, unaligned bases: 95
+		This contig is misassembled.
+			Real Alignment 1: 770 1199 | 1 430 | 430 430 | 98.84 | FNA11_NZ_VTDS01000062.1 NODE_601_length_849_cov_7.329975
+			  Extensive misassembly (translocation) between these two alignments
+			Real Alignment 2: 13913 14238 | 794 471 | 326 324 | 95.09 | FNA11_NZ_VTDS01000035.1 NODE_601_length_849_cov_7.329975
+
+CONTIG: NODE_887_length_710_cov_1.561832 (710bp)
+Best alignment score: 703.0 (LEN: 710, IDY: 99.01), Total number of alignments: 1
+		One align captures most of this contig: 24298 25007 | 710 1 | 710 710 | 99.01 | FNA11_NZ_VTDS01000023.1 NODE_887_length_710_cov_1.561832
+
+CONTIG: NODE_936_length_694_cov_1.352113 (694bp)
+Best alignment score: 653.0 (LEN: 688, IDY: 94.92), Total number of alignments: 1
+		One align captures most of this contig: 94358 95044 | 688 1 | 687 688 | 94.92 | FNA11_NZ_VTDS01000006.1 NODE_936_length_694_cov_1.352113
+
+CONTIG: NODE_1000_length_666_cov_1.232406 (666bp)
+Best alignment score: 615.0 (LEN: 666, IDY: 92.34), Total number of alignments: 1
+		One align captures most of this contig: 71188 71853 | 666 1 | 666 666 | 92.34 | FNA11_NZ_VTDS01000002.1 NODE_1000_length_666_cov_1.232406
+
+CONTIG: NODE_1407_length_561_cov_1.770751 (561bp)
+Best alignment score: 546.0 (LEN: 561, IDY: 97.33), Total number of alignments: 1
+		One align captures most of this contig: 9543 10103 | 561 1 | 561 561 | 97.33 | FNA11_NZ_VTDS01000026.1 NODE_1407_length_561_cov_1.770751
+
+Analyzing coverage...
+Writing SNPs into /local/workdir/Daphne/Floral_metagenomics/data/05_metaQUAST/10_Linaria/paired_13702_32540_179793/_metaQuast/runs_per_reference/FNA11/contigs_reports/minimap_output/contigs.used_snps
+
+Analysis is finished!
+Founded SNPs were written into /local/workdir/Daphne/Floral_metagenomics/data/05_metaQUAST/10_Linaria/paired_13702_32540_179793/_metaQuast/runs_per_reference/FNA11/contigs_reports/minimap_output/contigs.used_snps
+
+Results:
+	Local Misassemblies: 1
+	Misassemblies: 3
+		Relocations: 0
+		Translocations: 3
+		Inversions: 0
+	Scaffold gap extensive misassemblies: 0
+	Scaffold gap local misassemblies: 0
+	Misassembled Contigs: 2
+	Misassembled Contig Bases: 2858
+	Misassemblies Inter-Contig Overlap ("Extra" Aligned Bases): 0
+Unaligned Contigs: 0 + 1 part
+Half Unaligned Contigs with Misassemblies: 0
+Unaligned Bases in Fully and Partially Unaligned Contigs: 568
+
+Ambiguously Mapped Contigs: 1
+Total Bases in Ambiguously Mapped Contigs: 564
+"Extra" Aligned Bases in Ambiguously Mapped Contigs: 0
+Note that --allow-ambiguity option was set to "one" and only first alignment per each of these contigs was used (there is no "extra" aligned bases).
+
+	Covered Bases in Reference: 21989
+	Raw Aligned Bases in Assembly: 21717
+	Total Aligned Bases in Assembly (with "Extras"): 21717
+
+	SNPs: 485
+	Insertions: 7
+	Deletions: 127
+

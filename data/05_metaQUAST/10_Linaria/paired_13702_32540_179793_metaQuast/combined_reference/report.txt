@@ -1,0 +1,45 @@
+All statistics are based on contigs of size >= 500 bp, unless otherwise noted (e.g., "# contigs (>= 0 bp)" and "Total length (>= 0 bp)" include all contigs).
+
+Assembly                     contigs      
+# contigs (>= 0 bp)          16044        
+# contigs (>= 1000 bp)       417          
+# contigs (>= 5000 bp)       52           
+# contigs (>= 10000 bp)      43           
+# contigs (>= 25000 bp)      38           
+# contigs (>= 50000 bp)      26           
+Total length (>= 0 bp)       8694945      
+Total length (>= 1000 bp)    3966879      
+Total length (>= 5000 bp)    3418006      
+Total length (>= 10000 bp)   3344438      
+Total length (>= 25000 bp)   3270701      
+Total length (>= 50000 bp)   2885063      
+# contigs                    1735         
+Largest contig               271548       
+Total length                 4855457      
+Reference length             68998803     
+N50                          73211        
+N90                          703          
+auN                          88238.6      
+L50                          19           
+L90                          907          
+# misassemblies              38           
+# misassembled contigs       33           
+Misassembled contigs length  40915        
+# local misassemblies        7            
+# scaffold gap ext. mis.     0            
+# scaffold gap loc. mis.     0            
+# unaligned mis. contigs     1            
+# unaligned contigs          334 + 18 part
+Unaligned length             3700200      
+Genome fraction (%)          4.488        
+Duplication ratio            1.002        
+# N's per 100 kbp            0.00         
+# mismatches per 100 kbp     5002.02      
+# indels per 100 kbp         113.40       
+Largest alignment            3900         
+Total aligned length         1139379      
+NA50                         -            
+NA90                         -            
+auNA                         222.9        
+LA50                         -            
+LA90                         -            

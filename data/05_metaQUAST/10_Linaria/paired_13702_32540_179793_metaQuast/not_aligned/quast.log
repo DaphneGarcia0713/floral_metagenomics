@@ -1,0 +1,51 @@
+/programs/quast-5.2.0/bin/quast.py --min-identity 90.0 --colors #E31A1C --ls solid --no-check-meta --contig-thresholds 1000,5000,10000,25000,50000 -t 12 /local/workdir/Daphne/Floral_metagenomics/data/05_metaQUAST/10_Linaria/paired_13702_32540_179793/_metaQuast/quast_corrected_input/contigs_not_aligned_anywhere.fasta -o /local/workdir/Daphne/Floral_metagenomics/data/05_metaQUAST/10_Linaria/paired_13702_32540_179793/_metaQuast/not_aligned --labels contigs
+
+Started: 2025-06-10 14:31:58
+
+Logging to /local/workdir/Daphne/Floral_metagenomics/data/05_metaQUAST/10_Linaria/paired_13702_32540_179793/_metaQuast/not_aligned/quast.log
+
+CWD: /local/workdir/Daphne/Floral_metagenomics/data/04_metaspades/10_Linaria/paired_13702_32540_179793_H5MH5AFX5_metagenomic_mix_H12_FN176_ATCTCAGG_TCGCATAA
+Main parameters: 
+  MODE: meta, threads: 12, min contig length: 500, min alignment length: 65, min alignment IDY: 90.0, \
+  ambiguity: one, min local misassembly length: 200, min extensive misassembly length: 1000
+
+Contigs:
+  Pre-processing...
+  /local/workdir/Daphne/Floral_metagenomics/data/05_metaQUAST/10_Linaria/paired_13702_32540_179793/_metaQuast/quast_corrected_input/contigs_not_aligned_anywhere.fasta ==> contigs
+
+2025-06-10 14:31:58
+Running Basic statistics processor...
+  Contig files: 
+    contigs
+  Calculating N50 and L50...
+    contigs, N50 = 98115, L50 = 12, auN = 115858.1, Total length = 3459874, GC % = 47.42, # N's per 100 kbp =  0.00
+  Drawing Nx plot...
+    saved to /local/workdir/Daphne/Floral_metagenomics/data/05_metaQUAST/10_Linaria/paired_13702_32540_179793/_metaQuast/not_aligned/basic_stats/Nx_plot.pdf
+  Drawing cumulative plot...
+    saved to /local/workdir/Daphne/Floral_metagenomics/data/05_metaQUAST/10_Linaria/paired_13702_32540_179793/_metaQuast/not_aligned/basic_stats/cumulative_plot.pdf
+  Drawing GC content plot...
+    saved to /local/workdir/Daphne/Floral_metagenomics/data/05_metaQUAST/10_Linaria/paired_13702_32540_179793/_metaQuast/not_aligned/basic_stats/GC_content_plot.pdf
+  Drawing contigs GC content plot...
+    saved to /local/workdir/Daphne/Floral_metagenomics/data/05_metaQUAST/10_Linaria/paired_13702_32540_179793/_metaQuast/not_aligned/basic_stats/contigs_GC_content_plot.pdf
+  Drawing Coverage histogram (bin size: 1x)...
+    saved to /local/workdir/Daphne/Floral_metagenomics/data/05_metaQUAST/10_Linaria/paired_13702_32540_179793/_metaQuast/not_aligned/basic_stats/coverage_histogram.pdf
+  Drawing contigs coverage histogram (bin size: 1x)...
+    saved to /local/workdir/Daphne/Floral_metagenomics/data/05_metaQUAST/10_Linaria/paired_13702_32540_179793/_metaQuast/not_aligned/basic_stats/contigs_coverage_histogram.pdf
+Done.
+
+NOTICE: Genes are not predicted by default. Use --gene-finding or --glimmer option to enable it.
+
+2025-06-10 14:32:00
+Creating large visual summaries...
+This may take a while: press Ctrl-C to skip this step..
+  1 of 2: Creating PDF with all tables and plots...
+  2 of 2: Creating Icarus viewers...
+Done
+
+2025-06-10 14:32:00
+RESULTS:
+  Text versions of total report are saved to /local/workdir/Daphne/Floral_metagenomics/data/05_metaQUAST/10_Linaria/paired_13702_32540_179793/_metaQuast/not_aligned/report.txt, report.tsv, and report.tex
+  Text versions of transposed total report are saved to /local/workdir/Daphne/Floral_metagenomics/data/05_metaQUAST/10_Linaria/paired_13702_32540_179793/_metaQuast/not_aligned/transposed_report.txt, transposed_report.tsv, and transposed_report.tex
+  HTML version (interactive tables and plots) is saved to /local/workdir/Daphne/Floral_metagenomics/data/05_metaQUAST/10_Linaria/paired_13702_32540_179793/_metaQuast/not_aligned/report.html
+  PDF version (tables and plots) is saved to /local/workdir/Daphne/Floral_metagenomics/data/05_metaQUAST/10_Linaria/paired_13702_32540_179793/_metaQuast/not_aligned/report.pdf
+  Icarus (contig browser) is saved to /local/workdir/Daphne/Floral_metagenomics/data/05_metaQUAST/10_Linaria/paired_13702_32540_179793/_metaQuast/not_aligned/icarus.html

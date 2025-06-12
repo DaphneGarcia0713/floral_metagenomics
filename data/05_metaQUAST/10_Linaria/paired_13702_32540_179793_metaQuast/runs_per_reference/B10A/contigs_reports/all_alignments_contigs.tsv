@@ -1,0 +1,3 @@
+S1	E1	S2	E2	Reference	Contig	IDY	Ambiguous	Best_group
+1617	2287	936	265	B10A_NZ_VTDM01000043.1	NODE_487_length_936_cov_4.637911	91.67		True
+CONTIG	NODE_487_length_936_cov_4.637911	936	correct

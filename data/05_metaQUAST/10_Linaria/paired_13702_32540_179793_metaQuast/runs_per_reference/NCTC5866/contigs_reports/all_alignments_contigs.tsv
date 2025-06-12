@@ -1,0 +1,3 @@
+S1	E1	S2	E2	Reference	Contig	IDY	Ambiguous	Best_group
+219	439	152638	152858	NCTC5866_fig_981327.12.peg.1339	NODE_4_length_154683_cov_10.939823	90.05		True
+CONTIG	NODE_4_length_154683_cov_10.939823	154683	correct_unaligned

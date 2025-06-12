@@ -1,0 +1,157 @@
+/programs/quast-5.2.0/bin/metaquast.py -o ../../../05_metaQUAST/10_Linaria/paired_13702_32540_179793/_metaQuast contigs.fasta -r ../../../05_Quast_reference_acineto_genomes/A39.fna,../../../05_Quast_reference_acineto_genomes/ANC4215.fna,../../../05_Quast_reference_acineto_genomes/ANC4422.fna,../../../05_Quast_reference_acineto_genomes/B10A.fna,../../../05_Quast_reference_acineto_genomes/B5B.fna,../../../05_Quast_reference_acineto_genomes/BB226.fna,../../../05_Quast_reference_acineto_genomes/BB362.fna,../../../05_Quast_reference_acineto_genomes/BRTC1.fna,../../../05_Quast_reference_acineto_genomes/CIP110305.fna,../../../05_Quast_reference_acineto_genomes/CIP110357.fna,../../../05_Quast_reference_acineto_genomes/CIP110549.fna,../../../05_Quast_reference_acineto_genomes/DSM14961.fna,../../../05_Quast_reference_acineto_genomes/DSM14964.fna,../../../05_Quast_reference_acineto_genomes/EC031.fna,../../../05_Quast_reference_acineto_genomes/EC034.fna,../../../05_Quast_reference_acineto_genomes/EC115.fna,../../../05_Quast_reference_acineto_genomes/EC24.fna,../../../05_Quast_reference_acineto_genomes/FNA11.fna,../../../05_Quast_reference_acineto_genomes/FNA3.fna,../../../05_Quast_reference_acineto_genomes/NCTC5866.fna,../../../05_Quast_reference_acineto_genomes/NIPH706.fna,../../../05_Quast_reference_acineto_genomes/NIPH991.fna,../../../05_Quast_reference_acineto_genomes/SCC474reference.fna,../../../05_Quast_reference_acineto_genomes/SCC477.fna,../../../05_Quast_reference_acineto_genomes/SM1.fna
+
+Version: 5.2.0
+
+System information:
+  OS: Linux-5.19.17-x86_64-with-glibc2.34 (linux_64)
+  Python version: 3.9.21
+  CPUs number: 48
+
+Started: 2025-06-10 14:06:56
+
+Logging to /local/workdir/Daphne/Floral_metagenomics/data/05_metaQUAST/10_Linaria/paired_13702_32540_179793/_metaQuast/metaquast.log
+NOTICE: Maximum number of threads is set to 12 (use --threads option to set it manually)
+
+Reference(s):
+  ../../../05_Quast_reference_acineto_genomes/A39.fna ==> A39
+  ../../../05_Quast_reference_acineto_genomes/ANC4215.fna ==> ANC4215
+  ../../../05_Quast_reference_acineto_genomes/ANC4422.fna ==> ANC4422
+  ../../../05_Quast_reference_acineto_genomes/B10A.fna ==> B10A
+  ../../../05_Quast_reference_acineto_genomes/B5B.fna ==> B5B
+  ../../../05_Quast_reference_acineto_genomes/BB226.fna ==> BB226
+  ../../../05_Quast_reference_acineto_genomes/BB362.fna ==> BB362
+  ../../../05_Quast_reference_acineto_genomes/BRTC1.fna ==> BRTC1
+  ../../../05_Quast_reference_acineto_genomes/CIP110305.fna ==> CIP110305
+  ../../../05_Quast_reference_acineto_genomes/CIP110357.fna ==> CIP110357
+  ../../../05_Quast_reference_acineto_genomes/CIP110549.fna ==> CIP110549
+  ../../../05_Quast_reference_acineto_genomes/DSM14961.fna ==> DSM14961
+  ../../../05_Quast_reference_acineto_genomes/DSM14964.fna ==> DSM14964
+  ../../../05_Quast_reference_acineto_genomes/EC031.fna ==> EC031
+  ../../../05_Quast_reference_acineto_genomes/EC034.fna ==> EC034
+  ../../../05_Quast_reference_acineto_genomes/EC115.fna ==> EC115
+  ../../../05_Quast_reference_acineto_genomes/EC24.fna ==> EC24
+  ../../../05_Quast_reference_acineto_genomes/FNA11.fna ==> FNA11
+  ../../../05_Quast_reference_acineto_genomes/FNA3.fna ==> FNA3
+  ../../../05_Quast_reference_acineto_genomes/NCTC5866.fna ==> NCTC5866
+  ../../../05_Quast_reference_acineto_genomes/NIPH706.fna ==> NIPH706
+  ../../../05_Quast_reference_acineto_genomes/NIPH991.fna ==> NIPH991
+  ../../../05_Quast_reference_acineto_genomes/SCC474reference.fna ==> SCC474reference
+  ../../../05_Quast_reference_acineto_genomes/SCC477.fna ==> SCC477
+  ../../../05_Quast_reference_acineto_genomes/SM1.fna ==> SM1
+  All references were combined in combined_reference.fasta
+
+Contigs:
+  Pre-processing...
+  contigs.fasta ==> contigs
+
+Starting quast.py for the combined reference...
+(logging to /local/workdir/Daphne/Floral_metagenomics/data/05_metaQUAST/10_Linaria/paired_13702_32540_179793/_metaQuast/combined_reference/quast.log)
+
+Partitioning contigs into bins aligned to each reference..
+  processing contigs
+
+Run QUAST on different references in parallel..
+
+Starting quast.py for the contigs aligned to A39... (logging to /local/workdir/Daphne/Floral_metagenomics/data/05_metaQUAST/10_Linaria/paired_13702_32540_179793/_metaQuast/runs_per_reference/A39/quast.log)
+
+No contigs were aligned to the reference ANC4215, skipping..
+
+Starting quast.py for the contigs aligned to ANC4422... (logging to /local/workdir/Daphne/Floral_metagenomics/data/05_metaQUAST/10_Linaria/paired_13702_32540_179793/_metaQuast/runs_per_reference/ANC4422/quast.log)
+
+Starting quast.py for the contigs aligned to B10A... (logging to /local/workdir/Daphne/Floral_metagenomics/data/05_metaQUAST/10_Linaria/paired_13702_32540_179793/_metaQuast/runs_per_reference/B10A/quast.log)
+
+Starting quast.py for the contigs aligned to B5B... (logging to /local/workdir/Daphne/Floral_metagenomics/data/05_metaQUAST/10_Linaria/paired_13702_32540_179793/_metaQuast/runs_per_reference/B5B/quast.log)
+
+Starting quast.py for the contigs aligned to BB226... (logging to /local/workdir/Daphne/Floral_metagenomics/data/05_metaQUAST/10_Linaria/paired_13702_32540_179793/_metaQuast/runs_per_reference/BB226/quast.log)
+
+Starting quast.py for the contigs aligned to BB362... (logging to /local/workdir/Daphne/Floral_metagenomics/data/05_metaQUAST/10_Linaria/paired_13702_32540_179793/_metaQuast/runs_per_reference/BB362/quast.log)
+
+No contigs were aligned to the reference BRTC1, skipping..
+
+No contigs were aligned to the reference CIP110305, skipping..
+
+Starting quast.py for the contigs aligned to CIP110357... (logging to /local/workdir/Daphne/Floral_metagenomics/data/05_metaQUAST/10_Linaria/paired_13702_32540_179793/_metaQuast/runs_per_reference/CIP110357/quast.log)
+
+Starting quast.py for the contigs aligned to CIP110549... (logging to /local/workdir/Daphne/Floral_metagenomics/data/05_metaQUAST/10_Linaria/paired_13702_32540_179793/_metaQuast/runs_per_reference/CIP110549/quast.log)
+
+No contigs were aligned to the reference DSM14961, skipping..
+
+No contigs were aligned to the reference DSM14964, skipping..
+
+Starting quast.py for the contigs aligned to EC031... (logging to /local/workdir/Daphne/Floral_metagenomics/data/05_metaQUAST/10_Linaria/paired_13702_32540_179793/_metaQuast/runs_per_reference/EC031/quast.log)
+
+Starting quast.py for the contigs aligned to EC034... (logging to /local/workdir/Daphne/Floral_metagenomics/data/05_metaQUAST/10_Linaria/paired_13702_32540_179793/_metaQuast/runs_per_reference/EC034/quast.log)
+
+Starting quast.py for the contigs aligned to EC115... (logging to /local/workdir/Daphne/Floral_metagenomics/data/05_metaQUAST/10_Linaria/paired_13702_32540_179793/_metaQuast/runs_per_reference/EC115/quast.log)
+
+Starting quast.py for the contigs aligned to EC24... (logging to /local/workdir/Daphne/Floral_metagenomics/data/05_metaQUAST/10_Linaria/paired_13702_32540_179793/_metaQuast/runs_per_reference/EC24/quast.log)
+
+Starting quast.py for the contigs aligned to FNA11... (logging to /local/workdir/Daphne/Floral_metagenomics/data/05_metaQUAST/10_Linaria/paired_13702_32540_179793/_metaQuast/runs_per_reference/FNA11/quast.log)
+
+Starting quast.py for the contigs aligned to FNA3... (logging to /local/workdir/Daphne/Floral_metagenomics/data/05_metaQUAST/10_Linaria/paired_13702_32540_179793/_metaQuast/runs_per_reference/FNA3/quast.log)
+
+Starting quast.py for the contigs aligned to NCTC5866... (logging to /local/workdir/Daphne/Floral_metagenomics/data/05_metaQUAST/10_Linaria/paired_13702_32540_179793/_metaQuast/runs_per_reference/NCTC5866/quast.log)
+
+Starting quast.py for the contigs aligned to NIPH706... (logging to /local/workdir/Daphne/Floral_metagenomics/data/05_metaQUAST/10_Linaria/paired_13702_32540_179793/_metaQuast/runs_per_reference/NIPH706/quast.log)
+
+Starting quast.py for the contigs aligned to NIPH991... (logging to /local/workdir/Daphne/Floral_metagenomics/data/05_metaQUAST/10_Linaria/paired_13702_32540_179793/_metaQuast/runs_per_reference/NIPH991/quast.log)
+
+Starting quast.py for the contigs aligned to SCC474reference... (logging to /local/workdir/Daphne/Floral_metagenomics/data/05_metaQUAST/10_Linaria/paired_13702_32540_179793/_metaQuast/runs_per_reference/SCC474reference/quast.log)
+
+Starting quast.py for the contigs aligned to SCC477... (logging to /local/workdir/Daphne/Floral_metagenomics/data/05_metaQUAST/10_Linaria/paired_13702_32540_179793/_metaQuast/runs_per_reference/SCC477/quast.log)
+
+Starting quast.py for the contigs aligned to SM1... (logging to /local/workdir/Daphne/Floral_metagenomics/data/05_metaQUAST/10_Linaria/paired_13702_32540_179793/_metaQuast/runs_per_reference/SM1/quast.log)
+
+Starting quast.py for the contigs not aligned anywhere... (logging to /local/workdir/Daphne/Floral_metagenomics/data/05_metaQUAST/10_Linaria/paired_13702_32540_179793/_metaQuast/not_aligned/quast.log)
+
+2025-06-10 14:32:00
+Summarizing results...
+  Drawing # contigs metaQUAST summary plot...
+    saved to /local/workdir/Daphne/Floral_metagenomics/data/05_metaQUAST/10_Linaria/paired_13702_32540_179793/_metaQuast/summary/PDF/num_contigs.pdf
+  Drawing Largest contig metaQUAST summary plot...
+    saved to /local/workdir/Daphne/Floral_metagenomics/data/05_metaQUAST/10_Linaria/paired_13702_32540_179793/_metaQuast/summary/PDF/Largest_contig.pdf
+  Drawing Total length metaQUAST summary plot...
+    saved to /local/workdir/Daphne/Floral_metagenomics/data/05_metaQUAST/10_Linaria/paired_13702_32540_179793/_metaQuast/summary/PDF/Total_length.pdf
+  Drawing Largest alignment metaQUAST summary plot...
+    saved to /local/workdir/Daphne/Floral_metagenomics/data/05_metaQUAST/10_Linaria/paired_13702_32540_179793/_metaQuast/summary/PDF/Largest_alignment.pdf
+  Drawing Total aligned length metaQUAST summary plot...
+    saved to /local/workdir/Daphne/Floral_metagenomics/data/05_metaQUAST/10_Linaria/paired_13702_32540_179793/_metaQuast/summary/PDF/Total_aligned_length.pdf
+  Drawing Total length (>= 1000 bp) metaQUAST summary plot...
+    saved to /local/workdir/Daphne/Floral_metagenomics/data/05_metaQUAST/10_Linaria/paired_13702_32540_179793/_metaQuast/summary/PDF/Total_length_(ge_1000_bp).pdf
+  Drawing Total length (>= 10000 bp) metaQUAST summary plot...
+    saved to /local/workdir/Daphne/Floral_metagenomics/data/05_metaQUAST/10_Linaria/paired_13702_32540_179793/_metaQuast/summary/PDF/Total_length_(ge_10000_bp).pdf
+  Drawing Total length (>= 50000 bp) metaQUAST summary plot...
+    saved to /local/workdir/Daphne/Floral_metagenomics/data/05_metaQUAST/10_Linaria/paired_13702_32540_179793/_metaQuast/summary/PDF/Total_length_(ge_50000_bp).pdf
+  Drawing # misassemblies metaQUAST summary plot...
+    saved to /local/workdir/Daphne/Floral_metagenomics/data/05_metaQUAST/10_Linaria/paired_13702_32540_179793/_metaQuast/summary/PDF/num_misassemblies.pdf
+  Drawing metaQUAST summary misassemblies plot for contigs...
+    saved to /local/workdir/Daphne/Floral_metagenomics/data/05_metaQUAST/10_Linaria/paired_13702_32540_179793/_metaQuast/summary/PDF/contigs_misassemblies.pdf
+  Drawing Misassembled contigs length metaQUAST summary plot...
+    saved to /local/workdir/Daphne/Floral_metagenomics/data/05_metaQUAST/10_Linaria/paired_13702_32540_179793/_metaQuast/summary/PDF/Misassembled_contigs_length.pdf
+  Drawing # mismatches per 100 kbp metaQUAST summary plot...
+    saved to /local/workdir/Daphne/Floral_metagenomics/data/05_metaQUAST/10_Linaria/paired_13702_32540_179793/_metaQuast/summary/PDF/num_mismatches_per_100_kbp.pdf
+  Drawing # indels per 100 kbp metaQUAST summary plot...
+    saved to /local/workdir/Daphne/Floral_metagenomics/data/05_metaQUAST/10_Linaria/paired_13702_32540_179793/_metaQuast/summary/PDF/num_indels_per_100_kbp.pdf
+  Drawing # N's per 100 kbp metaQUAST summary plot...
+    saved to /local/workdir/Daphne/Floral_metagenomics/data/05_metaQUAST/10_Linaria/paired_13702_32540_179793/_metaQuast/summary/PDF/num_Ns_per_100_kbp.pdf
+  Drawing Genome fraction (%) metaQUAST summary plot...
+    saved to /local/workdir/Daphne/Floral_metagenomics/data/05_metaQUAST/10_Linaria/paired_13702_32540_179793/_metaQuast/summary/PDF/Genome_fraction.pdf
+  Drawing Duplication ratio metaQUAST summary plot...
+    saved to /local/workdir/Daphne/Floral_metagenomics/data/05_metaQUAST/10_Linaria/paired_13702_32540_179793/_metaQuast/summary/PDF/Duplication_ratio.pdf
+  Drawing NGA50 metaQUAST summary plot...
+    saved to /local/workdir/Daphne/Floral_metagenomics/data/05_metaQUAST/10_Linaria/paired_13702_32540_179793/_metaQuast/summary/PDF/NGA50.pdf
+  Drawing LGA50 metaQUAST summary plot...
+    saved to /local/workdir/Daphne/Floral_metagenomics/data/05_metaQUAST/10_Linaria/paired_13702_32540_179793/_metaQuast/summary/PDF/LGA50.pdf
+
+  Text versions of reports and plots for each metric (for all references and assemblies) are saved to /local/workdir/Daphne/Floral_metagenomics/data/05_metaQUAST/10_Linaria/paired_13702_32540_179793/_metaQuast/summary/
+  Icarus (contig browser) is saved to /local/workdir/Daphne/Floral_metagenomics/data/05_metaQUAST/10_Linaria/paired_13702_32540_179793/_metaQuast/icarus.html
+  Extended version of HTML-report (for all references and assemblies) is saved to /local/workdir/Daphne/Floral_metagenomics/data/05_metaQUAST/10_Linaria/paired_13702_32540_179793/_metaQuast/report.html
+
+MetaQUAST finished.
+  Log is saved to /local/workdir/Daphne/Floral_metagenomics/data/05_metaQUAST/10_Linaria/paired_13702_32540_179793/_metaQuast/metaquast.log
+
+Finished: 2025-06-10 14:32:05
+Elapsed time: 0:25:09.469524
+Total NOTICEs: 25; WARNINGs: 1; non-fatal ERRORs: 0
+
+Thank you for using QUAST!
