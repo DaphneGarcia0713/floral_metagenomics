@@ -19,11 +19,11 @@ found in
 
 ## Steps
 
-#### Copied from Katie's workflow outlined in her paper:
+Copied from Katie's workflow outlined in her paper:
 
 1.  FastQC quality analysis
 2.  Trimmomatic adapter trimming
-3.  BWA-MEM read filtering
+3.  Bowtie2 read filtering
 4.  MetaSpades assembly
 5.  CheckM host contamination
 6.  Phyloflash taxonomy composition
@@ -68,9 +68,13 @@ The inputs and outputs will be as follows:
 |          |          | R2 files |          | os       |          |
 |          |          |          |          | t_filter |          |
 +----------+----------+----------+----------+----------+----------+
-| Quast    | check    | (on      |          |          |          |
+| Quast    | check    | (on      |  NA      |   NA     |    NA    |
 |          | assembly | vivi's   |          |          |          |
 |          | quality  | jupyter) |          |          |          |
++----------+----------+----------+----------+----------+----------+
+| MetaBat2 |  contig  |          |          |          |          |
+|          | binning  |          |          |          |          |
+|          |          |          |          |          |          |
 +----------+----------+----------+----------+----------+----------+
 | CheckM   | host     |          |          |          |          |
 |          | conta    |          |          |          |          |
@@ -86,12 +90,6 @@ The inputs and outputs will be as follows:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-```{r load packages, eval = FALSE}
-
-pacman::p_load(tidyverse, dada2, phyloseq, patchwork, DT, devtools, install = FALSE)
-library("patchwork")
-```
-
 ### Acquiring Data
 
 May 27, 2025 I copied Vivi's metagenomics raw reads from her folder to
@@ -104,6 +102,7 @@ This took \~ 30 seconds
 I noticed a pattern with the filenames: all start with
 13702_32540_1797XX The X's ranging from **38** (R1 and R2) to **93** (R1
 and R2).
+
 
 ### 1. FastQC Quality analysis
 
@@ -150,6 +149,7 @@ multiqc *_fastqc.zip
 The fastQC and multiQC outputs are in
 `/local/workdir/Daphne/Floral_metagenomics/data/01_fastQC_results_pre_trim`,
 and both matched with Sophia's outputs.
+
 
 ### 2. Trimmomatic adapter trim
 
@@ -263,6 +263,7 @@ Output is all of the trimmed paired unzipped fastq's in corresponding
 subdirectories according to their host flower in
 `Floral_metagenomics/data/02_trim_unzipped_and_host-grouped`
 
+
 ### 3. Bowtie2
 
 We're gonna run the trimmomatic paired and unpaired trimmed reads
@@ -350,7 +351,7 @@ I need to modify the three variables: `index`, `samples_folder`, and
 `output_folder` in the first lines to change which host genome's samples
 we are using
 
-```{bash bowtie2 loop, eval = FALSE}
+```{bash bowtie2_loop, eval = FALSE}
 
 cd /local/workdir/Daphne/Floral_metagenomics/data/
 export PATH=/programs/bowtie2-2.5.1-linux-x86_64:$PATH
@@ -382,16 +383,16 @@ Outputs are `paired_1370.../SAMPLE_mapped_and_unmapped.sam` file within
 The percent alignment for each sample (38-93) are in the fourth sheet of
 `workdir/Daphne/Floral_metagenomics/data/metadata_host_flower_genomes.xlsx`
 
-#### 3.4 SamTools and bedtools modifications
+#### 3.3 SamTools and bedtools modifications
 
-I don't completely understand what needs to be done to separate the
-unmapped reads (all of the possibly bacterial and fungal reads that
-aren't the host), but Sophia and Katie both had these lines to prepare
-for SpAdes alignment, so I copied Sophia's code and created a for loop
-for every sample in the host-genome's subdirectory.
+The unmapped reads must be separated, since these are the non-flower reads, and 
+Sophia and Katie both had these lines to prepare for the SpAdes alignment.
+I copied Sophia's code and created a for loop for every sample in the 
+host-genome's subdirectory.
 
 ```{bash sam_bed_after_bowtie2, eval = FALSE}
 
+cd /local/workdir/Daphne/Floral_metagenomics/data/
 
 for sample in 03_Bowtie2_host_filter/8_Solidago/*/; do
   cd $sample
@@ -415,12 +416,12 @@ for sample in 03_Bowtie2_host_filter/8_Solidago/*/; do
   #Convert bam to fasstq
   bedtools bamtofastq -i SAMPLE_bothReadsUnmapped_sorted.bam -fq SAMPLE_host_removed_R1.fastq -fq2 SAMPLE_host_removed_R2.fastq
   
-  cd - > /dev/null  # optional: return to previous dir
+  cd - > /dev/null # return to previous dir
 done
 
 ```
 
-This outputs 6 new filesinto
+This outputs 6 new files into
 `Floral_metagenomics/data/03_Bowtie2_host_filter/`
 `(# host name)/paired...(sample name)/` - both reads mapped and unmapped
 (sam -\> bam -\> sorted) - host removed R1, R2 (fastq.gz -\> .fastq)
@@ -428,26 +429,140 @@ This outputs 6 new filesinto
 the host-removed R1 and R2 files will be subsequently used in the
 metaspades assembly
 
+
 ### 4. MetaSpAdes assembly
 
 Using the Unmapped reads output from the previous chunk, we will run
 each sample through metaspades and assemble all of the genomes.
 
-```{bash metaspades test, eval=FALSE}
+This script is based off of Sophia's second metaspades, after bowtie
+Note: My parameter choices on thread and spades --meta instead of metaspades 
+are in my lab notebook on benchling
+Note: I created directory 04_metaspades and all 10 subdirectories by hand
 
+```{bash Spades_loop, eval=FALSE}
 
-cd /local/workdir/Daphne/Floral_metagenomics/data/02_trimmomatic
+export PATH=/programs/SPAdes-4.0.0/bin:$PATH
+cd /local/workdir/Daphne/Floral_metagenomics/data
 
-spade_input_1="paired_13702_32540_179738_H5MH5AFX5_metagenomic_mix_A06_22FN006_TAGGCATG_CTAGTCGA_R1.fastq.gz"
-spade_input_2="paired_13702_32540_179738_H5MH5AFX5_metagenomic_mix_A06_22FN006_TAGGCATG_CTAGTCGA_R2.fastq.gz"
-export PATH=/programs/SPAdes-3.15.5/bin:$PATH
-/programs/SPAdes-3.15.5/bin/spades.py -1 $spade_input_1 -2 $spade_input_2 -t 16 -m 200 -o /local/workdir/Daphne/Floral_metagenomics/data/03_MetaSpades_assembly/test_run_2
+### MODIFY THIS VARIABLE
+host_gen="8_Solidago"
+for sample in 03_Bowtie2_host_filter/"$host_gen"/*/; do
+  cd $sample
+  pwd
+  base=$(basename "$sample")
+  mkdir "../../../04_metaspades/"$host_gen"/"$base
+  spades.py -1 SAMPLE_host_removed_R1.fastq -2 SAMPLE_host_removed_R2.fastq --meta -t 32 -m 200 -o "../../../04_metaspades/"$host_gen"/"$base
+  cd - > /dev/null  # return to previous dir
+  pwd 
+done 
+
 #in this command  
   # -1 = file with forward reads
   # -2 = file with reverse reads
   # -t = threads sets the number of processors to use we are using 16 bc thats the default
-  # -m = memority limit in Gb. SPAdes terminates this if it reaches this limit so we are setting it to 200Gb to be safe but the default is 250 Gb
+  # -m = memory limit in Gb. SPAdes terminates this if it reaches this limit so we are setting it to 200Gb to be safe but the default is 250 Gb
   # -o = output directory to use the default is in the current directory
+```
 
+Outputs according to spades manual https://currentprotocols.onlinelibrary.wiley.com/doi/full/10.1002/cpbi.102:
+1. contigs.fasta — resulting contig sequences in FASTA format;
+2. scaffolds.fasta — resulting scaffold sequences in FASTA format;
+3. assembly_graph.gfa — assembly graph and scaffolds paths in GFA 1.0 format;
+4. assembly_graph.fastg — assembly graph in FASTG format;
+5. contigs.paths — paths in the assembly graph corresponding to contigs.fasta;
+6. scaffolds.paths — paths in the assembly graph corresponding to scaffolds.fasta;
+7. spades.log — file with all log messages.
+
+
+### 5. MetaQuast check
+
+This isn't a step in the process, but is important to start checking if acinetobacter is actually present in these samples. Metaquast is like FastQC but for contigs, it "evaluates and compares metagenome assemblies based on alignments to close references".
+
+Therefore, we provide acinetobacter reference genomes and it more accurately bins those contigs into MAGS, and tells us how many contigs map to acinetobacter. It also provides stats on sample quality
+
+I built the references with 12 strains from Sophia's folder `/local/workdir/sna49/Hendry_Rotation_SA/Acinetobacter/Data/metaspades_floral/metagenomic/original_reads/pipeline/01_trimmomatic_paired/references` plus 13 more from 
+Vivi's RAST
+
+TO RUN: modify the variable host_name for which of the 10 flower hosts you will 
+use
+```{bash MetaQuast, eval = FALSE}
+
+export PYTHONPATH=/programs/quast-5.2.0/lib64/python3.9/site-packages:/programs/quast-5.2.0/lib/python3.9/site-packages
+export PATH=/programs/quast-5.2.0/bin:$PATH
+
+#This list contains paths to all acineto reference genomes, from the 04_metaspades sample's directory
+list="../../../05_Quast_reference_acineto_genomes/A39.fna,../../../05_Quast_reference_acineto_genomes/ANC4215.fna,../../../05_Quast_reference_acineto_genomes/ANC4422.fna,../../../05_Quast_reference_acineto_genomes/B10A.fna,../../../05_Quast_reference_acineto_genomes/B5B.fna,../../../05_Quast_reference_acineto_genomes/BB226.fna,../../../05_Quast_reference_acineto_genomes/BB362.fna,../../../05_Quast_reference_acineto_genomes/BRTC1.fna,../../../05_Quast_reference_acineto_genomes/CIP110305.fna,../../../05_Quast_reference_acineto_genomes/CIP110357.fna,../../../05_Quast_reference_acineto_genomes/CIP110549.fna,../../../05_Quast_reference_acineto_genomes/DSM14961.fna,../../../05_Quast_reference_acineto_genomes/DSM14964.fna,../../../05_Quast_reference_acineto_genomes/EC031.fna,../../../05_Quast_reference_acineto_genomes/EC034.fna,../../../05_Quast_reference_acineto_genomes/EC115.fna,../../../05_Quast_reference_acineto_genomes/EC24.fna,../../../05_Quast_reference_acineto_genomes/FNA11.fna,../../../05_Quast_reference_acineto_genomes/FNA3.fna,../../../05_Quast_reference_acineto_genomes/NCTC5866.fna,../../../05_Quast_reference_acineto_genomes/NIPH706.fna,../../../05_Quast_reference_acineto_genomes/NIPH991.fna,../../../05_Quast_reference_acineto_genomes/SCC474reference.fna,../../../05_Quast_reference_acineto_genomes/SCC477.fna,../../../05_Quast_reference_acineto_genomes/SM1.fna"
+
+# MODIFY this host_name for the samples you're running
+host_name="9_Lonicera"
+for sample in 04_metaspades"/$host_name/"*; do
+  #loop through samples in a flower-host group in metaspades folder
+  cd $sample
+  name="$(basename "$sample" | cut -d'_' -f1-4)" 
+  echo $name
+  # run metaquast, output to 05_metaQUAST, and use $list variable as reference
+  metaquast.py -o ../../../05_metaQUAST/"$host_name/""$name"_metaQuast contigs.fasta -r "$list" 
+  cd - > /dev/null  # return to previous dir
+  pwd 
+done 
+```
+The output is 
+`Floral_metagenomics/data/05_metaquast/"host_group"/"sample"/*`
+
+
+Next steps: Since there is so little acinetobacter, I can either focus on one type of host that has acinetobacter, or focus on the whole community's 
+
+#### 5.1
+I've decided to Run MetaQUAST again, but without using any references. I'll Use a database, like SILVA instead.
+
+To run this faster, I am splitting the 10 groups into 3 larger arrays, and tmux automating this process in 3 different groups
+
+```{bash metaQuast_no_reference, eval = FALSE}
+
+declare -a array1=(
+[0]=1_Chichorium
+)
+declare -a array2=(
+[0]=2_Malus
+[1]=4_Ranunculus
+[2]=7_Alliaria
+[3]=10_Linaria
+)
+declare -a array3=(
+[0]=3_Lotus
+[1]=5_Trifolium
+[2]=8_Solidago
+[3]=6_Matricaria
+[4]=9_Lonicera
+)
+export PYTHONPATH=/programs/quast-5.2.0/lib64/python3.9/site-packages:/programs/quast-5.2.0/lib/python3.9/site-packages
+export PATH=/programs/quast-5.2.0/bin:$PATH
+
+for host_name in ${array3[@]}; do
+  echo $host_name
+  for sample in 04_metaspades"/$host_name/"*; do
+    cd $sample
+    pwd
+    name="$(basename "$sample" | cut -d'_' -f1-4)" 
+    echo $name
+    metaquast.py -o ../../../05_metaQUAST_NO_reference/"$host_name/""$name"_metaQuast contigs.fasta
+    cd - > /dev/null  # return to previous dir
+    pwd 
+  done 
+done
 
 ```
+trifolium took longer than others, what kinds of samples were in this?
+The output is 
+`Floral_metagenomics/data/05_metaQUAST_NO_reference/"host_group"/"sample"/*`
+These outputs only show number of contigs (`report.html` and legth stats
+`basic_stats/`), and contig lengths 
+
+Run MetaBat2 to bin the contigs 
+
+
+use VAMB to assemble, 
+talk to Tory about very few acinetobacter
+
+

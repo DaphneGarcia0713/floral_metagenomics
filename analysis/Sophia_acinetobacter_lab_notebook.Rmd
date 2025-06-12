@@ -241,6 +241,8 @@ We see that there is a lot of host contamination like Rosenberigella, Klebsiella
 
 So we will provide a reference called SCC474reference.fasta (/local/workdir/sna49/Hendry_Rotation_SA/Acinetobacter/Data/metaspades_floral/metagenomic/original_reads/og/trimmomatic_paired/meta_output/QUAST/SCC474reference.fasta) to metaQUAST
 
+Actually: /local/workdir/sna49/Hendry_Rotation_SA/Acinetobacter/Data/metaspades_floral/metagenomic/original_reads/pipeline/01_trimmomatic_paired/references
+
 ```{bash metaQUAST reference provided, eval = FALSE}
 #now that metaSPAdes has completed the assembly, it produces an output file called contigs.fasta
 
@@ -302,6 +304,9 @@ samtools fastq -@ 8 SAMPLE_bothReadsUnmapped_sorted.bam -1 SAMPLE_host_removed_R
 bedtools bamtofastq -i SAMPLE_bothReadsUnmapped_sorted.bam -fq SAMPLE_host_removed_R1.fastq -fq2 SAMPLE_host_removed_R2.fastq
 ```
 
+
+
+############### METASPADES PT 2 #############
 ```{bash, reassemble with metaSPADES, eval = FAlSE}
 #so with bowtie we removed the host DNA and it should be just Acinetobacter left. The files were put into SAMPLE_host_removed_R1.fastq and SAMPLE_host_removed_R2.fastq
 
@@ -312,6 +317,10 @@ spades.py -1 SAMPLE_host_removed_R1.fastq -2 SAMPLE_host_removed_R2.fastq --meta
 ```
 
 # need to create master list reference from Tory and Tad's paper of the Acinetobacter species THEN use it as a reference for metaQUAST to see if alignments improve
+
+
+################### QUAST 2: GET REF GENOMES #######################
+
 
 ### 12/20/23
 Today I am downloading the different Acinetobacter biosamples 
@@ -434,7 +443,9 @@ cp -r *.fastq filtered_fastq/
 ```
 
 
-Now we will be using these references to compare them to our sequences to determine the quality on fastqc
+Now we will be using these references to compare them to our sequences to determine the quality on fastqc (METAQUAST)
+
+################### QUAST PT 3 ####################
 ```{bash}
 # I will use the contigs.fasta file with QUAST to determine the quality of the reads 
 
@@ -449,6 +460,9 @@ metaquast.py -o metaQUAST_refer contigs.fasta -r SCC474reference.fasta,B5B.fna,B
 #also used honeybee_ref_ncbi.fna as reference later
 #metaquast says that the honey bee was aligned to 2 contigs, but 3684 contigs are not aligning to the reference 
 ```
+
+
+######## THIRD METASPADES  (final one )##########################
 
 ### 1/11/2024
 Assembling our .fastq files with metaspades
@@ -490,11 +504,12 @@ for i in 13702*; do mv $i "$(awk -F '[_]' '{print $1"_"$7"_"$8"_SpadesContig.fas
 
 ```
 
+
+
 #before we bin we need to get our files ready using bwa
 ```{bash, metabat2 for binning, eval = FALSE}
 #Bin contigs using Metabat2
 for f in *.fasta; do bwa index $f; done
-
 
 #Convert to .sam
 #now im in the 01_trimmomatic_paired folder that has teh R1 and R2.fastq files
@@ -561,7 +576,7 @@ cp -r /local/workdir/sna49/Hendry_Rotation_SA/Acinetobacter/Data/metaspades_flor
 
 #success we have the files in the right place we can proceed so basically little recap we have the depth.txt files and the .fasta files togehter in the same place in metabat/
 
-#change working directory 
+#change working directory  
 cd /local/workdir/sna49/Hendry_Rotation_SA/Acinetobacter/Data/metaspades_floral/metagenomic/original_reads/pipeline/01_trimmomatic_paired/sam/sam_files/bam/metabat
 
 for i in *_SpadesContig.fasta; do metabat1 -i $i -a /local/workdir/sna49/Hendry_Rotation_SA/Acinetobacter/Data/metaspades_floral/metagenomic/original_reads/pipeline/01_trimmomatic_paired/sam/sam_files/bam/metabat/${i/%.fasta/_bwa_depth.txt} -o /local/workdir/sna49/Hendry_Rotation_SA/Acinetobacter/Data/metaspades_floral/metagenomic/original_reads/pipeline/01_trimmomatic_paired/sam/sam_files/bam/metabat/${i/%.fasta/_metabat} -t 24 ;done
