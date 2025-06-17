@@ -19,4 +19,5 @@ data/04_metaspades/*
 data/05_metaQUAST/*
 data/05_metaQUAST_NO_reference/*
 data/05_Quast_reference_acineto_genomes/*
+data/06_sample_contigs
 
