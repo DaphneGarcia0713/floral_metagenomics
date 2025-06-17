@@ -513,7 +513,7 @@ The output is
 
 Next steps: Since there is so little acinetobacter, I can either focus on one type of host that has acinetobacter, or focus on the whole community's 
 
-#### 5.1
+#### 5.1 Metaquast without Acinetobacter references
 I've decided to Run MetaQUAST again, but without using any references. I'll Use a database, like SILVA instead.
 
 To run this faster, I am splitting the 10 groups into 3 larger arrays, and tmux automating this process in 3 different groups
@@ -559,10 +559,91 @@ The output is
 These outputs only show number of contigs (`report.html` and legth stats
 `basic_stats/`), and contig lengths 
 
-Run MetaBat2 to bin the contigs 
 
 
-use VAMB to assemble, 
-talk to Tory about very few acinetobacter
+### 6. MetaBat2
+
+First, rename and group all of the fasta.contigs from the metaspades step into 
+one folder, `06_sample_contigs`. This is so that there's one directory 
+`06_sample_contigs` with all assembled contigs that contains the host 
+(dandelion, apple, etc) in the file name, instead of branched into 
+subdirectories by host name. 
+
+
+#### 6.1 metabat prep
+```{bash reorganize_sample_contigs}
+
+cd /local/workdir/Daphne/Floral_metagenomics/data/
+
+declare -a host_array=(
+[0]=1_Chichorium    
+[1]=2_Malus
+[2]=3_Lotus
+[3]=4_Ranunculus
+[4]=5_Trifolium   
+[5]=6_Matricaria
+[6]=7_Alliaria
+[7]=8_Solidago
+[8]=9_Lonicera
+[9]=10_Linaria
+)
+
+# rename and group all fasta.contigs from 04_metaspades into 06_sample_contigs
+for host_name in ${host_array[@]}; do
+  echo $host_name
+  for sample in 04_metaspades"/$host_name/"*; do
+    cd $sample
+    name="$(basename "$sample" | cut -d'_' -f1-4)" 
+    cp ./contigs.fasta ../../../06_sample_contigs/"$name"_"$host_name".fasta
+    cd - > /dev/null  # return to previous dir
+  done 
+done
+```
+outputs are in `Floral_metagenomics/data/06_sample_contigs`
+
+
+
+After the  metaspade fasta files have been renamed, we need to prepare the depth file, but it needs to be first reformatted with sam and bam.
+
+.sam -> .bam -> depth.txt
+
+#### 6.2 sam bam, depth files
+```{bash sam_bam_depth, eval = FALSE}
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Then, we write metabat
+NOTE: I may need a depth file, but I don't include it right now
+```{bash metabat2, eval = FALSE}
+
+for sample in 06_sample_contigs/*; do 
+  singularity run --bind $PWD --pwd $PWD /programs/metabat-2.16/metabat.sif runMetaBat.sh -i $sample -a depth.txt -o 06_MetaBat2/
+done
+
+# -i = input contigs from metaspades (necessary)
+# -a = depth file (necessary)
+# -o = output folder, called 06_MetaBat2 (necessary)
+
+```
+
+
+
+
+
 
 

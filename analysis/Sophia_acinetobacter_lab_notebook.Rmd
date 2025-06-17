@@ -501,6 +501,7 @@ for i in 13702_*; do cp -r $i/contigs.fasta metaspades_contigs/${i/%_MetaSpades/
 
 #rename files to be ~cleaner~
 for i in 13702*; do mv $i "$(awk -F '[_]' '{print $1"_"$7"_"$8"_SpadesContig.fasta"}'<<<"$i")"; done
+# D note: I think 1, 7, and 8 are the "13702" "A06 or A07, etc" "22FN006 FN140" etc. 
 
 ```
 
@@ -510,57 +511,65 @@ for i in 13702*; do mv $i "$(awk -F '[_]' '{print $1"_"$7"_"$8"_SpadesContig.fas
 ```{bash, metabat2 for binning, eval = FALSE}
 #Bin contigs using Metabat2
 for f in *.fasta; do bwa index $f; done
+# D note: This line creates several index files with extensions like .amb, .ann, .bwt, .pac, .sa alongside the original .fasta file. These are found in 01_Trimmomatic/metaspades_output/metaspades_contigs/*
 
 #Convert to .sam
 #now im in the 01_trimmomatic_paired folder that has teh R1 and R2.fastq files
 cd /local/workdir/sna49/Hendry_Rotation_SA/Acinetobacter/Data/metaspades_floral/metagenomic/original_reads/pipeline/01_trimmomatic_paired
 
 #makign a copy of R1 and R2 .fastq files just in case from our trimmomatic_paired files
+# D note: ignore this, she made a new subdirectory which we don't need
 mkdir -p sam
 cp -r *.fastq sam/
 
 #now to match names to up we preivously got rid of the longer names but now lets clean up the trimmomatic file names and just have the relevant stuff
 #rename files to match 
+# D note: This is just remaming the 13702_....superlong...R1.fasta to a cleaned up version with R1 and R2. What I need instead, is cp 02_trimmomatic-trim-unzip-grouped, and copy them with trimmed name, host group (will need nested for loop to get in every host-group subdirectory)
 for i in 13702*; do mv $i "$(awk -F '[_]' '{print $1"_"$7"_"$8"_SpadesContig_"$11}'<<<"$i")"; done
 
-#now we will be working in the metaspades_output directory (/local/workdir/sna49/Hendry_Rotation_SA/Acinetobacter/Data/metaspades_floral/metagenomic/original_reads/pipeline/01_trimmomatic_paired/metaspades_output/metaspades_contigs)
-cd metaspades_contigs/
-
-
 #cd to where the R1 and R2 reads are located 
-cd /local/workdir/sna49/Hendry_Rotation_SA/Acinetobacter/Data/metaspades_floral/metagenomic/original_reads/pipeline/01_trimmomatic_paired/sam
+# D note: Skip, she's entering subdirectory that we didn't create
+cd 01_trimmomatic_paired/sam
 
 #make output file in the sam directory
-mkdir -p output
+mkdir -p sam_files
 
-#for loop to run R1 and R2 files. it will produce sample.sam file and should combine both R1 and R2 reads into one .sam file per sample
+#for loop to combine R1 and R2 files into one bwa.sam file per sample
+# D note: I probs want subdirectories inside 06_ that say 6-1, 6-2, etc
 for i in *R1.fastq; do 
   sample_name=${i%%_R1.fastq}  #getting sample name from the R1.fastq file name
-
   for j in ${sample_name}_R2.fastq; do
     echo "Processing files: $i and $j"
     bwa mem /local/workdir/sna49/Hendry_Rotation_SA/Acinetobacter/Data/metaspades_floral/metagenomic/original_reads/pipeline/01_trimmomatic_paired/metaspades_output/metaspades_contigs/${sample_name}.fasta $i $j > output/${i/%_R1.fastq/_bwa}.sam -t 16 
     echo "Alignment complete for $i and $j"
   done
 done
+# For every R1.fastq, bwa mem R1 and R2, and output as a _bwa.sam
 
-#copy files to bam folder just in case 
+
+#copy files to 01_trimmomatic_paired/sam/sam_files/bam folder just in case 
 mkdir -p bam
 cp -r *.sam bam/
+# D note: I don't need to copy .sam files
 
 #change directory 
 cd bam/
 #Convert to .bam
 for i in *.sam; do samtools sort $i -o ${i/%.sam/.bam};done
+# D note: this makes .bam files
 
 #copy bam files to bin
 mkdir -p metabat
 cp -r *.bam metabat
 cd metabat/
 
-#add depth
+##add depth #####################################
+                  DEPTH
+#################################################
+
 export PATH=/programs/metabat:$PATH
 
+#In metabat is where the 
 for i in *.bam; do jgi_summarize_bam_contig_depths --outputDepth ${i/%.bam/_depth.txt} $i;
 done
 
@@ -657,4 +666,8 @@ wget -nc ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR112/064/ERR11200564/ERR11200564_2
 wget -nc ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR112/064/ERR11200564/ERR11200564_1.fastq.gz
 
 ```
+
+
+Path: 
+/local/workdir/sna49/Hendry_Rotation_SA/Acinetobacter/Data/metaspades_floral/metagenomic/original_reads/pipeline/01_trimmomatic_paired/sam
 
