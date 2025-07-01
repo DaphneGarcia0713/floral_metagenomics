@@ -1,0 +1,489 @@
+---
+title: "metagenomic_workflow"
+author: "Daphne Garcia"
+date: "2025-06-23"
+output: html_document
+editor_options: 
+  markdown: 
+    wrap: 72
+---
+
+
+## Goals
+This is a second version of the original metagenomic_workflow.Rmd, with new updates:
+
+- bowtie host removal includes Malus chloroplast, since that is a large part of dandelion bins
+-metaspades AND megaHIT
+- metablast2 with new parameters
+
+
+## Steps
+
+Previously done in metagenomic_workflow.Rmd:
+
+1.  FastQC quality analysis
+2.  Trimmomatic adapter trimming
+3.  Bowtie2 host-read filtering 
+
+(Found in local.workdir/Daphne/Floral_metagenomics/data)
+
++ Malus chloroplast 
+3.5 Bowtie2 read filtering with mito
+4.  MetaSpades assembly
+5.  megaHIT assembly
+5.  metaQuast quality assessment of both
+6.  megabat2
+6.1 megabat2 + parameters
+7.1 checkM
+6.2 megabat2 + parameter
+7.2 checkM
+6.3 megabat2 + parameter
+7.3 checkM
+  
+# TASKS # 
+bowtie build, 
+bowtie align
+
+- while bowtie is running: 
+      go do metabat alterations on metagenomic_workflow.Rmd
+- When bowtie is finished
+      start metaspades
+      run kraken on bowtie-filtered reads
+
+ 
+ FOR REFERENCE: 
+| Number | reference genome     |
+|--------|----------------------|
+| 1      | Cichorium intybus    |
+| 2      | Malus domestica      |
+| 3      | Lotus japonicus      |
+| 4      | Ranunculus sardous   |
+| 5      | Trifolium repens     |
+| 6      | Matricaria discoidea |
+| 7      | Alliaria petiolata   |
+| 8      | Solidago caesia      |
+| 9      | Lonicera japonica    |
+| 10     | Linaria vulgaris     |
+ 
+### 3. Bowtie2
+
+We're gonna run the data/02_trimmed_paired_filtered reads and filter against Malus (apple), Taraxacum (dandelion), Lotus (trefoil), and Lonicera (honeysuckle) mitochondria, which contaminated many samples 
+
+#### 3.1 Download/build reference indices
+
+First, I need to concatenate all mitochondrial genomes since they're small, and build an index out of the concatenated fasta. 
+
+Note: when I started, I ftp-downloaded all 4 mito genomes into /03_Flower_host_genomes/Mitochondria_indices
+
+```{bash bowtie2_build_mito_reference_index, eval=FALSE}
+
+#enter right directory and load bowtie2
+cd /local/workdir/Daphne/Floral_metagenomics/data/03_Flower_host_genomes/Mitochondria_indices
+export PATH=/programs/bowtie2-2.5.1-linux-x86_64:$PATH
+
+#combine all 4 mitochondrial genomes
+cat ./*.fasta > ./mito_genomes.fasta
+
+#Index for Cichorium intybus (dandelion, chickory, hawkweed)
+bowtie2-build ./mito_genomes.fasta mito_index
+
+```
+
+#### 3.2 Bowtie host filtering
+
+Here we are in the data/ folder, looping through 
+`data/02_trim_unzipped_and_host-grouped` R1 and R2 reads, and aligning them to 
+the mitochondria reference genome index: 
+`data/03_Flower_host_genomes/Mitochondria_indices`
+
+```{bash bowtie2_loop, eval = FALSE}
+
+#enter right directory and load bowtie2
+cd /local/workdir/Daphne/Floral_metagenomics/data/02_trim_unzipped_and_host-grouped
+export PATH=/programs/bowtie2-2.5.1-linux-x86_64:$PATH
+ 
+for sample in ./* ; do
+  cd $sample
+  for R1 in ./*_R1.fastq; do
+    base="$(basename "${R1%%_R1.fastq}" | cut -d'_' -f1-4)"
+    output_dir="../../../data_updated/03_Bowtie2_host_filter/${sample}/${base}"
+    mkdir $output_dir
+    bowtie2 --sensitive-local -p 32 --seed 4 -x ../../03_Flower_host_genomes/Mitochondria_indices/mito_index -1 $R1 -2 ${R1/R1.fastq/R2.fastq} -S "$output_dir/SAMPLE_mapped_and_unmapped.sam";
+  done     
+  cd - > /dev/null
+done   
+
+#Faster way with tmux: in terminal, do "sample=1_Chichorium_samples", etc, and run only the nested for loop of the function
+    
+# --sensitive-local (not very-sensitive) because our ref host genomes are usually different genuses of the actual host
+# -p is the number of parallel threads 
+#--seed 4 is a random number to make it so that work is reproducible 
+# -x The basename of the index for the reference genome variable $index
+# -1 and -2 are the paired inputs R1 and R2
+# -S Summary of index settings and input names/lengths    
+ 
+```
+
+Outputs are `paired_1370.../SAMPLE_mapped_and_unmapped.sam` file within
+`data_updated/03_Bowtie2_host_filter/#_host-genome/`
+
+The most percent alignments were 0.05-1% alignment, though some rose up to 10% alignments from the chichorium group
+
+
+#### 3.3 SamTools and bedtools modifications
+
+bowtie unassigned files must be re-formatted with samtools to .sam and .bam for assembly with metaspades
+```{bash sam_bed_after_bowtie2, eval = FALSE}
+
+#enter right directory
+cd /local/workdir/Daphne/Floral_metagenomics/data_updated/03_Bowtie2_host_filter
+
+for group in ./* ; do
+  cd $group
+  for sample in ./*/; do
+    cd $sample
+    #Convert file .sam to .bam
+    touch SAMPLE_mapped_and_unmapped.bam
+    samtools view -bS SAMPLE_mapped_and_unmapped.sam > SAMPLE_mapped_and_unmapped.bam
+    #filter required unmapped reads get unmapped pairs (both ends unmapped)
+    samtools view -b -f 12 -F 256 SAMPLE_mapped_and_unmapped.bam > SAMPLE_bothReadsUnmapped.bam 
+    # split paired-end reads into separated fastq files .._r1 .._r2
+    samtools sort -n -m 5G -@ 2 SAMPLE_bothReadsUnmapped.bam -o SAMPLE_bothReadsUnmapped_sorted.bam
+    # sort bam file by read name (-n) for bedtools
+    samtools fastq -@ 8 SAMPLE_bothReadsUnmapped_sorted.bam -1 SAMPLE_host_removed_R1.fastq.gz -2 SAMPLE_host_removed_R2.fastq.gz -0 /dev/null -s /dev/null -n
+    #Convert bam to fastq
+    bedtools bamtofastq -i SAMPLE_bothReadsUnmapped_sorted.bam -fq SAMPLE_host_removed_R1.fastq -fq2 SAMPLE_host_removed_R2.fastq
+    cd - > /dev/null # return to previous dir
+  done
+  cd - > /dev/null
+done
+
+#I used this to add "_host" suffix to all folders in 03_Bowtie2_host_filter/host"
+for file in 10_Linaria_samples/*; do
+  mv $file "${file}_Linaria"
+done
+
+#This took very long, ~10 minutes for each group, ~30 minutes for Chichorium
+```
+
+This outputs 6 new files into
+`Floral_metagenomics/data/03_Bowtie2_host_filter/`
+`(# host name)/paired...(sample name)/` - both reads mapped and unmapped
+(sam -\> bam -\> sorted) - host removed R1, R2 (fastq.gz -\> .fastq)
+
+the mito-host-removed R1 and R2 files will be subsequently used in the
+metaspades assembly
+
+
+
+
+
+
+
+### 4. MetaSpAdes assembly
+
+We will assemble the filtered reads into contigs using metaspades
+I read through the manual https://ablab.github.io/spades/running.html
+and it seems like there's no parameters of use to us
+
+```{bash Spades_loop, eval=FALSE}
+
+export PATH=/programs/SPAdes-4.0.0/bin:$PATH
+cd /local/workdir/Daphne/Floral_metagenomics/data_updated/
+
+declare -a array1=(
+[0]=1_Chichorium_samples
+[1]=8_Solidago_samples
+)
+declare -a array2=(
+[0]=2_Malus_samples
+[1]=4_Ranunculus_samples
+[2]=7_Alliaria_samples
+[3]=10_Linaria_samples
+)
+declare -a array3=(
+[0]=3_Lotus_samples
+[1]=5_Trifolium_samples
+[2]=6_Matricaria_samples
+[3]=9_Lonicera_samples
+)
+
+for host_gen in ${array3[@]}; do
+  echo $host_gen
+  for sample in 03_Bowtie2_host_filter/"$host_gen"/*/; do
+    cd $sample
+    pwd
+    base=$(basename "$sample")
+    mkdir "../../../04_metaspades/"$host_gen"/"$base
+    spades.py -1 SAMPLE_host_removed_R1.fastq -2 SAMPLE_host_removed_R2.fastq --meta -t 32 -m 200 -o "../../../04_metaspades/"$host_gen"/"$base
+    cd - > /dev/null  # return to previous dir
+    pwd 
+  done 
+done
+
+# Note: you have to create the 04_Metaspades subdirectories before running
+  # -1 = file with forward reads
+  # -2 = file with reverse reads
+  # -t = threads sets the number of processors to use we are using 16 bc thats the default
+  # -m = memory limit in Gb. SPAdes terminates this if it reaches 200Gb but the default is 250 Gb
+  # -o = output directory
+```
+
+Outputs according to spades manual https://currentprotocols.onlinelibrary.wiley.com/doi/full/10.1002/cpbi.102:
+1. contigs.fasta — resulting contig sequences in FASTA format;
+2. scaffolds.fasta — resulting scaffold sequences in FASTA format;
+3. assembly_graph.gfa — assembly graph and scaffolds paths in GFA 1.0 format;
+4. assembly_graph.fastg — assembly graph in FASTG format;
+5. contigs.paths — paths in the assembly graph corresponding to contigs.fasta;
+6. scaffolds.paths — paths in the assembly graph corresponding to scaffolds.fasta;
+7. spades.log — file with all log messages.
+
+
+
+### 5. MetaQuast check
+
+Provides stats on sample quality
+
+TO RUN: modify the variable host_name for which of the 10 flower hosts you will 
+use
+```{bash MetaQuast, eval = FALSE}
+
+#### 5.1 Metaquast without Acinetobacter references
+I've decided to Run MetaQUAST again, but without using any references. I'll Use a database, like SILVA instead.
+
+To run this faster, I am splitting the 10 groups into 3 larger arrays, and tmux automating this process in 3 different groups
+
+```{bash metaQuast_no_reference, eval = FALSE}
+
+declare -a array1=(
+[0]=1_Chichorium_samples
+[1]=8_Solidago_samples
+)
+declare -a array2=(
+[0]=2_Malus_samples
+[1]=4_Ranunculus_samples
+[2]=7_Alliaria_samples
+)
+declare -a array3=(
+[0]=3_Lotus_samples
+[1]=5_Trifolium_samples
+)
+
+declare -a array4=(
+[0]=6_Matricaria_samples
+[1]=9_Lonicera_samples
+[2]=10_Linaria_samples
+)
+
+cd /local/workdir/Daphne/Floral_metagenomics/data_updated/
+export PYTHONPATH=/programs/quast-5.2.0/lib64/python3.9/site-packages:/programs/quast-5.2.0/lib/python3.9/site-packages
+export PATH=/programs/quast-5.2.0/bin:$PATH
+
+for host_name in ${array5[@]}; do
+  echo $host_name
+  for sample in 04_metaspades"/$host_name/"*; do
+    cd $sample
+    pwd
+    name="$(basename "$sample" | cut -d'_' -f1-4)" 
+    echo $name
+    metaquast.py -o ../../../05_metaQUAST/"$host_name/""$name"_metaQuast contigs.fasta
+    cd - > /dev/null  # return to previous dir
+    pwd 
+  done 
+done
+
+```
+trifolium took longer than others, what kinds of samples were in this?
+The output is 
+`Floral_metagenomics/data/05_metaQUAST_NO_reference/"host_group"/"sample"/*`
+These outputs only show number of contigs (`report.html` and legth stats
+`basic_stats/`), and contig lengths 
+
+
+
+### 6. MetaBat2 and preparation
+
+First, rename and group all of the fasta.contigs from the metaspades step into 
+one folder, `06_sample_contigs`. This is so that there's one directory 
+`06_sample_contigs` with all assembled contigs that contains the host 
+(dandelion, apple, etc) in the file name, instead of branched into 
+subdirectories by host name. 
+
+
+#### 6.1 renaming metaspades fasta.contigs into a bwa mem index
+```{bash reorganize_sample_contigs}
+
+cd /local/workdir/Daphne/Floral_metagenomics/data_updated/
+
+declare -a host_array=(
+[0]=1_Chichorium_samples    
+[1]=2_Malus_samples
+[2]=3_Lotus_samples
+[3]=4_Ranunculus_samples
+[4]=5_Trifolium_samples
+[5]=6_Matricaria_samples
+[6]=7_Alliaria_samples
+[7]=8_Solidago_samples
+[8]=9_Lonicera_samples
+[9]=10_Linaria_samples
+)
+
+# rename and group all fasta.contigs from 04_metaspades into 06_sample_contigs
+# AND make the bwa index
+for host_name in ${host_array[@]}; do
+  echo $host_name
+  for sample in 04_metaspades"/$host_name/"*; do
+    cd $sample
+    name="$(basename "$sample" | cut -d'_' -f1-4)" 
+    cp ./contigs.fasta ../../../06_sample_contigs/"$name"_"$host_name".fasta
+    
+    # Do the bwa index
+    bwa index ../../../06_sample_contigs/"$name"_"$host_name".fasta
+    cd - > /dev/null  # return to previous dir
+  done 
+done
+```
+outputs are in `Floral_metagenomics/data_updated/06_sample_contigs`
+This takes around 1.5 hours
+
+
+After the  metaspade fasta files have been renamed, we need to prepare the depth file, but it needs to be first reformatted with sam and bam. 
+.sam -> .bam -> depth.txt
+
+#### 6.2 sam bam, depth files
+```{bash sam, eval = FALSE}
+
+cd /local/workdir/Daphne/Floral_metagenomics/data_updated
+
+# Make the .sam files in 06_depth_files using bwa mem
+for host in ../data/02_trim_unzipped_and_host-grouped/*; do 
+  for R1 in $host/*_R1.fastq; do
+  
+    R2="${R1%%_R1.fastq}_R2.fastq"
+
+    #sample name is the metaspades contigs.fasta file 
+    #(this variable doesn't include the host-name suffix in 06_sample_contigs/ files)
+    sample_name="$(basename "${R1%%_R1.fastq}" | cut -d'_' -f1-4)"
+    output_name="$(basename "$(ls 06_sample_contigs/${sample_name}*.fasta | head -n 1)" | sed 's/\.fasta.*//' )"
+    
+    #run bwa mem to get the .sam files. inputs are the indices from 06_sample_contigs, and R1/R2 from 02_trimmed_unzipped_host-grouped. output is 06_depth_files
+    bwa mem -t 16 "./06_sample_contigs/${output_name}.fasta" $R1 $R2 > 06_depth_files/${output_name}.sam
+  done
+done
+
+```
+output format is  `paired_13702_32540_179738_1_Chichorium.sam` in 
+`data_updated/06_depth_files/`
+
+This took 2 hours
+
+```{bash bam, eval = FALSE}
+
+cd /local/workdir/Daphne/Floral_metagenomics/data_updated/06_depth_files
+
+for file in *.sam; do 
+  samtools sort $file -o ${file/%.sam/.bam};
+done
+
+# sort - samtools sort: sorts the SAM file by coordinate (aka genomic position)
+# -o {..}: output filename is the same, but with .bam replacing .sam
+
+```
+output format is  `paired_13702_32540_179738_1_Chichorium.bam` in 
+`data/06_depth_files/`
+This took 1 hour?
+
+
+This creates the depth files from the .bam files
+```{bash depth, eval = FALSE}
+
+cd /local/workdir/Daphne/Floral_metagenomics/data_updated/06_depth_files
+
+
+# singularity exec: we're running the jgi_summarize inside the container, according to Cornell bioHPC
+
+for file in *.bam; do 
+  singularity exec --bind $PWD --pwd $PWD /programs/metabat-2.16/metabat.sif \
+    jgi_summarize_bam_contig_depths --outputDepth ${file/%.bam/_depth.txt} $file;
+done
+# jgi: making a depth file (metabat2 package)
+# outputDepth: output filename is same as .sam and .bam, but .bam is replaced with _depth.txt
+
+```
+
+This last command is the first step of metabat2 binning, creating the depth file. 
+Metabat manual can be found here: https://gensoft.pasteur.fr/docs/MetaBAT/2.15/
+
+This took 15 min?
+
+
+#### 6.3 MetaBat2
+
+Here in metabat2, I am running it on the renamed metaspades assembled contigs from 06_sample_contigs, using depth files from 06_depth_files and outputting to 06_MetaBat2
+```{bash metabat2, eval = FALSE}
+
+cd /local/workdir/Daphne/Floral_metagenomics/data_updated
+
+for sample in 06_sample_contigs/*.fasta; do 
+  depth=$(basename "${sample%%.fasta}")
+  echo $depth
+  singularity run --bind $PWD --pwd $PWD /programs/metabat-2.16/metabat.sif metabat2 -i $sample -a 06_depth_files/${depth}_depth.txt -o 06_MetaBat2/Metabat2_default/${depth}_bin --seed 42
+done
+
+# -i = input contigs from metaspades (necessary)
+# -a = depth file (necessary)
+# -o = output folder, called 06_MetaBat2 (necessary)
+
+
+#### WITH BETTER PARAMETERS ####
+for sample in 06_sample_contigs/*.fasta; do 
+  depth=$(basename "${sample%%.fasta}")
+  echo $depth
+  singularity run --bind $PWD --pwd $PWD /programs/metabat-2.16/metabat.sif metabat2 -i $sample -a 06_depth_files/${depth}_depth.txt -o 06_MetaBat2/Metabat2_parameters/${depth}_bin --seed 42 -m 1500 -s 100000 --maxEdge 250
+done
+
+#Both of these take 2-4 minutes
+
+```
+
+The reasoning for choosing these parameters is on benchling
+
+#### 7. CheckM to analyze quality of Metabat2 binning
+
+```{bash checkM2 test, eval = FALSE}
+
+docker1 pull staphb/checkm2
+
+docker1 run --rm \
+  -v /local/workdir/Daphne/Floral_metagenomics/databases/checkm2db:/checkm2db \
+  -v /local/workdir/Daphne/Floral_metagenomics/data_updated/06_MetaBat2/Metabat2_parameters:/input \
+  -v /local/workdir/Daphne/Floral_metagenomics/data_updated/07_CheckM2/CheckM2_parameters:/output \
+  staphb/checkm2 checkm2 predict --input /input --output_directory /output -x .fa \
+  --database_path /checkm2db/CheckM2_database/uniref100.KO.1.dmnd --threads 30
+# this took 2 minutes
+
+```
+output is `data_updated/07_CheckM2/checkM2{default or parameter}/`. Here, an output file called `quality_results.tsv` contains the completeness and contamination scores that are of interest
+
+### 7 bins taxonomy with GTDB-k
+
+```{bash}
+# set wd
+cd /local/workdir/Daphne/Floral_metagenomics/data
+
+export OMP_NUM_THREADS=8
+export PYTHONPATH=/programs/gtdbtk-2.4.0/lib64/python3.9/site-packages:/programs/gtdbtk-2.4.0/lib/python3.9/site-packages
+export PATH=/programs/gtdbtk-2.4.0/bin:/programs/hmmer/binaries:/programs/prodigal-2.6.3:/programs/FastTree-2.1.11:/programs/fastANI-1.32:/programs/pplacer-Linux-v1.1.alpha19:/programs/mash-Linux64-v2.3:/programs/skani-0.2.1:$PATH
+
+#This is from ecogenomics.github.io, since the cornell biohpc one is outdated
+wget https://data.ace.uq.edu.au/public/gtdb/data/releases/latest/auxillary_files/gtdbtk_package/full_package/gtdbtk_data.tar.gz 
+wget https://data.gtdb.ecogenomic.org/releases/latest/auxillary_files/gtdbtk_package/full_package/gtdbtk_data.tar.gz ( mirror for Australia)
+tar xvzf gtdbtk_data.tar.gz 
+
+gtdbtk classify_wf --genome_dir 06_MetaBat2/ --out_dir 07_gtdbtk_out --cpus 8
+
+```
+
+
+
+
