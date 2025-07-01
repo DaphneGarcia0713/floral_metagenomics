@@ -556,7 +556,7 @@ cp -r *.sam bam/
 cd bam/
 #Convert to .bam
 for i in *.sam; do samtools sort $i -o ${i/%.sam/.bam};done
-# D note: this makes .bam files
+# D note: this makes .bam
 
 #copy bam files to bin
 mkdir -p metabat
