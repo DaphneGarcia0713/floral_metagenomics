@@ -168,7 +168,7 @@ cd /local/workdir/Daphne/Floral_metagenomics/data/01_raw_reads/metagenomic
 trimmomatic_jar="/programs/trimmomatic/trimmomatic-0.39.jar" 
 
 #important to note what primers do we have.. according to multiqc we have the nextera primers 
-    for f2 in *_R2.fastq.gz; do
+  for f2 in *_R2.fastq.gz; do
     echo "THIS IS $f2" 
     printf "\n"
     f1="${f2%%_R2.fastq.gz}_R1.fastq.gz"
@@ -180,7 +180,7 @@ trimmomatic_jar="/programs/trimmomatic/trimmomatic-0.39.jar"
         "$output_paired_1" "$output_unpaired_1" "$output_paired_2" "$output_unpaired_2" \
         ILLUMINACLIP:/programs/trimmomatic/adapters/NexteraPE-PE.fa:2:30:10 \
         LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:36
-done
+ done
 
 #This took 5 hours
 #The output will be in /01_raw_reads, but the following lines will move it to 02_trimmomatic
@@ -216,7 +216,7 @@ do
 done
 
 # This took 23 minutes
-
+ 
 #go to directory with the paired trimmed fastqc results
 cd ../02_fastQC_results_post_trim
 
@@ -254,16 +254,16 @@ cd 02_trim_unzipped_and_host-grouped/
 gunzip paired*
 
 ## From here, I manually moved each file into a corresponding subdirectory matching it to the right reference host chosen for it
-
+ 
 ## This is based on '22FN0XX' in the filenames matched with metadata  Floral_metagenomics/data/metadata_sequencing.xlsx
-
+ 
 ```
 
 Output is all of the trimmed paired unzipped fastq's in corresponding
 subdirectories according to their host flower in
 `Floral_metagenomics/data/02_trim_unzipped_and_host-grouped`
-
-
+ 
+ 
 ### 3. Bowtie2
 
 We're gonna run the trimmomatic paired and unpaired trimmed reads
@@ -323,6 +323,7 @@ bowtie2-build GCA_049307985.1_ddAllPeti2_p1.1_genomic.fna.gz Alliaria_indices/Al
 
 #Refseq of Solidago caesia (golden rod + aster)
 bowtie2-build GCA_028566075.1_ASM2856607v1_genomic.fna.gz Solidago_indices/Solidago_index
+
 #Refseq of Lonicera japonica (honeysuckle)
 bowtie2-build GCA_021464415.1_ASM2146441v1_genomic.fna.gz Lonicera_indices/Lonicera_index
 
@@ -457,6 +458,8 @@ for sample in 03_Bowtie2_host_filter/"$host_gen"/*/; do
   pwd 
 done 
 
+#This step, when split into 3, usually takes 2 days to run, do it in tmux
+
 #in this command  
   # -1 = file with forward reads
   # -2 = file with reverse reads
@@ -561,7 +564,7 @@ These outputs only show number of contigs (`report.html` and legth stats
 
 
 
-### 6. MetaBat2
+### 6. MetaBat2 and preparation
 
 First, rename and group all of the fasta.contigs from the metaspades step into 
 one folder, `06_sample_contigs`. This is so that there's one directory 
@@ -570,7 +573,7 @@ one folder, `06_sample_contigs`. This is so that there's one directory
 subdirectories by host name. 
 
 
-#### 6.1 metabat prep
+#### 6.1 renaming metaspades fasta.contigs into a bwa mem index
 ```{bash reorganize_sample_contigs}
 
 cd /local/workdir/Daphne/Floral_metagenomics/data/
@@ -589,12 +592,16 @@ declare -a host_array=(
 )
 
 # rename and group all fasta.contigs from 04_metaspades into 06_sample_contigs
+# AND make the bwa index
 for host_name in ${host_array[@]}; do
   echo $host_name
   for sample in 04_metaspades"/$host_name/"*; do
     cd $sample
     name="$(basename "$sample" | cut -d'_' -f1-4)" 
     cp ./contigs.fasta ../../../06_sample_contigs/"$name"_"$host_name".fasta
+    
+    # Do the bwa index
+    bwa index ../../../06_sample_contigs/"$name"_"$host_name".fasta
     cd - > /dev/null  # return to previous dir
   done 
 done
@@ -604,35 +611,84 @@ outputs are in `Floral_metagenomics/data/06_sample_contigs`
 
 
 After the  metaspade fasta files have been renamed, we need to prepare the depth file, but it needs to be first reformatted with sam and bam.
-
 .sam -> .bam -> depth.txt
 
+
+
 #### 6.2 sam bam, depth files
-```{bash sam_bam_depth, eval = FALSE}
+```{bash sam, eval = FALSE}
+
+cd /local/workdir/Daphne/Floral_metagenomics/data
+
+# Make the .sam files in 06_depth_files using bwa mem
+for host in 02_trim_unzipped_and_host-grouped/*; do 
+  for R1 in $host/*_R1.fastq; do
+  
+    R2="${R1%%_R1.fastq}_R2.fastq"
+
+    #sample name is the metaspades contigs.fasta file 
+    #(this variable doesn't include the host-name suffix in 06_sample_contigs/ files)
+    sample_name="$(basename "${R1%%_R1.fastq}" | cut -d'_' -f1-4)"
+    output_name="$(basename "$(ls 06_sample_contigs/${sample_name}*.fasta | head -n 1)" | sed 's/\.fasta.*//' )"
+    
+    #run bwa mem to get the .sam files. inputs are the indices from 06_sample_contigs, and R1/R2 from 02_trimmed_unzipped_host-grouped. output is 06_depth_files
+    bwa mem -t 16 "./06_sample_contigs/${output_name}.fasta" $R1 $R2 > 06_depth_files/${output_name}.sam
+  done
+done
+
+```
+output format is  `paired_13702_32540_179738_1_Chichorium.sam` in 
+`data/06_depth_files/`
+
+
+```{bash bam, eval = FALSE}
+
+cd /local/workdir/Daphne/Floral_metagenomics/data/06_depth_files
+
+for file in *.sam; do 
+  samtools sort $file -o ${file/%.sam/.bam};
+done
+
+# sort - samtools sort: sorts the SAM file by coordinate (aka genomic position)
+# -o {..}: output filename is the same, but with .bam replacing .sam
+
+```
+output format is  `paired_13702_32540_179738_1_Chichorium.bam` in 
+`data/06_depth_files/`
+
+
+```{bash depth, eval = FALSE}
+
+cd /local/workdir/Daphne/Floral_metagenomics/data/06_depth_files
+
+
+# singularity exec: we're running the jgi_summarize inside the container, according to Cornell bioHPC
+
+for file in *.bam; do 
+  singularity exec --bind $PWD --pwd $PWD /programs/metabat-2.16/metabat.sif \
+    jgi_summarize_bam_contig_depths --outputDepth ${file/%.bam/_depth.txt} $file;
+done
+# jgi: making a depth file (metabat2 package)
+# outputDepth: output filename is same as .sam and .bam, but .bam is replaced with _depth.txt
 
 ```
 
 
+This last command is the first step of metabat2 binning, creating the depth file. 
+Metabat manual can be found here: https://gensoft.pasteur.fr/docs/MetaBAT/2.15/
 
 
+#### 6.3 MetaBat2
 
-
-
-
-
-
-
-
-
-
-
-
-Then, we write metabat
-NOTE: I may need a depth file, but I don't include it right now
+Here in metabat2, I am running it on the renamed metaspades assembled contigs from 06_sample_contigs, using depth files from 06_depth_files and outputting to 06_MetaBat2
 ```{bash metabat2, eval = FALSE}
 
-for sample in 06_sample_contigs/*; do 
-  singularity run --bind $PWD --pwd $PWD /programs/metabat-2.16/metabat.sif runMetaBat.sh -i $sample -a depth.txt -o 06_MetaBat2/
+cd /local/workdir/Daphne/Floral_metagenomics/data/
+
+for sample in 06_sample_contigs/*.fasta; do 
+  depth=$(basename "${sample%%.fasta}")
+  echo $depth
+  singularity run --bind $PWD --pwd $PWD /programs/metabat-2.16/metabat.sif metabat2 -i $sample -a 06_depth_files/${depth}_depth.txt -o 06_MetaBat2/06_m1500_s100k_maxE250_MetaBat2/${depth}_bin --seed 42 -m 1500 -s 100000 --maxEdge 250
 done
 
 # -i = input contigs from metaspades (necessary)
@@ -641,9 +697,101 @@ done
 
 ```
 
+#### 7. CheckM to analyze quality of Metabat2 binning
+
+```{bash checkM test, eval = FALSE}
+
+docker1 pull staphb/checkm2
+
+##make a db directory and download the database (RUN ONCE)
+#mkdir -p /workdir/Daphne/Floral_metagenomics/databases/checkm2db
+#docker1 run --rm -v /local/workdir/Daphne/Floral_metagenomics/databases/checkm2db:/checkm2db staphb/checkm2 checkm2 database --download --path /checkm2db
+
+# This is my modified docker run of
+docker1 run --rm \
+  -v /local/workdir/Daphne/Floral_metagenomics/databases/checkm2db:/checkm2db \
+  -v /local/workdir/Daphne/Floral_metagenomics/data/06_MetaBat2/06_m1500_s100k_maxE250_MetaBat2:/input \
+  -v /local/workdir/Daphne/Floral_metagenomics/data/07_CheckM/07_m1500_s100k_maxE250_checkM2_output:/output \
+  staphb/checkm2 checkm2 predict --input /input --output_directory /output -x .fa \
+  --database_path /checkm2db/CheckM2_database/uniref100.KO.1.dmnd --threads 30
+
+#test run to check if checkM2 works properly (from github)
+docker1 run --rm \
+  -v /local/workdir/Daphne/Floral_metagenomics/databases/checkm2db:/checkm2db staphb/checkm2 checkm2 testrun --database_path /checkm2db/CheckM2_database/uniref100.KO.1.dmnd --threads 30
+
+```
+
+output is `data/checkm_output`. According to chatgpt, there should be an output file called `qa_results.tsv`, but Sophia's directories didn't have it, so maybe hers stopped prematurely?
+
+checkm_output/
+├── bins/
+├── storage/
+├── lineage.ms
+├── checkm.log
+├── quality_report.tsv   ← ✅ this is the file you want
+
+
+### 7 bins taxonomy with GTDB-k
+
+```{bash}
+# set wd
+cd /local/workdir/Daphne/Floral_metagenomics/data
+
+export OMP_NUM_THREADS=8
+export PYTHONPATH=/programs/gtdbtk-2.4.0/lib64/python3.9/site-packages:/programs/gtdbtk-2.4.0/lib/python3.9/site-packages
+export PATH=/programs/gtdbtk-2.4.0/bin:/programs/hmmer/binaries:/programs/prodigal-2.6.3:/programs/FastTree-2.1.11:/programs/fastANI-1.32:/programs/pplacer-Linux-v1.1.alpha19:/programs/mash-Linux64-v2.3:/programs/skani-0.2.1:$PATH
+
+#This is from ecogenomics.github.io, since the cornell biohpc one is outdated
+wget https://data.ace.uq.edu.au/public/gtdb/data/releases/latest/auxillary_files/gtdbtk_package/full_package/gtdbtk_data.tar.gz 
+  # this was run originally 6/23
+tar xvzf gtdbtk_data.tar.gz -C /local/workdir
+  # This took 26 minutes
+  
+export GTDBTK_DATA_PATH=/workdir/release226
+
+gtdbtk classify_wf --genome_dir 06_MetaBat2/ --out_dir 07_gtdbtk_out --cpus 8 --skip_ani_screen --extension fa
+# classify_wf = input contigs from metaspades (necessary)
+# --genome_dir = bins file (06_MetaBat2/ contains bins)
+# --out_dir = outputs to 07_gtdbtk_out
+# --cpus 8 = kind of like threads? chatgpt added this
+# --skip_ani_screen = use the default database downloaded with wget above
+# --extension fa = takes my .fa files, since ftdbtk default is .fasta
+
+#This took 3 hours. Identified 42 genomes as bacterial, 120 markers. Processsed 136677 sequences
+
+```
+
+Output is in `/data/gtdbtk.bac120.summary.tsv`. 
+Acinetobacter was found in Trifolium 45 and Chichorium 48. Notable taxa were pseudomonas, pantoea, rosenbergiella
 
 
 
+### 8. taxonomy with kraken
+
+this will use filtered reads, maybe contigs to get taxonomy (better than metaphlan according to a biorxiv paper)
+
+I am using the Kraken2 installation guide to build the databases. https://github.com/DerrickWood/kraken2/wiki/Manual#custom-databases
+ Custom databases have 3 steps, as described in the bash chunk below:
+```{bash}
+export PATH=/programs/kraken2.1.3:$PATH
+# enable multithreading (parallelization)
+
+export OMP_NUM_THREADS=20  
+
+#step1: download-taxonomy
+kraken2-build --download-taxonomy --db /local/workdir/Daphne/Floral_metagenomics/databases
+
+#step2: download-library (eg. bacteria, fungi, etc, took like 5 hours for bac, 1 hour for fungi)
+kraken2-build --download-library fungi --db  /local/workdir/Daphne/Floral_metagenomics/databases
+
+#step3: build-build (took like 5 hours)
+kraken2-build --build --db /local/workdir/Daphne/Floral_metagenomics/databases
 
 
+
+cd /local/workdir/Daphne/Floral_metagenomics/data
+
+kraken2 --threads 20 --db ../databases --output kraken2_trial_output.txt --report kraken2_trial.report.txt --paired 02_trim_unzipped_and_host-grouped/10_Linaria_samples/paired_13702_32540_179793_H5MH5AFX5_metagenomic_mix_H12_FN176_ATCTCAGG_TCGCATAA_R1.fastq 02_trim_unzipped_and_host-grouped/10_Linaria_samples/paired_13702_32540_179793_H5MH5AFX5_metagenomic_mix_H12_FN176_ATCTCAGG_TCGCATAA_R2.fastq
+
+```
 
