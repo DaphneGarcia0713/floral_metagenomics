@@ -1,0 +1,399 @@
+---
+title: "data_5_SNP"
+author: "Daphne Garcia"
+date: "2026-01-16"
+output: html_document
+editor_options: 
+  markdown: 
+    wrap: 72
+  chunk_output_type: console
+---
+
+
+## Goals
+Here I will create SNP trees with metagenomic reads (or contigs), using filtered
+reads from data_2.
+
+## Steps
+1. copy steps 9 (kaiju) and 10 (snippy) from data_3 pipeline, update them to
+   better fit my data now.
+2. Alter step 9 kaiju to use a custom database with our protein genomes instead of
+   their ginormous databases
+3. run kaiju
+3. make snippy with contigs again, but use new rast references and include ESL0695
+
+
+## further steps:
+1. first, run with just metagenomic seq and kaiju db with just old reference Acineto
+1.1 run with kaiju db including pol and nect
+2. Then, add taxonomy to the new genomes? Or can I skip this step and go to snippy? 
+
+
+## Notes:
+- Create all large subdirectories by hand (9_kaiju, 10_snippy, 
+9.1-9.4, etc)
+
+
+
+
+### 9. Kaiju taxonomy Reads 
+
+In order to make a Snippy tree, I must first label the contigs with taxonomy. Kaiju is
+"Kaiju is a program for the taxonomic classification of high-throughput sequencing 
+reads, e.g., Illumina or Roche/454, from whole-genome sequencing of metagenomic DNA."
+
+  
+#### 9.0 create a custom kaiju database
+
+I will be downloading protein .faa files from RAST of: 
+A. pol FNA11, A. pol FNA3, A. pol SCC477, A. pol SCC474,
+A. nect EC031, A. nect EC034, A. nect BB226, A. nect BB362
+
+I also made fake names.dmp and nodes.dmp by copying A-pol and A-nect species
+info from node/name.dpm files in daphne/floral/databases/kaiju-nr-euk
+```{bash kaiju, eval = FALSE}
+  
+# I ran this from inside data_5/9/9.0  
+
+# I added prefixes to all references to match NCBI nodes (manually change file
+# names in the code)
+awk '/^>/ {print ">1219382"; next} {print}' A-nectaris-EC034_protein.faa > A-nectaris-EC034_protein.kaiju.faa
+  
+#Then I added them all to one doc:
+echo > all_ref_acineto_protein_genomes.faa  ## clear this file
+for file in ./*kaiju.faa; do 
+  cat $file >> all_ref_acineto_protein_genomes.faa
+done
+
+#now, make the kaiju database .fmi
+export PATH=/programs/kaiju-1.10.0/bin:$PATH
+kaiju-mkbwt -n 5 -a ACDEFGHIKLMNPQRSTVWY -o all_ref_acineto_protein_genomes all_ref_acineto_protein_genomes.faa
+kaiju-mkfmi all_ref_acineto_protein_genomes
+
+```
+
+the file `all_ref_acineto_protein_genomes.fmi` is now created in `data_5/9/9.0`
+
+
+#### 9.1 run kaiju to assign a taxon identifier to all contigs
+NOTE: if multiple tmux are running kaiju, it will crash. just run one
+```{bash tmux_kaiju, eval = FALSE}
+
+#Change the run name to today's date
+run_name="kaiju_euk_jan27"
+
+
+  export PATH=/programs/kaiju-1.10.0/bin:$PATH
+  cd /local/workdir/Daphne/Floral_metagenomics/data_5_SNP/9_Kaiju
+  
+  mkdir 9.1_raw_kaiju_output/${run_name}
+  for sample in ../../data_4-trees/04_metaspades/*; do
+  
+      output_name=$(basename "$sample")
+      db_path="../../databases/kaiju_nr_euk"
+      
+      kaiju -t "${db_path}/nodes.dmp" \
+      -f "${db_path}/kaiju_db_nr_euk.fmi" \
+      -i ${sample}/contigs.fasta \
+      -o 9.1_raw_kaiju_output/${run_name}/${output_name}_kaiju.txt \
+      -z 24
+      
+  done
+
+# -f "9.0_Acineto_ref_kaijudb/all_ref_acineto_protein_genomes.fmi"
+
+```
+Outputs are `_kaiju.txt` files in `"9.1_raw_kaiju_output/${run_name}/`
+
+
+  Now this script creates all_classified_kaiju_stats.out, containing number of classified reads, total reads, and the percent, for each sample
+```{bash}
+
+cd /local/workdir/Daphne/Floral_metagenomics/data_5_SNP/9_Kaiju
+#check percent of lines that are "classified vs unclassified"
+for file in 9.1_raw_kaiju_output/${run_name}/*.txt; do
+  output="9.1_raw_kaiju_output/${run_name}/all_classified_kaiju_euk_stats.out"
+  echo $(basename "$file") >> $output
+   #num files with C, total files, C's percent of total
+  awk '{total++} $1 == "C" {c++} END {print c, total, c/total}'  $file >> $output
+  echo "" >> $output   #add a blank line as a spacer between info 
+done
+```
+
+Output is in  `"9.1_raw_kaiju_output/${run_name}/all_classified_kaiju_euk_stats.out`
+
+Compared to the "all_classified_kaiju_euk_stats.out" file in data_3, this one 
+has a lower percent of reads, but that may be because in data_3, it checks 
+against all taxons on NCBI, and here, it's only checking my acineto database.
+So this may be a good sign: more contigs overall are mapping to acineto? We 
+won't know until 9.2 assigning taxonomy
+
+
+
+#### 9.2 assign species-name taxonomy to kaiju contigs
+Once kaiju files are made, isolate the acinetobacter files
+Run kaiju-addTaxonNames -r genus to add genus taxonomy to all reads  
+```{bash 9.2, eval=FALSE}
+
+cd /local/workdir/Daphne/Floral_metagenomics/data_5_SNP/9_Kaiju
+
+#NOTE: use same kaiju_path as substep 9.1
+kaiju_path="/local/workdir/Daphne/Floral_metagenomics/databases/kaiju_nr_euk"
+
+mkdir 9.2_kaiju_taxonomy/${run_name}
+for file in 9.1_raw_kaiju_output/${run_name}/*.txt; do
+  name=$(basename "$file" | sed 's/_kaiju.txt$/_species.out/')
+  kaiju-addTaxonNames -t ${kaiju_path}/nodes.dmp -n      ${kaiju_path}/names.dmp -i $file -r species -o 9.2_kaiju_taxonomy/${run_name}/$name
+done
+  # took 3 min
+
+```
+Outputs for these scripts are saved in `/9_kaiju/9.2_kaiju_taxonomy/${run_name}`
+
+For an output file with all sample's stats, run this script:
+```{bash}
+  
+#print to acineto_stats.out number of "Acinetobacter" per sample
+outdir="9.2_kaiju_taxonomy/${run_name}"
+for species_files in ${outdir}/*_species.out; do
+  echo $(basename "$species_files") >> ${outdir}/acineto_stats.out
+  awk '/pollinis/ {count++} END {print "pollinis = "count}' \
+    $species_files >> ${outdir}/acineto_stats.out
+  awk '/nectaris/ {count++} END {print "nectaris = "count}' \
+    $species_files >> ${outdir}/acineto_stats.out
+  echo "" >> ${outdir}/acineto_stats.out
+  
+done
+```
+Output is `/9_kaiju/9.2_kaiju_taxonomy/${run_name}/acineto_stats.out`
+
+Most samples have both pollinis and nectaris contigs. Some have more pollinis,
+others have more nectaris, I don't see a general pattern. The data in this file
+matches that of `Floral_metagenomics/data_3/9_kaiju/2_taxonomy/acineto_stats_out`
+
+
+
+#### 9.3 obtain read names for all acinetobacter reads
+
+From 9.2 taxonomy, which has info of all contigs in a sample, I just want to extract the node
+name (second column) of lines that were identified as Acinetobacter (third column)
+```{bash 9.3, eval=FALSE}
+
+# extract reads with 'genus of interest'
+#separating by tabs /t, if 4th column = "acineto", print 2nd column (read name)
+cd /local/workdir/Daphne/Floral_metagenomics/data_5_SNP/9_Kaiju
+
+mkdir 9.3_contig_list/${run_name}
+for file in 9.2_kaiju_taxonomy/${run_name}/*_species.out; do
+  output=$(basename $file | cut -d'_' -f1-3)
+awk -F"\t" '$3 == "2605270" {print $2}' $file >> 9.3_contig_list/${run_name}/${output}_pollinis.txt
+awk -F"\t" '$3 == "1219382" {print $2}' $file >> 9.3_contig_list/${run_name}/${output}_nectaris.txt
+
+done
+
+  #took 3 min 
+```
+outputs are .pollinis.txt and .nectaris.txt files in `9_kaiju/9.3_contig_list${run_name}`
+
+These files look ok, there's so many of them, where I'm not sure I can make
+a tree with thousands of files. Is there going to be a way to filter these
+in future steps?
+
+
+
+#### 9.4 Extract reads from metaspades files using our kaiju name files
+tip: change host_name variable at the top of this chunk then just press "run"
+```{bash 9.4, eval=FALSE}
+
+export PATH=/programs/seqtk:$PATH
+#cd /local/workdir/Daphne/Floral_metagenomics/data_3/09_kaiju
+cd /local/workdir/Daphne/Floral_metagenomics/data_5_SNP/9_Kaiju
+
+#Change the run name to today's date
+run_name="kaiju_euk_jan27"
+
+# Choose either pollinis or nectaris ##############################
+species="pollinis"
+
+
+# make output directory
+outdir="9.4_contigs/${run_name}"
+mkdir $outdir
+
+for name_file in 9.3_contig_list/${run_name}/*_${species}.txt; do
+  prefix=$(basename "$name_file")
+  prefix=${prefix%%_species.out_${species}.txt}
+  
+  # Loop through 04_metaspades/ contig subdirectories
+  for dir in ../../data_4-trees/04_metaspades/*; do
+      suffix=$(basename $dir) 
+      
+      # if acineto_name_list and metaspades reads name match, do seqtk
+      if [[ "$prefix" == "$suffix" ]]; then
+      
+        #create temp name files with added /1 and /2
+        sed 's/$/\/1/' $name_file > tmp_R1.txt
+        sed 's/$/\/2/' $name_file > tmp_R2.txt
+        
+        #use seqtk subseq to extract reads witha name file
+        #seqtk subseq in.fq name.lst > out.fq
+        seqtk subseq $dir/contigs.fasta $name_file > ${outdir}/${prefix}_${species}.fastq
+        
+      fi
+  done
+done
+
+
+  #took 20 seconds
+```
+outputs are *_${species}.fastq in `data_5/9_kaiju/9.4_contigs`
+
+For jan 23: I manually deleted 22FN006 and FN040 because they had no contigs, 
+file size was 0B.
+
+For jan 27: I deleted 38, 39, 57, 58, 25 28, 29, 31, 006 21, etc, because file
+size was 0B
+
+
+
+
+
+### 10 Snippy again with Kaiju reads
+
+Using our 9.4 files that contain all contigs that were acinetobacter from 
+04_metaspades, we will form them into phylogenetic trees
+
+
+#### 10.1 create tab input files for snippy-multi
+snippy multi allows you to check multiple isolates against same reference, 
+using names file with tabs 
+```{bash snippy input_files, eval=FALSE}
+
+# input of all samples (minus reference genomes)
+cd /local/workdir/Daphne/Floral_metagenomics/data_5_SNP/10_snippy
+name="${run_name}_${species}"
+
+#clear the preexisting .tab file
+printf "" > 10.1_inputs_for_snippy/$name.tab #clear output
+
+#create subdirectories to house intermediate snippy files
+intermediate_dir="10.1_inputs_for_snippy/${name}_snippy_intermediate_files"
+mkdir $intermediate_dir
+
+
+for contig in ../9_Kaiju/9.4_contigs/${run_name}/*_${species}.fastq; do
+  ID="$(basename "${contig%%_${species}.fastq}")"
+  
+  #make a .tab file with 2 columns:two paths for the intermediate snippy files
+  #directory and the path to the contig names
+  printf "%s\t%s\n" "${intermediate_dir}/$ID" "$contig" >> 10.1_inputs_for_snippy/$name.tab
+done
+
+
+
+
+############## Reference genomes Portion
+
+# input of all reference genomes
+name_genome="ref_${species}"
+
+#clear the preexisting .tab file
+printf "" > 10.1_inputs_for_snippy/$name_genome.tab
+
+#create subdirs to house intermediate snippy files
+intermed_dir="10.1_inputs_for_snippy/${name_genome}_snippy_intermediate_files"
+mkdir $intermed_dir
+
+#make a .tab file with 2 columns:paths for the intermediate snippy files
+  #directory and the path to the ref genome .fna
+for genome in RAST_nectar_genomes/A-${species}*.fna; do
+  ID="$(basename "${genome%%.fna}")"
+  printf "%s\t%s\n" "${intermed_dir}/$ID" "$genome">> 10.1_inputs_for_snippy/$name_genome.tab
+done
+
+  # note: these input files have paths from /local/workdir/Daphne/Floral_metagenomics/data_5_SNP/10_snippy, so make sure future snippy steps also are based from this path
+
+```
+
+
+
+Now, we can use these fasta files with acinetobacter contigs to run snippy
+steps: 
+1. snippy
+2. snippy-core
+3. snippy-clean_full_aln
+4. snp-sites
+5. FastTree
+
+#### 10.2 Snippy-multi on samples and reference genomes
+
+This does snippy core, it creates subdirectories in 10.1 intermediate files that have the snps.vcf, etc. 
+
+```{bash snippy, eval=FALSE}
+
+
+
+export PATH=/programs/snippy-4.6.0/bin:/programs/snippy-4.6.0/binaries/linux:$PATH
+export PATH=/programs/seqtk:$PATH
+export PATH=/programs/samclip:$PATH
+export PATH=/programs/vt:$PATH
+
+cd /local/workdir/Daphne/Floral_metagenomics/data_5_SNP/10_snippy
+
+## choose reference sample (either FNA11 or BB226)
+ref="A-pollinis-FNA11"
+
+#snippy multi for all samples (minus reference genomes)
+name="${run_name}_${species}"
+mkdir 10.2_snippy_multi_core/$name
+snippy-multi 10.1_inputs_for_snippy/$name.tab --ref RAST_nectar_genomes/${ref}.fna --cpus 20 --mincov 4 > 10.2_snippy_multi_core/$name.sh
+
+# after .sh file is created, go inside and add an output prefix to .sh, after ref variable. UPDATE according to $name !!!
+# --prefix '10.2_snippy_multi_core/kaiju_euk_jan27_pollinis/core' 
+
+sh ./10.2_snippy_multi_core/$name.sh #run snippy
+  #takes 3 min to run the first time, takes 10 sec subsequent times
+
+##############################################################################
+#snippy multi for all reference genomes
+name_genome="ref_nectaris"
+snippy-multi 14_snippy_kaiju/inputs_for_snippy-multi/$name_genome.tab --ref 13_Kaiju/RAST_nectar_genomes/A-nectaris-BB226.fna --cpus 20 > 14_snippy_kaiju/snippy/snippy-multi_$name_genome.sh
+#changed snippy-core ref to be FNA11
+#add prefix for output --prefix '14_snippy_kaiju/snippy/snippy-multi_ref_nectaris/core'
+
+sh ./14_snippy_kaiju/snippy/snippy-multi_$name_genome.sh # run snippy
+
+
+#snippy core for top 6 genomes and all reference genomes
+sh ./14_snippy_kaiju/snippy/snippy_core-top6_all_genomes.sh
+ 
+
+```
+
+##### test snippy. core 1/28
+```{bash}
+
+snippy-core --ref ref.fa test_core sample1 sample2 sample3
+snippy-core --ref '10.1_inputs_for_snippy/kaiju_euk_jan27_pollinis_snippy_intermediate_files/1_22FN018/ref.fa'  --prefix '10.2_snippy_multi_core/kaiju_euk_jan27_pollinis/core_just4' --contigs 10.1_inputs_for_snippy/kaiju_euk_jan27_pollinis_snippy_intermediate_files/1_22FN018 10.1_inputs_for_snippy/kaiju_euk_jan27_pollinis_snippy_intermediate_files/4_FN118 10.1_inputs_for_snippy/kaiju_euk_jan27_pollinis_snippy_intermediate_files/4_FN128 10.1_inputs_for_snippy/kaiju_euk_jan27_pollinis_snippy_intermediate_files/4_FN131
+
+```
+
+
+
+#### 10.3 from snippy to IQ tree
+```{bash, eval = FALSE}
+#Remember to cd into 14_snippy_kaiju/snippy/{your working folder}
+
+#3. make clean.full.aln
+snippy-clean_full_aln core.full.aln > clean.full.aln
+
+#4. make clean.core.aln with snp-sites
+/programs/snp-sites-2.5.1/bin/snp-sites
+export PATH=/programs/snp-sites-2.5.1/bin:$PATH
+snp-sites -c 39-clean.full.aln > 39-clean.core.aln 
+
+#5. make phylogenomic SNP tree with IQ tree
+/programs/iqtree-2.2.2.6-Linux/bin/iqtree2 -s 39-clean.core.aln -m MFP 
+  
+
+```
