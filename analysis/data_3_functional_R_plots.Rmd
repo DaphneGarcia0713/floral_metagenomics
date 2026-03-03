@@ -1,0 +1,435 @@
+---
+title: "Data_3 functional R plots "
+author: "Daphne Garcia"
+date: "2025-08-20"
+output: html_document
+editor_options: 
+  markdown: 
+    wrap: 72
+  chunk_output_type: console
+---
+
+## Goals
+This document contains my r scripts for creating different plots with the functional data. It picks up after Prodigal/Eggnog step 12 in data_3_workflow.Rmd
+
+## Steps
+
+1. create tsv files with the eggnog.annotations + COG word annotations and Kegg word annotations, plus taxonomy annotations, save these tsv files per each sample
+
+
+
+## Workflow:
+
+
+#### 13.1 eggnog tsv
+```{r}
+
+library(dplyr)
+library(tidyr)
+library(ggplot2)
+library(KEGGREST)
+
+
+
+    
+for (name in list.dirs(path="./13_eggNOG", recursive = FALSE, full.names=FALSE)) {    
+    
+    eggnog_tsv <- read_tsv(paste("13_eggNOG/",name,"/",name,".emapper.annotations", sep=""), skip = 4, col_names = TRUE)
+    
+    
+    ## add column for most specific taxon in eggNOG_OGs column
+    eggnog_tsv <- eggnog_tsv %>%
+      mutate(last_taxon = str_extract(eggNOG_OGs, "[^|]+$"))
+    
+    cog_definitions <- data.frame(
+      COG_category = c("J","A","K","L","B","D","Y","V","T","M",
+                       "N","Z","W","U","O","C","G","E","F","H",
+                       "I","P","Q","R","S","-"),
+      COG_Description = c("[J] Translation, ribosomal structure and biogenesis",
+                      "[A] RNA processing and modification",
+                      "[K] Transcription",
+                      "[L] Replication, recombination and repair",
+                      "[B] Chromatin structure and dynamics",
+                      "[D] Cell cycle control, cell division, chromosome partitioning",
+                      "[Y] Nuclear structure",
+                      "[V] Defense mechanisms",
+                      "[T] Signal transduction mechanisms",
+                      "[M] Cell wall/membrane/envelope biogenesis",
+                      "[N] Cell motility",
+                      "[Z] Cytoskeleton",
+                      "[W] Extracellular structures",
+                      "[U] Intracellular trafficking, secretion, vesicular transport",
+                      "[O] Posttranslational modification, protein turnover, chaperones",
+                      "[C] Energy production and conversion",
+                      "[G] Carbohydrate transport and metabolism",
+                      "[E] Amino acid transport and metabolism",
+                      "[F] Nucleotide transport and metabolism",
+                      "[H] Coenzyme transport and metabolism",
+                      "[I] Lipid transport and metabolism",
+                      "[P] Inorganic ion transport and metabolism",
+                      "[Q] Secondary metabolites biosynthesis, transport and catabolism",
+                      "[R] General function prediction only",
+                      "[S] Function unknown",
+                      "[-] Not annotated")
+    )
+    
+    #adding column to eggnog_tsv with cog definitions
+    eggnog_tsv <- eggnog_tsv %>%
+      left_join(cog_definitions %>% 
+                  rename(COG_Definition = COG_Description), 
+                by = "COG_category" )
+    
+    #adding COG's bigger categories:
+    eggnog_tsv <- eggnog_tsv %>%
+      mutate(
+        COG_bigger_category = case_when(
+          COG_category %in% c("J","A","K","L","B") ~ "INFORMATION STORAGE AND PROCESSING",
+          COG_category %in% c("D","Y","V","T","M","N","Z","W","U","O") ~ "CELLULAR PROCESSES AND SIGNALING",
+          COG_category %in% c("C","G","E","F","H","I","P","Q","R") ~ "METABOLISM",
+          COG_category %in% c("S","-") ~ "POORLY CHARACTERIZED",
+          TRUE ~ NA_character_
+        )
+      )
+    
+    write_tsv(eggnog_tsv, paste("13_eggNOG/",name,"/eggnog.tsv",  sep=""))
+    
+}
+```
+
+
+
+#### 13.2 EggNOG counts tsv
+
+how many unique CAZy subfamilies?
+```{r}
+
+
+eggnog_sample_stats <- data.frame(
+  sample_name = character(),
+  num_cazyme_subfamilies = numeric(),
+  num_GH28 = numeric(),
+  num_PL1 = numeric(),
+  num_unique_last_taxon = numeric(),
+  num_unique_max_annot_level = numeric(),
+  stringsAsFactors = FALSE
+)
+
+
+for (sample_name in list.dirs(path="./13_eggNOG", recursive = FALSE, full.names=FALSE)) {    
+    
+    eggnog_tsv <- read_tsv(paste("13_eggNOG/",sample_name,"/eggnog.tsv",  sep=""), col_names = TRUE)
+
+    num_cazyme_subfamilies <- length(unique(eggnog_tsv$CAZy))
+
+    num_GH28 <- eggnog_tsv %>%
+      filter(grepl("GH28", CAZy)) %>%
+      count() %>%
+      pull(n)
+
+    num_PL1 <- eggnog_tsv %>%
+      filter(grepl("PL1", CAZy)) %>%
+      count() %>%
+      pull(n)
+
+    num_unique_last_taxon <- length(unique(eggnog_tsv$last_taxon))
+    
+    num_unique_max_annot_level <- length(unique(eggnog_tsv$max_annot_lvl))
+    
+      # append results as new row
+    eggnog_sample_stats <- rbind( eggnog_sample_stats, data.frame(
+        sample_name,
+        num_cazyme_subfamilies,
+        num_GH28,
+        num_PL1,
+        num_unique_last_taxon,
+        num_unique_max_annot_level,
+        stringsAsFactors = FALSE)
+    )
+  }
+
+write_tsv(eggnog_sample_stats, "13_eggNOG/eggnog_sample_stats.tsv")
+
+```
+
+
+#13.3: Eggnog line graph COG counts
+```{r}
+
+
+#This chunk takes the "COG categories" column and counts every instance of a 
+    #letter, including rows that have multiple assigned letters
+    cog_counts <- eggnog_tsv %>%
+      filter(!is.na(COG_category)) %>%   # remove missing
+      mutate(COG_category = strsplit(COG_category, "")) %>%    # split into letters
+      unnest(COG_category) %>%                                # expand rows
+      count(COG_category) %>%
+      arrange(desc(n))
+    
+
+#this joins our wordy descriptions of each letter to cog_counts
+cog_counts <- cog_counts %>%
+  left_join(cog_definitions, by = "COG_category") %>%
+  arrange(desc(n)) %>%
+  mutate(Description = factor(Description, levels = unique(Description)))
+
+
+### PLOTTING
+source("13_eggNOG/COG_graph_color_function.R")
+ggplot(cog_counts, aes(x = reorder(COG_category, -n), y = n, fill = Description)) +
+  geom_bar(stat = "identity") +
+  labs(x = "COG Functional Category", y = "Count",
+       title = paste("COG Functional Categories in Sample", name), fill = "Category") +
+  scale_fill_manual(values = COG_colors) +
+  theme_minimal(base_size = 7) +
+  theme(axis.text.x = element_text(hjust = 1, size = 7)) +
+  geom_text(aes(label = n), vjust = -0.3, size = 2)
+
+ggsave(paste("12_prodigal/",name,"/",name,"_COG_function_ggplot.jpeg", sep=""),
+       width = 12, height = 4)
+```
+
+
+
+#13.4 Relative abundance heatmap: All samples vs COG 
+
+Here in this chunk, I'm creating dataframe COG-all_sample_stats, which contains 
+the number and percent of each COG category per sample
+```{r}
+
+COG_all_sample_stats <- data.frame(
+  Sample = character(),
+  A = numeric(), B = numeric(), C = numeric(), D = numeric(),E = numeric(), 
+  F = numeric(), G = numeric(), H = numeric(), I = numeric(), J = numeric(), 
+  K = numeric(), L = numeric(), M = numeric(), N = numeric(), O = numeric(), 
+  P = numeric(), Q = numeric(), R = numeric(), S = numeric(), T = numeric(), 
+  U = numeric(), V = numeric(), W = numeric(), Y = numeric(), Z = numeric(), 
+  A_percent = numeric(), B_percent = numeric(), C_percent = numeric(), 
+  D_percent = numeric(), E_percent = numeric(), F_percent = numeric(), 
+  G_percent = numeric(), H_percent = numeric(), I_percent = numeric(), 
+  J_percent = numeric(), K_percent = numeric(), L_percent = numeric(), 
+  M_percent = numeric(), N_percent = numeric(), O_percent = numeric(), 
+  P_percent = numeric(), Q_percent = numeric(), R_percent = numeric(), 
+  S_percent = numeric(), T_percent = numeric(), U_percent = numeric(), 
+  V_percent = numeric(), W_percent = numeric(), Y_percent = numeric(), 
+  Z_percent = numeric(), stringsAsFactors = FALSE
+)
+
+for (Sample in list.dirs(path="./13_eggNOG", recursive = FALSE, full.names=FALSE)) {   
+    
+    eggnog_tsv <- read_tsv(paste("13_eggNOG/",Sample,"/eggnog.tsv",  
+                                 sep=""), col_names = TRUE)
+    
+    #this checks the eggnog_tsv file to be empty, and if so, prints it out
+    if (nrow(eggnog_tsv) <= 3 || all(is.na(eggnog_tsv$COG_category))) {
+        message(Sample, " did not contain any data")
+    next   # skip to next sample
+        }
+      
+  #creates variable to store all unique COGs
+  just_bact_with_COG <- eggnog_tsv %>% 
+    filter(!is.na(COG_category)) %>% 
+    filter(COG_category != "-") %>%
+    filter(str_detect(eggNOG_OGs, fixed("@2|Bacteria,"))) %>%
+    mutate(COG_category = strsplit(COG_category, "")) %>%    # split into letters
+    unnest(COG_category) %>%
+    select(COG_category, eggNOG_OGs, "#query")
+  
+  total_COG_contigs <- length(unique(just_bact_with_COG$"#query"))
+  
+  # variable to store all of the percents
+  bact_count_df <- just_bact_with_COG %>%
+      count(COG_category) %>%
+      mutate(
+        COG_percent_name = paste0(COG_category, "_percent"),
+        COG_percent = round(100 * n / total_COG_contigs, 2)
+      )
+  
+  # stack counts + percents in one dataframe
+  bact_count_df <- bact_count_df %>%
+    select(NAME = COG_category, COG_VALUE = n) %>%
+    bind_rows(
+      bact_count_df %>% select(NAME = COG_percent_name, COG_VALUE = COG_percent)
+    )
+
+    # make a named vector from bact_count_df
+    value_map <- setNames(bact_count_df$COG_VALUE, bact_count_df$NAME)
+    
+    # create one row with default 0s
+    new_row <- as.list(rep(0, ncol(COG_all_sample_stats)))
+    names(new_row) <- names(COG_all_sample_stats)
+    new_row[names(value_map)] <- value_map
+    
+    # optionally, set sample name
+    new_row$Sample <- Sample
+    
+    # bind to the empty dataframe
+    COG_all_sample_stats <- bind_rows(COG_all_sample_stats, new_row)
+      
+}
+#remove all 1_ 2_ etc prefixes
+COG_all_sample_stats$Sample <- gsub("1_", "", COG_all_sample_stats$Sample)
+COG_all_sample_stats$Sample <- gsub("2_", "", COG_all_sample_stats$Sample)
+COG_all_sample_stats$Sample <- gsub("3_", "", COG_all_sample_stats$Sample)
+COG_all_sample_stats$Sample <- gsub("4_", "", COG_all_sample_stats$Sample)
+
+#download vivi's metadata and merge
+Vivi_metagenomic_sequencing <- read_excel("Vivi_metagenomic sequencing.xlsx", 
+                                          sheet = "sequenced")
+COG_all_sample_stats<- Vivi_metagenomic_sequencing %>%
+  left_join(COG_all_sample_stats)
+
+write_tsv(COG_all_sample_stats, "13_eggNOG/COG_all_sample_stats.tsv")
+```
+Output is tsv file in `data_3/13_eggNOG/COG_all_sample_stats.tsv`
+
+
+Now, I will create a heat map with our dataframe
+```{r}
+library(ggplot2)  
+library(tidyr)
+COG_all_sample_stats <- read_tsv("13_eggNOG/COG_all_sample_stats.tsv", col_names = TRUE)
+
+
+# pivot to long format: one row per Sample × COG letter
+df_long <- COG_all_sample_stats %>%
+  pivot_longer(
+    cols = A:Z,  # cols = ends_with("percent") OR cols = A:Z
+    names_to = "COG_category",
+    values_to = "COG_value")
+
+
+# plot heatmap faceted by Site
+ggplot(df_long, aes(x = Sample, y = COG_category, fill = COG_value)) +
+  geom_tile(color = "white") +
+  scale_fill_gradient2(low = "gold", mid="white" , high = "steelblue", na.value = "white") +
+  facet_wrap(~Site, scales = "free_x") +   # separate heatmap per Site
+  theme_minimal() +
+  theme(
+    axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1),
+    axis.text.y = element_text(hjust = 1, size = 4),
+    panel.grid = element_blank(),
+    strip.text = element_text(face = "bold")
+  ) +
+  labs(
+    x = "Sample",
+    y = "COG Category",
+    fill = "Value"
+  )
+
+
+# plot heatmap facet by flower_type
+ggplot(df_long, aes(x = Sample, y = COG_category, fill = COG_value)) +
+  geom_tile(color = "white") +
+  scale_fill_gradient2(low = "gold", mid="white" , high = "steelblue", 
+                       na.value = "white",) +
+  facet_wrap(~flower_type, scales = "free_x") +   # separate heatmap per Site
+  theme_minimal() +
+  theme(
+    axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1),
+    axis.text.y = element_text(hjust = 1, size = 4),
+    panel.grid = element_blank(),
+    strip.text = element_text(face = "bold")
+  ) +
+  labs(
+    x = "Sample",
+    y = "COG Category",
+    fill = "Value"
+  )
+
+```
+
+### 13.5: Permanova statistics
+```{r}
+
+library(vegan)
+
+
+
+COG_all_sample_stats <- read_tsv("13_eggNOG/COG_all_sample_stats.tsv", col_names = TRUE)
+data_matrix <- COG_all_sample_stats[c(2:51),c(10:34)] #[c(10:34)] for cog, [c(34:59)] for percent
+metadata <- COG_all_sample_stats[c(2:51),c(2:8)]
+
+# Compute dissimilarity matrix (warning, R and Y are all 0's)
+dist_matrix <- vegdist(data_matrix, method = "bray")
+
+# Run PERMANOVA
+adonis2(dist_matrix ~ Season + flower_type + Site + Sample_type,
+        data = metadata, permutations = 999, na.action = na.omit)
+
+# Check dispersions
+disp <- betadisper(dist_matrix, metadata$Season)
+anova(disp)
+
+
+
+
+
+
+
+
+
+
+
+
+
+## from salinity gradient project, PCoA with bray curtis (includes abundances, not just presence/absence)
+
+scaled_bray_pcoa <- 
+  ordinate(physeq = scaled_physeq,
+         method = "PCoA",
+         distance = "bray", binary = FALSE)
+
+# Plot it: Bray-Curtis PCoA 
+bray_pcoa_plot <- 
+  plot_ordination(physeq = scaled_physeq,
+                ordination = scaled_bray_pcoa,
+                color = "temperature",
+                shape = "sex",
+                title = "Bray-Curtis PCoA") + 
+  scale_color_manual(values = temperature_colors) + 
+  scale_shape_manual(values = c(15, 16, 17)) + 
+  geom_point(size = 5, alpha = 0.5, aes(color = temperature)) + 
+  theme_bw() + 
+  theme(legend.position = "right")
+
+
+
+
+
+
+```
+
+
+adonis2 Season + flower_type + Site + Sample_type
+         Df SumOfSqs      R2      F Pr(>F)   
+Model    17   5.5834 0.48618 1.7811  0.007 **
+Residual 32   5.9008 0.51382                 
+Total    49  11.4842 1.00000  
+
+
+
+anova of disper season
+Response: Distances
+          Df  Sum Sq  Mean Sq F value Pr(>F)
+Groups     2 0.02585 0.012923  0.2431 0.7851
+Residuals 47 2.49806 0.053150    
+
+anova of disper flower-type
+Response: Distances
+          Df  Sum Sq  Mean Sq F value Pr(>F)  
+Groups     2 0.29308 0.146538  3.7141 0.0318 *
+Residuals 47 1.85437 0.039455   
+
+anova of disper Sample-type (more flower categories)
+Response: Distances
+          Df  Sum Sq  Mean Sq F value    Pr(>F)    
+Groups    12 1.36262 0.113552  4.3932 0.0002448 ***
+Residuals 37 0.95634 0.025847                      
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+anova of disper Site
+Response: Distances
+          Df  Sum Sq  Mean Sq F value Pr(>F)
+Groups     3 0.25165 0.083885  1.4925 0.2291
+Residuals 46 2.58540 0.056204   

@@ -940,7 +940,7 @@ done
 #-i input
 #-o output
 #-G 1 -c 0.9 global sequence identity threshold 0.9
-#-T threads
+#-T threads>;;;;,..
 ```
 
 
@@ -1015,13 +1015,136 @@ contig files. First, I needed reference pectin lyase, so the closest match I
 found online was pectin lyase from A. apis and A. boissieri (close on Vivi's 
 acinetobacter phylogenetic tree)
 
-```{bash Blast_for_Orthologs, eval = FALSE}
-makeblastdb -in metagenome_contigs.fna -dbtype nucl -out metagenome_db
+#### 14.1 getting reference proteins
+I combine the reference proteins with cat x y z > all.fasta
 
-tblastn -query pectin_lyase.faa -db metagenome_db \
--out results.tblastn.out -evalue 1e-5 -num_threads 8 \
--outfmt '6 qseqid sseqid pident length mismatch gapopen qstart qend ss
+NOTE: the reference proteins that I used are described in
+`data_3/14_blast_orthologs/1_references_and_outgroups/pectin_lyase_refs/README.md` NO LONGER THERE
+
+#### 14.2 finidng orthologs with BLAST
+```{bash}
+    
+cd /local/workdir/Daphne/Floral_metagenomics/data_3
+    
+num=""
+ortholog="pectin_lyase"
+for sample in 04_metaspades/${num}*; do   
+    # Input
+    query_nucleotides="14_blast_orthologs/1_references_and_outgroups/${ortholog}_references/all_references.fasta"
+  
+    # Output directories
+    OUTDIR="14_blast_orthologs/2_ortholog_search/$(basename "$sample")/${ortholog}_TWO"
+    
+    echo "[INFO] Step 1: Building BLAST database..."
+    makeblastdb -in ${sample}/contigs.fasta -dbtype nucl -out $OUTDIR/metagenome_db
+    
+    echo "[INFO] Step 2: Running BLASTP..."
+    blastn -query $query_nucleotides -db $OUTDIR/metagenome_db \
+           -out $OUTDIR/tblastn_results.tsv \
+           -evalue 1e-5 -num_threads 30 \
+           -task blastn \
+           -outfmt '6 qseqid sseqid pident length mismatch gapopen qstart qend sstart send evalue bitscore'
+    
+    echo "[INFO] Step 3: Filtering BLAST hits..."
+    awk '$3 >= 30 && $4 >= 100 && $11 <= 1e-10' $OUTDIR/tblastn_results.tsv > $OUTDIR/blast_results.filtered.tsv
+    echo "[INFO] Done."
+    
+done
+
+
+#print number of orthologs per sample
+for subdir in 14_blast_orthologs/2_ortholog_search/*; do
+  echo "$(basename "${subdir}")" >> 14_blast_orthologs/2_ortholog_search/all_${ortholog}_matches.txt
+  cat ${subdir}/${ortholog}/blast_results.filtered.tsv | wc -l >> 14_blast_orthologs/2_ortholog_search/all_${ortholog}_matches.txt
+done
+  # took 1 min
 ```
+  outputs are in pectin_lyase or polygalacturonase subdirectories within `data_3/14_blast_orthologs/2_ortholog_search` that contain blast_results.filtered.tsv, which are a list of references and their matching nodes according to the BLAST search. Also outputted is `data_3/14_blast_orthologs/2_ortholog_search/all_{pectin_lyase/polygalacturonase}_matches.txt`, which lists the number of matches found per sample
+
+#### 14.3 grouping and renaming all orthologs
+I will use the `2_ortholog_search` subdirectorie's tblastn_results.tsv to make
+one large input for MAFFT containing all orthologs from every sample. I also 
+need to rename the orthologs to contain both the sample name and the node name
+
+```{bash}
+
+cd /local/workdir/Daphne/Floral_metagenomics/data_3
+
+num=""
+ortholog="pectin_lyase"
+# loop over all ortholog search subdirectories
+for sample in 14_blast_orthologs/2_ortholog_search/${num}* ; do
+    name=$(basename "$sample")
+    tsv="${sample}/${ortholog}/blast_results.filtered.tsv"
+    fasta="04_metaspades/$name/contigs.fasta"
+
+    # get unique node names from column 2 of TSV
+    nodes=$(cut -f2 "$tsv" | sort -u)
+
+    # extract nonredundant nodes
+    for node in $nodes; do
+        awk -v node="$node" -v name="$name" '
+            BEGIN {found=0}
+            /^>/ {
+                if(found) {exit}   # stop once we reach the next contig
+                found=($0 ~ node) # activate if this is the header we want
+            }
+            found {
+                if(/^>/) {
+                    print ">"name"_"node
+                } else {
+                    print
+                }
+            }
+        ' "$fasta" >> 14_blast_orthologs/3_orthologs_from_all_samples/${ortholog}.fasta
+    done
+done
+  #took <5sec
+```
+Note: I removed >4_FN176_NODE_2 from pectin_lyase.fasta because it was incredibly long (200k bp) and did not BLAST to acineto with ncbi
 
 
+#### 14.4 aligning with MAFFT
+Before this step, I combined ortholog's reference and outgroup fastas from `14_blast_orthologs/1_references_and_outgroups` together with our samples from `14_blast_orthologs/3_3_orthologs_from_all_samples` with cat, and output it in `14_blast_orthologs/3_orthologs_from_all_samples`
+
+```{bash MAFFT, eval = FALSE}
+
+export PATH=/programs/mafft/bin:$PATH
+cd /local/workdir/Daphne/Floral_metagenomics/data_3
+
+ortholog="pectin_lyase"
+/programs/mafft/bin/mafft --auto --nuc --thread 30 \
+14_blast_orthologs/3_orthologs_from_all_samples/${ortholog}_PLUS_references_and_outgroups.fasta > \
+14_blast_orthologs/4_aligned_orthologs_MAFFT/${ortholog}.aln
+  # took ~20 sec
+  
+# --auto: chooses best strat for this data, which is FFT-NS-2
+# -nuc: assume input is nucleotides
+# --thread: to go faster
+
+
+```
+PECTIN LYASE and POLYGALACTURONASE STRATEGY:
+FFT-NS-i (Standard)
+ Iterative refinement method (max. 2 iterations)
+
+
+#### 14.5 IQ tree
+```{bash}
+cd /local/workdir/Daphne/Floral_metagenomics/data_3
+
+ortholog="pectin_lyase"
+/programs/iqtree-2.2.2.6-Linux/bin/iqtree2 -s 14_blast_orthologs/4_aligned_orthologs_MAFFT/${ortholog}.aln -m MFP \
+--prefix 14_blast_orthologs/5_IQ_tree/${ortholog} -B 1000
+
+
+# -s: input
+# -m MFP: modelfinder plus, fo finding right phylo model (Vivi used SYM+R10)
+# --prefix: change output destination/name
+# -B: bootstrap
+# -nt: thread number
+#--redo (OPTIONAL): overwrite current tree
+
+#took 10 min each 
+```
 

@@ -6,6 +6,7 @@ output: html_document
 editor_options: 
   markdown: 
     wrap: 72
+  chunk_output_type: console
 ---
 
 
@@ -251,13 +252,13 @@ use
 #### 5.1 Metaquast without Acinetobacter references
 I've decided to Run MetaQUAST again, but without using any references. I'll Use a database, like SILVA instead.
 
-To run this faster, I am splitting the 10 groups into 3 larger arrays, and tmux automating this process in 3 different groups
+To run this faster, I am splitting the 10 groups into 4 larger arrays, and tmux automating this process in 3 different groups
 
 ```{bash metaQuast_no_reference, eval = FALSE}
 
 declare -a array1=(
 [0]=1_Chichorium_samples
-[1]=8_Solidago_samples
+
 )
 declare -a array2=(
 [0]=2_Malus_samples
@@ -271,8 +272,9 @@ declare -a array3=(
 
 declare -a array4=(
 [0]=6_Matricaria_samples
-[1]=9_Lonicera_samples
-[2]=10_Linaria_samples
+[1]=8_Solidago_samples
+[2]=9_Lonicera_samples
+[3]=10_Linaria_samples
 )
 
 cd /local/workdir/Daphne/Floral_metagenomics/data_updated/
@@ -298,6 +300,56 @@ The output is
 `Floral_metagenomics/data/05_metaQUAST_NO_reference/"host_group"/"sample"/*`
 These outputs only show number of contigs (`report.html` and legth stats
 `basic_stats/`), and contig lengths 
+
+#### 5.1 MetaQuast with acineto references
+Ultimately, I want to see how the number of acineto contigs in data_updated compare to the number of acineto contigs in data/ 
+
+TO RUN: modify the variable host_name for which of the 10 flower hosts you will 
+use
+```{bash MetaQuast, eval = FALSE}
+
+export PYTHONPATH=/programs/quast-5.2.0/lib64/python3.9/site-packages:/programs/quast-5.2.0/lib/python3.9/site-packages
+export PATH=/programs/quast-5.2.0/bin:$PATH
+
+cd /local/workdir/Daphne/Floral_metagenomics/data_updated
+
+#This list contains paths to all acineto reference genomes, from the 04_metaspades sample's directory
+list="../../../../data/05_Quast_reference_acineto_genomes/A39.fna,../../../../data/05_Quast_reference_acineto_genomes/ANC4215.fna,../../../../data/05_Quast_reference_acineto_genomes/ANC4422.fna,../../../../data/05_Quast_reference_acineto_genomes/B10A.fna,../../../../data/05_Quast_reference_acineto_genomes/B5B.fna,../../../../data/05_Quast_reference_acineto_genomes/BB226.fna,../../../../data/05_Quast_reference_acineto_genomes/BB362.fna,../../../../data/05_Quast_reference_acineto_genomes/BRTC1.fna,../../../../data/05_Quast_reference_acineto_genomes/CIP110305.fna,../../../../data/05_Quast_reference_acineto_genomes/CIP110357.fna,../../../../data/05_Quast_reference_acineto_genomes/CIP110549.fna,../../../../data/05_Quast_reference_acineto_genomes/DSM14961.fna,../../../../data/05_Quast_reference_acineto_genomes/DSM14964.fna,../../../../data/05_Quast_reference_acineto_genomes/EC031.fna,../../../../data/05_Quast_reference_acineto_genomes/EC034.fna,../../../../data/05_Quast_reference_acineto_genomes/EC115.fna,../../../../data/05_Quast_reference_acineto_genomes/EC24.fna,../../../../data/05_Quast_reference_acineto_genomes/FNA11.fna,../../../../data/05_Quast_reference_acineto_genomes/FNA3.fna,../../../../data/05_Quast_reference_acineto_genomes/NCTC5866.fna,../../../../data/05_Quast_reference_acineto_genomes/NIPH706.fna,../../../../data/05_Quast_reference_acineto_genomes/NIPH991.fna,../../../../data/05_Quast_reference_acineto_genomes/SCC474reference.fna,../../../../data/05_Quast_reference_acineto_genomes/SCC477.fna,../../../../data/05_Quast_reference_acineto_genomes/SM1.fna"
+
+declare -a host_array=(
+[0]=1_Chichorium_samples    
+[1]=2_Malus_samples
+[2]=3_Lotus_samples
+[3]=4_Ranunculus_samples
+[4]=5_Trifolium_samples
+[5]=6_Matricaria_samples
+[6]=7_Alliaria_samples
+[7]=8_Solidago_samples
+[8]=9_Lonicera_samples
+[9]=10_Linaria_samples
+)
+
+
+
+# MODIFY this host_name for the samples you're running
+for host_name in ${host_array[@]}; do
+  for sample in 04_metaspades"/$host_name/"*; do
+    #loop through samples in a flower-host group in metaspades folder
+    cd $sample
+    name="$(basename "$sample")" 
+    echo $name
+    # run metaquast, output to 05_metaQUAST, and use $list variable as reference
+    metaquast.py -o ../../../05_metaQUAST/05_metaQUAST_acineto/"$host_name/""$name"    contigs.fasta -r "$list" 
+    cd - > /dev/null  # return to previous dir
+    pwd 
+  done
+done 
+```
+The output is 
+`Floral_metagenomics/data/05_metaquast/"host_group"/"sample"/*`
+
+
+
 
 
 
@@ -448,7 +500,7 @@ done
 
 The reasoning for choosing these parameters is on benchling
 
-#### 7. CheckM to analyze quality of Metabat2 binning
+### 7. CheckM to analyze quality of Metabat2 binning
 
 ```{bash checkM2 test, eval = FALSE}
 
@@ -463,27 +515,884 @@ docker1 run --rm \
 # this took 2 minutes
 
 ```
-output is `data_updated/07_CheckM2/checkM2{default or parameter}/`. Here, an output file called `quality_results.tsv` contains the completeness and contamination scores that are of interest
+output is `data_updated/07_CheckM2/checkM2{default or parameter}/`. Here, an output file called `quality_report.tsv` contains the completeness and contamination scores that are of interest
 
-### 7 bins taxonomy with GTDB-k
 
-```{bash}
+visualize CheckM quality reports in R (use ctrl + enter)
+```{r Visualize_CheckM_R, eval = FALSE}
+getwd() # should be Floral_metagenomics
+checkM2_parameters <- read.table(file="data_updated/07_CheckM2/CheckM2_parameters/quality_report.tsv", sep="\t")
+
+    # change the name (before <-) and subdirectory in 07_CheckM
+```
+
+
+
+### 8. bins taxonomy with GTDB-k
+
+Gtdb is used to identify taxonomy of the bins produced by MetaBat2. 
+Here, we used the Metabat with "parameters" (m1500, s100k, maxE250)
+
+```{bash GTDB-k, eval = FALSE}
 # set wd
-cd /local/workdir/Daphne/Floral_metagenomics/data
+cd /local/workdir/Daphne/Floral_metagenomics/data_updated
 
-export OMP_NUM_THREADS=8
+export OMP_NUM_THREADS=16
 export PYTHONPATH=/programs/gtdbtk-2.4.0/lib64/python3.9/site-packages:/programs/gtdbtk-2.4.0/lib/python3.9/site-packages
 export PATH=/programs/gtdbtk-2.4.0/bin:/programs/hmmer/binaries:/programs/prodigal-2.6.3:/programs/FastTree-2.1.11:/programs/fastANI-1.32:/programs/pplacer-Linux-v1.1.alpha19:/programs/mash-Linux64-v2.3:/programs/skani-0.2.1:$PATH
 
 #This is from ecogenomics.github.io, since the cornell biohpc one is outdated
 wget https://data.ace.uq.edu.au/public/gtdb/data/releases/latest/auxillary_files/gtdbtk_package/full_package/gtdbtk_data.tar.gz 
-wget https://data.gtdb.ecogenomic.org/releases/latest/auxillary_files/gtdbtk_package/full_package/gtdbtk_data.tar.gz ( mirror for Australia)
-tar xvzf gtdbtk_data.tar.gz 
+  # this was run originally 6/23
+tar xvzf gtdbtk_data.tar.gz -C /local/workdir
+  # This took 26 minutes
+  
+export GTDBTK_DATA_PATH=/workdir/release226
 
-gtdbtk classify_wf --genome_dir 06_MetaBat2/ --out_dir 07_gtdbtk_out --cpus 8
+gtdbtk classify_wf --genome_dir 06_MetaBat2/Metabat2_parameters --out_dir 08_gtdbtk_out --cpus 16 --skip_ani_screen --extension fa
+# classify_wf = input contigs from metaspades (necessary)
+# --genome_dir = bins file (06_MetaBat2/ contains bins)
+# --out_dir = outputs to 07_gtdbtk_out
+# --cpus 8 = kind of like threads? chatgpt added this
+# --skip_ani_screen = use the default database downloaded with wget above
+# --extension fa = takes my .fa files, since ftdbtk default is .fasta
+
+#This took 3 hours. Identified 42 genomes as bacterial, 120 markers. Processsed 136677 sequences
+
+```
+23 bins of 78 were classifiable, good mix of pseudomonas, pantoea, erwinia, acinetobacter, rosenbergiella, arsenophonus, buchnera
+
+visualize gtdb gtdbtk.bac120.summary.tsv in R (use ctrl + enter)
+```{r Visualize_CheckM_R, eval = FALSE}
+getwd() # should be Floral_metagenomics
+gtdbtk_updated_summary <- read.table(file = "data_updated/08_gtdbtk_out/gtdbtk.bac120.summary.tsv",sep="\t")
+
+gtdbtk_classification <- data.frame(gtdbtk_updated_summary$V1, gtdbtk_updated_summary$V2)
+
+
+```
+### 9. Pseudomonas genome search (BLAST, Bowtie2, MetaQuast)
+
+One possible source of error in the sequencing of our data is index-hopping with pseudomonas samples from Katie that were sequenced at the same time.
+
+To see if this is a problem, I am creating a BLAST database out of Katie's pseudomonas genomes (https://www.ncbi.nlm.nih.gov/bioproject/PRJNA961062) and blast searching our filtered reads or contigs against them. 
+
+I am following NCBI's "Building a BLAST database with your (local) sequences"
+https://www.ncbi.nlm.nih.gov/books/NBK569841/
+
+#### 9.1 BLAST
+```{bash BLAST_database_and_search, eval = FALSE}
+
+#First, I downloaded all of Katie's .gz files from FTP from the Bioproject linked above, then I unzipped them with for loop and concatenated all into `all_Pseudo_genomes_katie`
+
+cd local/workdir/Daphne/Floral_metagenomics/data_updated/09_blast_of_pseudomonas/Pseudonomas_samples
+
+makeblastdb -in all_Pseudo_genomes_katie.fna -parse_seqids -blastdb_version 5  -out "Pseudomonas_blast_db" -dbtype nucl -title "Katie's Pseudomonas BioProject genomes PRJNA961062"
+    #this ran 1.3 second
+    #created all_Pseydo_genomes_katie .pdf .phr.pin.pjs.pog ...etc
+
+#inspect info on new database
+blastdbcmd -db Pseudomonas_blast_db -info
+
+
+```
+
+Now, I will try blast searching the samples using these files
+
+#### 9.2 Bowtie2
+Instead, Im gonna try aligning with bowtie2: so first I'll build the index, then I'll run bowtie. 
+```{bash bowtie2_for_pseudo_search, eval = FALSE}
+
+cd local/workdir/Daphne/Floral_metagenomics/data_updated/09_align_pseudomonas
+export PATH=/programs/bowtie2-2.5.1-linux-x86_64:$PATH
+
+#Index for Katie's pseudomonas genomes
+bowtie2-build ./Pseudomonas_reference_genomes/all_Pseudo_genomes_katie.fna pseudo_index
+    # This took like 2 min
+
+
+#### Enter reads directory and run bowtie2 ###
+cd /local/workdir/Daphne/Floral_metagenomics/data_updated/03_Bowtie2_host_filter
+export PATH=/programs/bowtie2-2.5.1-linux-x86_64:$PATH
+ 
+ 
+declare -a array=(
+[0]=10_Linaria_samples
+[1]=2_Malus_samples
+[2]=3_Lotus_samples
+[3]=4_Ranunculus_samples
+[4]=5_Trifolium_samples
+[5]=6_Matricaria_samples
+[6]=7_Alliaria_samples
+[7]=8_Solidago_samples
+[8]=9_Lonicera_samples
+[9]=1_Chichorium_samples
+)
+
+for name in ${array[@]}; do
+  for sample in /local/workdir/Daphne/Floral_metagenomics/data_updated/03_Bowtie2_host_filter/"$name"/* ; do
+    cd $sample
+    for R1 in ./*_R1.fastq.gz; do
+      base="$(basename "${R1%%_R1.fastq.gz}" | cut -d'_' -f1-4)"
+      output_dir="../../../09_align_pseudomonas/${sample}/"
+      mkdir -p $output_dir
+      echo "$sample" >> ../../../09_align_pseudomonas/pseudo_bowtie2_stdout.txt
+      bowtie2 --sensitive-local -p 32 --seed 4 -x ../../../09_align_pseudomonas/pseudo_index -1 $R1 -2 ${R1/R1.fastq.gz/R2.fastq.gz} -S "$output_dir/SAMPLE_mapped_and_unmapped.sam" >> ../../../09_align_pseudomonas/pseudo_bowtie2_stdout.txt 2>&1 
+    done     
+    cd - > /dev/null
+  done   
+done
+
+```
+The output for bowtie is in `09_align_pseudomonas/pseudo_bowtie2_stdout.txt`, which contains the percent of contamination, and `03_Bowtie2_pseudo_filter/` contains the folders with SAMPLE output files, that have
+
+
+
+
+
+#### 9.3 MetaQuast
+Now I'm gonna try MetaQuast to compare with Bowtie2, and see if it matches teh 10% contamination
+```{bash metaquast_pseudo, eval = FALSE}
+
+declare -a array1=(
+[0]=1_Chichorium_samples
+)
+declare -a array2=(
+[0]=2_Malus_samples
+[1]=4_Ranunculus_samples
+[2]=7_Alliaria_samples
+)
+declare -a array3=(
+[0]=3_Lotus_samples
+[1]=5_Trifolium_samples
+)
+declare -a array4=(
+[0]=6_Matricaria_samples
+[1]=8_Solidago_samples
+[2]=9_Lonicera_samples
+[3]=10_Linaria_samples
+)
+
+cd /local/workdir/Daphne/Floral_metagenomics/data_updated/
+export PYTHONPATH=/programs/quast-5.2.0/lib64/python3.9/site-packages:/programs/quast-5.2.0/lib/python3.9/site-packages
+export PATH=/programs/quast-5.2.0/bin:$PATH
+
+for host_name in ${array3[@]}; do
+  echo $host_name
+  for sample in 04_metaspades"/$host_name/"*; do
+    cd $sample
+    pwd
+    name="$(basename "$sample" | cut -d'_' -f1-4)" 
+    echo $name
+    metaquast.py -o ../../../09_align_pseudomonas/05_metaQUAST_pseudo/"$host_name/""$name"_metaQuast contigs.fasta -r ../../../09_align_pseudomonas/Pseudomonas_reference_genomes/all_Pseudo_genomes_katie.fna
+    cd - > /dev/null  # return to previous dir
+    pwd 
+  done 
+done
+
+
 
 ```
 
 
 
+### 10. MetaPhlAn
+
+I'm gonna try to run taxonomy with MetaPhlAn, to compare with Kraken (or instead of kraken if kraken doesn't work). I'm using Katie's data from `` and the metaphlan4 official tutorial https://github.com/biobakery/biobakery/wiki/metaphlan4#1-creating-taxonomic-profiles
+
+```{bash metaphlan setup, eval = FALSE}
+
+
+
+##### TEST RUN From Katie's JupyterNotebooks_Cleanedup/2022_NicMeta_Final.ipynb #####
+metaphlan 04_metaspades/2_Malus_samples/paired_13702_32540_179775_Malus/scaffolds.fasta --nproc 1 --input_type fasta -o 09_align_pseudomonas/metaphlan/paired_13702_32540_179775_Malus_met.txt  --bowtie2db ../databases/metaphlan
+
+
+declare -a array1=(
+[0]=1_Chichorium_samples
+)
+declare -a array2=(
+[0]=2_Malus_samples
+[1]=4_Ranunculus_samples
+[2]=7_Alliaria_samples
+)
+declare -a array3=(
+[0]=3_Lotus_samples
+[1]=5_Trifolium_samples
+)
+declare -a array4=(
+[0]=6_Matricaria_samples
+[1]=8_Solidago_samples
+[2]=9_Lonicera_samples
+[3]=10_Linaria_samples
+)
+
+cd /local/workdir/Daphne/Floral_metagenomics/data_updated
+export PYTHONPATH=/programs/metaphlan-4.1.1/lib/python3.9/site-packages:/programs/metaphlan-4.1.1/lib64/python3.9/site-packages
+export PATH=/programs/metaphlan-4.1.1/bin:$PATH
+
+for host_name in ${array4[@]}; do
+  echo $host_name
+  for sample in 04_metaspades"/$host_name/"*; do
+    pwd
+    base="$(basename "${sample}")"
+    scaffolds="$sample/scaffolds.fasta"
+    outdir="10_MetaPhlAn"
+    metaphlan $scaffolds --nproc 1 --input_type fasta -o ${outdir}/${base}_met.txt  --bowtie2db ../databases/metaphlan
+  done 
+done
+    # --bowtie2db: the database we downloaded, idk why it uses a bowtie db
+    # --nproc 5 = number of cores during the mapping stage (tutorial uses 4)
+    
+  #Generally takes ~7 minutes per sample, so total with 4 tmux took ~2 hours
+
+
+############### Katie's code, merging and making a heat map ############
+
+
+cd /local/workdir/Daphne/Floral_metagenomics/data_updated/10_MetaPhlAn
+
+
+#merge ouputs
+/programs/metaphlan-4.1.1/utils/merge_metaphlan_tables.py *_met.txt > merged_abundance_table.txt
+
+# Make a heatmap
+/programs/metaphlan-4.0.6/utils/hclust/hclust2.py \
+-i merged_abundance_table.txt \
+-o metaphlan4_abundance_heatmap_species.png
+
+
+/programs/metaphlan-4.1.1/utils/hclust2/hclust2.py \
+  -i merged_abundance_table.txt \
+  -o merged_abundance_table.sqrt_scale_bigger.png \
+  --cell_aspect_ratio 1 \
+  --flabel_size 3 \
+  --metadata_rows 2,3,4 \
+  --legend_file HMP.sqrt_scale.legend.png \
+  --max_flabel_len 100 \
+  --metadata_height 0.075 \
+  --slabel_size 3 \
+  --max_slabel_len 30 \
+  --dpi 300 \
+  --image_size 10 \
+  --slinkage complete
+
+
+############# checking number of acinetobacter in 45, 51, 86 output.txt
+
+  awk '/Acinetobacter/ {count++} END {print count}' kraken2_trial_45_output.txt
+done
+
+```
+
+
+### 11. Kraken2 taxonomy
+
+this will use filtered reads, maybe contigs to get taxonomy (better than metaphlan according to a biorxiv paper)
+
+I am using the Kraken2 installation guide to build the databases. https://github.com/DerrickWood/kraken2/wiki/Manual#custom-databases
+ Custom databases have 3 steps, as described in the bash chunk below:
+ 
+ https://github.com/DerrickWood/kraken2/blob/master/docs/MANUAL.markdown
+```{bash}
+
+#step1: download-taxonomy
+#kraken2-build --download-taxonomy --db /local/workdir/Daphne/Floral_metagenomics/databases
+
+#step2: download-library (eg. bacteria, fungi, etc, took like 5 hours for bac, 1 hour for fungi)
+#kraken2-build --download-library plant --db  /local/workdir/Daphne/Floral_metagenomics/databases/kraken --threads 64
+
+#step3: build-build ( took 12 hours)
+#kraken2-build --build --threads 64 --db /local/workdir/Daphne/Floral_metagenomics/databases/kraken
+
+
+cd /local/workdir/Daphne/Floral_metagenomics/data_updated
+export PATH=/programs/kraken2.1.3:$PATH
+export OMP_NUM_THREADS=64 
+
+
+declare -a array1=(
+[0]=1_Chichorium_samples
+)
+declare -a array2=(
+[0]=2_Malus_samples
+[1]=4_Ranunculus_samples
+[2]=7_Alliaria_samples
+)
+declare -a array3=(
+[0]=3_Lotus_samples
+[1]=5_Trifolium_samples
+)
+declare -a array4=(
+[0]=6_Matricaria_samples
+[1]=8_Solidago_samples
+[2]=9_Lonicera_samples
+[3]=10_Linaria_samples
+)
+
+for host_name in ${array4[@]}; do
+  echo $host_name
+  for sample in 03_Bowtie2_host_filter"/$host_name/"*; do
+    for paired in ./$sample; do
+      R1="${sample}/SAMPLE_host_removed_R1.fastq.gz"
+      R2="${sample}/SAMPLE_host_removed_R2.fastq.gz"
+      name=$(basename "$paired" | sed 's/^paired_13702_32540_1797//')
+      kraken2 --threads 64 --db ../databases/kraken --report 11_Kraken/kraken_${name}_report.txt --paired $R1 $R2
+      echo "$name is done"
+    done
+  done
+done
+
+#ran 4:55
+# takes around 2 min?
+
+```
+
+
+
+
+
+
+
+### 12. Snippy phylo tree
+
+
+First, I need the acineto contigs: those I can get per sample in 05_metaQUAST_acineto/{sample}/paired_{num}/combined_reference/contigs_reports/alignments_contigs.tsv
+
+I did cp to copy them to 12_snippy
+
+#### 12.1 isolating acinetobacter contigs
+```{bash}
+
+##input: contig.tsv, created in excel by deleting non-pollinis lines from 05_acineto/combined_ref/alignments.contigs.tsv
+## getting rid of redundant contig names since contigs in metaquast aligned to multiple acineto's, just output unique NODEs from contigs.fasta
+cd /local/workdir/Daphne/Floral_metagenomics/data_updated/12_snippy/snippy_input_acineto_contig_files
+
+awk '
+  NR == FNR {
+    # Read and collect all NODE IDs from the contig list (1st pass)
+    for (i = 1; i <= NF; i++) {
+      if ($i ~ /^NODE/) {
+        if (!seen[$i]++) {
+          node_ids[$i]
+        }
+      }
+    }
+    next
+  }
+
+  # Process the FASTA file (2nd pass)
+  /^>/ {
+    keep = 0
+    if (substr($1, 2) in node_ids) {
+      keep = 1
+    }
+  }
+
+  keep
+' FS='\t' OFS='\t' 93_contig.tsv ../../04_metaspades/10_Linaria_samples/paired_13702_32540_179793_Linaria/contigs.fasta > 93_acineto_contigs.fasta
+
+```
+output is called `XX_acineto_contigs.fasta` in `data_updated/12_snippy/12_acineto_contig_files/`
+
+
+Now, we can use these fasta files with acinetobacter contigs to run snippy
+steps: 
+snippy-core
+snippy-clean_full_aln
+snp-sites
+FastTree
+
+#### 12.2 Snippy Pollinis
+```{bash, eval = FALSE}
+
+export PATH=/programs/snippy-4.6.0/bin:/programs/snippy-4.6.0/binaries/linux:$PATH
+export PATH=/programs/seqtk:$PATH
+export PATH=/programs/samclip:$PATH
+export PATH=/programs/vt:$PATH
+
+cd /local/workdir/Daphne/Floral_metagenomics/data_updated/12_snippy
+
+#1. run snippy of 1 sample (44 or 45 or 48 or 86) into output snippy
+snippy  --outdir snippy_outdir/sample_44 --ref A-pollinis_FNA11.fna --ctgs snippy_input_acineto_contig_files/93_acineto_contigs.fasta --force
+
+#2. do snippy-core on all samples
+SAMPLES_pol="../../snippy_outdir/sample_44
+../../snippy_outdir/sample_45
+../../snippy_outdir/sample_48
+../../snippy_outdir/sample_86"
+cd snippy_core/pollinis_core
+snippy-core --ref ../../A-pollinis_FNA11.fna $SAMPLES_pol
+
+#3. make clean.full.aln
+snippy-clean_full_aln core.full.aln > clean.full.aln
+
+#4. make clean.core.aln with snp-sites
+/programs/snp-sites-2.5.1/bin/snp-sites
+export PATH=/programs/snp-sites-2.5.1/bin:$PATH
+snp-sites -c clean.full.aln > clean.core.aln 
+
+#5. make a phylogenomic SNP tree with FastTree
+export PATH=/programs/FastTree-2.1.11:$PATH
+FastTree -gtr -nt clean.core.aln > clean.core.tree
+
+#6. make phylogenomic SNP tree with IQ tree
+/programs/iqtree-2.2.2.6-Linux/bin/iqtree2 -s clean.core.aln -m MFP 
+  #moved to IQ_tree/
+
+```
+
+
+#### 12.3 Snippy Nectaris
+
+```{bash}
+export PATH=/programs/snippy-4.6.0/bin:/programs/snippy-4.6.0/binaries/linux:$PATH
+export PATH=/programs/seqtk:$PATH
+export PATH=/programs/samclip:$PATH
+export PATH=/programs/vt:$PATH
+
+cd /local/workdir/Daphne/Floral_metagenomics/data_updated/12_snippy
+
+#1. run snippy of 1 sample (75,93) into output snippy
+snippy  --outdir snippy_outdir/sample_93 --ref A-nectaris_BB226.fna --ctgs snippy_input_acineto_contig_files/93_acineto_contigs.fasta --force
+
+#2. join reads in snippy-core
+SAMPLES_nect="../../snippy_outdir/sample_75
+../../snippy_outdir/sample_93"
+cd snippy_core/nectaris_core
+snippy-core --ref ../../A-nectaris_BB226.fna $SAMPLES_nect
+  #surprisingly worked with no errors
+
+
+#3. make clean.full.aln with snippy-clean_full_aln 
+snippy-clean_full_aln core.full.aln > clean.full.aln 
+
+#NOT using gubbins because we dont have to
+#source /programs/miniconda3/bin/activate gubbins-3.1.2
+#run_gubbins.py -p gubbins clean.full.aln
+
+
+#4. make clean.core.aln with snp-sites
+/programs/snp-sites-2.5.1/bin/snp-sites
+export PATH=/programs/snp-sites-2.5.1/bin:$PATH
+snp-sites -p -c clean.full.aln > clean.core.phy
+  #can output a phylip file with -p for IQ tree
+
+#5. make a phylogenomic SNP tree with FastTree
+export PATH=/programs/FastTree-2.1.11:$PATH
+FastTree -gtr -nt clean.core.aln > clean.core.tree
+  
+#6. make phylogenomic SNP tree with IQ tree
+/programs/iqtree-2.2.2.6-Linux/bin/iqtree2 -s clean.core.phy -m MFP
+   #moved to IQ_tree/ 
+ 
+
+```
+
+
+
+
+### 13. Kaiju taxonomy Reads 
+  
+  this is an alternative to Kraken, since it seems to give a lot of false positives 
+
+#### 13.0 download kaiju database
+```{bash kaiju, eval = FALSE}
+  
+#the kaiju download doesn't work, because one GFC: GCF_050881545.1 doesn't download and outputs error 404.
+#Instead, I am downloading kaiju_db_nr (81 GB) database via getwd of this site I found online:
+https://bioinformatics-centre.github.io/kaiju/downloads.html 
+
+wget https://kaiju-idx.s3.eu-central-1.amazonaws.com/2024/kaiju_db_refseq_2024-08-25.tgz  
+ 
+#then extract  
+tar xzf kaiju_db_nr_2024-08-25.tgz
+ 
+## test to see if downloads worked:
+kaiju -t nodes.dmp -f kaiju_db_refseq.fmi -i pectin_lyase_A-apis_test.fasta -o test.out 
+  #outputted to test.out in 3.41 min
+ 
+```
+
+#### 13.1 run kaiju on all the files
+NOTE: if multiple tmux are running kaiju, it will crash. just run one
+```{bash tmux_kaiju, eval = FALSE}
+
+declare -a array1=(
+[0]=9_Lonicera_samples
+[1]=10_Linaria_samples
+[2]=4_Ranunculus_samples
+[3]=3_Lotus_samples
+[4]=5_Trifolium_samples
+[5]=8_Solidago_samples
+[6]=7_Alliaria_samples
+[7]=6_Matricaria_samples
+[8]=1_Chichorium_samples
+[9]=2_Malus_samples
+)
+
+declare -a array2=(
+[0]=2_Malus_samples
+[1]=1_Chichorium_samples
+)
+
+cd /local/workdir/Daphne/Floral_metagenomics/data_updated/03_Bowtie2_host_filter 
+
+#This runs kaiju on all samples from 03_bowtie
+for host_name in ${array2[@]}; do
+  for R1 in "$host_name/"*"/SAMPLE_host_removed_R1.fastq"; do
+    export PATH=/programs/kaiju-1.10.0/bin:$PATH
+    echo $(date)
+    R2="${R1/R1.fastq.gz/R2.fastq}"
+    output_name=$(echo "$R1" | cut -d'/' -f2)
+    kaiju_path="/local/workdir/Daphne/Floral_metagenomics/databases/kaiju_nr_euk"
+    kaiju -t "${kaiju_path}/nodes.dmp" -f "${kaiju_path}/kaiju_db_nr_euk.fmi" -i $R1 -j $R2 -o ../13_Kaiju/1-1_raw_kaiju_euk/${output_name}_kaiju.txt -z 30
+    echo $(date)
+  done
+done
+
+#this creates all_classified_kaiju_stats.out, containing number of classified reads, total reads, and the percent, for each sample
+cd /local/workdir/Daphne/Floral_metagenomics/data_updated/13_Kaiju/1-1_raw_kaiju_euk
+#check percent of lines that are "classified vs unclassified"
+for file in ./*.txt; do
+  echo $file >> all_classified_kaiju_euk_stats.out
+   #num files with C, total files, C's percent of total
+  awk '{total++} $1 == "C" {c++} END {print c, total, c/total}'  $file >> all_classified_kaiju_euk_stats.out
+done
+```
+Outputs for both of these scripts are saved in /13_Kaiju/1_raw_kaiju
+
+#### 13.2 assign genus taxonomy to kaiju reads
+Once kaiju files are made, isolate the acinetobacter files
+```{bash}
+
+#delete line that contains taxon 3242193 and 3242193 bc they cause errors for kaiju assign taxon
+for file in ./paired*; do
+  sed -i '/3242192/d' $file
+  sed -i '/3242193/d' $file
+done
+  
+# Run kaiju-addTaxonNames -r genus to add genus taxonomy to all reads  
+#NOTE: remember that I have the right path for the kaiju database I want to use
+kaiju_path="/local/workdir/Daphne/Floral_metagenomics/databases/kaiju_refseq"
+for files in ./*.txt; do
+  name=$(basename "$files" | sed 's/^paired_13702_32540_1797//;s/_kaiju.txt$/_kaiju_genus.out/')
+  kaiju-addTaxonNames -t ${kaiju_path}/nodes.dmp -n      ${kaiju_path}/names.dmp -i $files -r genus -o ../2_kaiju_taxonomy/$name
+done
+  
+#print to acineto_stats.out number of "Acinetobacter" per sample
+for genus_files in ./*_genus.out; do
+  echo $(basename "$genus_files") >> acineto_stats.out
+  awk '/Acinetobacter/ {count++} END {print count}' $genus_files >> acineto_stats.out
+done
+```
+Outputs for these scripts are saved in /13_Kaiju/2_kaiju_taxonomy
+
+#### 13.3 obtain read names for all acinetobacter reads
+```{bash}
+
+# extract reads with 'genus of interest'
+#separating by tabs /t, if 4th column = "acineto", print 2nd column (read name)
+for file in 2_kaiju_taxonomy/*Lonicera_kaiju_genus.out; do
+  output=$(basename $file | cut -d'_' -f1-3)
+awk -F"\t" '$4 == "Acinetobacter; " {print $2}' $file > 3_acineto_read_names/${output}_acineto_read_name.txt
+done
+
+# sort them into host name folders, to make it easier to match with 03_bowtie2_filtered_reads 
+```
+outputs are in 13_Kaiju/3_acineto_read_names/{host name}
+
+#### 13.4 Extract reads from 03_bowtie2 files using our kaiju name files
+tip: change host_name variable at the top of this chunk then just press "run"
+```{bash}
+
+host_name="10_Linaria"
+
+export PATH=/programs/seqtk:$PATH
+cd /local/workdir/Daphne/Floral_metagenomics/data_updated/13_Kaiju
+
+
+for name_file in 3_acineto_read_names/${host_name}_samples/*; do
+  prefix=$(basename "$name_file"); prefix=${prefix%%_kaiju_acineto_read_name.txt}
+  echo $prefix ######################################
+  
+  # Loop through 03_bowtie/subdirectories
+  for dir in ../03_Bowtie2_host_filter/${host_name}_samples/paired_13702_32540_1797*; do
+      # Remove everything before first underscore
+      suffix=$(echo "$dir" | awk -F'13702_32540_1797' '{print $2}') 
+      
+      # if acineto_name_list and bowtie reads name match, do seqtk
+      if [[ "$prefix" == "$suffix" ]]; then
+        
+        #create temp name files with added /1 and /2
+        sed 's/$/\/1/' $name_file > tmp_R1.txt
+        sed 's/$/\/2/' $name_file > tmp_R2.txt
+        
+        #use seqtk to extract reads witha name file
+        seqtk subseq $dir/SAMPLE_host_removed_R1.fastq tmp_R1.txt > 4_acineto_reads/${prefix}_R1.fastq
+        seqtk subseq $dir/SAMPLE_host_removed_R2.fastq tmp_R2.txt > 4_acineto_reads/${prefix}_R2.fastq
+        
+        # remove temp files
+        rm tmp_R1.txt tmp_R2.txt
+        
+      fi
+  done
+done
+```
+outputs are in 13_Kaiju/4_acineto_reads
+
+#### 13.5 making a heatmap
+
+1. get genus-level taxonomy and abundances with kaiju2table (bash)
+2. modify the table to be a matrix of taxa vs sample (R)
+3. generate a heatmap
+
+In this section, I alter the code "kaiju_files", "kaiju_path" and the output of 
+kaiju2table DIRECTLY in the script box to make varied heatmaps using different 
+kaju databases, taxon levels, etc 
+```{bash}
+cd /local/workdir/Daphne/Floral_metagenomics/data_updated/13_Kaiju/1-1_raw_kaiju_euk
+export PATH=/programs/kaiju-1.10.0/bin:$PATH
+# 1. add taxonomy to all samples with kaiju2table
+# Run kaiju-addTaxonNames -r genus to add genus taxonomy to all reads  
+#updated path for what kaiju db you want to use 
+kaiju_path="/local/workdir/Daphne/Floral_metagenomics/databases/kaiju_nr_euk"
+
+kaiju_files="
+paired_13702_32540_179738_Chichorium_kaiju.txt
+paired_13702_32540_179739_Solidago_kaiju.txt
+paired_13702_32540_179740_Chichorium_kaiju.txt
+paired_13702_32540_179741_Solidago_kaiju.txt
+paired_13702_32540_179742_Ranunculus_kaiju.txt
+paired_13702_32540_179743_Malus_kaiju.txt
+paired_13702_32540_179744_Malus_kaiju.txt
+paired_13702_32540_179745_Trifolium_kaiju.txt
+paired_13702_32540_179746_Solidago_kaiju.txt
+paired_13702_32540_179747_Trifolium_kaiju.txt
+paired_13702_32540_179748_Chichorium_kaiju.txt
+paired_13702_32540_179749_Malus_kaiju.txt
+paired_13702_32540_179750_Lotus_kaiju.txt
+paired_13702_32540_179751_Matricaria_kaiju.txt
+paired_13702_32540_179752_Chichorium_kaiju.txt
+paired_13702_32540_179753_Lotus_kaiju.txt
+paired_13702_32540_179754_Lonicera_kaiju.txt
+paired_13702_32540_179755_Alliaria_kaiju.txt
+paired_13702_32540_179756_Ranunculus_kaiju.txt
+paired_13702_32540_179757_Trifolium_kaiju.txt
+paired_13702_32540_179758_Lotus_kaiju.txt
+paired_13702_32540_179759_Lotus_kaiju.txt
+paired_13702_32540_179760_Chichorium_kaiju.txt
+paired_13702_32540_179761_Malus_kaiju.txt
+paired_13702_32540_179762_Malus_kaiju.txt
+paired_13702_32540_179763_Chichorium_kaiju.txt
+paired_13702_32540_179764_Chichorium_kaiju.txt
+paired_13702_32540_179765_Alliaria_kaiju.txt
+paired_13702_32540_179766_Malus_kaiju.txt
+paired_13702_32540_179767_Lonicera_kaiju.txt
+paired_13702_32540_179768_Chichorium_kaiju.txt
+paired_13702_32540_179769_Chichorium_kaiju.txt
+paired_13702_32540_179770_Chichorium_kaiju.txt
+paired_13702_32540_179771_Chichorium_kaiju.txt
+paired_13702_32540_179772_Chichorium_kaiju.txt
+paired_13702_32540_179773_Chichorium_kaiju.txt
+paired_13702_32540_179774_Chichorium_kaiju.txt
+paired_13702_32540_179775_Malus_kaiju.txt
+paired_13702_32540_179776_Solidago_kaiju.txt
+paired_13702_32540_179777_Chichorium_kaiju.txt
+paired_13702_32540_179778_Chichorium_kaiju.txt
+paired_13702_32540_179779_Chichorium_kaiju.txt
+paired_13702_32540_179780_Chichorium_kaiju.txt
+paired_13702_32540_179781_Chichorium_kaiju.txt
+paired_13702_32540_179782_Chichorium_kaiju.txt
+paired_13702_32540_179783_Lotus_kaiju.txt
+paired_13702_32540_179784_Chichorium_kaiju.txt
+paired_13702_32540_179785_Malus_kaiju.txt
+paired_13702_32540_179786_Matricaria_kaiju.txt
+paired_13702_32540_179787_Chichorium_kaiju.txt
+paired_13702_32540_179788_Chichorium_kaiju.txt
+paired_13702_32540_179789_Chichorium_kaiju.txt
+paired_13702_32540_179790_Chichorium_kaiju.txt
+paired_13702_32540_179791_Chichorium_kaiju.txt
+paired_13702_32540_179792_Chichorium_kaiju.txt
+paired_13702_32540_179793_Linaria_kaiju.txt
+"
+
+kaiju2table -t ${kaiju_path}/nodes.dmp -n ${kaiju_path}/names.dmp -r phylum -m 1.0 -u -o ../5_heatmap/kaiju_phylum_summary.tsv $kaiju_files
+
+```
+
+
+change input for kaiju_df
+```{r modify-and-reformat_kaiju2table, eval = FALSE}
+#setup
+setwd("local/workdir/Daphne/Floral_metagenomics/data_updated")
+library(tidyverse)
+
+# Read the Kaiju summary file
+kaiju_df <- read_tsv("13_Kaiju/5_heatmap/kaiju_phylum_summary.tsv")
+
+# Clean up sample names (remove path and _kaiju.txt)
+kaiju_df <- kaiju_df %>%
+  mutate(sample = basename(file) %>%
+        str_replace("_kaiju\\.txt$", "")%>%
+        str_replace("paired_13702_32540_1797", ""))
+        
+# Create abundance matrix: taxon_name x sample (values = reads)
+abundance_matrix <- kaiju_df %>%
+  select(sample, taxon_name, reads) %>%
+  group_by(taxon_name, sample) %>%
+  summarise(reads = sum(reads), .groups = "drop") %>%
+  pivot_wider(names_from = sample, values_from = reads, values_fill = 0)
+
+# Write to CSV
+write_csv(abundance_matrix, "13_Kaiju/5_heatmap/kaiju_abundance_matrix.csv")
+```
+
+```{r kaiju_heatmap, eval = FALSE}
+library(pheatmap)
+
+data <- read.csv("13_Kaiju/5_heatmap/kaiju_abundance_matrix.csv", row.names=1)
+pheatmap(data, scale="row", clustering_distance_rows="euclidean",
+         clustering_distance_cols="euclidean", color = colorRampPalette(c("purple4", "white", "goldenrod1"))(50), cellwidth = 6,
+  cellheight = 6, fontsize = 5)
+```
+
+
+
+### 14 Snippy again with Kaiju reads
+
+
+#### 14.1 create tab input files for snippy-multi
+snippy multi allows you to check multiple isolates against same reference, using names file with tabs 
+```{bash}
+
+# input of all samples (minus refernce genomes)
+name="all_samples"
+cd /local/workdir/Daphne/Floral_metagenomics/data_updated
+printf "" > 14_snippy_kaiju/inputs_for_snippy-multi/$name.tab #clear output
+for R1 in 13_Kaiju/4_acineto_reads/*R1.fastq; do
+  ID="$(basename "${R1%%_R1.fastq}")"
+  R2=${R1/R1.fastq/R2.fastq}
+  printf "%s\t%s\t%s\n" "14_snippy_kaiju/snippy/snippy-multi_$name/$ID" "$R1" "$R2" >> 14_snippy_kaiju/inputs_for_snippy-multi/$name.tab
+done
+
+
+# input of all reference genomes
+name_genome="ref_nectaris"
+printf "" > 14_snippy_kaiju/inputs_for_snippy-multi/$name_genome.tab 
+for genome in 13_Kaiju/RAST_nectar_genomes/A-nectaris*.fna; do
+  ID="$(basename "${genome%%.fna}")"
+  printf "%s\t%s\n" "14_snippy_kaiju/snippy/snippy-multi_$name_genome/$ID" "$genome">> 14_snippy_kaiju/inputs_for_snippy-multi/$name_genome.tab
+done
+
+  # note: these input files have paths from /local/workdir/Daphne/Floral_metagenomics/data_updated, so make sure future snippy steps also are based from this path
+
+```
+
+
+
+Now, we can use these fasta files with acinetobacter contigs to run snippy
+steps: 
+snippy
+snippy-core
+snippy-clean_full_aln
+snp-sites
+FastTree
+
+#### 14.2 Snippy-multi on samples and reference genomes
+
+This does snippy core so I think I should delete files that have no data (samples 46 and 83)
+```{bash}
+
+export PATH=/programs/snippy-4.6.0/bin:/programs/snippy-4.6.0/binaries/linux:$PATH
+export PATH=/programs/seqtk:$PATH
+export PATH=/programs/samclip:$PATH
+export PATH=/programs/vt:$PATH
+
+cd /local/workdir/Daphne/Floral_metagenomics/data_updated
+
+#snippy multi for all samples (minus refernce genomes)
+name="allsample_nectaris"
+snippy-multi 14_snippy_kaiju/inputs_for_snippy-multi/$name.tab --ref 13_Kaiju/RAST_nectar_genomes/A-nectaris-BB226.fna --cpus 20 --mincov 4 > 14_snippy_kaiju/snippy/snippy-multi_$name.sh
+#changed snippy-core ref to be FNA11 or BB226
+#add prefix for output --prefix '14_snippy_kaiju/snippy/snippy-multi_all_samples/core' 
+
+sh ./14_snippy_kaiju/snippy/snippy-multi_$name.sh #run snippy
+
+
+#snippy multi for all reference genomes
+name_genome="ref_nectaris"
+snippy-multi 14_snippy_kaiju/inputs_for_snippy-multi/$name_genome.tab --ref 13_Kaiju/RAST_nectar_genomes/A-nectaris-BB226.fna --cpus 20 > 14_snippy_kaiju/snippy/snippy-multi_$name_genome.sh
+#changed snippy-core ref to be FNA11
+#add prefix for output --prefix '14_snippy_kaiju/snippy/snippy-multi_ref_nectaris/core'
+
+sh ./14_snippy_kaiju/snippy/snippy-multi_$name_genome.sh # run snippy
+
+
+#snippy core for top 6 genomes and all reference genomes
+sh ./14_snippy_kaiju/snippy/snippy_core-top6_all_genomes.sh
+ 
+```
+
+
+
+
+#### 14.3 from snippy to IQ tree
+```{bash, eval = FALSE}
+#Remember to cd into 14_snippy_kaiju/snippy/{your working folder}
+
+#3. make clean.full.aln
+snippy-clean_full_aln core-39.full.aln > 39-clean.full.aln
+
+#4. make clean.core.aln with snp-sites
+/programs/snp-sites-2.5.1/bin/snp-sites
+export PATH=/programs/snp-sites-2.5.1/bin:$PATH
+snp-sites -c 39-clean.full.aln > 39-clean.core.aln 
+
+#5. make phylogenomic SNP tree with IQ tree
+/programs/iqtree-2.2.2.6-Linux/bin/iqtree2 -s 39-clean.core.aln -m MFP 
+  
+
+```
+
+
+### CURL
+```{bash}
+
+ftp://ftp.mg-rast.org/tools/upload/mg-inbox.py
+
+python mg-inbox.py --help
+# from chatgpt
+curl -H "auth: <YOUR_API_KEY>" -F "upload=@your_sample.fastq.gz" "https://api.mg-rast.org/1/inbox"
+
+cd /local/workdir/Daphne/Floral_metagenomics/databases/MG-RAST-Tools
+#from mg rast website:
+curl -X POST -H "auth: aN46PrhE8kpzsBX23AYdQKFXT" -F "upload=@/paired_13702_32540_179793_Lonicera/contigs.fasta"  
+
+curl -X POST \
+     -H "auth: aN46PrhE8kpzsBX23AYdQKFXT" \
+     -F "upload=@<path/to/yourfile.fastq>" \
+     "https://api.mg-rast.org/inbox"
+
+# my webkey for 8/4/2025 is:aN46PrhE8kpzsBX23AYdQKFXT (should work
+# like an API)
+
+#chatgpt again
+curl -H "auth: aN46PrhE8kpzsBX23AYdQKFXT" -F "upload=@../../data_updated/03_Bowtie2_host_filter/5_Trifolium_samples/paired_13702_32540_179745_Trifolium/SAMPLE_host_removed_R1.fastq" "https://api.mg-rast.org/1/inbox"
+
+
+#this has the raw read sitting in data_updated
+curl -X POST -H "auth: aN46PrhE8kpzsBX23AYdQKFXT" -F "upload=@13702_32540_179745_H5MH5AFX5_metagenomic_mix_H06_FN128_TAGGCATG_TCGCATAA_R1.fastq.gz" "https://api.mg-rast.org/1/inbox"
+
+
+echo -e "@SEQ_ID\nGATTACA\n+\nIIIIIII" > test.fastq
+gzip test.fastq
+curl -X POST -H "auth: aN46PrhE8kpzsBX23AYdQKFXT" -F "13702_32540_179745_H5MH5AFX5_metagenomic_mix_H06_FN128_TAGGCATG_TCGCATAA_R1.fastq.gz" "https://api.mg-rast.org/1/inbox"
+
+curl -v -H "auth: aN46PrhE8kpzsBX23AYdQKFXT"  -F "upload=@13702_32540_179745_H5MH5AFX5_metagenomic_mix_H06_FN128_TAGGCATG_TCGCATAA_R1.fastq.gz" "https://api.mg-rast.org/1/inbox" > out 2>error
+
+#git link from chatgpt:
+https://github.com/MG-RAST/MG-RAST-Upload
+
+```
 

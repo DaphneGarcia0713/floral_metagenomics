@@ -269,6 +269,9 @@ snippy multi allows you to check multiple isolates against same reference,
 using names file with tabs 
 ```{bash snippy input_files, eval=FALSE}
 
+run_name="Feb16_ref_and_018"
+species="pollinis"
+
 # input of all samples (minus reference genomes)
 cd /local/workdir/Daphne/Floral_metagenomics/data_5_SNP/10_snippy
 name="${run_name}_${species}"
@@ -280,8 +283,8 @@ printf "" > 10.1_inputs_for_snippy/$name.tab #clear output
 intermediate_dir="10.1_inputs_for_snippy/${name}_snippy_intermediate_files"
 mkdir $intermediate_dir
 
-
-for contig in ../9_Kaiju/9.4_contigs/${run_name}/*_${species}.fastq; do
+## NOTE: To use a preexisting contigs from 9.4, replace "run_name" with, say, jan23
+for contig in ../9_Kaiju/9.4_contigs/kaiju_jan23/*_${species}.fastq; do
   ID="$(basename "${contig%%_${species}.fastq}")"
   
   #make a .tab file with 2 columns:two paths for the intermediate snippy files
@@ -289,27 +292,21 @@ for contig in ../9_Kaiju/9.4_contigs/${run_name}/*_${species}.fastq; do
   printf "%s\t%s\n" "${intermediate_dir}/$ID" "$contig" >> 10.1_inputs_for_snippy/$name.tab
 done
 
+#NOTE: delete all lines in the 10.1 output .tab file that aren't the "top 5" metagenomic samples or the samples I want. 
 
-
-
-############## Reference genomes Portion
+############## Reference genomes Portion  ######
 
 # input of all reference genomes
 name_genome="ref_${species}"
-
-#clear the preexisting .tab file
-printf "" > 10.1_inputs_for_snippy/$name_genome.tab
-
-#create subdirs to house intermediate snippy files
-intermed_dir="10.1_inputs_for_snippy/${name_genome}_snippy_intermediate_files"
-mkdir $intermed_dir
+intermed_dir="10.1_inputs_for_snippy/${name}_snippy_intermediate_files"
 
 #make a .tab file with 2 columns:paths for the intermediate snippy files
   #directory and the path to the ref genome .fna
-for genome in RAST_nectar_genomes/A-${species}*.fna; do
+for genome in RAST_nectar_genomes/*.fna; do
   ID="$(basename "${genome%%.fna}")"
-  printf "%s\t%s\n" "${intermed_dir}/$ID" "$genome">> 10.1_inputs_for_snippy/$name_genome.tab
+  printf "%s\t%s\n" "${intermed_dir}/$ID" "$genome">> 10.1_inputs_for_snippy/$name.tab ### NOTE this line outputs to same file with metagenomic samples 
 done
+
 
   # note: these input files have paths from /local/workdir/Daphne/Floral_metagenomics/data_5_SNP/10_snippy, so make sure future snippy steps also are based from this path
 
@@ -331,8 +328,6 @@ This does snippy core, it creates subdirectories in 10.1 intermediate files that
 
 ```{bash snippy, eval=FALSE}
 
-
-
 export PATH=/programs/snippy-4.6.0/bin:/programs/snippy-4.6.0/binaries/linux:$PATH
 export PATH=/programs/seqtk:$PATH
 export PATH=/programs/samclip:$PATH
@@ -346,43 +341,21 @@ ref="A-pollinis-FNA11"
 #snippy multi for all samples (minus reference genomes)
 name="${run_name}_${species}"
 mkdir 10.2_snippy_multi_core/$name
-snippy-multi 10.1_inputs_for_snippy/$name.tab --ref RAST_nectar_genomes/${ref}.fna --cpus 20 --mincov 4 > 10.2_snippy_multi_core/$name.sh
+snippy-multi 10.1_inputs_for_snippy/$name.tab --ref RAST_nectar_genomes/${ref}.fna --cpus 20 --mincov 1 > 10.2_snippy_multi_core/$name.sh
 
-# after .sh file is created, go inside and add an output prefix to .sh, after ref variable. UPDATE according to $name !!!
-# --prefix '10.2_snippy_multi_core/kaiju_euk_jan27_pollinis/core' 
+# after .sh file is created, go inside 10.2/xxx.sh and add a prefix to the last line. UPDATE according to $name !!!
+# --prefix '10.2_snippy_multi_core/Feb9_5sample_pollinis/core' 
+# Also, change -se to -cntg for contig!
 
 sh ./10.2_snippy_multi_core/$name.sh #run snippy
   #takes 3 min to run the first time, takes 10 sec subsequent times
 
-##############################################################################
-#snippy multi for all reference genomes
-name_genome="ref_nectaris"
-snippy-multi 14_snippy_kaiju/inputs_for_snippy-multi/$name_genome.tab --ref 13_Kaiju/RAST_nectar_genomes/A-nectaris-BB226.fna --cpus 20 > 14_snippy_kaiju/snippy/snippy-multi_$name_genome.sh
-#changed snippy-core ref to be FNA11
-#add prefix for output --prefix '14_snippy_kaiju/snippy/snippy-multi_ref_nectaris/core'
-
-sh ./14_snippy_kaiju/snippy/snippy-multi_$name_genome.sh # run snippy
-
-
-#snippy core for top 6 genomes and all reference genomes
-sh ./14_snippy_kaiju/snippy/snippy_core-top6_all_genomes.sh
- 
-
 ```
-
-##### test snippy. core 1/28
-```{bash}
-
-snippy-core --ref ref.fa test_core sample1 sample2 sample3
-snippy-core --ref '10.1_inputs_for_snippy/kaiju_euk_jan27_pollinis_snippy_intermediate_files/1_22FN018/ref.fa'  --prefix '10.2_snippy_multi_core/kaiju_euk_jan27_pollinis/core_just4' --contigs 10.1_inputs_for_snippy/kaiju_euk_jan27_pollinis_snippy_intermediate_files/1_22FN018 10.1_inputs_for_snippy/kaiju_euk_jan27_pollinis_snippy_intermediate_files/4_FN118 10.1_inputs_for_snippy/kaiju_euk_jan27_pollinis_snippy_intermediate_files/4_FN128 10.1_inputs_for_snippy/kaiju_euk_jan27_pollinis_snippy_intermediate_files/4_FN131
-
-```
-
-
 
 #### 10.3 from snippy to IQ tree
 ```{bash, eval = FALSE}
 #Remember to cd into 14_snippy_kaiju/snippy/{your working folder}
+cd ./10.2_snippy_multi_core/${name}
 
 #3. make clean.full.aln
 snippy-clean_full_aln core.full.aln > clean.full.aln
@@ -390,10 +363,55 @@ snippy-clean_full_aln core.full.aln > clean.full.aln
 #4. make clean.core.aln with snp-sites
 /programs/snp-sites-2.5.1/bin/snp-sites
 export PATH=/programs/snp-sites-2.5.1/bin:$PATH
-snp-sites -c 39-clean.full.aln > 39-clean.core.aln 
+snp-sites -c clean.full.aln > clean.core.aln 
 
 #5. make phylogenomic SNP tree with IQ tree
-/programs/iqtree-2.2.2.6-Linux/bin/iqtree2 -s 39-clean.core.aln -m MFP 
+/programs/iqtree-2.2.2.6-Linux/bin/iqtree2 -s core.full.aln -m MFP -bb 1000
+
   
 
 ```
+
+
+### 11. testing alignment of contigs to reference of all samples with minimap2
+The .vcf files that were supposed to have alignments didn't, and someone online 
+aligned a list of contigs to a reference genome using minimap2
+
+https://www.researchgate.net/post/How_do_I_align_bacterial_contigs_to_a_reference_genome_and_visualize_the_alignment
+
+```{bash}
+
+  cd /local/workdir/Daphne/Floral_metagenomics/data_5_SNP/10_snippy/
+	export PATH=/programs/minimap2-2.30:$PATH
+	
+	#minimap2 ref.fa query.fq > approx-mapping.paf
+	
+	
+for sample in ../9_Kaiju/9.4_contigs/kaiju_jan23/*; do	
+  name=$(basename "$sample" | sed 's/_pollinis.fastq//')
+  mkdir ../11_minimap2/Feb4/${name}
+  outsam="../11_minimap2/Feb4/${name}/${name}_map.sam"
+  
+	minimap2 RAST_nectar_genomes/A-pollinis-FNA11.fna $sample -o $outsam -a 
+	samtools sort $outsam -o ../11_minimap2/Feb4/${name}/${name}_map_sorted.sam
+	
+	cp RAST_nectar_genomes/A-pollinis-FNA11.fna ../11_minimap2/Feb4/${name}/
+	rm ../11_minimap2/Feb4/${name}/*map.sam
+done	
+	
+```
+It worked! But I have trouble viewing it in IGV because it doesn't like the "NODE"
+configuration of the contigs. 
+
+
+### 12. Pplacer: adding contigs to reference tree
+
+```{bash}
+	
+/programs/pplacer-Linux-v1.1.alpha19/pplacer
+
+
+
+
+```
+

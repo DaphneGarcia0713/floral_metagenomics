@@ -1,0 +1,712 @@
+---
+title: "copy of data_updated metagenomic_workflow"
+author: "Daphne Garcia"
+date: "2026-02-16"
+output: html_document
+editor_options: 
+  markdown: 
+    wrap: 72
+  chunk_output_type: console
+---
+
+
+## Goals
+In data_6, I copied steps 3, 13, and 14 from data_updated in order to modify 
+them and once it works for me again, add a custom kaiju database copied from
+data_5
+
+update 2/25: I will add CIP nectaris to kaju database (.faa files) to 13_Kaiju/RAST_nectar_genomes
+ 
+ 
+ FOR REFERENCE: 
+| Number | reference genome     |
+|--------|----------------------|
+| 1      | Cichorium intybus    |
+| 2      | Malus domestica      |
+| 3      | Lotus japonicus      |
+| 4      | Ranunculus sardous   |
+| 5      | Trifolium repens     |
+| 6      | Matricaria discoidea |
+| 7      | Alliaria petiolata   |
+| 8      | Solidago caesia      |
+| 9      | Lonicera japonica    |
+| 10     | Linaria vulgaris     |
+ 
+### 3. Bowtie2
+
+We're gonna run the data/02_trimmed_paired_filtered reads and filter against Malus (apple), Taraxacum (dandelion), Lotus (trefoil), and Lonicera (honeysuckle) mitochondria, which contaminated many samples 
+
+#### 3.1 Download/build reference indices
+
+First, I need to concatenate all mitochondrial genomes since they're small, and build an index out of the concatenated fasta. 
+
+Note: when I started, I ftp-downloaded all 4 mito genomes into /03_Flower_host_genomes/Mitochondria_indices
+
+```{bash bowtie2_build_mito_reference_index, eval=FALSE}
+
+#enter right directory and load bowtie2
+cd /local/workdir/Daphne/Floral_metagenomics/data/03_Flower_host_genomes/Mitochondria_indices
+export PATH=/programs/bowtie2-2.5.1-linux-x86_64:$PATH
+
+#combine all 4 mitochondrial genomes
+cat ./*.fasta > ./mito_genomes.fasta
+
+#Index for Cichorium intybus (dandelion, chickory, hawkweed)
+bowtie2-build ./mito_genomes.fasta mito_index
+
+```
+
+#### 3.2 Bowtie host filtering
+
+Here we are in the data/ folder, looping through 
+`data/02_trim_unzipped_and_host-grouped` R1 and R2 reads, and aligning them to 
+the mitochondria reference genome index: 
+`data/03_Flower_host_genomes/Mitochondria_indices`
+
+```{bash bowtie2_loop, eval = FALSE}
+
+#enter right directory and load bowtie2
+cd /local/workdir/Daphne/Floral_metagenomics/data/02_trim_unzipped_and_host-grouped
+export PATH=/programs/bowtie2-2.5.1-linux-x86_64:$PATH
+ 
+for sample in ./* ; do
+  cd $sample
+  for R1 in ./*_R1.fastq; do
+    base="$(basename "${R1%%_R1.fastq}" | cut -d'_' -f1-4)"
+    output_dir="../../../data_updated/03_Bowtie2_host_filter/${sample}/${base}"
+    mkdir $output_dir
+    bowtie2 --sensitive-local -p 32 --seed 4 -x ../../03_Flower_host_genomes/Mitochondria_indices/mito_index -1 $R1 -2 ${R1/R1.fastq/R2.fastq} -S "$output_dir/SAMPLE_mapped_and_unmapped.sam";
+  done     
+  cd - > /dev/null
+done   
+
+#Faster way with tmux: in terminal, do "sample=1_Chichorium_samples", etc, and run only the nested for loop of the function
+    
+# --sensitive-local (not very-sensitive) because our ref host genomes are usually different genuses of the actual host
+# -p is the number of parallel threads 
+#--seed 4 is a random number to make it so that work is reproducible 
+# -x The basename of the index for the reference genome variable $index
+# -1 and -2 are the paired inputs R1 and R2
+# -S Summary of index settings and input names/lengths    
+ 
+```
+
+Outputs are `paired_1370.../SAMPLE_mapped_and_unmapped.sam` file within
+`data_updated/03_Bowtie2_host_filter/#_host-genome/`
+
+The most percent alignments were 0.05-1% alignment, though some rose up to 10% alignments from the chichorium group
+
+
+#### 3.3 SamTools and bedtools modifications
+
+bowtie unassigned files must be re-formatted with samtools to .sam and .bam for assembly with metaspades
+```{bash sam_bed_after_bowtie2, eval = FALSE}
+
+#enter right directory
+cd /local/workdir/Daphne/Floral_metagenomics/data_updated/03_Bowtie2_host_filter
+
+for group in ./* ; do
+  cd $group
+  for sample in ./*/; do
+    cd $sample
+    #Convert file .sam to .bam
+    touch SAMPLE_mapped_and_unmapped.bam
+    samtools view -bS SAMPLE_mapped_and_unmapped.sam > SAMPLE_mapped_and_unmapped.bam
+    #filter required unmapped reads get unmapped pairs (both ends unmapped)
+    samtools view -b -f 12 -F 256 SAMPLE_mapped_and_unmapped.bam > SAMPLE_bothReadsUnmapped.bam 
+    # split paired-end reads into separated fastq files .._r1 .._r2
+    samtools sort -n -m 5G -@ 2 SAMPLE_bothReadsUnmapped.bam -o SAMPLE_bothReadsUnmapped_sorted.bam
+    # sort bam file by read name (-n) for bedtools
+    samtools fastq -@ 8 SAMPLE_bothReadsUnmapped_sorted.bam -1 SAMPLE_host_removed_R1.fastq.gz -2 SAMPLE_host_removed_R2.fastq.gz -0 /dev/null -s /dev/null -n
+    #Convert bam to fastq
+    bedtools bamtofastq -i SAMPLE_bothReadsUnmapped_sorted.bam -fq SAMPLE_host_removed_R1.fastq -fq2 SAMPLE_host_removed_R2.fastq
+    cd - > /dev/null # return to previous dir
+  done
+  cd - > /dev/null
+done
+
+#I used this to add "_host" suffix to all folders in 03_Bowtie2_host_filter/host"
+for file in 10_Linaria_samples/*; do
+  mv $file "${file}_Linaria"
+done
+
+#This took very long, ~10 minutes for each group, ~30 minutes for Chichorium
+```
+
+This outputs 6 new files into
+`Floral_metagenomics/data/03_Bowtie2_host_filter/`
+`(# host name)/paired...(sample name)/` - both reads mapped and unmapped
+(sam -\> bam -\> sorted) - host removed R1, R2 (fastq.gz -\> .fastq)
+
+the mito-host-removed R1 and R2 files will be subsequently used in the
+metaspades assembly
+
+
+
+
+### 13. Kaiju taxonomy Reads 
+  
+  NOTE: outputs for this are now in 13_kaiju_OLD, since this used the old 
+  database
+
+#### 13.1 run kaiju on all the files
+NOTE: if multiple tmux are running kaiju, it will crash. just run one
+```{bash tmux_kaiju, eval = FALSE}
+
+declare -a array1=(
+[0]=9_Lonicera_samples
+[1]=10_Linaria_samples
+[2]=4_Ranunculus_samples
+[3]=3_Lotus_samples
+[4]=5_Trifolium_samples
+[5]=8_Solidago_samples
+[6]=7_Alliaria_samples
+[7]=6_Matricaria_samples
+[8]=1_Chichorium_samples
+[9]=2_Malus_samples
+)
+
+cd /local/workdir/Daphne/Floral_metagenomics/data_6_data_updated_copy/03_Bowtie2_host_filter 
+export PATH=/programs/kaiju-1.10.0/bin:$PATH
+
+#This runs kaiju on all samples from 03_bowtie
+for host_name in ${array1[@]}; do
+  for R1 in "$host_name/"*"/SAMPLE_host_removed_R1.fastq"; do
+    echo $(date)
+    export PATH=/programs/kaiju-1.10.0/bin:$PATH
+    R2="${R1/R1.fastq/R2.fastq}"
+    output_name=$(echo "$R1" | cut -d'/' -f2)
+    kaiju_path="/local/workdir/Daphne/Floral_metagenomics/databases/kaiju_nr_euk"
+    kaiju -t "${kaiju_path}/nodes.dmp" -f "${kaiju_path}/kaiju_db_nr_euk.fmi" -i $R1 -j $R2 -o ../13_Kaiju/1_raw_kaiju_euk/${output_name}_kaiju.txt -z 30
+  done
+done
+
+#this creates all_classified_kaiju_stats.out, containing number of classified reads, total reads, and the percent, for each sample
+cd /local/workdir/Daphne/Floral_metagenomics/data_6_data_updated_copy/13_Kaiju/1_raw_kaiju_euk
+#check percent of lines that are "classified vs unclassified"
+for file in ./*.txt; do
+  echo $file >> all_classified_kaiju_euk_stats.out
+   #num files with C, total files, C's percent of total
+  awk '{total++} $1 == "C" {c++} END {print c, total, c/total}'  $file >> all_classified_kaiju_euk_stats.out
+done
+```
+Outputs for both of these scripts are saved in /13_Kaiju/1_raw_kaiju
+
+NOTE: I copied this from data_updated/1_raw_kaiju because it would have taken 12 hours to run
+
+#### 13.2 assign genus taxonomy to kaiju reads
+Once kaiju files are made, isolate the acinetobacter files
+```{bash}
+
+cd /local/workdir/Daphne/Floral_metagenomics/data_6_data_updated_copy/13_Kaiju/1_raw_kaiju_euk
+
+#delete line that contains taxon 3242193 and 3242193 bc they cause errors for kaiju assign taxon
+for file in ./paired*; do
+  sed -i '/3242192/d' $file
+  sed -i '/3242193/d' $file
+done
+  # took 20 seconds
+  
+cd /local/workdir/Daphne/Floral_metagenomics/data_6_data_updated_copy/13_Kaiju/1_raw_kaiju_euk  
+# Run kaiju-addTaxonNames -r genus to add genus taxonomy to all reads  
+#NOTE: remember that I have the right path for the kaiju database I want to use
+kaiju_path="/local/workdir/Daphne/Floral_metagenomics/databases/kaiju_refseq"
+for files in ./*.txt; do
+  name=$(basename "$files" | sed 's/^paired_13702_32540_1797//;s/_kaiju.txt$/_kaiju_genus.out/')
+  kaiju-addTaxonNames -t ${kaiju_path}/nodes.dmp -n      ${kaiju_path}/names.dmp -i $files -r genus -o ../2_kaiju_taxonomy/$name
+done
+  
+#Took 2 minutes  
+  
+#print to acineto_stats.out number of "Acinetobacter" per sample
+cd /local/workdir/Daphne/Floral_metagenomics/data_6_data_updated_copy/13_Kaiju/2_kaiju_taxonomy
+for genus_files in ./*_genus.out; do
+  echo $(basename "$genus_files") >> acineto_stats.out
+  awk '/Acinetobacter/ {count++} END {print count}' $genus_files >> acineto_stats.out
+done
+```
+Outputs for these scripts are saved in /13_Kaiju/2_kaiju_taxonomy
+
+Took 2 minutes, and has same file names and file sizes as data_updated/1_raw_kaiju
+
+
+#### 13.3 obtain read names for all acinetobacter reads
+```{bash}
+
+cd /local/workdir/Daphne/Floral_metagenomics/data_6_data_updated_copy/13_Kaiju
+
+# extract reads with 'genus of interest'
+#separating by tabs /t, if 4th column = "acineto", print 2nd column (read name)
+
+flower="Linaria"
+mkdir 3_acineto_read_names/${flower}_samples
+for file in 2_kaiju_taxonomy/*${flower}_kaiju_genus.out; do
+  output=$(basename $file | cut -d'_' -f1-3)
+awk -F"\t" '$4 == "Acinetobacter; " {print $2}' $file > 3_acineto_read_names/${flower}_samples/${output}_acineto_read_name.txt
+done
+
+# sort them into host name folders, to make it easier to match with 03_bowtie2_filtered_reads 
+```
+outputs are in 13_Kaiju/3_acineto_read_names/{host name}
+
+* I updated this code so that it would make flower directories to separate the 
+read name files.
+* This took ~2 minutes, and I had to manually change $flower to be each of 10
+flower names
+* I also manually added number to flower directory names after I ran the code
+*This matches file names and sizes to data_updated/3
+
+
+
+
+#### 13.4 Extract reads from 03_bowtie2 files using our kaiju name files
+tip: change host_name variable at the top of this chunk then just press "run"
+```{bash}
+
+host_name="9_Lonicera"
+
+export PATH=/programs/seqtk:$PATH
+cd /local/workdir/Daphne/Floral_metagenomics/data_6_data_updated_copy/13_Kaiju
+
+
+for name_file in 3_acineto_read_names/${host_name}_samples/*; do
+  prefix=$(basename "$name_file"); prefix=${prefix%%_kaiju_acineto_read_name.txt}
+  echo $prefix ######################################
+  
+  # Loop through 03_bowtie/subdirectories
+  for dir in ../03_Bowtie2_host_filter/${host_name}_samples/paired_13702_32540_1797*; do
+      # Remove everything before first underscore
+      suffix=$(echo "$dir" | awk -F'13702_32540_1797' '{print $2}') 
+      
+      # if acineto_name_list and bowtie reads name match, do seqtk
+      if [[ "$prefix" == "$suffix" ]]; then
+        
+        #create temp name files with added /1 and /2
+        sed 's/$/\/1/' $name_file > tmp_R1.txt
+        sed 's/$/\/2/' $name_file > tmp_R2.txt
+        
+        #use seqtk to extract reads witha name file
+        seqtk subseq $dir/SAMPLE_host_removed_R1.fastq tmp_R1.txt > 4_acineto_reads/${prefix}_R1.fastq
+        seqtk subseq $dir/SAMPLE_host_removed_R2.fastq tmp_R2.txt > 4_acineto_reads/${prefix}_R2.fastq
+        
+        # remove temp files
+        rm tmp_R1.txt tmp_R2.txt
+        
+      fi
+  done
+done
+```
+outputs are in 13_Kaiju/4_acineto_reads
+
+This took ~4 minutes, and I had to manually change  $host_name for 
+each flower type
+
+Same file name and size as data_updated/13.4
+
+### 13. Kaiju CUSTOM database
+
+I will modify scripts from data_5_SNP which use a custom Kaiju database and split contigs into either pollinis or nectaris. From here, I will feed this pipeline back into 14. Snippy
+
+
+#### 13.0 create a custom kaiju database
+
+I copied the folder data_5/9_kaiju/9.0 Acineto ref kaiju db:
+
+it contains .faa 
+I also made fake names.dmp and nodes.dmp by copying A-pol and A-nect species
+info from node/name.dpm files in daphne/floral/databases/kaiju-nr-euk
+
+2/25: I will add A-nectaris CIP and A-pollinis ESL to this
+```{bash kaiju, eval = FALSE}
+  
+# I ran this from inside data_5/9/9.0  
+cd /local/workdir/Daphne/Floral_metagenomics/data_6_data_updated_copy/13_Kaiju/13.0_Acineto_ref_kaijudb
+
+
+# I added prefixes to all references to match NCBI nodes, found in names.dmp (manually change file
+# names in the code)
+awk '/^>/ {print ">2605270"; next} {print}' A-pollinis-ESL0695.faa > A-pollinis-ESL0695_protein.kaiju.faa
+  
+#Then I added them all to one doc:
+echo > all_ref_acineto_protein_genomes.faa  ## clear this file
+for file in ./*kaiju.faa; do 
+  cat $file >> all_ref_acineto_protein_genomes.faa
+done
+
+#now, make the kaiju database .fmi
+export PATH=/programs/kaiju-1.10.0/bin:$PATH
+kaiju-mkbwt -n 5 -a ACDEFGHIKLMNPQRSTVWY -o all_ref_acineto_protein_genomes all_ref_acineto_protein_genomes.faa
+kaiju-mkfmi all_ref_acineto_protein_genomes
+# don't forget to delete .bwt and .sa files
+
+```
+
+the file `all_ref_acineto_protein_genomes.fmi` is now created in `data_5/9/9.0`
+
+
+
+#### 13.1 run kaiju on all the files
+NOTE: if multiple tmux are running kaiju, it will crash. just run one
+```{bash tmux_kaiju, eval = FALSE}
+
+declare -a array1=(
+[0]=9_Lonicera_samples
+[1]=10_Linaria_samples
+[2]=4_Ranunculus_samples
+[3]=3_Lotus_samples
+[4]=5_Trifolium_samples
+[5]=8_Solidago_samples
+[6]=7_Alliaria_samples
+[7]=6_Matricaria_samples
+[8]=1_Chichorium_samples
+[9]=2_Malus_samples
+)
+
+cd /local/workdir/Daphne/Floral_metagenomics/data_6_data_updated_copy/03_Bowtie2_host_filter 
+export PATH=/programs/kaiju-1.10.0/bin:$PATH
+
+#This runs kaiju on all samples from 03_bowtie
+for host_name in ${array1[@]}; do
+  for R1 in "$host_name/"*"/SAMPLE_host_removed_R1.fastq"; do
+    echo $(date)
+    export PATH=/programs/kaiju-1.10.0/bin:$PATH
+    R2="${R1/R1.fastq/R2.fastq}"
+    output_name=$(echo "$R1" | cut -d'/' -f2)
+    kaiju_path="/local/workdir/Daphne/Floral_metagenomics/data_6_data_updated_copy/13_Kaiju/13.0_Acineto_ref_kaijudb"
+    
+    kaiju -t "${kaiju_path}/nodes.dmp" \
+    -f "${kaiju_path}/all_ref_acineto_protein_genomes.fmi" \
+    -i $R1 -j $R2 \
+    -o ../13_Kaiju/1_raw_kaiju/${output_name}_kaiju.txt \
+    -z 30
+    
+  done
+done
+# Takes 10 minutes
+
+```
+Finished in 9.5 minutes
+
+THIS WORKED!! 2/18. It worked because in 13.0, I updated the nodes.dpm and names.dmp files. From the original (I opened it on vscode bc it's massive), I copy/pasted 
+the lines for Acinetobacter pollinis and nectaris. in Nodes.dmp, each taxon has 
+the previous taxonomic branch (liked a data-structure tree). I paste the 
+corresponding names into names.dmp
+
+
+ Now this script creates all_classified_kaiju_stats.out, containing number of 
+ classified reads, total reads, and the percent, for each sample
+```{bash}
+#this creates all_classified_kaiju_stats.out, containing number of classified reads, total reads, and the percent, for each sample
+cd /local/workdir/Daphne/Floral_metagenomics/data_6_data_updated_copy/13_Kaiju/1_raw_kaiju
+#check percent of lines that are "classified vs unclassified"
+for file in ./*.txt; do
+  echo $file >> classified_vs_unclassified_stats.out
+   #num files with C, total files, C's percent of total
+  awk '{total++} $1 == "C" {c++} END {print c, total, c/total}'  $file >> classified_vs_unclassified_stats.out
+done
+# takes 30 sec
+```
+Outputs for both of these scripts are saved in /13_Kaiju/1_raw_kaiju
+
+here are much fewer labeled reads, but that's because in the old run, they could be labeled as anything at all. In the new run, this is how many reads mapped to either nectaris or pollinis:
+
+OLD:
+./paired_13702_32540_179744_Malus_kaiju.txt
+486966 1402578 0.347194
+./paired_13702_32540_179745_Trifolium_kaiju.txt
+79864 1772434 0.0450589
+./paired_13702_32540_179748_Chichorium_kaiju.txt
+222314 899316 0.247203
+
+NEW:
+./paired_13702_32540_179744_Malus_kaiju.txt
+62342 1402578 0.0444482
+./paired_13702_32540_179745_Trifolium_kaiju.txt
+68970 1772434 0.0389126
+./paired_13702_32540_179748_Chichorium_kaiju.txt
+68676 899316 0.0763647
+
+
+2/25: with added CIP and ESL to kaiju db
+./paired_13702_32540_179744_Malus_kaiju.txt
+61581 1402578 0.0439056
+./paired_13702_32540_179745_Trifolium_kaiju.txt
+68959 1772434 0.0389064
+./paired_13702_32540_179748_Chichorium_kaiju.txt
+68304 899316 0.0759511
+
+
+in 2/25, there's less mappings, which is unexpected bc more
+acineto genomes have been added to the kaiju reference db.
+
+
+#### 13.2 assign genus taxonomy to kaiju reads
+Once kaiju files are made, isolate the acinetobacter files.
+Run kaiju-addTaxonNames -r genus to add genus taxonomy to all reads 
+```{bash}
+  
+cd /local/workdir/Daphne/Floral_metagenomics/data_6_data_updated_copy/13_Kaiju/1_raw_kaiju 
+
+kaiju_path="/local/workdir/Daphne/Floral_metagenomics/data_6_data_updated_copy/13_Kaiju/13.0_Acineto_ref_kaijudb"
+
+for files in ./*.txt; do
+  name=$(basename "$files" | sed 's/^paired_13702_32540_1797//;s/_kaiju.txt$/_kaiju_species.out/')
+  
+  kaiju-addTaxonNames -t ${kaiju_path}/nodes.dmp \
+  -n ${kaiju_path}/names.dmp \
+  -i $files \
+  -r species \
+  -o ../2_kaiju_taxonomy/$name
+done
+#Took 2 minutes  
+``` 
+Outputs for these scripts are saved in `data_6/13_kaiju/2_kaiju_taxonomy`
+
+For an output file with all sample's stats, run this script:
+print to acineto_stats.out number of "Acinetobacter" per sample
+
+```{bash}
+cd /local/workdir/Daphne/Floral_metagenomics/data_6_data_updated_copy/13_Kaiju/2_kaiju_taxonomy
+
+for files in ./*_species.out; do
+  echo $(basename "$files") >> acineto_stats.out
+  awk '/pollinis/ {count++} END {print "pollinis = "count}' $files >> acineto_stats.out
+  awk '/nectaris/ {count++} END {print "nectaris = "count}' $files >> acineto_stats.out
+  echo "" >> acineto_stats.out
+done
+
+# took 1 min
+```
+Output is `data_6/13_kaiju/2_kaiju_taxonomy/acineto_stats.out`
+
+Comparing acineto_stats.out from before using the old kaiju_nr_euk db and the new custom pol-nect database:
+we are getting around the same amount of hits (a little more) with our new database.
+
+sample 44: 
+OLD: 10,543 instances of genus "Acineto" 
+NEW: pollinis = 15,681 nectaris = 10,077
+
+2/25 pollinis = 15318 nectaris = 10373
+
+sample 45: 
+OLD: 56,886 instances of genus "Acineto" 
+NEW: pollinis = 50,681 nectaris = 4,907
+
+2/25 pollinis = 50399 nectaris = 5091
+
+sample 48: 
+OLD: 39,723 instances of genus "Acineto" 
+NEW: pollinis = 40,696 nectaris = 5,434
+2/25 pollinis = 40361 nectaris = 5628
+
+In 2/25, when I added CIP and ESL to the kaiju db, there's generally a few more instances of reads matching to Acineto pollinis or nectaris, which is overall good.
+
+#### 13.3 obtain read names for all acinetobacter reads
+```{bash}
+
+cd /local/workdir/Daphne/Floral_metagenomics/data_6_data_updated_copy/13_Kaiju
+
+declare -a array1=(
+[0]=Lonicera
+[1]=Linaria
+[2]=Ranunculus
+[3]=Lotus
+[4]=Trifolium
+[5]=Solidago
+[6]=Alliaria
+[7]=Matricaria
+[8]=Chichorium
+[9]=Malus
+)
+
+# extract reads with 'genus of interest'
+#separating by tabs /t, if 4th column = "acineto", print 2nd column (read name)
+for flower in ${array1[@]}; do
+  mkdir 3_acineto_read_names/${flower}
+  for file in 2_kaiju_taxonomy/*${flower}_kaiju_species.out; do
+    output=$(basename $file | cut -d'_' -f1-3)
+    awk -F"\t" '$3 == "2605270" {print $2}' $file >> 3_acineto_read_names/${flower}/${output}_pollinis.txt
+    awk -F"\t" '$3 == "1219382" {print $2}' $file >> 3_acineto_read_names/${flower}/${output}_nectaris.txt
+  done
+done
+
+```
+outputs are in 13_Kaiju/3_acineto_read_names/{host name}
+
+* I manually added number to flower directory names after I ran the code
+*This matches file names and sizes to data_updated/3
+
+
+
+#### 13.4 Extract reads from 03_bowtie2 files using our kaiju name files
+tip: change host_name variable at the top of this chunk then just press "run"
+```{bash}
+
+
+species="pollinis"
+mkdir 4_acineto_reads/${species}
+
+export PATH=/programs/seqtk:$PATH
+cd /local/workdir/Daphne/Floral_metagenomics/data_6_data_updated_copy/13_Kaiju
+  
+
+declare -a array1=(
+[0]=1_Chichorium
+[1]=2_Malus
+[2]=3_Lotus
+[3]=4_Ranunculus
+[4]=5_Trifolium
+[5]=6_Matricaria
+[6]=7_Alliaria
+[7]=8_Solidago
+[8]=9_Lonicera
+[9]=10_Linaria
+)
+
+for host_name in ${array1[@]}; do  
+  echo $host_name
+  for name_file in 3_acineto_read_names/${host_name}/*; do
+    prefix=$(basename "$name_file"); prefix=${prefix%%_kaiju_${species}.txt}
+  
+    # Loop through 03_bowtie/subdirectories
+    for dir in ../03_Bowtie2_host_filter/${host_name}_samples/paired_13702_32540_1797*; do
+        # Remove everything before first underscore
+        suffix=$(echo "$dir" | awk -F'13702_32540_1797' '{print $2}') 
+  
+        # if acineto_name_list and bowtie reads name match, do seqtk
+        if [[ "$prefix" == "$suffix" ]]; then
+          #create temp name files with added /1 and /2
+          sed 's/$/\/1/' $name_file > tmp_R1.txt
+          sed 's/$/\/2/' $name_file > tmp_R2.txt
+          
+          #use seqtk to extract reads witha name file
+          seqtk subseq $dir/SAMPLE_host_removed_R1.fastq tmp_R1.txt > 4_acineto_reads/${species}/${prefix}_R1.fastq
+          seqtk subseq $dir/SAMPLE_host_removed_R2.fastq tmp_R2.txt > 4_acineto_reads/${species}/${prefix}_R2.fastq
+          
+          # remove temp files
+          rm tmp_R1.txt tmp_R2.txt
+          
+        fi
+    done
+  done
+done
+```
+outputs are in 13_Kaiju/4_acineto_reads
+
+This took ~3 minutes, and I had to manually change  $host_name for 
+each flower type, and also $species to differentiate between pollinis and nectaris.
+
+It worked! I compared the number of reads in 13_Kaiju/4/pol/40 and
+13_Kaiju/4/nect/40 with 13_kaiju/2/acineto_stats.out. 
+
+From 2/acineto_stats.out:
+40_Chichorium_kaiju_species.out
+pollinis = 143
+nectaris = 4
+
+This coincides with the number of reads in these files (4 in 13/4/nect/40 and
+143 in 13/4/pol/40). 
+
+I tried this for other samples, such as 46, and it remains true. 
+
+2/25: with added ESL and CIP kaiju db genomes, now the size of the files in 14 is
+slightly larger, which is good. More nect and pol reads!
+
+
+### 14 Snippy again with Kaiju reads
+
+To make a pol or nect tree, specify your species in top of 14.1 and reference of snippy-multi in 14.2.
+
+#### 14.1 create tab input files for snippy-multi
+snippy multi allows you to check multiple isolates against same reference, using names file with tabs 
+```{bash}
+
+# input of all samples (minus reference genomes)
+name="Feb25_pol"
+species="pollinis"
+
+
+
+cd /local/workdir/Daphne/Floral_metagenomics/data_6_data_updated_copy
+printf "" > 14_snippy_kaiju/inputs_for_snippy-multi/$name.tab #clear output
+for R1 in 13_Kaiju/4_acineto_reads/${species}/*R1.fastq; do
+  ID="$(basename "${R1%%_R1.fastq}")"
+  R2=${R1/R1.fastq/R2.fastq}
+  printf "%s\t%s\t%s\n" "14_snippy_kaiju/snippy/snippy-multi_$name/$ID" "$R1" "$R2" >> 14_snippy_kaiju/inputs_for_snippy-multi/$name.tab
+done
+
+
+# input of all reference genomes
+for genome in 13_Kaiju/RAST_nectar_genomes/A-${species}*.fna; do
+  ID="$(basename "${genome%%.fna}")"
+  printf "%s\t%s\n" "14_snippy_kaiju/snippy/snippy-multi_$name/$ID" "$genome">> 14_snippy_kaiju/inputs_for_snippy-multi/$name.tab
+done
+
+  # note: these input files have paths from /local/workdir/Daphne/Floral_metagenomics/data_updated, so make sure future snippy steps also are based from this path
+
+```
+
+
+NOTE: I am running a pollinis tree, so in the .tab file, I deleted all samples 
+except for 48, 45, 86, 44
+
+For nectaris tree, in the .tab file, I deleted all samples except for 75 and 93
+
+
+
+
+Now, we can use these fasta files with acinetobacter contigs to run snippy
+steps: 
+snippy
+snippy-core
+snippy-clean_full_aln
+snp-sites
+FastTree
+
+#### 14.2 Snippy-multi on samples and reference genomes
+
+This does snippy core. First, run everything except for last `sh ./` line.
+go into the file `14_snippy_kaiju/snippy/snippy-multi_$name.sh` and add prefix.
+after, come here again and run `sh ./` line. 
+```{bash}
+
+export PATH=/programs/snippy-4.6.0/bin:/programs/snippy-4.6.0/binaries/linux:$PATH
+export PATH=/programs/seqtk:$PATH
+export PATH=/programs/samclip:$PATH
+export PATH=/programs/vt:$PATH
+
+cd /local/workdir/Daphne/Floral_metagenomics/data_6_data_updated_copy
+
+#snippy multi for all samples (minus refernce genomes)
+mkdir 14_snippy_kaiju/snippy/snippy-multi_$name
+snippy-multi 14_snippy_kaiju/inputs_for_snippy-multi/$name.tab --ref 13_Kaiju/RAST_nectar_genomes/A-pollinis-SCC477.fna --cpus 20 --mincov 5 > 14_snippy_kaiju/snippy/snippy-multi_$name.sh
+#changed snippy-core ref to be SCC477 or CIP110549
+#add prefix for output --prefix '14_snippy_kaiju/snippy/snippy-multi_Feb25_pol/core' 
+
+sh ./14_snippy_kaiju/snippy/snippy-multi_$name.sh #run snippy
+  # took 3 min
+ 
+```
+
+
+
+
+#### 14.3 from snippy to IQ tree
+```{bash, eval = FALSE}
+#Remember to cd into 14_snippy_kaiju/snippy/{your working folder}
+
+cd /local/workdir/Daphne/Floral_metagenomics/data_6_data_updated_copy/14_snippy_kaiju/snippy/snippy-multi_${name}
+
+#3. make clean.full.aln
+snippy-clean_full_aln core.full.aln > clean.full.aln
+
+#4. make clean.core.aln with snp-sites
+/programs/snp-sites-2.5.1/bin/snp-sites
+export PATH=/programs/snp-sites-2.5.1/bin:$PATH
+snp-sites -c clean.full.aln > clean.core.aln 
+
+#5. make phylogenomic SNP tree with IQ tree
+/programs/iqtree-2.2.2.6-Linux/bin/iqtree2 -s clean.full.aln -m MFP -bb 1000 --prefix bootstrapped --seed 713
+
+```
+This took ~5 minutes

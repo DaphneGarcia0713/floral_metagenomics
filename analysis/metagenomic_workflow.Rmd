@@ -688,7 +688,7 @@ cd /local/workdir/Daphne/Floral_metagenomics/data/
 for sample in 06_sample_contigs/*.fasta; do 
   depth=$(basename "${sample%%.fasta}")
   echo $depth
-  singularity run --bind $PWD --pwd $PWD /programs/metabat-2.16/metabat.sif metabat2 -i $sample -a 06_depth_files/${depth}_depth.txt -o 06_MetaBat2/06_m1500_s100k_maxE250_MetaBat2/${depth}_bin --seed 42 -m 1500 -s 100000 --maxEdge 250
+  singularity run --bind $PWD --pwd $PWD /programs/metabat-2.16/metabat.sif metabat2 -i $sample -a 06_depth_files/${depth}_depth.txt -o 06_MetaBat2/just_38_test/${depth}_bin --seed 42 -m 1500 -s 100000 --maxEdge 250
 done
 
 # -i = input contigs from metaspades (necessary)
@@ -710,8 +710,8 @@ docker1 pull staphb/checkm2
 # This is my modified docker run of
 docker1 run --rm \
   -v /local/workdir/Daphne/Floral_metagenomics/databases/checkm2db:/checkm2db \
-  -v /local/workdir/Daphne/Floral_metagenomics/data/06_MetaBat2/06_m1500_s100k_maxE250_MetaBat2:/input \
-  -v /local/workdir/Daphne/Floral_metagenomics/data/07_CheckM/07_m1500_s100k_maxE250_checkM2_output:/output \
+  -v /local/workdir/Daphne/Floral_metagenomics/data/06_MetaBat2/just_38_test:/input \
+  -v /local/workdir/Daphne/Floral_metagenomics/data/07_CheckM/just_38_test:/output \
   staphb/checkm2 checkm2 predict --input /input --output_directory /output -x .fa \
   --database_path /checkm2db/CheckM2_database/uniref100.KO.1.dmnd --threads 30
 
@@ -731,7 +731,18 @@ checkm_output/
 ├── quality_report.tsv   ← ✅ this is the file you want
 
 
-### 7 bins taxonomy with GTDB-k
+visualize CheckM quality reports in R (use ctrl + enter)
+```{r Visualize_CheckM_R, eval = FALSE}
+getwd() # should be Floral_metagenomics
+qr_m1500_s100k_maxE250 <- read.table(file="data/07_CheckM/07_m1500_s100k_maxE250_checkM2_output/quality_report.tsv", sep="\t")
+
+    # change the name (before <-) and subdirectory in 07_CheckM
+```
+Note: I used this to look at the quality of just_38_test, which is my MetaBat and CheckM run of a single sample, paired_38_Chichorium. This outputted one bin, and the CheckM was identical to it's 07_m1500_s100k_maxE250 results, which tells me that MetaBat and CheckM really do only contain 1 bin for most samples. 
+
+
+
+### 7 GTDB-k bin taxonomy 
 
 ```{bash}
 # set wd
@@ -764,6 +775,15 @@ gtdbtk classify_wf --genome_dir 06_MetaBat2/ --out_dir 07_gtdbtk_out --cpus 8 --
 Output is in `/data/gtdbtk.bac120.summary.tsv`. 
 Acinetobacter was found in Trifolium 45 and Chichorium 48. Notable taxa were pseudomonas, pantoea, rosenbergiella
 
+visualize gtdb gtdbtk.bac120.summary.tsv in R (use ctrl + enter)
+```{r Visualize_CheckM_R, eval = FALSE}
+getwd() # should be Floral_metagenomics
+gtdbtk_summary <- read.table( file="data/07_gtdbtk_out/gtdbtk.bac120.summary.tsv", sep="\t")
+gtdbtk_summary
+getwd()
+    # change the name (before <-) and subdirectory in 07_CheckM
+```
+
 
 
 ### 8. taxonomy with kraken
@@ -776,16 +796,16 @@ I am using the Kraken2 installation guide to build the databases. https://github
 export PATH=/programs/kraken2.1.3:$PATH
 # enable multithreading (parallelization)
 
-export OMP_NUM_THREADS=20  
+export OMP_NUM_THREADS=64 
 
 #step1: download-taxonomy
 kraken2-build --download-taxonomy --db /local/workdir/Daphne/Floral_metagenomics/databases
 
 #step2: download-library (eg. bacteria, fungi, etc, took like 5 hours for bac, 1 hour for fungi)
-kraken2-build --download-library fungi --db  /local/workdir/Daphne/Floral_metagenomics/databases
+kraken2-build --download-library fungi --db  /local/workdir/Daphne/Floral_metagenomics/databases --threads 64
 
-#step3: build-build (took like 5 hours)
-kraken2-build --build --db /local/workdir/Daphne/Floral_metagenomics/databases
+#step3: build-build
+kraken2-build --build --threads 64 --db /local/workdir/Daphne/Floral_metagenomics/databases/kraken 
 
 
 
@@ -794,4 +814,5 @@ cd /local/workdir/Daphne/Floral_metagenomics/data
 kraken2 --threads 20 --db ../databases --output kraken2_trial_output.txt --report kraken2_trial.report.txt --paired 02_trim_unzipped_and_host-grouped/10_Linaria_samples/paired_13702_32540_179793_H5MH5AFX5_metagenomic_mix_H12_FN176_ATCTCAGG_TCGCATAA_R1.fastq 02_trim_unzipped_and_host-grouped/10_Linaria_samples/paired_13702_32540_179793_H5MH5AFX5_metagenomic_mix_H12_FN176_ATCTCAGG_TCGCATAA_R2.fastq
 
 ```
+
 
