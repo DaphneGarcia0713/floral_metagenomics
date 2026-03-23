@@ -1,0 +1,8 @@
+Acineto_A039_RAST_genome.fasta
+14
+Acineto_A044_RAST_genome.fasta
+14
+Acineto_D04_21SM068_RAST_genome.fasta
+14
+Acineto_MB2_RAST_genome.fasta
+28
