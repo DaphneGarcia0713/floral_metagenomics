@@ -454,7 +454,7 @@ for sample in ./*; do
     R2="${R1/R1.fastq.gz/R2.fastq}"
     output_name=$(basename "$sample")
     kaiju_path="/local/workdir/Daphne/Floral_metagenomics/databases/kaiju_nr_euk"
-    kaiju -t "${kaiju_path}/nodes.dmp" -f "${kaiju_path}/kaiju_db_nr_euk.fmi" -i $R1 -j $R2 -o ../../09_kaiju/1_raw_kaiju_euk/${output_name}_kaiju.txt -z 24
+    kaiju -t "${kaiju_path}/nodes.dmp" -f "${kaiju_path}/kaiju_db_nr_euk.fmi" -i $R1 -j $R2 -o ../../09_kaiju/1_raw_kaiju_euk/${output_name}_kaiju.txt -z 24 -v
     echo $(date)
   done
 done

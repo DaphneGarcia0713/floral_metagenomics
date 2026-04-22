@@ -41,6 +41,7 @@ I went to RAST and for all Acinetobacter pollinis and nectaris, I searched their
 pectin lyase and polygalacturonase using methods from Benchling's 
 `Metagenomic ortholog pectin lyase tree Vivi's 2021 data`
 
+3/20/26: I'm making sure ESL, CIP, and MD18 are added
 
 
 1. Dowload Vivi's tree RAST orthologs
@@ -69,13 +70,13 @@ the references are in `14_blast_orthologs/1_references_and_outgroups/RAST_pectin
 
 ### PECTIN LYASE crop and filtered pipeline 1/14
 
-####14.2 for metagenome
+####14.2 BLASTN for metagenome
 
 ```{bash}
     
 cd /local/workdir/Daphne/Floral_metagenomics/data_4-trees
     
-tree_name="PL_cropped_RAST_Jan21_metagenome"
+tree_name="PL_cropped_RAST_Mar23_metagenome"
 for sample in 04_metaspades/*; do   
     # Input
     query_nucleotides="14_blast_orthologs/1_references_and_outgroups/RAST_pectin_lyase/all_PL_ref_fastas.fasta"
@@ -86,7 +87,7 @@ for sample in 04_metaspades/*; do
     echo "[INFO] Step 1: Building BLAST database..."
     makeblastdb -in ${sample}/contigs.fasta -dbtype nucl -out $OUTDIR/metagenome_db
     
-    echo "[INFO] Step 2: Running BLASTP..."
+    echo "[INFO] Step 2: Running BLASTN..."
     blastn -query $query_nucleotides -db $OUTDIR/metagenome_db \
            -out $OUTDIR/tblastn_results.tsv \
            -evalue 1e-5 -num_threads 30 \
@@ -130,7 +131,7 @@ done
 ####14.3 for metagenome
 ```{bash}
   
-tree_name="PL_cropped_RAST_Jan21_metagenome"
+tree_name="PL_cropped_RAST_Mar23_metagenome"
 OUT_FASTA="14_blast_orthologs/3_orthologs_from_all_samples/${tree_name}.fasta"
 
 echo "" > $OUT_FASTA
@@ -183,7 +184,7 @@ done
     
 cd /local/workdir/Daphne/Floral_metagenomics/data_4-trees
     
-tree_name="PL_cropped_RAST_Jan21_newgenome"
+tree_name="PL_cropped_RAST_Mar23_newgenome"
 for sample in New_NY_Acineto_genomes/**; do   
     # Input
     query_nucleotides="14_blast_orthologs/1_references_and_outgroups/RAST_pectin_lyase/all_PL_ref_fastas.fasta"
@@ -221,7 +222,7 @@ for sample in New_NY_Acineto_genomes/**; do
       }' "$tsv" > "$tsv.unique"
     
 done
-# takes 2 minutes
+# takes 10 seconds
 
 #SANITY CHECK: print tsv of all filtered orthologs
 Sanity_output="14_blast_orthologs/2_ortholog_search/all_${tree_name}.tsv"
@@ -240,7 +241,7 @@ done
 
 ```{bash}
   
-tree_name="PL_cropped_RAST_Jan21_newgenome"
+tree_name="PL_cropped_RAST_Mar23_newgenome"
 OUT_FASTA="14_blast_orthologs/3_orthologs_from_all_samples/${tree_name}.fasta"
 
 for sample in New_NY_Acineto_genomes/*; do   
@@ -298,10 +299,11 @@ into one big tree, so the cat step will include new-genomes too (line 546)
 #BEFORE USING MAFFT:
 #I combined orthologs reference and outgroup fastas from `14_blast_orthologs/1_references_and_outgroups` together with our samples from `14_blast_orthologs/3_3_orthologs_from_all_samples` with cat:
 
-tree_name="PL_cropped_RAST_Jan21"
+tree_name="PL_cropped_RAST_Mar23"
+"" > 14_blast_orthologs/3_orthologs_from_all_samples/${tree_name}_PLUS_references_and_outgroups.fasta
 cat 14_blast_orthologs/1_references_and_outgroups/RAST_pectin_lyase/all_PL_ref_PLUS_outgroups.fasta \
-14_blast_orthologs/3_orthologs_from_all_samples/PL_cropped_RAST_Jan21_metagenome.fasta \
-14_blast_orthologs/3_orthologs_from_all_samples/PL_cropped_RAST_Jan14_newgenome.fasta \
+14_blast_orthologs/3_orthologs_from_all_samples/PL_cropped_RAST_Mar23_metagenome.fasta \
+14_blast_orthologs/3_orthologs_from_all_samples/PL_cropped_RAST_Mar23_newgenome.fasta \
 >> 14_blast_orthologs/3_orthologs_from_all_samples/${tree_name}_PLUS_references_and_outgroups.fasta
 
 
@@ -326,13 +328,13 @@ FFT-NS-i (Standard)
 
 #### 14.5 IQ tree
 ```{bash}
-cd /local/workdir/Daphne/Floral_metagenomics/data_4-tree
+cd /local/workdir/Daphne/Floral_metagenomics/data_4-trees
 
-tree_name="PL_cropped_RAST_Jan21"
+tree_name="PL_cropped_RAST_Mar23"
 #name this tree
 mkdir 14_blast_orthologs/5_IQ_tree/${tree_name}
 /programs/iqtree-2.2.2.6-Linux/bin/iqtree2 -s 14_blast_orthologs/4_aligned_orthologs_MAFFT/${tree_name}.aln -m MFP \
---prefix 14_blast_orthologs/5_IQ_tree/${tree_name}/${tree_name} -B 1000
+--prefix 14_blast_orthologs/5_IQ_tree/${tree_name}/${tree_name} -B 1000 --seed 713
 
 
 # -s: input
@@ -341,6 +343,7 @@ mkdir 14_blast_orthologs/5_IQ_tree/${tree_name}
 # -B: bootstrap
 # -nt: thread number
 #--redo (OPTIONAL): overwrite current tree
+# --seed 713
 
 #took 1 min 
 ```
@@ -366,7 +369,7 @@ mkdir 14_blast_orthologs/5_IQ_tree/${tree_name}
     
 cd /local/workdir/Daphne/Floral_metagenomics/data_4-trees
     
-tree_name="GH28_cropped_RAST_Jan21_metagenome"
+tree_name="GH28_cropped_RAST_Mar23_metagenome"
 for sample in 04_metaspades/*; do   
     # Input
     query_nucleotides="14_blast_orthologs/1_references_and_outgroups/RAST_polygalacturonase/all_GH28_ref_fastas.fasta"
@@ -421,7 +424,7 @@ done
 ####14.3 for metagenome
 ```{bash}
   
-tree_name="GH28_cropped_RAST_Jan21_metagenome"
+tree_name="GH28_cropped_RAST_Mar23_metagenome"
 OUT_FASTA="14_blast_orthologs/3_orthologs_from_all_samples/${tree_name}.fasta"
 
 for sample in 04_metaspades/*; do   
@@ -473,7 +476,7 @@ done
     
 cd /local/workdir/Daphne/Floral_metagenomics/data_4-trees
     
-tree_name="GH28_cropped_RAST_Jan21_newagenome"
+tree_name="GH28_cropped_RAST_Mar23_newagenome"
 for sample in New_NY_Acineto_genomes/**; do   
     # Input
     query_nucleotides="14_blast_orthologs/1_references_and_outgroups/RAST_polygalacturonase/all_GH28_ref_fastas.fasta"
@@ -511,7 +514,7 @@ for sample in New_NY_Acineto_genomes/**; do
       }' "$tsv" > "$tsv.unique"
     
 done
-# takes 2 minutes
+# takes 10 minutes
 
 #SANITY CHECK: print tsv of all filtered orthologs
 Sanity_output="14_blast_orthologs/2_ortholog_search/all_${tree_name}.tsv"
@@ -521,7 +524,7 @@ for subdir in 14_blast_orthologs/2_ortholog_search/*Acineto*; do
   cat ${subdir}/${tree_name}/blast_results.filtered.tsv.unique >> $Sanity_output
   fi
 done
-  # took 1 min
+  # took 10 sec
   
 ```  
 
@@ -530,7 +533,7 @@ done
 
 ```{bash}
   
-tree_name="GH28_cropped_RAST_Jan21_newagenome"
+tree_name="GH28_cropped_RAST_Mar23_newagenome"
 OUT_FASTA="14_blast_orthologs/3_orthologs_from_all_samples/${tree_name}.fasta"
 
 for sample in New_NY_Acineto_genomes/*; do   
@@ -588,10 +591,12 @@ into one big tree, so the cat step will include new-genomes too (line 546)
 #BEFORE USING MAFFT:
 #I combined orthologs reference and outgroup fastas from `14_blast_orthologs/1_references_and_outgroups` together with our samples from `14_blast_orthologs/3_3_orthologs_from_all_samples` with cat:
 
-tree_name="GH28_cropped_RAST_Jan21"
+tree_name="GH28_cropped_RAST_Mar23"
+"" > 14_blast_orthologs/3_orthologs_from_all_samples/${tree_name}_PLUS_references_and_outgroups.fasta
+
 cat 14_blast_orthologs/1_references_and_outgroups/RAST_polygalacturonase/all_GH28_ref_PLUS_outgroups.fasta \
-14_blast_orthologs/3_orthologs_from_all_samples/GH28_cropped_RAST_Jan21_metagenome.fasta \
-14_blast_orthologs/3_orthologs_from_all_samples/GH28_cropped_RAST_Jan14_newagenome.fasta \
+14_blast_orthologs/3_orthologs_from_all_samples/GH28_cropped_RAST_Mar23_metagenome.fasta \
+14_blast_orthologs/3_orthologs_from_all_samples/GH28_cropped_RAST_Mar23_newagenome.fasta \
 >> 14_blast_orthologs/3_orthologs_from_all_samples/${tree_name}_PLUS_references_and_outgroups.fasta
 
 
@@ -618,7 +623,7 @@ FFT-NS-i (Standard)
 ```{bash}
 cd /local/workdir/Daphne/Floral_metagenomics/data_4-tree
 
-tree_name="GH28_cropped_RAST_Jan21"
+tree_name="GH28_cropped_RAST_Mar23"
 #name this tree
 mkdir 14_blast_orthologs/5_IQ_tree/${tree_name}
 /programs/iqtree-2.2.2.6-Linux/bin/iqtree2 -s 14_blast_orthologs/4_aligned_orthologs_MAFFT/${tree_name}.aln -m MFP \
@@ -636,5 +641,31 @@ mkdir 14_blast_orthologs/5_IQ_tree/${tree_name}
 ```
 
 
+###BLAST SEARCH FOR OTHER ACINETO GENOMES
 
+March 9, 2026: I am coming back to this workflow because I have many genome fasta files here, and I want to use blast+ to search NCBI database for Acinetobacter that may
+not be classified as such or annotated.
+
+```{bash}
+
+# Download NCBI database into /Daphne/Floral_metagenomics/databases/NCBI
+cd /local/workdir/Daphne/Floral_metagenomics/databases
+mkdir BLAST_nr
+cp /shared_data/genome_db/BLAST_NCBI/nr* BLAST_nr/
+
+```
+
+
+```{bash}
+# Blast search with a genome
+export PATH=/programs/ncbi-blast-2.16.0+/bin:$PATH
+
+cd /local/workdir/Daphne/Floral_metagenomics/data_4-trees/New_NY_Acineto_genomes
+
+
+database="/local/workdir/Daphne/Floral_metagenomics/databases/BLAST_nr/nr"
+
+blastx -query Acineto_A039_RAST_genome.fasta -db $database -out A039_blastx.txt -num_threads 30
+
+```
 

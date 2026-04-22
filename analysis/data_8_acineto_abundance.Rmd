@@ -1,0 +1,376 @@
+---
+title: "data_8_acineto_abundance.Rmd"
+author: "Daphne Garcia"
+date: "2026-3-23"
+output: html_document
+editor_options: 
+  markdown: 
+    wrap: 72
+  chunk_output_type: console
+---
+
+## Goals
+
+I want to create an abundance heatmap for each metagenomic sample and
+different species of Acineto:
+
+1)  I will create a custom Kaiju database (copied from
+    data_6_updated_snippy.Rmd). I will add Rath, Bois, Baret, Apis to
+    this database, and update nodes.dmp
+
+2)  Run 13.1 and 13.2
+
+3)  in bash, write chunk that will make a .tsv or .csv: header, sample,
+    pol, nect,baret, bois, rath, apis. total classified, total acineto
+    (all pol, nect, etc.)
+
+4)  in R, open .tsv and make a heatmap in base R
+
+| Number | Acinetobacter species |
+|--------|-----------------------|
+| 1      | Pollinis              |
+| 2      | Nectaris              |
+| 3      | Baretiae              |
+| 4      | Rathkeae              |
+| 5      | Boissieri             |
+| 6      | Apis                  |
+
+### 13 Kaiju CUSTOM database
+
+I will modify scripts from data_5_SNP which use a custom Kaiju database
+and split contigs into either pollinis or nectaris. From here, I will
+feed this pipeline back into 14. Snippy
+
+#### 13.0 create a custom kaiju database
+
+I copied the folder data_5/9_kaiju/9.0 Acineto ref kaiju db:
+
+it contains .faa I also made fake names.dmp and nodes.dmp by copying
+A-pol and A-nect species info from node/name.dpm files in
+daphne/floral/databases/kaiju-nr-euk (this file is very big so I opened
+it with VScode)
+
+```{bash kaiju, eval = FALSE}
+  
+# I ran this from inside data_5/9/9.0  
+cd /local/workdir/Daphne/Floral_metagenomics/data_8_acineto_abundance/13_Kaiju/13.0_Acineto_ref_kaijudb
+
+
+# I added prefixes to all references to match NCBI nodes, found in names.dmp (manually change file
+# names in the code)
+awk '/^>/ {print ">2605383"; next} {print}' A-baretiae-B10A.faa > A-baretiae-B10A_protein.kaiju.faa
+  
+#Then I added them all to one doc:
+"" > all_ref_acineto_protein_genomes.faa  ## clear this file
+for file in ./*kaiju.faa; do 
+  cat $file >> all_ref_acineto_protein_genomes.faa
+done
+
+#now, make the kaiju database .fmi
+export PATH=/programs/kaiju-1.10.0/bin:$PATH
+kaiju-mkbwt -n 5 -a ACDEFGHIKLMNPQRSTVWY -o all_ref_acineto_protein_genomes all_ref_acineto_protein_genomes.faa
+kaiju-mkfmi all_ref_acineto_protein_genomes
+# don't forget to delete .bwt and .sa files
+
+```
+
+the file `all_ref_acineto_protein_genomes.fmi` is now created in
+`data_5/9/9.0`
+
+##### DO ONCE: move bowtie host filtered reads into data_8:
+
+copy bowtie file names into data_8_acineto_abundance
+
+```{bash}
+
+cd /local/workdir/Daphne/Floral_metagenomics/data_8_acineto_abundance/3_bowtie
+
+for sample in ../../data_3/03_bowtie/2_bowtie_output_sam/*; do
+  base=$(basename "$sample"); base=${base#*_}
+  mkdir $base
+  cp ${sample}/SAMPLE_host_removed_R1.fastq $base
+  cp ${sample}/SAMPLE_host_removed_R2.fastq $base
+done 
+#took 1 minute
+
+```
+
+#### 13.1 run kaiju on all the files
+
+NOTE: if multiple tmux are running kaiju, it will crash. just run one
+
+```{bash tmux_kaiju, eval = FALSE}
+
+cd /local/workdir/Daphne/Floral_metagenomics/data_8_acineto_abundance
+export PATH=/programs/kaiju-1.10.0/bin:$PATH
+
+  for sample in 3_bowtie/*; do
+    R1="${sample}/SAMPLE_host_removed_R1.fastq"
+    
+    echo $(date)
+    export PATH=/programs/kaiju-1.10.0/bin:$PATH
+    R2="${R1/R1.fastq/R2.fastq}"
+    output_name=$(echo "$R1" | cut -d'/' -f2)
+    kaiju_path="/local/workdir/Daphne/Floral_metagenomics/data_8_acineto_abundance/13_Kaiju/13.0_Acineto_ref_kaijudb"
+    
+    kaiju -t "${kaiju_path}/nodes.dmp" \
+    -f "${kaiju_path}/all_ref_acineto_protein_genomes.fmi" \
+    -i $R1 -j $R2 \
+    -o 13_Kaiju/1_raw_kaiju/${output_name}_kaiju.txt \
+    -z 30
+    
+  done
+# Takes 10 minutes
+
+```
+
+Finished in 9.5 minutes
+
+##### all_classified_kaiju_stats.out
+
+Now this script creates `all_classified_kaiju_stats.out`, to check check
+percent of lines that are "classified vs unclassified Output: number of
+classified reads, total reads, and percent, for each sample
+
+```{bash}
+
+for file in 1_raw_kaiju/*kaiju.txt; do
+  echo $file >>  1_raw_kaiju/classified_vs_unclassified_stats.out
+   #num files with C, total files, C's percent of total
+  awk '{total++} $1 == "C" {c++} END {print c, total, c/total}'  $file >>  1_raw_kaiju/classified_vs_unclassified_stats.out
+done
+# takes 30 sec
+```
+
+Outputs for both of these scripts are saved in
+data_8/13_Kaiju/1_raw_kaiju
+
+When comparing old (Mar 23 data_6_updated) and new (Mar 23
+data_8_acineto_abd), the number of classified reads per sampe stays
+relatively the same, but the percent changes.This is because data_6 used
+reads from data_updated, which used the bowtie host filtering
+incorrectly. data_8 uses reads from data_3, which removes more reads,
+and increases the percent of classified reads.
+
+| Sample name    | classified | unclassified | percent   |
+|----------------|------------|--------------|-----------|
+| 44/FN118 old   | 61959      | 1402578      | 0.0441751 |
+| 44/FN118 new   | 61442      | 1008371      | 0.0609319 |
+|                |            |              |           |
+| 45/FN128 old   | 70063      | 1772434      | 0.0395293 |
+| 45/FN128 new   | 69930      | 201663       | 0.346767  |
+|                |            |              |           |
+| 48/22FN018 old | 68885      | 899316       | 0.0765971 |
+| 48/22FN018 new | 68122      | 575121       | 0.118448  |
+
+#### 13.2 assign genus taxonomy to kaiju reads
+
+Once kaiju files are made, isolate the acinetobacter files. Run
+kaiju-addTaxonNames -r genus to add genus taxonomy to all reads
+
+```{bash}
+  
+cd /local/workdir/Daphne/Floral_metagenomics/data_8_acineto_abundance/13_Kaiju/1_raw_kaiju 
+
+kaiju_path="/local/workdir/Daphne/Floral_metagenomics/data_8_acineto_abundance/13_Kaiju/13.0_Acineto_ref_kaijudb"
+
+for files in ./*.txt; do
+  name=$(basename "$files" .txt)_species.out
+  
+  kaiju-addTaxonNames -t ${kaiju_path}/nodes.dmp \
+  -n ${kaiju_path}/names.dmp \
+  -i $files \
+  -r species \
+  -o ../2_kaiju_taxonomy/$name
+done
+#Took 10 seconds  
+```
+
+Outputs for these scripts are saved in
+`data_6/13_kaiju/2_kaiju_taxonomy`
+
+For an output file with all sample's stats, run this script: print to
+acineto_stats.out number of "Acinetobacter" per sample
+
+```{bash}
+cd /local/workdir/Daphne/Floral_metagenomics/data_8_acineto_abundance/13_Kaiju/2_kaiju_taxonomy
+
+for files in ./*_species.out; do
+  echo $(basename "$files") >> acineto_stats.out
+  awk '/pollinis/ {count++} END {print "pollinis = "count}' $files >> acineto_stats.out
+  awk '/nectaris/ {count++} END {print "nectaris = "count}' $files >> acineto_stats.out
+  awk '/apis/ {count++} END {print "apis = "count}' $files >> acineto_stats.out
+  awk '/baretiae/ {count++} END {print "baretiae = "count}' $files >> acineto_stats.out
+  awk '/rathckeae/ {count++} END {print "baretiae = "count}' $files >> acineto_stats.out
+  awk '/boissieri/ {count++} END {print "boissieri = "count}' $files >> acineto_stats.out
+
+  echo "" >> acineto_stats.out
+done
+
+# took 2 min
+```
+
+Output is `data_6/13_kaiju/2_kaiju_taxonomy/acineto_stats.out`
+
+Comparing acineto_stats.out from before using the old kaiju_nr_euk db
+and the new custom pol-nect database: we are getting around the same
+amount of hits (a little more) with our new database.
+
+OLD: 3/23 from data_6 (worse bowtie host filtering, only pol and nect)
+
+NEW: 3/23 from data_8 (bowtie filtered reads from data_3, pol, nect,
+apis, etc.)
+
+
+FN128_kaiju_species.out
+pollinis = 51935
+nectaris = 3160
+
+| Sample name    | pollinis | nectaris |
+|----------------|----------|----------|
+| 44/FN118 old   | 16211    | 9545     |
+| 44/FN118 new   | 12681    | 5710     |
+|                |          |          |
+| 45/FN128 old   | 52775    | 3521     |
+| 45/FN128 new   | 51935    | 3160     |
+|                |          |          |
+| 48/22FN018 old | 40361    | 5628     |
+| 48/22FN018 new | 39671    | 3108     |
+
+for 22FN018 and FN118: number of nectaris reads decreased because many of those reads are 
+now classified as other species. In data_8/13.1, generally there were the same
+number of classified reads as in data_6, and due to that, some of those reads
+are better classified as apis or rathckeae and the total number of nectaris 
+reads decreases
+
+
+#### 3. making a dataframe with abundance csv from 13.2
+
+Now that I have data_8/13.2/acineto_stats.out: I want to transform this data
+into a .tsv or .csv format with columns:
+```{bash}
+cd /local/workdir/Daphne/Floral_metagenomics/data_8_acineto_abundance/13_Kaiju/2_kaiju_taxonomy
+
+Outfile="../../14_heatmap/acineto_abundances_Mar23.csv"
+
+# Add headers and clear existing data
+echo "\"Samples\",\"A. pollinis\", \"A. nectaris\", \"A. apis\", \"A. baretiae\", \"A. rathckeae\", \"A. boissieri\", \"Total Classified\", \"Total Acinetobacter\", \"Total Reads\"" > $Outfile
+
+for files in ./*_species.out; do
+
+  # store all of the values for .csv in variables:
+  name=$(basename "$files"); name=${name%%_*}
+  pol=$(grep -c 'pollinis' $files)
+  nect=$(grep -c 'nectaris' $files)
+  apis=$(grep -c 'apis' $files)
+  baret=$(grep -c 'baretiae' $files)
+  rath=$(grep -c 'rathckeae' $files)
+  bois=$(grep -c 'boissieri' $files)
+  class=$(grep -Pc 'C\t' $files)
+  total=$(expr $pol + $nect + $apis + $baret + $rath + $bois)
+  readnum=$(wc -l < $files)
+  
+  # add all values in csv format (comma) to Outfile
+  echo " \"${name}\", \"${pol}\",  \"${nect}\", \"${apis}\", \"${baret}\", \"${rath}\", \"${bois}\",  \"${class}\",  \"${total}\",  \"${readnum}\"" >> $Outfile
+  
+done
+
+```
+
+This creates a .csv file `data_8_acineto_abundance/14_heatmap/acineto_abundances_Mar23.csv`
+
+#### 4. R: updating .csv to heatmap in R
+
+First, load libraries, set wd() and load data table
+```{r}
+library(tidyverse)
+library(dplyr)
+library(ggplot2)
+
+setwd("/local/workdir/Daphne/Floral_metagenomics/data_8_acineto_abundance/14_heatmap")
+abundance <- read_csv("acineto_abundances_Mar23.csv")
+
+```
+
+Second, filter out 22FN006, FN062, and FN140, because they don't have any classified reads 
+```{r}
+
+abundance <- abundance %>%
+  filter(!Samples %in% c("22FN006", "FN062", "FN140"))
+```
+
+Third, scale by all classified, and scale by all acineto, then pivot longer
+
+```{r}
+#this contains acineto abundances scaled by all classified reads
+scale_read_abd <- abundance %>%
+  mutate(across(-c(Samples, `Total Classified`, `Total Acinetobacter`, `Total Reads`),
+                ~ . / `Total Reads`)) %>%
+  select(-`Total Classified`, -`Total Acinetobacter`, -`Total Reads`) %>%
+  pivot_longer(cols=c('A. pollinis', 'A. nectaris', 
+                      'A. apis', 'A. baretiae', 
+                      'A. rathckeae', 'A. boissieri'),
+                    names_to='Species',
+                    values_to='Relative_Abundance') 
+  
+  
+  
+#this contains acineto abundances scaled by total acineto reads  
+scale_acineto_abd <- abundance %>%
+  mutate(across(-c(Samples, `Total Classified`, `Total Acinetobacter`, `Total Reads`),
+                ~ . / `Total Acinetobacter`)) %>%
+  select(-`Total Classified`, -`Total Acinetobacter`) %>%
+  pivot_longer(cols=c('A. pollinis', 'A. nectaris', 
+                      'A. apis', 'A. baretiae', 
+                      'A. rathckeae', 'A. boissieri'),
+                    names_to='Species',
+                    values_to='Relative_Abundance') 
+
+
+```
+
+fourth: make a heatmap
+```{r}
+
+
+
+ggplot(scale_read_abd, aes(Samples, Species, fill= Relative_Abundance)) + 
+  geom_tile(color = "white", lwd = 1.5,linetype = 1) +
+  geom_tile(aes(fill = ifelse(Relative_Abundance < 1e-4, NA, Relative_Abundance)),
+                  color = "white", lwd = .5, linetype = 1) +
+        scale_fill_gradientn(
+          colours = c("#075AFF", "#FFFFCC", "#FF0000"),
+          values  = scales::rescale(c(0.0025, 0.025, 0.25)),
+          limits  = c(2.5e-4, 2.7e-1),
+          na.value = "white") +
+  labs(title="Relative abundance of species by sample (scaled by total number of reads)",
+        x ="Sample", y = "species")+
+  scale_x_discrete(position = "top") +
+  scale_y_discrete(limits = rev(c("A. pollinis", "A. nectaris", "A. apis",
+                                 "A. baretiae", "A. rathckeae", "A. boissieri"))) +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 0),
+        axis.text.y = element_text(color = "grey20", size = 20, angle = 0, hjust = 1, vjust = 0, face = "plain"),  
+        axis.title.x = element_text(color = "grey20", size = 12, angle = 0, hjust = .5, vjust = 0, face = "plain"),
+        title = element_text(size = 20),
+        axis.title.y = element_text(color = "grey20", size = 12, angle = 90, hjust = .5, vjust = .5, face = "plain"))
+    
+
+
+
+```
+
+
+####Counting number of reads per file
+I need this for the supplemental data S1
+```{bash}
+cd /local/workdir/Daphne/Floral_metagenomics/data_8_acineto_abundance/3_bowtie
+
+"" > all_read_counts.txt  
+for sample in * ; do
+  read_count=$(grep -c '^@.*/[0-9]$' "${sample}/SAMPLE_host_removed_R1.fastq")
+  echo "${sample}  ${read_count}" >> all_read_counts.txt 
+done
+```
+
+
+

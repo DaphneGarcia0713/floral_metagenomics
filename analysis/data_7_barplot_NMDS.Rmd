@@ -1,0 +1,355 @@
+---
+title: 'data_7_barplot_NMDS.Rmd'
+author: "Daphne"
+date: "2026-03-04"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+
+## Goals
+Here I will create stacked barplots from the shotgun metagenomic data
+I will use kaiju to classify reads, copied from data_3/09_kaiju
+and create a taxonomy and OTU table
+input these tables into phyloseq in R
+Create a nested stacked barplot with fantaxtic
+
+
+### Copying kaiju files
+```{bash}
+
+cd /local/workdir/Daphne/Floral_metagenomics/data_7_barplot_NMDS
+mkdir 9_kaiju
+cp -r  ../data_3/09_kaiju/1_raw_kaiju_euk/ 9_kaiju/
+## I put this directory inside 
+
+```
+
+Using kaiju2table, I will create a .tsv file that contains the number and 
+percent of reads per sample that match to a specific genus. The percent and 
+taxon id will be used to make an otu table for phyloseq, and the taxon id and 
+taxon names will be used to make the taxonomy table for phyloseq
+
+### OTU and taxonomy table kaiju2table
+```{bash}
+cd /local/workdir/Daphne/Floral_metagenomics/data_7_barplot_NMDS/9_kaiju/1_raw_kaiju_euk
+export PATH=/programs/kaiju-1.10.0/bin:$PATH
+kaiju_path="/local/workdir/Daphne/Floral_metagenomics/databases/kaiju_nr_euk"
+
+kaiju2table \
+-t "${kaiju_path}/nodes.dmp" \
+-n "${kaiju_path}/names.dmp" \
+-u \
+-r genus \
+-l superkingdom,phylum,class,order,family,genus \
+-o ../OTU_and_taxonomy_table.tsv \
+1_22FN006_kaiju.txt 2_22FN061_kaiju.txt 3_22FN096_kaiju.txt 4_FN106_kaiju.txt 1_22FN008_kaiju.txt 2_22FN062_kaiju.txt 3_22FN098_kaiju.txt 4_FN116_kaiju.txt 1_22FN018_kaiju.txt 2_22FN063_kaiju.txt 3_22FN100_kaiju.txt 4_FN118_kaiju.txt 1_22FN020_kaiju.txt 2_22FN064_kaiju.txt 3_22FN102_kaiju.txt 4_FN128_kaiju.txt 1_22FN021_kaiju.txt 2_22FN065_kaiju.txt 3_22FN103_kaiju.txt 4_FN131_kaiju.txt 1_22FN025_kaiju.txt 2_22FN066_kaiju.txt 3_FN011_kaiju.txt 4_FN136_kaiju.txt 1_22FN028_kaiju.txt 2_22FN068_kaiju.txt 3_FN021_kaiju.txt 4_FN140_kaiju.txt 1_22FN029_kaiju.txt 2_22FN070_kaiju.txt 3_FN026_kaiju.txt 4_FN142_kaiju.txt 1_22FN031_kaiju.txt 2_22FN071_kaiju.txt 3_FN030_kaiju.txt 4_FN144_kaiju.txt 1_22FN038_kaiju.txt 2_22FN072_kaiju.txt 3_FN051_kaiju.txt 4_FN150_kaiju.txt 1_22FN039_kaiju.txt 2_22FN073_kaiju.txt 3_FN053_kaiju.txt 4_FN153_kaiju.txt 1_22FN057_kaiju.txt 2_22FN081_kaiju.txt 3_FN054_kaiju.txt 4_FN174_kaiju.txt 1_22FN058_kaiju.txt 2_22FN082_kaiju.txt 3_FN062_kaiju.txt 4_FN176_kaiju.txt 1_22FN059_kaiju.txt 2_22FN083_kaiju.txt 4_FN075_kaiju.txt
+  # takes 20 seconds
+
+```
+
+-t the node values, and how they are connected order --> family --> genus --> species
+-n the names that correspond to node value
+-u removes "unclassified" 
+-m filter out taxa with under 10% abundances (REMOVED, bc doesn't work with -u)
+-l all taxonomy groups (we're specifying  superkingdom,phylum,class,order,family,genus)
+-r taxonomic level (genus)
+-o output .tsv for the OTU abundance table and .out for the kaiju.txt classified/unclassified from data_3
+
+
+## SWITCH TO R ##
+
+### Tidyverse to reformat taxonomy and OTU/Abundance tables
+
+Currently, the OTU/abundance table `genus_table.tsv` is formatted:
+file                    percent        reads   taxon_id      taxon_name
+1_22FN006_kaiju.txt     100.000000      16      NA      unclassified
+2_22FN061_kaiju.txt     8.795682        929     44471   Microcoleus
+2_22FN061_kaiju.txt     8.256012        872     13687   Sphingomonas
+
+but should be:
+taxon_id   sample1   sample2   sample3
+44471      0         929       500
+13687      0         872       120
+
+```{r}
+library(tidyverse)
+setwd("/local/workdir/Daphne/Floral_metagenomics/data_7_barplot_NMDS")
+otu_tax_table <- read_tsv("9_kaiju/OTU_and_taxonomy_table.tsv")
+
+# remove "1_" and _kaiju.txt" from sample names
+otu_tax_table <- otu_tax_table %>% 
+  mutate(across('file', str_replace, '1_|2_|3_|4_', '')) %>%
+  mutate(across('file', str_replace, '_kaiju.txt', ''))
+
+otu <- otu_tax_table %>%
+  filter(!is.na(taxon_id)) %>%      #remove "NA" (unclassified reads)
+  select(file, taxon_id, reads) %>%  # just keep taxon_id and reads columns, and flip df sideways
+  pivot_wider(names_from = file,
+              values_from = reads,
+              values_fill = 0)
+
+write.table(otu, "10_phyloseq/otu_table.tsv", sep="\t", quote=FALSE, row.names=FALSE)
+
+```
+
+
+
+The taxonomy table `taxonomy_table.tsv` is formatted:
+file                    percent        reads  taxon_id  taxon_name
+1_22FN006_kaiju.txt     0.000000        0       10239   Viruses
+2_22FN061_kaiju.txt     8.795682        929     44471 Bacteria;Cyanobacteriota;Cyanophyceae;Oscillatoriales;Microcoleaceae;Microcoleus;
+2_22FN061_kaiju.txt     8.256012        872     13687  Bacteria;Pseudomonadota;Alphaproteobacteria;Sphingomonadales;Sphingomonadaceae;Sphingomonas;
+
+But should be:
+taxon_id kingdom phylum class order family genus
+44471 Bacteria Cyanobacteriota Cyanophyceae Oscillatoriales Microcoleaceae Microcoleus
+13687 Bacteria Pseudomonadota Alphaproteobacteria Sphingomonadales Sphingomonadaceae Sphingomonas
+
+```{r}
+otu_tax_table <- read_tsv("9_kaiju/OTU_and_taxonomy_table.tsv")
+
+tax <- otu_tax_table %>%
+  filter(!is.na(taxon_id)) %>%
+  distinct(taxon_id, taxon_name) %>%
+  separate(taxon_name,
+           into=c("kingdom","phylum","class","order","family","genus"),
+           sep=";",
+           fill="right")
+
+write.table(tax, "10_phyloseq/taxonomy_table.tsv", sep="\t", quote=FALSE, row.names=FALSE)
+```
+  note: there's a lot of plants and fungi in the taxonomy database, and therefore
+  in our samples! Interesting
+
+
+### Making sample_data and metadata by hand
+
+I copied Vivi's metadata from the phyloseq object `physeq1146_flowers@sam_data`,
+and inputted the missing samples (22FN031, 22FN083, 22FN102, FN062, FN140) from
+my printed metagenomic metadata sheet. 
+Then, I uploaded it onto Rstudio in data_7/10_phyloseq, and I will add it to the
+phyloseq object
+
+```{r}
+sam_data <-read.csv("10_phyloseq/sample_metadata.csv", row.names = "row")
+
+```
+
+
+### merging tables into a phyloseq object
+
+Taken and edited from Mar's class pdf 03_PreProcessing.html, in my downloaded files
+```{r}
+library(phyloseq)
+
+kaiju_phyloseq <- 
+  phyloseq(otu_table(as.matrix(otu), taxa_are_rows=TRUE),
+         tax_table(as.matrix(tax)),
+         sample_data(sam_data))
+
+```
+
+
+### stacked barplot code from Vivi
+This is taken from Daphne/Floral_16S/Vivi_barplot_NMDS_analysis.Rmd
+
+```{r}
+
+# Transform to relative abundance
+kaiju_physeq_relative <- kaiju_phyloseq %>%
+  transform_sample_counts(function(x) x / sum(x))
+
+# remove any samples (22FN006) that didn't have any genera
+kaiju_physeq_relative <- transform_sample_counts(
+  kaiju_phyloseq,
+  function(x) {
+    if(sum(x) == 0) x else x / sum(x)
+  }
+)
+
+#restructuring taxonomy names to fix the barplot
+colnames(tax_table(kaiju_phyloseq)) <- c(
+  "kingdom",
+  "phylum",
+  "class",
+  "order",
+  "family",
+  "genus"
+)
+
+# This is fantaxtic code, it creates a ps_obj that is used for further stacked
+#barplot code. Change Order and Genus taxonomic levels here:
+k_top_nested <- nested_top_taxa(kaiju_physeq_relative,
+                              top_tax_level = "order",
+                              nested_tax_level = "genus",
+                              n_top_taxa = 7, 
+                              n_nested_taxa = 7, 
+                              nested_merged_label = "NA and other <tax>")
+
+  #took 3 min
+
+# This is following code from github tutorial. Adding title, colors, and legend
+plot_nested_bar(k_top_nested$ps_obj,
+                top_level = "order",
+                nested_level = "genus",
+                nested_merged_label = "NA and other <tax>",
+                legend_title = "Order and Genus",
+                merged_clr = "black") +
+  facet_wrap(~SampleSource2,
+             scales = "free_x") +
+  labs(title = "METAGENOMIC Relative abundances of the top 6 genera for each of the top 3 Orders") +
+  theme(plot.title = element_text(hjust = 0.5, 
+                                  size = 10, 
+                                  face = "bold"),
+        legend.key.size = unit(10, 
+                               "points"))
+
+```
+
+
+### making abundance tables to know which genera to include
+these abundance tables will tell me which genera to include in fantaxtic
+```{r}
+
+# making table that gives top abundance per sample
+genus_long <- psmelt(kaiju_physeq_relative)
+
+top_genus_per_sample <- genus_long %>%
+  group_by(Sample) %>%
+  slice_max(Abundance, n = 1, with_ties = FALSE) %>%
+  select(Sample, genus, Abundance) %>%
+  rename(
+    Most_abundant_genus = genus,
+    Abundance = Abundance
+  )
+
+view(top_genus_per_sample)
+
+
+#making table that gives all abundances over 10%
+
+genera_over15 <- genus_long %>%
+  filter(Abundance > 0.15)
+
+library(tidyr)
+genera_over15_table <- genera_over10 %>%
+  select(genus, Sample, Abundance) %>%
+  pivot_wider(
+    names_from = Sample,
+    values_from = Abundance,
+    values_fill = 0
+  )
+
+view(genera_over15_table)
+
+#Making list of number of samples that contain over 10% per genera
+genus_sample_counts <- genera_over10_table %>%
+  mutate(n_samples = rowSums(across(-genus, ~ . > 0))) %>%
+  select(genus, n_samples)
+
+
+```
+
+
+### Fantaxtic plotting barplots
+#### This is Sophia's code:
+
+
+```{r}
+
+remotes::install_github("mikemc/speedyseq")
+library(phyloseq)
+
+# create df of genus, technically not needed since fantaxtic transform sample counts
+genus_df_abs <- kaiju_physeq_relative %>%
+  psmelt() %>%
+  mutate(genus = case_when(is.na(genus)~"Other",
+                            TRUE ~ genus))
+
+# I want these genera, which are > 15% abundant in at least one sample
+custom_genus <- c(
+                 "Acinetobacter",
+                  "Actinobacillus",
+                  "Alternaria",
+                  "Arsenophonus",
+                  "Aureobasidium",
+                  "Bacillus",
+                  "Buchnera",
+                  "Erwinia",
+                  "Exiguobacterium",
+                  "Izhakiella",
+                  "Labilibacter",
+                  "Metschnikowia",
+                  "Pantoea",
+                  "Pseudomicrostroma",
+                  "Pseudomonas",
+                  "Puccinia",
+                  "Rosenbergiella",
+                  "Venturia")
+
+
+# add column "top_genus": if "genus" within custom_genus df (above), then add "this_is_top_genus" to the "top_genus" column. Otherwise, add "Other" to this row.
+abund_taxa_abs <- genus_df_abs %>%
+  dplyr::mutate(
+    "top_genus" = case_when(
+      genus %in% custom_genus ~ "this_is_top_genus",
+      TRUE ~ "Other"))
+
+#Now we're doing taxa. add column "top_genus": if "genus" within custom_genus df (above), then add "this_is_top_genus" to "top_genus" column. Otherwise add "Other" to this row.
+tax_tab <- as.data.frame(tax_table(kaiju_physeq_relative))
+tax_tab$top_genus <- dplyr::case_when(
+  tax_tab$genus %in% custom_genus ~ "this_is_top_genus",
+  TRUE ~ "Other")
+
+# redo ranking for fantaxtic
+tax_tab <- tax_tab %>%
+  dplyr::select(top_genus, kingdom, phylum,
+                class, order, family, genus)
+
+# add tax table to physeq
+tax_table(kaiju_physeq_relative) <- tax_table(as.matrix(tax_tab))
+
+# or lets subset phyloseq object to a subset 
+ps_tmp <- subset_taxa(kaiju_physeq_relative, 
+                      genus %in% custom_genus)
+
+taxids <- taxa_names(ps_tmp)
+
+ps_collapsed <- collapse_taxa(kaiju_physeq_relative, 
+                              taxa_to_keep = taxids,
+                              merged_label = "Other")
+
+# here lets just follow the example
+top_nested <- nested_top_taxa(ps_collapsed,
+                              top_tax_level = "order",
+                              nested_tax_level = "genus",
+                              top_merged_label = "other",
+                              n_top_taxa = 7, 
+                              n_nested_taxa = 9,
+                              include_na_taxa = T,
+                              by_proportion = T)
+
+plot_nested_bar(ps_obj = top_nested$ps_obj,
+                top_level = "order",
+                nested_level = "genus",
+                top_merged_label = "other",
+                merged_clr = "black",
+                include_rank = T) +
+  facet_wrap(~SampleSource2,
+             scales = "free_x") +
+  labs(title = "Relative abundances of genera with >15% abundance", subtitle = "Metagenomic data", y = "Relative Abundance") +
+  theme(legend.position = "right",
+        axis.title.x = element_blank(),
+        axis.ticks.x = element_blank(),
+        strip.text = element_text(size = 10, face = "bold"),
+        axis.title.y = element_text(size = 10, face = "bold"),
+        axis.text.y = element_text(size = 9))
+
+
+
+```
+
+
+
